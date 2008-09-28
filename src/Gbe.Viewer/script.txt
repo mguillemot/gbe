@@ -1,0 +1,22 @@
+﻿Engine
+{
+	Fps=60
+	GameArea=(0:0)->(240:320)
+}
+
+Player
+{
+	position=(100:300)
+	speed=150
+	animation=triangle
+}
+
+Enemy
+{
+	position=(120:10)
+	animation=box
+	+periodic(timeInterval=.2)
+	{
+		+fireAtPlayer(bulletSpeed=200)
+	}
+}
