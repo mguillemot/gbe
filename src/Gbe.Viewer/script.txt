@@ -1,22 +1,120 @@
-﻿Engine
+﻿ENGINE
 {
-	Fps=60
-	GameArea=(0:0)->(240:320)
-}
-
-Player
-{
-	position=(100:300)
-	speed=150
-	animation=triangle
-}
-
-Enemy
-{
-	position=(120:10)
-	animation=box
-	+periodic(timeInterval=.2)
+	@init
 	{
-		+fireAtPlayer(bulletSpeed=200)
+		fps=60
+		gameArea=0:0->240:320
+	}
+}
+
+PLAYER Player
+{
+	@init
+	{
+		position=100:300
+		speed=150
+		animation="triangle"
+		color=blue
+	}
+}
+
+BULLET SimpleBullet
+{
+	@init
+	{
+		speed=300
+		animation="circle"
+		color=pink
+	}
+	
+	@time(10)
+	{
+		.die
+	}
+}
+
+STATE Fire
+{
+	@init
+	{
+		.periodic(.2)
+		{
+			.fireAtPlayer(SimpleBullet)
+		}
+	}
+}
+
+ENEMY Toto
+{
+	// Définition locale
+	STATE MyFire 
+	{
+		@init
+		{
+			color=yellow
+		}
+		
+		@cleanup
+		{
+			color=red
+		}
+	}
+	
+	// Constructor
+	@init
+	{
+		animation="box"
+		color=red
+	}
+	
+	// Destructor
+	@cleanup
+	{
+	}
+
+	@time(1)
+	{
+		.start(Fire)
+	}
+
+	@time(5)
+	{
+		.stop(Fire)
+		.playAnimation("explodingBox")
+	}
+	
+	@animationEnd("explodingBox")
+	{
+		.die
+	}
+}
+
+EVENT Truc
+
+SCRIPT TestLevel
+{
+	@init
+	{
+		scrolling=down,80
+		.summon(Toto) theToto
+		{
+			position=120:10
+		}
+	}
+
+	@scrolling(400)
+	{
+		.summon(Toto) theToto2
+		{
+			position=150:50
+		}
+	}
+	
+	@event(Truc)
+	{
+		.summon(Toto) theToto3
+		{
+			position=50:20
+		}
 	}
 }

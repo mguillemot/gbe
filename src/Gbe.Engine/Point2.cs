@@ -29,5 +29,22 @@ namespace Gbe.Engine
             var dy = b.Y - a.Y;
             return (float) Math.Sqrt(dx*dx + dy*dy);
         }
+
+        public override string ToString()
+        {
+            return X + ":" + Y;
+        }
+
+        public static Point2 Parse(string repr)
+        {
+            var split = repr.Split(new char[] {':'});
+            var result = new Point2();
+            if (split.Length == 2)
+            {
+                result.X = float.Parse(split[0]);
+                result.Y = float.Parse(split[1]);
+            }
+            return result;
+        }
     }
 }

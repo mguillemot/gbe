@@ -1,5 +1,9 @@
 using System;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
+using Antlr.Runtime;
+using Gbe.Compiler;
 
 namespace Gbe.Viewer
 {
@@ -11,6 +15,10 @@ namespace Gbe.Viewer
         [STAThread]
         private static void Main()
         {
+            // For number formatting...
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+
+            // Run application
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Viewer());

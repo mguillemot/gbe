@@ -50,7 +50,7 @@ namespace Gbe.Engine.Executor.Rules
                 }
                 _previousAngle += _deltaPrime * context.PreviousUpdateElapsedSeconds;
 
-                var entitySpeed = (float) entity[EntityProperties.PROP_SPEED];
+                var entitySpeed = EntityProperties.GetSpeed(entity);
                 var dx = entitySpeed*MathHelper.Cos(_previousAngle)*context.PreviousUpdateElapsedSeconds;
                 var dy = entitySpeed*MathHelper.Sin(_previousAngle)*context.PreviousUpdateElapsedSeconds;
                 actions.Add(new MoveAction(dx, dy));

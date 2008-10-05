@@ -35,6 +35,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -45,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Color.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Entities\BasicAnimatedEntityState.cs" />
     <Compile Include="Entities\BulletEntity.cs" />
@@ -70,6 +74,7 @@
     <Compile Include="Executor\Rules\TrackingTrajectoryRule.cs" />
     <Compile Include="GameContext.cs" />
     <Compile Include="MathHelper.cs" />
+    <Compile Include="NoSuchPropertyException.cs" />
     <Compile Include="PlayField.cs" />
     <Compile Include="Point2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

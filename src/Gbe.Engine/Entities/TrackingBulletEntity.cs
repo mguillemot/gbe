@@ -7,11 +7,13 @@ namespace Gbe.Engine.Entities
         public TrackingBulletEntity(int _id)
             : base(_id)
         {
-            Speed = 0;
-            Animation = "trainee";
-            this[EntityProperties.PROP_TRAINEE] = new List<Point2>();
-            Position = new Point2();
+            EntityProperties.SetPosition(this, new Point2());
+            EntityProperties.SetSpeed(this, 0f);
+            EntityProperties.SetAnimation(this, "trainee");
+            EntityProperties.SetTrainee(this, new List<Point2>());
         }
+
+
 
         public override Point2 Position
         {
@@ -19,7 +21,7 @@ namespace Gbe.Engine.Entities
             set
             {
                 base.Position = value;
-                var positions = (List<Point2>) this[EntityProperties.PROP_TRAINEE];
+                var positions = EntityProperties.GetTrainee(this);
                 positions.Add(value);
             }
         }

@@ -25,20 +25,26 @@ namespace Gbe.Engine
 
         public virtual Point2 Position
         {
-            get { return (Point2) this[EntityProperties.PROP_POSITION]; }
-            set { this[EntityProperties.PROP_POSITION] = value; }
+            get { return EntityProperties.GetPosition(this); }
+            set { EntityProperties.SetPosition(this, value); }
         }
 
         public float Speed
         {
-            get { return (float) this[EntityProperties.PROP_SPEED]; }
-            set { this[EntityProperties.PROP_SPEED] = value; }
+            get { return EntityProperties.GetSpeed(this); }
+            set { EntityProperties.SetSpeed(this, value); }
         }
 
         public string Animation
         {
-            get { return (string) this[EntityProperties.PROP_ANIMATION]; }
-            set { this[EntityProperties.PROP_ANIMATION] = value; }
+            get { return EntityProperties.GetAnimation(this); }
+            set { EntityProperties.SetAnimation(this, value); }
+        }
+
+        public Color Color
+        {
+            get { return EntityProperties.GetColor(this); }
+            set { EntityProperties.SetColor(this, value); }
         }
 
         public bool HasProperty(string propertyName)

@@ -19,7 +19,7 @@ namespace Gbe.Engine.Executor.Rules
 
         public override int ComputeActions(Entity entity, GameContext context, List<ExecutorAction> actions)
         {
-            var entitySpeed = (float) entity[EntityProperties.PROP_SPEED];
+            var entitySpeed = EntityProperties.GetSpeed(entity);
             var dx = entitySpeed*MathHelper.Cos(_angle)*context.PreviousUpdateElapsedSeconds;
             var dy = entitySpeed*MathHelper.Sin(_angle)*context.PreviousUpdateElapsedSeconds;
             actions.Add(new MoveAction(dx, dy));

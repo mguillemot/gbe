@@ -5,9 +5,9 @@
         public PlayerEntity(int _id)
             : base(_id)
         {
-            Position = new Point2();
-            Speed = 0;
-            Animation = "triangle";
+            EntityProperties.SetPosition(this, new Point2());
+            EntityProperties.SetSpeed(this, 0f);
+            EntityProperties.SetAnimation(this, "triangle");
         }
     }
 }

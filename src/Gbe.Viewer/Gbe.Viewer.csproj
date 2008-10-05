@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="SdlDotNet, Version=6.0.0.0, Culture=neutral, PublicKeyToken=26ad4f7e10c61408, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\SdlDotNet.dll</HintPath>
@@ -87,6 +91,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gbe.Compiler\Gbe.Compiler.csproj">
+      <Project>{B34C7452-4406-493E-BEAF-E7315175D63A}</Project>
+      <Name>Gbe.Compiler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gbe.Engine\Gbe.Engine.csproj">
       <Project>{448FFA1C-E9F7-4549-B7A0-6AE213E3694E}</Project>
       <Name>Gbe.Engine</Name>

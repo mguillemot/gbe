@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using Antlr.Runtime;
+using Gbe.Compiler;
 using Gbe.Engine;
 using Gbe.Engine.Entities;
 using Gbe.Engine.Executor.Rules;
 using SdlDotNet.Core;
 using SdlDotNet.Graphics;
 using SdlDotNet.Graphics.Primitives;
+using Color=System.Drawing.Color;
 using Rectangle=Gbe.Engine.Rectangle;
 
 namespace Gbe.Viewer
@@ -48,13 +51,30 @@ namespace Gbe.Viewer
             _lastPreparation = DateTime.Now;
             _engine.Context.GameArea = new Rectangle(0, 0, 240, 320);
             var player = new PlayerEntity(_engine.GenerateId()) {Position = new Point2(100, 300), Speed = 150};
-            var enemy = new EnemyEntity(_engine.GenerateId()) {Position = new Point2(120, 10)};
+            //var enemy = new EnemyEntity(_engine.GenerateId()) {Position = new Point2(120, 10)};
             _engine.AddPlayer(player);
-            _engine.AddEntity(enemy);
-            _engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.3f), 2f));
-            _engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.3f), 2f));
-            _engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.8f), 2f));
-            _engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.8f), 2f));
+            //_engine.AddEntity(enemy);
+            //_engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.3f), 2f));
+            //_engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.3f), 2f));
+            //_engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.8f), 2f));
+            //_engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.8f), 2f));
+
+
+            var lexer = new GbsLexer(new ANTLRFileStream("../../src/Gbe.Viewer/script.txt"));
+            var tokenStream = new CommonTokenStream(lexer);
+            var parser = new GbsParser(tokenStream);
+            var gbs = parser.gbs().s;
+            Console.WriteLine("Ok. " + gbs.Entities.Count + " entities found:");
+            foreach (var entity in gbs.Entities)
+            {
+                Console.WriteLine("{0} className={1} subEntities={2} triggers={3}", entity.GetType(), entity.ClassName, entity.SubEntities != null ? entity.SubEntities.Count.ToString() : "null", entity.Triggers != null ? entity.Triggers.Count.ToString() : "null");
+            }
+            gbs.Check();
+            Console.WriteLine("Checked? {0}", gbs.Checked);
+            if (gbs.Checked)
+            {
+                gbs.Run(_engine, "TestLevel");
+            }
 
             _sdlThread = new Thread(SdlDotNet.Core.Events.Run)
                              {
@@ -73,16 +93,16 @@ namespace Gbe.Viewer
             _surface.Draw(new Box(new Point(100, 100), new Size(240, 320)), Color.Red);
             foreach (Entity entity in _engine.Entities)
             {
-                if (entity.HasProperty(EntityProperties.PROP_POSITION))
+                if (entity.HasProperty(EntityProperties.POSITION))
                 {
-                    var position = (Point2) entity[EntityProperties.PROP_POSITION];
+                    var position = EntityProperties.GetPosition(entity);
                     var center = new Point((int) Math.Round(100 + position.X), (int) Math.Round(100 + position.Y));
-                    IPrimitive shape = null;
-                    Color color = DefaultBackColor;
+                    IPrimitive shape;
+                    var color = DefaultBackColor;
                     string animation = null;
-                    if (entity.HasProperty(EntityProperties.PROP_ANIMATION))
+                    if (entity.HasProperty(EntityProperties.ANIMATION))
                     {
-                        animation = (string) entity[EntityProperties.PROP_ANIMATION];
+                        animation = EntityProperties.GetAnimation(entity);
                     }
                     switch (animation)
                     {
@@ -101,7 +121,7 @@ namespace Gbe.Viewer
                             color = Color.Blue;
                             break;
                         case "trainee":
-                            var positions = (List<Point2>) entity[EntityProperties.PROP_TRAINEE];
+                            var positions = EntityProperties.GetTrainee(entity);
                             int nPoints = (positions.Count >= 20) ? 20 : positions.Count;
                             int c = nPoints;
                             for (int i = Math.Max(0, positions.Count - 20); i < positions.Count; i++)
