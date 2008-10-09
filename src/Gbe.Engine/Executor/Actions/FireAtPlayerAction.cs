@@ -1,4 +1,4 @@
-﻿using Gbe.Engine.Entities;
+using Gbe.Engine.Entities;
 using Gbe.Engine.Executor.Rules;
 
 namespace Gbe.Engine.Executor.Actions
@@ -20,10 +20,10 @@ namespace Gbe.Engine.Executor.Actions
             var playerPosition = engine.GetPlayer().Position;
             var bullet = new BulletEntity(engine.GenerateId()) {Position = entity.Position, Speed = _bulletSpeed};
             engine.AddEntity(bullet);
-            engine.Executor.AddPermanentRule(bullet,
+            engine.Executor.AddRule(bullet,
                                              new LinearTrajectoryRule(MathHelper.GetAngleBetween(bullet.Position,
                                                                                                  playerPosition) + _initialAngle));
-            engine.Executor.AddPermanentRule(bullet, new DieWhenOutOfBoundsRule());
+            engine.Executor.AddRule(bullet, new DieWhenOutOfBoundsRule());
             */
             var trackingBullet = new TrackingBulletEntity(engine.GenerateId())
                                      {
@@ -31,8 +31,8 @@ namespace Gbe.Engine.Executor.Actions
                                          Speed = _bulletSpeed
                                      };
             engine.AddEntity(trackingBullet);
-            engine.Executor.AddPermanentRule(trackingBullet, new TrackingTrajectoryRule(engine.GetPlayer().Id, _initialAngle));
-            engine.Executor.AddPermanentRule(trackingBullet, new DieWhenOutOfBoundsRule());
+            engine.Executor.AddRule(trackingBullet.Id, new TrackingTrajectoryRule(engine.GetPlayer().Id, _initialAngle));
+            engine.Executor.AddRule(trackingBullet.Id, new DieWhenOutOfBoundsRule());
         }
     }
 }

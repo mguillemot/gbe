@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using Antlr.Runtime;
-using Gbe.Compiler;
+using Gbe.Script;
 using Gbe.Engine;
 using Gbe.Engine.Entities;
 using Gbe.Engine.Executor.Rules;
@@ -54,10 +54,10 @@ namespace Gbe.Viewer
             //var enemy = new EnemyEntity(_engine.GenerateId()) {Position = new Point2(120, 10)};
             _engine.AddPlayer(player);
             //_engine.AddEntity(enemy);
-            //_engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.3f), 2f));
-            //_engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.3f), 2f));
-            //_engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.8f), 2f));
-            //_engine.Executor.AddPermanentRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.8f), 2f));
+            //_engine.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.3f), 2f));
+            //_engine.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.3f), 2f));
+            //_engine.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.8f), 2f));
+            //_engine.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.8f), 2f));
 
 
             var lexer = new GbsLexer(new ANTLRFileStream("../../src/Gbe.Viewer/script.txt"));
@@ -69,11 +69,11 @@ namespace Gbe.Viewer
             {
                 Console.WriteLine("{0} className={1} subEntities={2} triggers={3}", entity.GetType(), entity.ClassName, entity.SubEntities != null ? entity.SubEntities.Count.ToString() : "null", entity.Triggers != null ? entity.Triggers.Count.ToString() : "null");
             }
-            gbs.Check();
-            Console.WriteLine("Checked? {0}", gbs.Checked);
-            if (gbs.Checked)
+            var compiledGbs = gbs.Compile();
+            Console.WriteLine("Compiled? {0}", compiledGbs != null);
+            if (compiledGbs != null)
             {
-                gbs.Run(_engine, "TestLevel");
+                compiledGbs.Run(_engine, "TestLevel");
             }
 
             _sdlThread = new Thread(SdlDotNet.Core.Events.Run)
@@ -167,23 +167,19 @@ namespace Gbe.Viewer
         {
             if (_left)
             {
-                _engine.Executor.AddTemporaryRule(_engine.GetPlayer(), new LinearTrajectoryRule(MathHelper.ANGLE_LEFT),
-                                                  _engine.Context.CurrentFrame + 2);
+                _engine.Executor.AddRule(_engine.GetPlayer().Id, new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_LEFT)));
             }
             if (_right)
             {
-                _engine.Executor.AddTemporaryRule(_engine.GetPlayer(), new LinearTrajectoryRule(MathHelper.ANGLE_RIGHT),
-                                                  _engine.Context.CurrentFrame + 2);
+                _engine.Executor.AddRule(_engine.GetPlayer().Id, new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_RIGHT)));
             }
             if (_up)
             {
-                _engine.Executor.AddTemporaryRule(_engine.GetPlayer(), new LinearTrajectoryRule(MathHelper.ANGLE_UP),
-                                                  _engine.Context.CurrentFrame + 2);
+                _engine.Executor.AddRule(_engine.GetPlayer().Id, new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_UP)));
             }
             if (_down)
             {
-                _engine.Executor.AddTemporaryRule(_engine.GetPlayer(), new LinearTrajectoryRule(MathHelper.ANGLE_DOWN),
-                                                  _engine.Context.CurrentFrame + 2);
+                _engine.Executor.AddRule(_engine.GetPlayer().Id, new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_DOWN)));
             }
             _engine.Update((float) (DateTime.Now - _lastPreparation).TotalSeconds);
             _lastPreparation = DateTime.Now;

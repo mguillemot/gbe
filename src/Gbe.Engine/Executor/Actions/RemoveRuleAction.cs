@@ -1,4 +1,4 @@
-﻿namespace Gbe.Engine.Executor.Actions
+namespace Gbe.Engine.Executor.Actions
 {
     public class RemoveRuleAction : ExecutorAction
     {
@@ -16,7 +16,7 @@
 
         public override void Execute(Entity entity, Engine engine)
         {
-            engine.Executor.RemovePermanentRule(entity, _rule);
+            engine.Executor.RemoveRule(entity.Id, _rule);
         }
     }
 }

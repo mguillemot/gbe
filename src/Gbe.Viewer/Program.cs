@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using Antlr.Runtime;
-using Gbe.Compiler;
+using Gbe.Script;
 
 namespace Gbe.Viewer
 {

@@ -61,9 +61,9 @@ ENEMY Toto
 	}
 	
 	// Constructor
+	// NOTE: on ne met pas de .fire dedans, car la position ne sera set qu'après (constructeur overloadé qui appelle son super en premier)
 	@init
 	{
-		animation="box"
 		color=red
 	}
 	
@@ -74,11 +74,13 @@ ENEMY Toto
 
 	@time(1)
 	{
+		.fireAtPlayer(SimpleBullet)
 		.start(Fire)
 	}
 
 	@time(5)
 	{
+		.fireAtPlayer(SimpleBullet)
 		.stop(Fire)
 		.playAnimation("explodingBox")
 	}

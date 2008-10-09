@@ -12,6 +12,18 @@ namespace Gbe.Engine
         private readonly PlayField _playField = new PlayField();
         private int _nextId;
         private int _playerEntityId = -1;
+        private readonly Entity _engineEntity;
+
+        public Engine()
+        {
+            _engineEntity = new Entity(GenerateId());
+        }
+
+        public Entity EngineEntity
+        {
+            get { return _engineEntity; }
+        }
+
         public int Fps { get; set; }
 
         public PlayField PlayField
@@ -49,7 +61,7 @@ namespace Gbe.Engine
         {
             if (_entities.Remove(entity.Id))
             {
-                _executor.RemoveAllRulesFor(entity);
+                _executor.RemoveAllRulesFor(entity.Id);
             }
         }
 

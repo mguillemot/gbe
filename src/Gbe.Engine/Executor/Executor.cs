@@ -17,7 +17,6 @@ namespace Gbe.Engine.Executor
             EntityRuleset ruleSet;
             if (_rules.TryGetValue(entity.Id, out ruleSet))
             {
-                _rulesCount -= ruleSet.CheckExpiration(context.CurrentFrame);
                 var actions = new List<ExecutorAction>();
                 foreach (ExecutorRule rule in ruleSet.ActiveRules)
                 {
@@ -28,51 +27,39 @@ namespace Gbe.Engine.Executor
             return null;
         }
 
-        public void AddPermanentRule(Entity entity, ExecutorRule rule)
+        public void AddRule(int entityId, ExecutorRule rule)
         {
             EntityRuleset ruleSet;
-            if (!_rules.TryGetValue(entity.Id, out ruleSet))
+            if (!_rules.TryGetValue(entityId, out ruleSet))
             {
                 ruleSet = new EntityRuleset();
-                _rules.Add(entity.Id, ruleSet);
+                _rules.Add(entityId, ruleSet);
             }
-            ruleSet.AddPermanentRule(rule);
+            ruleSet.AddRule(rule);
             _rulesCount++;
         }
 
-        public void RemovePermanentRule(Entity entity, ExecutorRule rule)
+        public void RemoveRule(int entityId, ExecutorRule rule)
         {
             EntityRuleset ruleSet;
-            if (_rules.TryGetValue(entity.Id, out ruleSet))
+            if (_rules.TryGetValue(entityId, out ruleSet))
             {
-                ruleSet.RemovePermanentRule(rule);
+                ruleSet.RemoveRule(rule);
                 if (ruleSet.Empty)
                 {
-                    _rules.Remove(entity.Id);
+                    _rules.Remove(entityId);
                 }
                 _rulesCount--;
             }
         }
 
-        public void AddTemporaryRule(Entity entity, ExecutorRule rule, int expirationFrame)
+        public void RemoveAllRulesFor(int entityId)
         {
             EntityRuleset ruleSet;
-            if (!_rules.TryGetValue(entity.Id, out ruleSet))
-            {
-                ruleSet = new EntityRuleset();
-                _rules.Add(entity.Id, ruleSet);
-            }
-            ruleSet.AddTemporaryRule(rule, expirationFrame);
-            _rulesCount++;
-        }
-
-        public void RemoveAllRulesFor(Entity entity)
-        {
-            EntityRuleset ruleSet;
-            if (_rules.TryGetValue(entity.Id, out ruleSet))
+            if (_rules.TryGetValue(entityId, out ruleSet))
             {
                 _rulesCount -= ruleSet.ActiveRules.Count;
-                _rules.Remove(entity.Id);
+                _rules.Remove(entityId);
             }
         }
 

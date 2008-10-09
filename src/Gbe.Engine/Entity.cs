@@ -7,7 +7,7 @@ namespace Gbe.Engine
         private readonly int _id;
         private readonly Dictionary<string, object> _properties = new Dictionary<string, object>();
 
-        protected Entity(int _id)
+        public Entity(int _id)
         {
             this._id = _id;
         }

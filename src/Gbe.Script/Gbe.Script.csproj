@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3B4F332F-DB03-4681-9779-5234AACE0E83}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{B34C7452-4406-493E-BEAF-E7315175D63A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gbe.Viewer</RootNamespace>
-    <AssemblyName>Gbe.Viewer</AssemblyName>
+    <RootNamespace>Gbe.Compiler</RootNamespace>
+    <AssemblyName>Gbe.Compiler</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,10 +35,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="SdlDotNet, Version=6.0.0.0, Culture=neutral, PublicKeyToken=26ad4f7e10c61408, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\SdlDotNet.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -50,45 +46,50 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tao.Sdl, Version=1.2.11.1, Culture=neutral, PublicKeyToken=9c7a200e36c0094e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Tao.Sdl.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Viewer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Viewer.Designer.cs">
-      <DependentUpon>Viewer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Actions\Action.cs" />
+    <Compile Include="Actions\DieAction.cs" />
+    <Compile Include="Actions\FireAtPlayerAction.cs" />
+    <Compile Include="Actions\PeriodicAction.cs" />
+    <Compile Include="Actions\PlayAnimationAction.cs" />
+    <Compile Include="Actions\SetAction.cs" />
+    <Compile Include="Actions\StartAction.cs" />
+    <Compile Include="Actions\StopAction.cs" />
+    <Compile Include="Actions\SummonAction.cs" />
+    <Compile Include="CompiledGbs.cs" />
+    <Compile Include="Entities\BulletEntity.cs" />
+    <Compile Include="Entities\EventEntity.cs" />
+    <Compile Include="Entities\ScriptEntity.cs" />
+    <Compile Include="Entities\EnemyEntity.cs" />
+    <Compile Include="Entities\PlayerEntity.cs" />
+    <Compile Include="Entities\EngineEntity.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\StateEntity.cs" />
+    <Compile Include="EntityInstance.cs" />
+    <Compile Include="Gbs.cs" />
+    <Compile Include="GbsLexer.cs" />
+    <Compile Include="GbsParser.cs" />
+    <Compile Include="Parameters\AnimationParam.cs" />
+    <Compile Include="Parameters\ColorParam.cs" />
+    <Compile Include="Parameters\GameAreaParam.cs" />
+    <Compile Include="Parameters\FpsParam.cs" />
+    <Compile Include="Parameters\Param.cs" />
+    <Compile Include="Parameters\PositionParam.cs" />
+    <Compile Include="Parameters\ScrollingParam.cs" />
+    <Compile Include="Parameters\SpeedParam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Viewer.resx">
-      <DependentUpon>Viewer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+    <Compile Include="Triggers\AnimationEndTrigger.cs" />
+    <Compile Include="Triggers\CleanupTrigger.cs" />
+    <Compile Include="Triggers\EventTrigger.cs" />
+    <Compile Include="Triggers\InitTrigger.cs" />
+    <Compile Include="Triggers\ScrollingTrigger.cs" />
+    <Compile Include="Triggers\TimeTrigger.cs" />
+    <Compile Include="Triggers\Trigger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Gbs.g" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gbe.Engine\Gbe.Engine.csproj">
@@ -97,7 +98,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="script.txt" />
+    <Folder Include="Executor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

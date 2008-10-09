@@ -58,8 +58,16 @@
     <Compile Include="Entity.cs" />
     <Compile Include="EntityProperties.cs" />
     <Compile Include="EntityState.cs" />
+    <Compile Include="Executor\Actions\AddEntityAction.cs" />
+    <Compile Include="Executor\Actions\AddRuleAction.cs" />
+    <Compile Include="Executor\Actions\CompositeAction.cs" />
+    <Compile Include="Executor\Actions\CreateEntityAction.cs" />
     <Compile Include="Executor\Actions\DieAction.cs" />
     <Compile Include="Executor\Actions\RemoveRuleAction.cs" />
+    <Compile Include="Executor\Actions\SetAnimationAction.cs" />
+    <Compile Include="Executor\Actions\SetColorAction.cs" />
+    <Compile Include="Executor\Actions\SetPositionAction.cs" />
+    <Compile Include="Executor\Actions\SetSpeedAction.cs" />
     <Compile Include="Executor\Rules\CompoundRule.cs" />
     <Compile Include="Executor\Rules\DieWhenOutOfBoundsRule.cs" />
     <Compile Include="Executor\EntityRuleset.cs" />
@@ -67,10 +75,13 @@
     <Compile Include="Executor\ExecutorAction.cs" />
     <Compile Include="Executor\ExecutorRule.cs" />
     <Compile Include="Executor\Actions\FireAtPlayerAction.cs" />
+    <Compile Include="Executor\Rules\ExecuteActionOnceRule.cs" />
+    <Compile Include="Executor\Rules\ExecuteAtTimeRule.cs" />
     <Compile Include="Executor\Rules\FireAtPlayerRule.cs" />
     <Compile Include="Executor\Rules\LinearTrajectoryRule.cs" />
     <Compile Include="Executor\Actions\MoveAction.cs" />
     <Compile Include="Executor\Rules\PeriodicRule.cs" />
+    <Compile Include="Executor\Rules\ExecuteOnceRule.cs" />
     <Compile Include="Executor\Rules\TrackingTrajectoryRule.cs" />
     <Compile Include="GameContext.cs" />
     <Compile Include="MathHelper.cs" />
@@ -79,6 +90,9 @@
     <Compile Include="Point2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangle.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Executor\Triggers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
