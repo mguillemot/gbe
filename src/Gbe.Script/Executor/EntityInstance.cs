@@ -18,7 +18,7 @@ namespace Gbe.Script.Executor
             _engineId = engineId;
         }
 
-        public Classdefs Classdef
+        public Classdef Classdef
         {
             get { return _classdef; }
         }

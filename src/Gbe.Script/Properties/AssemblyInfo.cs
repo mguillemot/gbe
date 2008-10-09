@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("Gbe.Compiler")]
+[assembly: AssemblyTitle("Gbe.Script")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NPNG Team")]
-[assembly: AssemblyProduct("Gbe.Compiler")]
+[assembly: AssemblyProduct("Gbe.Script")]
 [assembly: AssemblyCopyright("Copyright © NPNG Team 2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

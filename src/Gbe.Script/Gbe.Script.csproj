@@ -8,8 +8,8 @@
     <ProjectGuid>{B34C7452-4406-493E-BEAF-E7315175D63A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gbe.Compiler</RootNamespace>
-    <AssemblyName>Gbe.Compiler</AssemblyName>
+    <RootNamespace>Gbe.Script</RootNamespace>
+    <AssemblyName>Gbe.Script</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

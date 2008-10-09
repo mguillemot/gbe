@@ -6,14 +6,14 @@ namespace Gbe.Script
 {
     public class Gbs
     {
-        private readonly List<Classdefs> _entities;
+        private readonly List<Classdef> _entities;
 
-        public Gbs(List<Classdefs> entities)
+        public Gbs(List<Classdef> entities)
         {
             _entities = entities;
         }
 
-        public List<Classdefs> Entities
+        public List<Classdef> Entities
         {
             get { return _entities; }
         }

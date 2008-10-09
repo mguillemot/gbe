@@ -8,22 +8,22 @@ options
 
 @parser::namespace 
 { 
-	Gbe.Compiler 
+	Gbe.Script 
 }
 
 @parser::header 
 {
 using System.Collections.Generic;
-using Gbe.Compiler.Actions;
-using Action = Gbe.Compiler.Actions.Action;
-using Gbe.Compiler.Entities;
-using Gbe.Compiler.Parameters;
-using Gbe.Compiler.Triggers;
+using Gbe.Script.Actions;
+using Action = Gbe.Script.Actions.Action;
+using Gbe.Script.Classdefs;
+using Gbe.Script.Parameters;
+using Gbe.Script.Triggers;
 }
 
 @lexer::namespace 
 { 
-	Gbe.Compiler 
+	Gbe.Script 
 }
 
 // LEXER
@@ -32,31 +32,31 @@ THIS
 	:	'this'
 	;
 
-ENTITY_ENGINE	
+CLASSDEF_ENGINE	
 	:	'ENGINE'
 	;
 
-ENTITY_PLAYER	
+CLASSDEF_PLAYER	
 	:	'PLAYER'
 	;
 
-ENTITY_BULLET
+CLASSDEF_BULLET
 	:	'BULLET'
 	;
 
-ENTITY_ENEMY	
+CLASSDEF_ENEMY	
 	:	'ENEMY'
 	;
 	
-ENTITY_SCRIPT
+CLASSDEF_SCRIPT
 	:	'SCRIPT'
 	;
 	
-ENTITY_STATE
+CLASSDEF_STATE
 	:	'STATE'
 	;
 	
-ENTITY_EVENT
+CLASSDEF_EVENT
 	:	'EVENT'
 	;
 
@@ -216,13 +216,13 @@ SL_COMMENT
 gbs returns [Gbs s]
 scope 
 { 
-	List<Entity> entities; 
+	List<Classdef> classdefs; 
 }
 @init 
 { 
-	$gbs::entities = new List<Entity>(); 
+	$gbs::classdefs = new List<Classdef>(); 
 } 
-	:	entity* { $s = new Gbs($gbs::entities); }
+	:	classdef* { $s = new Gbs($gbs::classdefs); }
 	;
 
 param returns [Param p]
@@ -263,57 +263,57 @@ scrolling_param returns [Param p]
 	:	PARAM_SCROLLING '=' dir=DIRECTION ',' speed=NUMBER { $p = new ScrollingParam($dir.Text, float.Parse($speed.Text)); }
 	;
 
-entity returns [Entity en]
+classdef returns [Classdef en]
 scope 
 { 
-	List<Entity> subEntities;
+	List<Classdef> subEntities;
 	List<Trigger> triggers;
 }
 @init 
 { 
-	$entity::subEntities = new List<Entity>(); 
-	$entity::triggers = new List<Trigger>();
+	$classdef::subEntities = new List<Classdef>(); 
+	$classdef::triggers = new List<Trigger>();
 } 
-	:	ee=engine_entity { $en = $ee.en; $gbs::entities.Add($en); }
-	|	pe=player_entity { $en = $pe.en; $gbs::entities.Add($en); }
-	|	be=bullet_entity { $en = $be.en; $gbs::entities.Add($en); }
-	|	ene=enemy_entity { $en = $ene.en; $gbs::entities.Add($en); }
-	|	eve=event_entity { $en = $eve.en; $gbs::entities.Add($en); }
-	|	ste=state_entity { $en = $ste.en; $gbs::entities.Add($en); }
-	|	se=script_entity { $en = $se.en; $gbs::entities.Add($en); }
+	:	ee=engine_classdef { $en = $ee.en; $gbs::classdefs.Add($en); }
+	|	pe=player_classdef { $en = $pe.en; $gbs::classdefs.Add($en); }
+	|	be=bullet_classdef { $en = $be.en; $gbs::classdefs.Add($en); }
+	|	ene=enemy_classdef { $en = $ene.en; $gbs::classdefs.Add($en); }
+	|	eve=event_classdef { $en = $eve.en; $gbs::classdefs.Add($en); }
+	|	ste=state_classdef { $en = $ste.en; $gbs::classdefs.Add($en); }
+	|	se=script_classdef { $en = $se.en; $gbs::classdefs.Add($en); }
 	;
 
-entity_content
-	:	t=trigger        { $entity::triggers.Add($t.t); }
-	|	se=entity        { $entity::subEntities.Add($se.en); }
+classdef_content
+	:	t=trigger        { $classdef::triggers.Add($t.t); }
+	|	se=classdef        { $classdef::subEntities.Add($se.en); }
 	;
 	
-engine_entity returns [Entity en]
-	:	ENTITY_ENGINE '{' entity_content* '}' { $en = new EngineEntity($entity::triggers); }
+engine_classdef returns [Classdef en]
+	:	CLASSDEF_ENGINE '{' classdef_content* '}' { $en = new EngineClassdef($classdef::triggers); }
 	;
 	
-player_entity returns [Entity en]
-	:	ENTITY_PLAYER name=CLASS_IDENTIFIER '{' entity_content* '}' { $en = new PlayerEntity($name.Text, $entity::subEntities, $entity::triggers); }
+player_classdef returns [Classdef en]
+	:	CLASSDEF_PLAYER name=CLASS_IDENTIFIER '{' classdef_content* '}' { $en = new PlayerClassdef($name.Text, $classdef::subEntities, $classdef::triggers); }
 	;
 
-enemy_entity returns [Entity en]
-	:	ENTITY_ENEMY name=CLASS_IDENTIFIER '{' entity_content* '}' { $en = new EnemyEntity($name.Text, $entity::subEntities, $entity::triggers); }
+enemy_classdef returns [Classdef en]
+	:	CLASSDEF_ENEMY name=CLASS_IDENTIFIER '{' classdef_content* '}' { $en = new EnemyClassdef($name.Text, $classdef::subEntities, $classdef::triggers); }
 	;
 
-bullet_entity returns [Entity en]
-	:	ENTITY_BULLET name=CLASS_IDENTIFIER '{' entity_content* '}' { $en = new BulletEntity($name.Text, $entity::subEntities, $entity::triggers); }
+bullet_classdef returns [Classdef en]
+	:	CLASSDEF_BULLET name=CLASS_IDENTIFIER '{' classdef_content* '}' { $en = new BulletClassdef($name.Text, $classdef::subEntities, $classdef::triggers); }
 	;
 	
-script_entity returns [Entity en]
-	:	ENTITY_SCRIPT name=CLASS_IDENTIFIER '{' entity_content* '}' { $en = new ScriptEntity($name.Text, $entity::subEntities, $entity::triggers); }
+script_classdef returns [Classdef en]
+	:	CLASSDEF_SCRIPT name=CLASS_IDENTIFIER '{' classdef_content* '}' { $en = new ScriptClassdef($name.Text, $classdef::subEntities, $classdef::triggers); }
 	;
 
-state_entity returns [Entity en]
-	:	ENTITY_STATE name=CLASS_IDENTIFIER '{' entity_content* '}' { $en = new StateEntity($name.Text, $entity::subEntities, $entity::triggers); }
+state_classdef returns [Classdef en]
+	:	CLASSDEF_STATE name=CLASS_IDENTIFIER '{' classdef_content* '}' { $en = new StateClassdef($name.Text, $classdef::subEntities, $classdef::triggers); }
 	;
 		
-event_entity returns [Entity en]
-	:	ENTITY_EVENT name=CLASS_IDENTIFIER { $en = new EventEntity($name.Text); }
+event_classdef returns [Classdef en]
+	:	CLASSDEF_EVENT name=CLASS_IDENTIFIER { $en = new EventClassdef($name.Text); }
 	;
 
 action_list returns [List<Action> actions]
