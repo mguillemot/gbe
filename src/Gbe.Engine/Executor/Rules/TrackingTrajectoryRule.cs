@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Gbe.Engine.Executor.Actions;
 
 namespace Gbe.Engine.Executor.Rules
 {
     public class TrackingTrajectoryRule : ExecutorRule
     {
-        private readonly int _targetId;
-        private bool _initialized;
         private readonly float _initialAngle;
+        private readonly int _targetId;
         private float _deltaPrime;
+        private bool _initialized;
         private float _previousAngle;
         private float _turnEndTime;
 
@@ -42,13 +42,13 @@ namespace Gbe.Engine.Executor.Rules
                 {
                     var requiredAngle = MathHelper.GetAngleBetween(entity.Position, target.Position);
                     var deltaAngle = (requiredAngle - _previousAngle).NormalizeAngle();
-                    _deltaPrime = deltaAngle * 4f;
+                    _deltaPrime = deltaAngle*4f;
                 }
                 else
                 {
-                    _deltaPrime *= 57 * context.PreviousUpdateElapsedSeconds;
+                    _deltaPrime *= 57*context.PreviousUpdateElapsedSeconds;
                 }
-                _previousAngle += _deltaPrime * context.PreviousUpdateElapsedSeconds;
+                _previousAngle += _deltaPrime*context.PreviousUpdateElapsedSeconds;
 
                 var entitySpeed = EntityProperties.GetSpeed(entity);
                 var dx = entitySpeed*MathHelper.Cos(_previousAngle)*context.PreviousUpdateElapsedSeconds;

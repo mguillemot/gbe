@@ -4,10 +4,10 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using Antlr.Runtime;
-using Gbe.Script;
 using Gbe.Engine;
 using Gbe.Engine.Entities;
 using Gbe.Engine.Executor.Rules;
+using Gbe.Script;
 using SdlDotNet.Core;
 using SdlDotNet.Graphics;
 using SdlDotNet.Graphics.Primitives;
@@ -51,7 +51,7 @@ namespace Gbe.Viewer
             _lastPreparation = DateTime.Now;
             _engine.Context.GameArea = new Rectangle(0, 0, 240, 320);
             var player = new PlayerEntity(_engine.GenerateId()) {Position = new Point2(100, 300), Speed = 150};
-            //var enemy = new EnemyEntity(_engine.GenerateId()) {Position = new Point2(120, 10)};
+            //var enemy = new EnemyClassdef(_engine.GenerateId()) {Position = new Point2(120, 10)};
             _engine.AddPlayer(player);
             //_engine.AddEntity(enemy);
             //_engine.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.3f), 2f));
@@ -67,7 +67,9 @@ namespace Gbe.Viewer
             Console.WriteLine("Ok. " + gbs.Entities.Count + " entities found:");
             foreach (var entity in gbs.Entities)
             {
-                Console.WriteLine("{0} className={1} subEntities={2} triggers={3}", entity.GetType(), entity.ClassName, entity.SubEntities != null ? entity.SubEntities.Count.ToString() : "null", entity.Triggers != null ? entity.Triggers.Count.ToString() : "null");
+                Console.WriteLine("{0} className={1} subEntities={2} triggers={3}", entity.GetType(), entity.ClassName,
+                                  entity.SubEntities != null ? entity.SubEntities.Count.ToString() : "null",
+                                  entity.Triggers != null ? entity.Triggers.Count.ToString() : "null");
             }
             var compiledGbs = gbs.Compile();
             Console.WriteLine("Compiled? {0}", compiledGbs != null);
@@ -91,7 +93,7 @@ namespace Gbe.Viewer
             PrepareNextFrame();
             _surface.Fill(Color.Black);
             _surface.Draw(new Box(new Point(100, 100), new Size(240, 320)), Color.Red);
-            foreach (Entity entity in _engine.Entities)
+            foreach (var entity in _engine.Entities)
             {
                 if (entity.HasProperty(EntityProperties.POSITION))
                 {
@@ -167,19 +169,23 @@ namespace Gbe.Viewer
         {
             if (_left)
             {
-                _engine.Executor.AddRule(_engine.GetPlayer().Id, new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_LEFT)));
+                _engine.Executor.AddRule(_engine.GetPlayer().Id,
+                                         new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_LEFT)));
             }
             if (_right)
             {
-                _engine.Executor.AddRule(_engine.GetPlayer().Id, new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_RIGHT)));
+                _engine.Executor.AddRule(_engine.GetPlayer().Id,
+                                         new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_RIGHT)));
             }
             if (_up)
             {
-                _engine.Executor.AddRule(_engine.GetPlayer().Id, new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_UP)));
+                _engine.Executor.AddRule(_engine.GetPlayer().Id,
+                                         new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_UP)));
             }
             if (_down)
             {
-                _engine.Executor.AddRule(_engine.GetPlayer().Id, new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_DOWN)));
+                _engine.Executor.AddRule(_engine.GetPlayer().Id,
+                                         new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_DOWN)));
             }
             _engine.Update((float) (DateTime.Now - _lastPreparation).TotalSeconds);
             _lastPreparation = DateTime.Now;

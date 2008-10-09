@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Gbe.Engine.Executor
 {
@@ -18,7 +18,7 @@ namespace Gbe.Engine.Executor
             if (_rules.TryGetValue(entity.Id, out ruleSet))
             {
                 var actions = new List<ExecutorAction>();
-                foreach (ExecutorRule rule in ruleSet.ActiveRules)
+                foreach (var rule in ruleSet.ActiveRules)
                 {
                     rule.ComputeActions(entity, context, actions);
                 }

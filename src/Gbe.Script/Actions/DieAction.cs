@@ -1,4 +1,4 @@
-﻿using Gbe.Engine.Executor;
+using Gbe.Engine.Executor;
 
 namespace Gbe.Script.Actions
 {

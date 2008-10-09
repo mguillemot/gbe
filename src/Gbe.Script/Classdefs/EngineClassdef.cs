@@ -1,14 +1,13 @@
 using System.Collections.Generic;
 using Gbe.Script.Triggers;
-using Gbe.Script.Triggers;
 
-namespace Gbe.Script.Entities
+namespace Gbe.Script.Classdefs
 {
-    public class EngineEntity : Entity
+    public class EngineClassdef : Classdef
     {
         public const string ENGINE_CLASSNAME = "Engine";
 
-        public EngineEntity(List<Trigger> triggers)
+        public EngineClassdef(List<Trigger> triggers)
             : base(ENGINE_CLASSNAME, null, triggers)
         {
         }

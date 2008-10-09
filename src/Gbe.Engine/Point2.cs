@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Gbe.Engine
 {
@@ -37,7 +37,7 @@ namespace Gbe.Engine
 
         public static Point2 Parse(string repr)
         {
-            var split = repr.Split(new char[] {':'});
+            var split = repr.Split(new[] {':'});
             var result = new Point2();
             if (split.Length == 2)
             {

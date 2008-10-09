@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Gbe.Engine.Entities;
 using Gbe.Engine.Executor;
 
@@ -7,12 +7,12 @@ namespace Gbe.Engine
     public class Engine
     {
         private readonly GameContext _context = new GameContext();
+        private readonly Entity _engineEntity;
         private readonly Dictionary<int, Entity> _entities = new Dictionary<int, Entity>();
         private readonly Executor.Executor _executor = new Executor.Executor();
         private readonly PlayField _playField = new PlayField();
         private int _nextId;
         private int _playerEntityId = -1;
-        private readonly Entity _engineEntity;
 
         public Engine()
         {
@@ -77,7 +77,7 @@ namespace Gbe.Engine
             _context.TotalElapsedSeconds += elapsedTime;
             _context.Entities = _entities;
             var actionsByEntity = new Dictionary<Entity, List<ExecutorAction>>(_entities.Count);
-            foreach (Entity entity in _entities.Values)
+            foreach (var entity in _entities.Values)
             {
                 List<ExecutorAction> actions = _executor.ComputeActions(entity, _context);
                 actionsByEntity.Add(entity, actions);
@@ -86,7 +86,7 @@ namespace Gbe.Engine
             {
                 if (pair.Value != null)
                 {
-                    foreach (ExecutorAction action in pair.Value)
+                    foreach (var action in pair.Value)
                     {
                         action.Execute(pair.Key, this);
                     }

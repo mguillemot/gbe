@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Gbe.Engine
 {
@@ -10,7 +10,7 @@ namespace Gbe.Engine
         public const float ANGLE_UP = (float) (3*Math.PI/2);
 
         public const float PI = (float) Math.PI;
-        public const float TWO_PI = (float) Math.PI * 2;
+        public const float TWO_PI = (float) Math.PI*2;
 
         private static readonly Random _random = new Random();
 
@@ -36,11 +36,12 @@ namespace Gbe.Engine
 
         public static float NormalizeAngle(this float angle)
         {
-            var res = angle % TWO_PI;
+            var res = angle%TWO_PI;
             if (res > PI)
             {
                 res -= TWO_PI;
-            } else if (res < -PI)
+            }
+            else if (res < -PI)
             {
                 res += TWO_PI;
             }

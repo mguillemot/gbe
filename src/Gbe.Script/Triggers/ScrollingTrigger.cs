@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Gbe.Script.Actions;
+using System.Collections.Generic;
 using Gbe.Script.Actions;
 
 namespace Gbe.Script.Triggers

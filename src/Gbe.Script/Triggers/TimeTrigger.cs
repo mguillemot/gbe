@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Gbe.Script.Actions;
+using System.Collections.Generic;
 using Gbe.Engine.Executor.Rules;
 using Gbe.Script.Actions;
 
@@ -28,8 +27,8 @@ namespace Gbe.Script.Triggers
                 if (executorAction != null)
                 {
                     engine.Executor.AddRule(entityInstance.EngineId,
-                                                     new ExecuteAtTimeRule(engine.Context.TotalElapsedSeconds + _time,
-                                                                           new ExecuteActionOnceRule(executorAction)));
+                                            new ExecuteAtTimeRule(engine.Context.TotalElapsedSeconds + _time,
+                                                                  new ExecuteActionOnceRule(executorAction)));
                 }
             }
         }

@@ -1,60 +1,59 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
-using Gbe.Script.Entities;
-using Gbe.Script.Entities;
+using Gbe.Script.Classdefs;
 
 namespace Gbe.Script
 {
     public class Gbs
     {
-        private readonly List<Entity> _entities;
+        private readonly List<Classdefs> _entities;
 
-        public Gbs(List<Entity> entities)
+        public Gbs(List<Classdefs> entities)
         {
             _entities = entities;
         }
 
-        public List<Entity> Entities
+        public List<Classdefs> Entities
         {
             get { return _entities; }
         }
 
         public CompiledGbs Compile()
         {
-            // TODO trouver une maniÃ¨re plus Ã©lÃ©gante que l'accÃ¨s aux fields en internal
+            // TODO trouver une manière plus élégante que l'accès aux fields en internal
             var compiled = new CompiledGbs();
             foreach (var entity in _entities)
             {
                 if (!compiled.EntitiesByName.ContainsKey(entity.ClassName))
                 {
                     compiled.EntitiesByName[entity.ClassName] = entity;
-                    if (entity is EngineEntity)
+                    if (entity is EngineClassdef)
                     {
-                        compiled.EngineEntity = (EngineEntity)entity;
+                        compiled.EngineClassdef = (EngineClassdef) entity;
                     }
-                    else if (entity is PlayerEntity)
+                    else if (entity is PlayerClassdef)
                     {
-                        compiled.PlayerEntities[entity.ClassName] = (PlayerEntity)entity;
+                        compiled.PlayerEntities[entity.ClassName] = (PlayerClassdef) entity;
                     }
-                    else if (entity is BulletEntity)
+                    else if (entity is BulletClassdef)
                     {
-                        compiled.BulletEntities[entity.ClassName] = (BulletEntity)entity;
+                        compiled.BulletEntities[entity.ClassName] = (BulletClassdef) entity;
                     }
-                    else if (entity is EnemyEntity)
+                    else if (entity is EnemyClassdef)
                     {
-                        compiled.EnemyEntities[entity.ClassName] = (EnemyEntity)entity;
+                        compiled.EnemyEntities[entity.ClassName] = (EnemyClassdef) entity;
                     }
-                    else if (entity is ScriptEntity)
+                    else if (entity is ScriptClassdef)
                     {
-                        compiled.ScriptEntities[entity.ClassName] = (ScriptEntity)entity;
+                        compiled.ScriptEntities[entity.ClassName] = (ScriptClassdef) entity;
                     }
-                    else if (entity is StateEntity)
+                    else if (entity is StateClassdef)
                     {
-                        compiled.StateEntities[entity.ClassName] = (StateEntity)entity;
+                        compiled.StateEntities[entity.ClassName] = (StateClassdef) entity;
                     }
-                    else if (entity is EventEntity)
+                    else if (entity is EventClassdef)
                     {
-                        compiled.EventEntities[entity.ClassName] = (EventEntity)entity;
+                        compiled.EventEntities[entity.ClassName] = (EventClassdef) entity;
                     }
                     if (!entity.Check())
                     {
@@ -67,7 +66,7 @@ namespace Gbe.Script
                     return null;
                 }
             }
-            if (compiled.EngineEntity == null)
+            if (compiled.EngineClassdef == null)
             {
                 Console.Error.WriteLine("No ENGINE entity.");
                 return null;

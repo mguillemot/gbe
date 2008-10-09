@@ -95,6 +95,10 @@
       <Project>{448FFA1C-E9F7-4549-B7A0-6AE213E3694E}</Project>
       <Name>Gbe.Engine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gbe.Script\Gbe.Script.csproj">
+      <Project>{B34C7452-4406-493E-BEAF-E7315175D63A}</Project>
+      <Name>Gbe.Script</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="script.txt" />

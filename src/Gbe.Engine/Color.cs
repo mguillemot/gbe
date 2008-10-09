@@ -1,12 +1,20 @@
-﻿using System.Globalization;
+using System.Globalization;
 
 namespace Gbe.Engine
 {
     public struct Color
     {
-        public byte R;
-        public byte G;
+        public static readonly Color BLACK = new Color(0, 0, 0);
+        public static readonly Color BLUE = new Color(0, 0, 255);
+        public static readonly Color GREEN = new Color(0, 255, 0);
+        public static readonly Color LIGHT_BLUE = new Color(0, 255, 255);
+        public static readonly Color PINK = new Color(255, 0, 255);
+        public static readonly Color RED = new Color(255, 0, 0);
+        public static readonly Color WHITE = new Color(255, 255, 255);
+        public static readonly Color YELLOW = new Color(255, 255, 0);
         public byte B;
+        public byte G;
+        public byte R;
 
         public Color(byte r, byte g, byte b)
         {
@@ -14,15 +22,6 @@ namespace Gbe.Engine
             G = g;
             B = b;
         }
-
-        public static readonly Color BLACK = new Color(0, 0, 0);
-        public static readonly Color WHITE = new Color(255, 255, 255);
-        public static readonly Color RED = new Color(255, 0, 0);
-        public static readonly Color GREEN = new Color(0, 255, 0);
-        public static readonly Color BLUE = new Color(0, 0, 255);
-        public static readonly Color YELLOW = new Color(255, 255, 0);
-        public static readonly Color PINK = new Color(255, 0, 255);
-        public static readonly Color LIGHT_BLUE = new Color(0, 255, 255);
 
         public static Color Parse(string repr)
         {

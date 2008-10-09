@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Gbe.Engine.Executor;
 
 namespace Gbe.Script.Actions

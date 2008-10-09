@@ -1,11 +1,11 @@
-﻿using Gbe.Engine;
+using Gbe.Engine;
 using Gbe.Engine.Executor;
 
 namespace Gbe.Script.Parameters
 {
     public class GameAreaParam : Param
     {
-        private Rectangle _area;
+        private readonly Rectangle _area;
 
         public GameAreaParam(string areaRepr)
         {

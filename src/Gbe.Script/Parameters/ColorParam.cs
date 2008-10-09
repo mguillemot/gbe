@@ -1,4 +1,4 @@
-﻿using Gbe.Engine;
+using Gbe.Engine;
 using Gbe.Engine.Executor;
 using Gbe.Engine.Executor.Actions;
 

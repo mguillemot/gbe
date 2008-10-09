@@ -1,71 +1,64 @@
-﻿using System.Collections.Generic;
-using Gbe.Script.Entities;
-using Gbe.Script.Entities;
-using BulletEntity=Gbe.Script.Entities.BulletEntity;
-using EnemyEntity=Gbe.Script.Entities.EnemyEntity;
-using Entity=Gbe.Script.Entities.Entity;
-using EventEntity=Gbe.Script.Entities.EventEntity;
-using PlayerEntity=Gbe.Script.Entities.PlayerEntity;
-using ScriptEntity=Gbe.Script.Entities.ScriptEntity;
-using StateEntity=Gbe.Script.Entities.StateEntity;
+using System.Collections.Generic;
+using Gbe.Script.Classdefs;
+using Gbe.Script.Executor;
 
 namespace Gbe.Script
 {
     public class CompiledGbs
     {
-        private readonly Dictionary<string, Entity> _entitiesByName = new Dictionary<string, Entity>();
-        private Entities.EngineEntity _engineEntity;
-        private readonly Dictionary<string, PlayerEntity> _playerEntities = new Dictionary<string, PlayerEntity>();
-        private readonly Dictionary<string, BulletEntity> _bulletEntities = new Dictionary<string, BulletEntity>();
-        private readonly Dictionary<string, EnemyEntity> _enemyEntities = new Dictionary<string, EnemyEntity>();
-        private readonly Dictionary<string, ScriptEntity> _scriptEntities = new Dictionary<string, ScriptEntity>();
-        private readonly Dictionary<string, StateEntity> _stateEntities = new Dictionary<string, StateEntity>();
-        private readonly Dictionary<string, EventEntity> _eventEntities = new Dictionary<string, EventEntity>();
+        private readonly Dictionary<string, BulletClassdef> _bulletEntities = new Dictionary<string, BulletClassdef>();
+        private readonly Dictionary<string, EnemyClassdef> _enemyEntities = new Dictionary<string, EnemyClassdef>();
+        private readonly Dictionary<string, Classdef> _entitiesByName = new Dictionary<string, Classdef>();
+        private readonly Dictionary<string, EventClassdef> _eventEntities = new Dictionary<string, EventClassdef>();
+        private readonly Dictionary<string, PlayerClassdef> _playerEntities = new Dictionary<string, PlayerClassdef>();
+        private readonly Dictionary<string, ScriptClassdef> _scriptEntities = new Dictionary<string, ScriptClassdef>();
+        private readonly Dictionary<string, StateClassdef> _stateEntities = new Dictionary<string, StateClassdef>();
 
         private Engine.Engine _engine;
+        private EngineClassdef _engineClassdef;
 
         internal CompiledGbs()
         {
             // This is created by Gbs.Compile() only
         }
 
-        public Dictionary<string, Entity> EntitiesByName
+        public Dictionary<string, Classdef> EntitiesByName
         {
             get { return _entitiesByName; }
         }
 
-        public EngineEntity EngineEntity
+        public EngineClassdef EngineClassdef
         {
-            get { return _engineEntity; }
-            internal set { _engineEntity = value; }
+            get { return _engineClassdef; }
+            internal set { _engineClassdef = value; }
         }
 
-        public Dictionary<string, PlayerEntity> PlayerEntities
+        public Dictionary<string, PlayerClassdef> PlayerEntities
         {
             get { return _playerEntities; }
         }
 
-        public Dictionary<string, BulletEntity> BulletEntities
+        public Dictionary<string, BulletClassdef> BulletEntities
         {
             get { return _bulletEntities; }
         }
 
-        public Dictionary<string, EnemyEntity> EnemyEntities
+        public Dictionary<string, EnemyClassdef> EnemyEntities
         {
             get { return _enemyEntities; }
         }
 
-        public Dictionary<string, ScriptEntity> ScriptEntities
+        public Dictionary<string, ScriptClassdef> ScriptEntities
         {
             get { return _scriptEntities; }
         }
 
-        public Dictionary<string, StateEntity> StateEntities
+        public Dictionary<string, StateClassdef> StateEntities
         {
             get { return _stateEntities; }
         }
 
-        public Dictionary<string, EventEntity> EventEntities
+        public Dictionary<string, EventClassdef> EventEntities
         {
             get { return _eventEntities; }
         }

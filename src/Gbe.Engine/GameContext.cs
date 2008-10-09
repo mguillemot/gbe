@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Gbe.Engine
 {
@@ -16,7 +16,7 @@ namespace Gbe.Engine
 
         public List<string> RaisedEvents
         {
-            get { return _raisedEvents;  }
+            get { return _raisedEvents; }
         }
 
         public Dictionary<int, Entity> Entities { get; set; }

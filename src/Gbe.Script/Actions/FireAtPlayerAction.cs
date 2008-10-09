@@ -1,4 +1,4 @@
-﻿using Gbe.Engine.Executor;
+using Gbe.Engine.Executor;
 
 namespace Gbe.Script.Actions
 {
@@ -6,7 +6,7 @@ namespace Gbe.Script.Actions
     {
         private readonly string _bullet;
 
-        public FireAtPlayerAction(string target, string bullet) 
+        public FireAtPlayerAction(string target, string bullet)
             : base(target)
         {
             _bullet = bullet;

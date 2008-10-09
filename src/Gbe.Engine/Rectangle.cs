@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 
 namespace Gbe.Engine
 {
@@ -6,7 +6,7 @@ namespace Gbe.Engine
     {
         private static readonly Regex REPRESENATION_REGEX = new Regex(@"(.*):(.*)->(.*):(.*)");
 
-        
+
         public Point2 BottomRightCorner;
         public Point2 TopLeftCorner;
 

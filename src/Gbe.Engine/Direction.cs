@@ -1,4 +1,4 @@
-﻿namespace Gbe.Engine
+namespace Gbe.Engine
 {
     public struct Direction
     {
@@ -18,7 +18,7 @@
         public static Direction Parse(string repr)
         {
             var result = new Direction();
-            var split = repr.Split(new[]{'+', '-'});
+            var split = repr.Split(new[] {'+', '-'});
             if (split.Length == 2)
             {
                 float reference = 0f;

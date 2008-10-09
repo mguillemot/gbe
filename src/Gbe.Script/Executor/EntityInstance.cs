@@ -1,26 +1,26 @@
-﻿using Gbe.Script.Entities;
-using Gbe.Script.Entities;
+﻿using Gbe.Engine;
+using Gbe.Script.Classdefs;
 
-namespace Gbe.Script
+namespace Gbe.Script.Executor
 {
     public class EntityInstance
     {
-        private readonly Entities.Entity _entity;
-        private readonly string _instanceName;
+        private readonly Classdef _classdef;
         private readonly int _engineId;
+        private readonly string _instanceName;
 
-        private Engine.Entity _engineEntity;
+        private Entity _engineEntity;
 
-        public EntityInstance(Entities.Entity entity, string instanceName, int engineId)
+        public EntityInstance(Classdef classdef, string instanceName, int engineId)
         {
-            _entity = entity;
+            _classdef = classdef;
             _instanceName = instanceName;
             _engineId = engineId;
         }
 
-        public Entity Entity
+        public Classdefs Classdef
         {
-            get { return _entity; }
+            get { return _classdef; }
         }
 
         public string InstanceName
@@ -35,9 +35,9 @@ namespace Gbe.Script
 
         public void Register(Engine.Engine engine, CompiledGbs context)
         {
-            _engineEntity = _entity.CreateEngineEntity(_engineId);
+            _engineEntity = _classdef.CreateEngineEntity(_engineId);
             engine.AddEntity(_engineEntity);
-            foreach (var trigger in _entity.Triggers)
+            foreach (var trigger in _classdef.Triggers)
             {
                 trigger.Register(engine, context, this);
             }

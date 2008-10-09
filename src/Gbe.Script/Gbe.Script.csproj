@@ -59,15 +59,15 @@
     <Compile Include="Actions\StopAction.cs" />
     <Compile Include="Actions\SummonAction.cs" />
     <Compile Include="CompiledGbs.cs" />
-    <Compile Include="Entities\BulletEntity.cs" />
-    <Compile Include="Entities\EventEntity.cs" />
-    <Compile Include="Entities\ScriptEntity.cs" />
-    <Compile Include="Entities\EnemyEntity.cs" />
-    <Compile Include="Entities\PlayerEntity.cs" />
-    <Compile Include="Entities\EngineEntity.cs" />
-    <Compile Include="Entities\Entity.cs" />
-    <Compile Include="Entities\StateEntity.cs" />
-    <Compile Include="EntityInstance.cs" />
+    <Compile Include="Classdefs\BulletClassdef.cs" />
+    <Compile Include="Classdefs\EventClassdef.cs" />
+    <Compile Include="Classdefs\ScriptClassdef.cs" />
+    <Compile Include="Classdefs\EnemyClassdef.cs" />
+    <Compile Include="Classdefs\PlayerClassdef.cs" />
+    <Compile Include="Classdefs\EngineClassdef.cs" />
+    <Compile Include="Classdefs\Classdef.cs" />
+    <Compile Include="Classdefs\StateClassdef.cs" />
+    <Compile Include="Executor\EntityInstance.cs" />
     <Compile Include="Gbs.cs" />
     <Compile Include="GbsLexer.cs" />
     <Compile Include="GbsParser.cs" />
@@ -96,9 +96,6 @@
       <Project>{448FFA1C-E9F7-4549-B7A0-6AE213E3694E}</Project>
       <Name>Gbe.Engine</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Executor\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

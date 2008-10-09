@@ -1,4 +1,3 @@
-﻿using Gbe.Script.Parameters;
 using Gbe.Engine.Executor;
 using Gbe.Script.Parameters;
 
@@ -6,9 +5,9 @@ namespace Gbe.Script.Actions
 {
     public class SetAction : Action
     {
-        private readonly Parameters.Param _param;
+        private readonly Param _param;
 
-        public SetAction(string target, Parameters.Param param) : base(target)
+        public SetAction(string target, Param param) : base(target)
         {
             _param = param;
         }

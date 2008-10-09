@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Gbe.Script.Actions;
-using Gbe.Script.Actions;
+using Gbe.Script.Executor;
 
 namespace Gbe.Script.Triggers
 {

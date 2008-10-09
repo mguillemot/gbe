@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gbe.Engine", "Gbe.Engine\Gb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gbe.Viewer", "Gbe.Viewer\Gbe.Viewer.csproj", "{3B4F332F-DB03-4681-9779-5234AACE0E83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gbe.Script", "Gbe.Script\Gbe.Script.csproj", "{B34C7452-4406-493E-BEAF-E7315175D63A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{3B4F332F-DB03-4681-9779-5234AACE0E83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B4F332F-DB03-4681-9779-5234AACE0E83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B4F332F-DB03-4681-9779-5234AACE0E83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B34C7452-4406-493E-BEAF-E7315175D63A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B34C7452-4406-493E-BEAF-E7315175D63A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B34C7452-4406-493E-BEAF-E7315175D63A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B34C7452-4406-493E-BEAF-E7315175D63A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

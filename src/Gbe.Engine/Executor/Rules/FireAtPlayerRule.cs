@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Gbe.Engine.Executor.Actions;
 
 namespace Gbe.Engine.Executor.Rules
@@ -13,7 +13,7 @@ namespace Gbe.Engine.Executor.Rules
             _bulletSpeed = bulletSpeed;
             _initialAngle = initialAngle;
         }
-        
+
         public FireAtPlayerRule(float bulletSpeed)
         {
             _bulletSpeed = bulletSpeed;

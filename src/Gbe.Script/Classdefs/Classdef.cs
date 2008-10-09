@@ -1,24 +1,22 @@
 using System;
 using System.Collections.Generic;
+using Gbe.Engine;
 using Gbe.Script.Triggers;
-using Gbe.Script.Triggers;
-using InitTrigger=Gbe.Script.Triggers.InitTrigger;
-using Trigger=Gbe.Script.Triggers.Trigger;
 
-namespace Gbe.Script.Entities
+namespace Gbe.Script.Classdefs
 {
-    public abstract class Entity
+    public abstract class Classdef
     {
         // Before check
         private readonly string _className;
-        private readonly List<Entity> _subEntities;
+        private readonly List<Classdef> _subEntities;
         private readonly List<Trigger> _triggers;
 
         // After check
-        private Triggers.InitTrigger _initTrigger = null;
-        private Triggers.CleanupTrigger _cleanupTrigger = null;
+        private CleanupTrigger _cleanupTrigger;
+        private InitTrigger _initTrigger;
 
-        protected Entity(string className, List<Entity> subEntities, List<Trigger> triggers)
+        protected Classdef(string className, List<Classdef> subEntities, List<Trigger> triggers)
         {
             _className = className;
             _subEntities = subEntities;
@@ -30,7 +28,7 @@ namespace Gbe.Script.Entities
             get { return _className; }
         }
 
-        public List<Entity> SubEntities
+        public List<Classdef> SubEntities
         {
             get { return _subEntities; }
         }
@@ -40,20 +38,17 @@ namespace Gbe.Script.Entities
             get { return _triggers; }
         }
 
-        public Triggers.InitTrigger InitTrigger
+        public InitTrigger InitTrigger
         {
             get { return _initTrigger; }
         }
 
-        public Triggers.CleanupTrigger CleanupTrigger
+        public CleanupTrigger CleanupTrigger
         {
             get { return _cleanupTrigger; }
         }
 
-        public abstract string EntityType
-        { 
-            get;
-        }
+        public abstract string EntityType { get; }
 
         public virtual bool Check()
         {
@@ -61,7 +56,7 @@ namespace Gbe.Script.Entities
             {
                 foreach (var trigger in _triggers)
                 {
-                    if (trigger is Triggers.InitTrigger)
+                    if (trigger is InitTrigger)
                     {
                         if (_initTrigger == null)
                         {
@@ -73,7 +68,7 @@ namespace Gbe.Script.Entities
                             return false;
                         }
                     }
-                    else if (trigger is Triggers.CleanupTrigger)
+                    else if (trigger is CleanupTrigger)
                     {
                         if (_cleanupTrigger == null)
                         {
@@ -91,9 +86,9 @@ namespace Gbe.Script.Entities
             return true;
         }
 
-        public virtual Engine.Entity CreateEngineEntity(int id)
+        public virtual Entity CreateEngineEntity(int id)
         {
-            return new Engine.Entity(id);
+            return new Entity(id);
         }
     }
 }

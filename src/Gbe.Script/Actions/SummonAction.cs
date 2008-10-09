@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Gbe.Engine.Executor;
 using Gbe.Engine.Executor.Actions;
 
@@ -10,7 +10,7 @@ namespace Gbe.Script.Actions
         private readonly string _enemyName;
         private readonly List<Action> _summonActions;
 
-        public SummonAction(string target, string enemyClass, string enemyName, List<Action> summonActions) 
+        public SummonAction(string target, string enemyClass, string enemyName, List<Action> summonActions)
             : base(target)
         {
             _enemyClass = enemyClass;
