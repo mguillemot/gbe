@@ -1,32 +1,21 @@
 using Gbe.Engine;
-using Gbe.Engine.Executor;
 
 namespace Gbe.Script.Parameters
 {
     public class ScrollingParam : Param
     {
-        private readonly Direction _direction;
-        private readonly float _speed;
+        private readonly Direction m_direction;
+        private readonly float m_speed;
 
         public ScrollingParam(string directionRepr, float speed)
         {
-            _direction = Direction.Parse(directionRepr);
-            _speed = speed;
+            m_direction = Direction.Parse(directionRepr);
+            m_speed = speed;
         }
 
-        public Direction Direction
+        public override void Execute(Gear gear)
         {
-            get { return _direction; }
-        }
-
-        public float Speed
-        {
-            get { return _speed; }
-        }
-
-        public override ExecutorAction ToExecutorAction()
-        {
-            return null;
+            // TODO
         }
     }
 }

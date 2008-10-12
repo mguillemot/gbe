@@ -1,25 +1,19 @@
 using Gbe.Engine;
-using Gbe.Engine.Executor;
 
 namespace Gbe.Script.Parameters
 {
     public class GameAreaParam : Param
     {
-        private readonly Rectangle _area;
+        private readonly Rectangle m_area;
 
         public GameAreaParam(string areaRepr)
         {
-            _area = Rectangle.Parse(areaRepr);
+            m_area = Rectangle.Parse(areaRepr);
         }
 
-        public Rectangle Area
+        public override void Execute(Gear gear)
         {
-            get { return _area; }
-        }
-
-        public override ExecutorAction ToExecutorAction()
-        {
-            return null;
+            // TODO
         }
     }
 }

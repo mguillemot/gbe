@@ -1,25 +1,24 @@
-using Gbe.Engine.Executor;
+using Gbe.Script.Executor;
 
 namespace Gbe.Script.Actions
 {
     public class StartAction : Action
     {
-        private readonly string _state;
+        private readonly string _stateClass;
 
-        public StartAction(string target, string state) : base(target)
+        public StartAction(string target, string state) 
+            : base(target)
         {
-            _state = state;
+            _stateClass = state;
         }
 
         public string State
         {
-            get { return _state; }
+            get { return _stateClass; }
         }
 
-        public override ExecutorAction ToExecutorAction(CompiledGbs context)
+        public override void Execute(GbsExecutor scriptExecutor, Entity entity)
         {
-            // TODO
-            return null;
         }
     }
 }

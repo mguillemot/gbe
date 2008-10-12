@@ -13,7 +13,7 @@ namespace Gbe.Script.Triggers
             _eventName = eventName;
         }
 
-        public override void Register(Engine.Engine engine, CompiledGbs context, EntityInstance entityInstance)
+        public override void Register(GbsExecutor scriptExecutor, Entity entity)
         {
         }
     }

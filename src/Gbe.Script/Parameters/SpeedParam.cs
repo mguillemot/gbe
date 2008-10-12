@@ -1,20 +1,19 @@
-using Gbe.Engine.Executor;
-using Gbe.Engine.Executor.Actions;
+using Gbe.Engine;
 
 namespace Gbe.Script.Parameters
 {
     public class SpeedParam : Param
     {
-        private readonly float _speed;
+        private readonly float m_speed;
 
         public SpeedParam(float speed)
         {
-            _speed = speed;
+            m_speed = speed;
         }
 
-        public override ExecutorAction ToExecutorAction()
+        public override void Execute(Gear gear)
         {
-            return new SetSpeedAction(_speed);
+            gear.Speed = m_speed;
         }
     }
 }

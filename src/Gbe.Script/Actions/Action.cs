@@ -1,21 +1,22 @@
-using Gbe.Engine.Executor;
+using Gbe.Script.Executor;
 
 namespace Gbe.Script.Actions
 {
     public abstract class Action
     {
-        private readonly string _target;
+        private readonly string m_target;
 
         protected Action(string target)
         {
-            _target = target;
+            m_target = target;
         }
 
         public string Target
         {
-            get { return _target; }
+            get { return m_target; }
         }
 
-        public abstract ExecutorAction ToExecutorAction(CompiledGbs context);
+        public abstract void Execute(GbsExecutor scriptExecutor, Entity entity);
+
     }
 }

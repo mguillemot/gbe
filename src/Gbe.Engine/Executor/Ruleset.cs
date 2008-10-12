@@ -2,28 +2,28 @@
 
 namespace Gbe.Engine.Executor
 {
-    public class EntityRuleset
+    public class Ruleset
     {
-        private readonly List<ExecutorRule> _activeRules = new List<ExecutorRule>();
+        private readonly List<ExecutorRule> m_activeRules = new List<ExecutorRule>();
 
         public List<ExecutorRule> ActiveRules
         {
-            get { return _activeRules; }
+            get { return m_activeRules; }
         }
 
         public bool Empty
         {
-            get { return _activeRules.Count == 0; }
+            get { return m_activeRules.Count == 0; }
         }
 
         public void AddRule(ExecutorRule rule)
         {
-            _activeRules.Add(rule);
+            m_activeRules.Add(rule);
         }
 
         public void RemoveRule(ExecutorRule rule)
         {
-            _activeRules.Remove(rule);
+            m_activeRules.Remove(rule);
         }
     }
 }

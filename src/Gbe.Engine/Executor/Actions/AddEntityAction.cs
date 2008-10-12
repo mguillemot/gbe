@@ -9,9 +9,9 @@ namespace Gbe.Engine.Executor.Actions
             _id = id;
         }
 
-        public override void Execute(Entity entity, Engine engine)
+        public override void Execute(Gear gear, Gbe gbe)
         {
-            engine.AddEntity(new Entity(_id));
+            gbe.AddGear(new Gear(_id));
         }
     }
 }

@@ -1,21 +1,19 @@
 using Gbe.Engine;
-using Gbe.Engine.Executor;
-using Gbe.Engine.Executor.Actions;
 
 namespace Gbe.Script.Parameters
 {
     public class PositionParam : Param
     {
-        private readonly Point2 _position;
+        private readonly Point2 m_position;
 
         public PositionParam(string positionRepr)
         {
-            _position = Point2.Parse(positionRepr);
+            m_position = Point2.Parse(positionRepr);
         }
 
-        public override ExecutorAction ToExecutorAction()
+        public override void Execute(Gear gear)
         {
-            return new SetPositionAction(_position);
+            gear.Position = m_position;
         }
     }
 }

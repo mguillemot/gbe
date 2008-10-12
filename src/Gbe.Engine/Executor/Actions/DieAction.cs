@@ -1,10 +1,10 @@
-﻿namespace Gbe.Engine.Executor.Actions
+namespace Gbe.Engine.Executor.Actions
 {
     public class DieAction : ExecutorAction
     {
-        public override void Execute(Entity entity, Engine engine)
+        public override void Execute(Gear gear, Gbe gbe)
         {
-            engine.RemoveEntity(entity);
+            gbe.RemoveGear(gear);
         }
     }
 }

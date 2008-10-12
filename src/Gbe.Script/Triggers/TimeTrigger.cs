@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Gbe.Engine.Executor.Rules;
 using Gbe.Script.Actions;
 using Gbe.Script.Executor;
 
@@ -7,31 +6,22 @@ namespace Gbe.Script.Triggers
 {
     public class TimeTrigger : Trigger
     {
-        private readonly float _time;
+        private readonly float m_time;
 
         public TimeTrigger(float time, List<Action> actions)
             : base(actions)
         {
-            _time = time;
+            m_time = time;
         }
 
         public float Time
         {
-            get { return _time; }
+            get { return m_time; }
         }
 
-        public override void Register(Engine.Engine engine, CompiledGbs context, EntityInstance entityInstance)
+        public override void Register(GbsExecutor scriptExecutor, Entity entity)
         {
-            foreach (var action in Actions)
-            {
-                var executorAction = action.ToExecutorAction(null);
-                if (executorAction != null)
-                {
-                    engine.Executor.AddRule(entityInstance.EngineId,
-                                            new ExecuteAtTimeRule(engine.Context.TotalElapsedSeconds + _time,
-                                                                  new ExecuteActionOnceRule(executorAction)));
-                }
-            }
+            // TODO
         }
     }
 }

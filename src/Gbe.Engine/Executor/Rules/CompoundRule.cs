@@ -11,12 +11,12 @@ namespace Gbe.Engine.Executor.Rules
             _rules = new List<ExecutorRule>(rules);
         }
 
-        public override int ComputeActions(Entity entity, GameContext context, List<ExecutorAction> actions)
+        public override int ComputeActions(Gear gear, GbeContext context, List<ExecutorAction> actions)
         {
             var added = 0;
             foreach (var rule in _rules)
             {
-                added += rule.ComputeActions(entity, context, actions);
+                added += rule.ComputeActions(gear, context, actions);
             }
             return added;
         }

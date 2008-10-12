@@ -1,25 +1,19 @@
-using Gbe.Engine.Executor;
-using Gbe.Engine.Executor.Actions;
+using Gbe.Engine;
 
 namespace Gbe.Script.Parameters
 {
     public class AnimationParam : Param
     {
-        private readonly string _animation;
+        private readonly string m_animation;
 
         public AnimationParam(string animationRepr)
         {
-            _animation = animationRepr.Substring(1, animationRepr.Length - 2);
+            m_animation = animationRepr.Substring(1, animationRepr.Length - 2);
         }
 
-        public string Animation
+        public override void Execute(Gear gear)
         {
-            get { return _animation; }
-        }
-
-        public override ExecutorAction ToExecutorAction()
-        {
-            return new SetAnimationAction(_animation);
+            gear.Animation = m_animation;
         }
     }
 }

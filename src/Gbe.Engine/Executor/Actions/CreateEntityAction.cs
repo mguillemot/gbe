@@ -2,10 +2,10 @@ namespace Gbe.Engine.Executor.Actions
 {
     public class CreateEntityAction : ExecutorAction
     {
-        public override void Execute(Entity entity, Engine engine)
+        public override void Execute(Gear gear, Gbe gbe)
         {
-            var summonedEntity = new Entity(engine.GenerateId());
-            engine.AddEntity(summonedEntity);
+            var summonedEntity = new Gear(gbe.GenerateId());
+            gbe.AddGear(summonedEntity);
         }
     }
 }

@@ -11,11 +11,11 @@ namespace Gbe.Engine.Executor.Actions
             _actions = actions;
         }
 
-        public override void Execute(Entity entity, Engine engine)
+        public override void Execute(Gear gear, Gbe gbe)
         {
             foreach (var action in _actions)
             {
-                action.Execute(entity, engine);
+                action.Execute(gear, gbe);
             }
         }
     }

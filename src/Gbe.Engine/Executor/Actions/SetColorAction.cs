@@ -9,9 +9,9 @@ namespace Gbe.Engine.Executor.Actions
             _color = color;
         }
 
-        public override void Execute(Entity entity, Engine engine)
+        public override void Execute(Gear gear, Gbe gbe)
         {
-            entity.Color = _color;
+            gear.Color = _color;
         }
     }
 }

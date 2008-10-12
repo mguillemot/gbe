@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Gbe.Script.Actions;
 using Gbe.Script.Executor;
 
@@ -18,6 +18,6 @@ namespace Gbe.Script.Triggers
             get { return _actions; }
         }
 
-        public abstract void Register(Engine.Engine engine, CompiledGbs context, EntityInstance entityInstance);
+        public abstract void Register(GbsExecutor scriptExecutor, Entity entity);
     }
 }

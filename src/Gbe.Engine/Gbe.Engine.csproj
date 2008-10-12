@@ -49,15 +49,21 @@
   <ItemGroup>
     <Compile Include="Color.cs" />
     <Compile Include="Direction.cs" />
-    <Compile Include="Engine.cs" />
-    <Compile Include="Entities\BasicAnimatedEntityState.cs" />
-    <Compile Include="Entities\BulletEntity.cs" />
-    <Compile Include="Entities\PlayerEntity.cs" />
-    <Compile Include="Entities\EnemyEntity.cs" />
-    <Compile Include="Entities\TrackingBulletEntity.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="EntityProperties.cs" />
-    <Compile Include="EntityState.cs" />
+    <Compile Include="Gbe.cs" />
+    <Compile Include="Gear.cs" />
+    <Compile Include="GearLibrary\BulletGear.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GearLibrary\EnemyGear.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GearLibrary\PlayerGear.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GearLibrary\TrackingBulletGear.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GearProperties.cs" />
     <Compile Include="Executor\Actions\AddEntityAction.cs" />
     <Compile Include="Executor\Actions\AddRuleAction.cs" />
     <Compile Include="Executor\Actions\CompositeAction.cs" />
@@ -70,7 +76,7 @@
     <Compile Include="Executor\Actions\SetSpeedAction.cs" />
     <Compile Include="Executor\Rules\CompoundRule.cs" />
     <Compile Include="Executor\Rules\DieWhenOutOfBoundsRule.cs" />
-    <Compile Include="Executor\EntityRuleset.cs" />
+    <Compile Include="Executor\Ruleset.cs" />
     <Compile Include="Executor\Executor.cs" />
     <Compile Include="Executor\ExecutorAction.cs" />
     <Compile Include="Executor\ExecutorRule.cs" />
@@ -83,9 +89,8 @@
     <Compile Include="Executor\Rules\PeriodicRule.cs" />
     <Compile Include="Executor\Rules\ExecuteOnceRule.cs" />
     <Compile Include="Executor\Rules\TrackingTrajectoryRule.cs" />
-    <Compile Include="GameContext.cs" />
+    <Compile Include="GbeContext.cs" />
     <Compile Include="MathHelper.cs" />
-    <Compile Include="NoSuchPropertyException.cs" />
     <Compile Include="PlayField.cs" />
     <Compile Include="Point2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

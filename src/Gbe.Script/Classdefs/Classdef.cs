@@ -86,9 +86,9 @@ namespace Gbe.Script.Classdefs
             return true;
         }
 
-        public virtual Entity CreateEngineEntity(int id)
+        public virtual Gear CreateEngineEntity(int id)
         {
-            return new Entity(id);
+            return new Gear(id);
         }
     }
 }

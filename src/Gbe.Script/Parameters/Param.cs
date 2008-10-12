@@ -1,9 +1,9 @@
-using Gbe.Engine.Executor;
+using Gbe.Engine;
 
 namespace Gbe.Script.Parameters
 {
     public abstract class Param
     {
-        public abstract ExecutorAction ToExecutorAction();
+        public abstract void Execute(Gear gear);
     }
 }

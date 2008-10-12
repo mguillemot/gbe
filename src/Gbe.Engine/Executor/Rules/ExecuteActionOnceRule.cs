@@ -12,7 +12,7 @@ namespace Gbe.Engine.Executor.Rules
             _action = action;
         }
 
-        public override int ComputeActions(Entity entity, GameContext context, List<ExecutorAction> actions)
+        public override int ComputeActions(Gear gear, GbeContext context, List<ExecutorAction> actions)
         {
             actions.Add(_action);
             actions.Add(new RemoveRuleAction(this));

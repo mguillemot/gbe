@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Gbe.Engine.Executor.Rules;
 using Gbe.Script.Actions;
 using Gbe.Script.Executor;
 
@@ -11,16 +10,11 @@ namespace Gbe.Script.Triggers
         {
         }
 
-        public override void Register(Engine.Engine engine, CompiledGbs context, EntityInstance entityInstance)
+        public override void Register(GbsExecutor scriptExecutor, Entity entity)
         {
             foreach (var action in Actions)
             {
-                var executorAction = action.ToExecutorAction(context);
-                if (executorAction != null)
-                {
-                    engine.Executor.AddRule(entityInstance.EngineId,
-                                            new ExecuteActionOnceRule(executorAction));
-                }
+                action.Execute(scriptExecutor, entity);
             }
         }
     }

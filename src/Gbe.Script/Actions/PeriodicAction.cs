@@ -1,26 +1,20 @@
 using System.Collections.Generic;
-using Gbe.Engine.Executor;
+using Gbe.Script.Executor;
 
 namespace Gbe.Script.Actions
 {
     public class PeriodicAction : Action
     {
-        private readonly List<Action> _actions;
+        private readonly List<Action> m_actions;
 
-        public PeriodicAction(string target, List<Action> actions) : base(target)
+        public PeriodicAction(string target, List<Action> actions) 
+            : base(target)
         {
-            _actions = actions;
+            m_actions = actions;
         }
 
-        public List<Action> Actions
+        public override void Execute(GbsExecutor scriptExecutor, Entity entity)
         {
-            get { return _actions; }
-        }
-
-        public override ExecutorAction ToExecutorAction(CompiledGbs context)
-        {
-            // TODO
-            return null;
         }
     }
 }

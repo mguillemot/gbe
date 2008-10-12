@@ -1,4 +1,4 @@
-﻿namespace Gbe.Engine.Executor.Actions
+namespace Gbe.Engine.Executor.Actions
 {
     public class MoveAction : ExecutorAction
     {
@@ -21,10 +21,10 @@
             get { return _dy; }
         }
 
-        public override void Execute(Entity entity, Engine engine)
+        public override void Execute(Gear gear, Gbe gbe)
         {
-            Point2 currentPosition = entity.Position;
-            entity.Position = new Point2(currentPosition.X + _dx, currentPosition.Y + _dy);
+            Point2 currentPosition = gear.Position;
+            gear.Position = new Point2(currentPosition.X + _dx, currentPosition.Y + _dy);
         }
     }
 }

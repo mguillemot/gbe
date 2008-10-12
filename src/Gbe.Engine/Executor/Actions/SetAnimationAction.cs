@@ -9,9 +9,9 @@ namespace Gbe.Engine.Executor.Actions
             _animation = animation;
         }
 
-        public override void Execute(Entity entity, Engine engine)
+        public override void Execute(Gear gear, Gbe gbe)
         {
-            entity.Animation = _animation;
+            gear.Animation = _animation;
         }
     }
 }

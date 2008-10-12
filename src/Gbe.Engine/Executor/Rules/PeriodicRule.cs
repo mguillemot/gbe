@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Gbe.Engine.Executor.Actions;
 
 namespace Gbe.Engine.Executor.Rules
@@ -52,11 +52,11 @@ namespace Gbe.Engine.Executor.Rules
             get { return _remainingNumberOfActivations; }
         }
 
-        public override int ComputeActions(Entity entity, GameContext context, List<ExecutorAction> actions)
+        public override int ComputeActions(Gear gear, GbeContext context, List<ExecutorAction> actions)
         {
             if (context.TotalElapsedSeconds >= _lastActivation + _timeInterval)
             {
-                int added = _subRule.ComputeActions(entity, context, actions);
+                int added = _subRule.ComputeActions(gear, context, actions);
                 _lastActivation = context.TotalElapsedSeconds;
                 _remainingNumberOfActivations--;
                 if (_remainingNumberOfActivations == 0)

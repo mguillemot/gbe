@@ -67,7 +67,8 @@
     <Compile Include="Classdefs\EngineClassdef.cs" />
     <Compile Include="Classdefs\Classdef.cs" />
     <Compile Include="Classdefs\StateClassdef.cs" />
-    <Compile Include="Executor\EntityInstance.cs" />
+    <Compile Include="Executor\Entity.cs" />
+    <Compile Include="Executor\GbsExecutor.cs" />
     <Compile Include="Gbs.cs" />
     <Compile Include="GbsLexer.cs" />
     <Compile Include="GbsParser.cs" />

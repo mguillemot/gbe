@@ -1,4 +1,4 @@
-using Gbe.Engine.Entities;
+using Gbe.Engine.GearLibrary;
 using Gbe.Engine.Executor.Rules;
 
 namespace Gbe.Engine.Executor.Actions
@@ -14,25 +14,25 @@ namespace Gbe.Engine.Executor.Actions
             _initialAngle = initialAngle;
         }
 
-        public override void Execute(Entity entity, Engine engine)
+        public override void Execute(Gear gear, Gbe gbe)
         {
             /*
-            var playerPosition = engine.GetPlayer().Position;
-            var bullet = new BulletEntity(engine.GenerateId()) {Position = entity.Position, Speed = _bulletSpeed};
-            engine.AddEntity(bullet);
-            engine.Executor.AddRule(bullet,
+            var playerPosition = gbe.GetPlayer().Position;
+            var bullet = new BulletGear(gbe.GenerateId()) {Position = gear.Position, Speed = _bulletSpeed};
+            gbe.AddGear(bullet);
+            gbe.Executor.AddRule(bullet,
                                              new LinearTrajectoryRule(MathHelper.GetAngleBetween(bullet.Position,
                                                                                                  playerPosition) + _initialAngle));
-            engine.Executor.AddRule(bullet, new DieWhenOutOfBoundsRule());
+            gbe.Executor.AddRule(bullet, new DieWhenOutOfBoundsRule());
             */
-            var trackingBullet = new TrackingBulletEntity(engine.GenerateId())
+            var trackingBullet = new TrackingBulletGear(gbe.GenerateId())
                                      {
-                                         Position = entity.Position,
+                                         Position = gear.Position,
                                          Speed = _bulletSpeed
                                      };
-            engine.AddEntity(trackingBullet);
-            engine.Executor.AddRule(trackingBullet.Id, new TrackingTrajectoryRule(engine.GetPlayer().Id, _initialAngle));
-            engine.Executor.AddRule(trackingBullet.Id, new DieWhenOutOfBoundsRule());
+            gbe.AddGear(trackingBullet);
+            gbe.Executor.AddRule(trackingBullet.Id, new TrackingTrajectoryRule(gbe.GetPlayer().Id, _initialAngle));
+            gbe.Executor.AddRule(trackingBullet.Id, new DieWhenOutOfBoundsRule());
         }
     }
 }

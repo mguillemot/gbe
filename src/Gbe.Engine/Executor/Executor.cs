@@ -4,7 +4,7 @@ namespace Gbe.Engine.Executor
 {
     public class Executor
     {
-        private readonly Dictionary<int, EntityRuleset> _rules = new Dictionary<int, EntityRuleset>();
+        private readonly Dictionary<int, Ruleset> _rules = new Dictionary<int, Ruleset>();
         private int _rulesCount;
 
         public int RulesCount
@@ -12,15 +12,15 @@ namespace Gbe.Engine.Executor
             get { return _rulesCount; }
         }
 
-        public List<ExecutorAction> ComputeActions(Entity entity, GameContext context)
+        public List<ExecutorAction> ComputeActions(Gear gear, GbeContext context)
         {
-            EntityRuleset ruleSet;
-            if (_rules.TryGetValue(entity.Id, out ruleSet))
+            Ruleset ruleSet;
+            if (_rules.TryGetValue(gear.Id, out ruleSet))
             {
                 var actions = new List<ExecutorAction>();
                 foreach (var rule in ruleSet.ActiveRules)
                 {
-                    rule.ComputeActions(entity, context, actions);
+                    rule.ComputeActions(gear, context, actions);
                 }
                 return actions;
             }
@@ -29,10 +29,10 @@ namespace Gbe.Engine.Executor
 
         public void AddRule(int entityId, ExecutorRule rule)
         {
-            EntityRuleset ruleSet;
+            Ruleset ruleSet;
             if (!_rules.TryGetValue(entityId, out ruleSet))
             {
-                ruleSet = new EntityRuleset();
+                ruleSet = new Ruleset();
                 _rules.Add(entityId, ruleSet);
             }
             ruleSet.AddRule(rule);
@@ -41,7 +41,7 @@ namespace Gbe.Engine.Executor
 
         public void RemoveRule(int entityId, ExecutorRule rule)
         {
-            EntityRuleset ruleSet;
+            Ruleset ruleSet;
             if (_rules.TryGetValue(entityId, out ruleSet))
             {
                 ruleSet.RemoveRule(rule);
@@ -55,7 +55,7 @@ namespace Gbe.Engine.Executor
 
         public void RemoveAllRulesFor(int entityId)
         {
-            EntityRuleset ruleSet;
+            Ruleset ruleSet;
             if (_rules.TryGetValue(entityId, out ruleSet))
             {
                 _rulesCount -= ruleSet.ActiveRules.Count;

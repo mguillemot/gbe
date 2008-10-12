@@ -1,21 +1,19 @@
 using Gbe.Engine;
-using Gbe.Engine.Executor;
-using Gbe.Engine.Executor.Actions;
 
 namespace Gbe.Script.Parameters
 {
     public class ColorParam : Param
     {
-        private readonly Color _color;
+        private readonly Color m_color;
 
         public ColorParam(string colorRepr)
         {
-            _color = Color.Parse(colorRepr);
+            m_color = Color.Parse(colorRepr);
         }
 
-        public override ExecutorAction ToExecutorAction()
+        public override void Execute(Gear gear)
         {
-            return new SetColorAction(_color);
+            gear.Color = m_color;
         }
     }
 }

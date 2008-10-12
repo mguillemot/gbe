@@ -2,12 +2,12 @@
 
 namespace Gbe.Engine
 {
-    public class Entity
+    public class Gear
     {
         private readonly int _id;
         private readonly Dictionary<string, object> _properties = new Dictionary<string, object>();
 
-        public Entity(int _id)
+        public Gear(int _id)
         {
             this._id = _id;
         }
@@ -25,26 +25,26 @@ namespace Gbe.Engine
 
         public virtual Point2 Position
         {
-            get { return EntityProperties.GetPosition(this); }
-            set { EntityProperties.SetPosition(this, value); }
+            get { return GearProperties.GetPosition(this); }
+            set { GearProperties.SetPosition(this, value); }
         }
 
         public float Speed
         {
-            get { return EntityProperties.GetSpeed(this); }
-            set { EntityProperties.SetSpeed(this, value); }
+            get { return GearProperties.GetSpeed(this); }
+            set { GearProperties.SetSpeed(this, value); }
         }
 
         public string Animation
         {
-            get { return EntityProperties.GetAnimation(this); }
-            set { EntityProperties.SetAnimation(this, value); }
+            get { return GearProperties.GetAnimation(this); }
+            set { GearProperties.SetAnimation(this, value); }
         }
 
         public Color Color
         {
-            get { return EntityProperties.GetColor(this); }
-            set { EntityProperties.SetColor(this, value); }
+            get { return GearProperties.GetColor(this); }
+            set { GearProperties.SetColor(this, value); }
         }
 
         public bool HasProperty(string propertyName)

@@ -14,9 +14,9 @@ namespace Gbe.Engine.Executor.Actions
             get { return _rule; }
         }
 
-        public override void Execute(Entity entity, Engine engine)
+        public override void Execute(Gear gear, Gbe gbe)
         {
-            engine.Executor.RemoveRule(entity.Id, _rule);
+            gbe.Executor.RemoveRule(gear.Id, _rule);
         }
     }
 }

@@ -24,23 +24,23 @@ namespace Gbe.Engine.Executor.Rules
             _initialAngle = 0;
         }
 
-        public override int ComputeActions(Entity entity, GameContext context, List<ExecutorAction> actions)
+        public override int ComputeActions(Gear gear, GbeContext context, List<ExecutorAction> actions)
         {
-            Entity target;
-            if (context.Entities.TryGetValue(_targetId, out target))
+            Gear target;
+            if (context.Gears.TryGetValue(_targetId, out target))
             {
                 if (!_initialized)
                 {
-                    var requiredAngle = MathHelper.GetAngleBetween(entity.Position, target.Position);
-                    var distance = Point2.Distance(entity.Position, target.Position);
+                    var requiredAngle = MathHelper.GetAngleBetween(gear.Position, target.Position);
+                    var distance = Point2.Distance(gear.Position, target.Position);
                     _previousAngle = requiredAngle + _initialAngle;
-                    _turnEndTime = context.TotalElapsedSeconds + 1.2f*distance/entity.Speed;
+                    _turnEndTime = context.TotalElapsedSeconds + 1.2f*distance/gear.Speed;
                     _initialized = true;
                 }
 
                 if (context.TotalElapsedSeconds < _turnEndTime)
                 {
-                    var requiredAngle = MathHelper.GetAngleBetween(entity.Position, target.Position);
+                    var requiredAngle = MathHelper.GetAngleBetween(gear.Position, target.Position);
                     var deltaAngle = (requiredAngle - _previousAngle).NormalizeAngle();
                     _deltaPrime = deltaAngle*4f;
                 }
@@ -50,7 +50,7 @@ namespace Gbe.Engine.Executor.Rules
                 }
                 _previousAngle += _deltaPrime*context.PreviousUpdateElapsedSeconds;
 
-                var entitySpeed = EntityProperties.GetSpeed(entity);
+                var entitySpeed = GearProperties.GetSpeed(gear);
                 var dx = entitySpeed*MathHelper.Cos(_previousAngle)*context.PreviousUpdateElapsedSeconds;
                 var dy = entitySpeed*MathHelper.Sin(_previousAngle)*context.PreviousUpdateElapsedSeconds;
                 actions.Add(new MoveAction(dx, dy));

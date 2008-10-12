@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace Gbe.Engine
 {
-    public class GameContext
+    public class GbeContext
     {
-        private readonly List<string> _raisedEvents = new List<string>();
+        private readonly List<string> m_raisedEvents = new List<string>();
 
         public int CurrentFrame { get; set; }
 
@@ -16,9 +16,9 @@ namespace Gbe.Engine
 
         public List<string> RaisedEvents
         {
-            get { return _raisedEvents; }
+            get { return m_raisedEvents; }
         }
 
-        public Dictionary<int, Entity> Entities { get; set; }
+        public Dictionary<int, Gear> Gears { get; set; }
     }
 }

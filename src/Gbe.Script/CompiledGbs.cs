@@ -6,80 +6,83 @@ namespace Gbe.Script
 {
     public class CompiledGbs
     {
-        private readonly Dictionary<string, BulletClassdef> _bulletEntities = new Dictionary<string, BulletClassdef>();
-        private readonly Dictionary<string, EnemyClassdef> _enemyEntities = new Dictionary<string, EnemyClassdef>();
-        private readonly Dictionary<string, Classdef> _entitiesByName = new Dictionary<string, Classdef>();
-        private readonly Dictionary<string, EventClassdef> _eventEntities = new Dictionary<string, EventClassdef>();
-        private readonly Dictionary<string, PlayerClassdef> _playerEntities = new Dictionary<string, PlayerClassdef>();
-        private readonly Dictionary<string, ScriptClassdef> _scriptEntities = new Dictionary<string, ScriptClassdef>();
-        private readonly Dictionary<string, StateClassdef> _stateEntities = new Dictionary<string, StateClassdef>();
+        private readonly Dictionary<string, BulletClassdef> m_bulletClassdefs = new Dictionary<string, BulletClassdef>();
+        private readonly Dictionary<string, EnemyClassdef> m_enemyClassdefs = new Dictionary<string, EnemyClassdef>();
+        private readonly Dictionary<string, Classdef> m_classdefsByName = new Dictionary<string, Classdef>();
+        private readonly Dictionary<string, EventClassdef> m_eventClassdefs = new Dictionary<string, EventClassdef>();
+        private readonly Dictionary<string, PlayerClassdef> m_playerClassdefs = new Dictionary<string, PlayerClassdef>();
+        private readonly Dictionary<string, ScriptClassdef> m_scriptClassdefs = new Dictionary<string, ScriptClassdef>();
+        private readonly Dictionary<string, StateClassdef> m_stateClassdefs = new Dictionary<string, StateClassdef>();
 
-        private Engine.Engine _engine;
-        private EngineClassdef _engineClassdef;
+        private EngineClassdef m_engineClassdef;
 
         internal CompiledGbs()
         {
             // This is created by Gbs.Compile() only
         }
 
-        public Dictionary<string, Classdef> EntitiesByName
+        public Classdef GetClassdef(string name)
         {
-            get { return _entitiesByName; }
-        }
-
-        public EngineClassdef EngineClassdef
-        {
-            get { return _engineClassdef; }
-            internal set { _engineClassdef = value; }
-        }
-
-        public Dictionary<string, PlayerClassdef> PlayerEntities
-        {
-            get { return _playerEntities; }
-        }
-
-        public Dictionary<string, BulletClassdef> BulletEntities
-        {
-            get { return _bulletEntities; }
-        }
-
-        public Dictionary<string, EnemyClassdef> EnemyEntities
-        {
-            get { return _enemyEntities; }
-        }
-
-        public Dictionary<string, ScriptClassdef> ScriptEntities
-        {
-            get { return _scriptEntities; }
-        }
-
-        public Dictionary<string, StateClassdef> StateEntities
-        {
-            get { return _stateEntities; }
-        }
-
-        public Dictionary<string, EventClassdef> EventEntities
-        {
-            get { return _eventEntities; }
-        }
-
-        public void Run(Engine.Engine engine, string scriptClass)
-        {
-            _engine = engine;
-            // TODO catch script inconnu ?
-            var script = _scriptEntities[scriptClass];
-            var scriptInstance = new EntityInstance(script, "script", engine.EngineEntity.Id);
-            foreach (var trigger in script.Triggers)
+            Classdef classdef;
+            if (m_classdefsByName.TryGetValue(name, out classdef))
             {
-                trigger.Register(engine, this, scriptInstance);
+                return classdef;
+            }
+            return null;
+        }
+
+        public EngineClassdef GetEngineClassdef()
+        {
+            return m_engineClassdef;
+        }
+
+        internal int GetPlayerClassdefCount()
+        {
+            return m_playerClassdefs.Count;
+        }
+
+        internal void AddClassdef(Classdef classdef)
+        {
+            m_classdefsByName[classdef.ClassName] = classdef;
+            if (classdef is EngineClassdef)
+            {
+                m_engineClassdef = (EngineClassdef) classdef;
+            }
+            else if (classdef is PlayerClassdef)
+            {
+                m_playerClassdefs[classdef.ClassName] = (PlayerClassdef)classdef;
+            }
+            else if (classdef is BulletClassdef)
+            {
+                m_bulletClassdefs[classdef.ClassName] = (BulletClassdef)classdef;
+            }
+            else if (classdef is EnemyClassdef)
+            {
+                m_enemyClassdefs[classdef.ClassName] = (EnemyClassdef)classdef;
+            }
+            else if (classdef is ScriptClassdef)
+            {
+                m_scriptClassdefs[classdef.ClassName] = (ScriptClassdef)classdef;
+            }
+            else if (classdef is StateClassdef)
+            {
+                m_stateClassdefs[classdef.ClassName] = (StateClassdef)classdef;
+            }
+            else if (classdef is EventClassdef)
+            {
+                m_eventClassdefs[classdef.ClassName] = (EventClassdef)classdef;
             }
         }
 
-        internal EntityInstance GenerateInstance(string instanceClass, string instanceName)
+        public GbsExecutor Run(Engine.Gbe gbe, string scriptClass)
         {
-            var instance = new EntityInstance(_entitiesByName[instanceClass], instanceName, _engine.GenerateId());
-            instance.Register(_engine, this);
-            return instance;
+            var executor = new GbsExecutor(gbe, this);
+            var scriptEntity = executor.GenerateNamedEntity(scriptClass, "script");
+            foreach (var trigger in scriptEntity.Classdef.Triggers)
+            {
+                trigger.Register(executor, scriptEntity);
+            }
+            return executor;
         }
     }
 }

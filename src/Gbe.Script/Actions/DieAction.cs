@@ -1,4 +1,4 @@
-using Gbe.Engine.Executor;
+using Gbe.Script.Executor;
 
 namespace Gbe.Script.Actions
 {
@@ -8,9 +8,8 @@ namespace Gbe.Script.Actions
         {
         }
 
-        public override ExecutorAction ToExecutorAction(CompiledGbs context)
+        public override void Execute(GbsExecutor scriptExecutor, Entity entity)
         {
-            return new Engine.Executor.Actions.DieAction();
         }
     }
 }

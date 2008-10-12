@@ -1,13 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using Antlr.Runtime;
 using Gbe.Engine;
-using Gbe.Engine.Entities;
+using Gbe.Engine.GearLibrary;
 using Gbe.Engine.Executor.Rules;
 using Gbe.Script;
+using Gbe.Script.Executor;
 using SdlDotNet.Core;
 using SdlDotNet.Graphics;
 using SdlDotNet.Graphics.Primitives;
@@ -20,16 +21,16 @@ namespace Gbe.Viewer
 
     public partial class Viewer : Form
     {
-        private readonly Queue<DateTime> _lastFrames = new Queue<DateTime>(100);
-        private bool _down;
-        private Engine.Engine _engine;
-        private DateTime _lastPreparation;
-        private bool _left, _right;
-        private bool _running;
-        private Thread _sdlThread;
-        private Surface _surface;
-        private bool _up;
-        private Surface _window;
+        private readonly Queue<DateTime> m_lastFrames = new Queue<DateTime>(100);
+        private Engine.Gbe m_gbe;
+        private DateTime m_lastPreparation;
+        private bool m_up, m_down, m_left, m_right;
+        private bool m_running;
+        private Thread m_sdlThread;
+        private Surface m_surface;
+        private Surface m_window;
+        private CompiledGbs m_script;
+        private GbsExecutor m_scriptExecutor;
 
         public Viewer()
         {
@@ -38,26 +39,26 @@ namespace Gbe.Viewer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _window = Video.SetVideoMode(440, 520, false, false, false, true, true);
+            m_window = Video.SetVideoMode(440, 520, false, false, false, true, true);
             Video.WindowCaption = "GBE Viewer";
 
-            SdlDotNet.Core.Events.Fps = 60; // _engine.Fps;
+            SdlDotNet.Core.Events.Fps = 60; // m_gbe.Fps;
             SdlDotNet.Core.Events.Tick += OnTick;
             //SdlDotNet.Core.Events.Quit += OnQuit;
 
-            _surface = new Surface(_window.Width, _window.Height);
+            m_surface = new Surface(m_window.Width, m_window.Height);
 
-            _engine = new Engine.Engine();
-            _lastPreparation = DateTime.Now;
-            _engine.Context.GameArea = new Rectangle(0, 0, 240, 320);
-            var player = new PlayerEntity(_engine.GenerateId()) {Position = new Point2(100, 300), Speed = 150};
-            //var enemy = new EnemyClassdef(_engine.GenerateId()) {Position = new Point2(120, 10)};
-            _engine.AddPlayer(player);
-            //_engine.AddEntity(enemy);
-            //_engine.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.3f), 2f));
-            //_engine.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.3f), 2f));
-            //_engine.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.8f), 2f));
-            //_engine.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.8f), 2f));
+            m_gbe = new Engine.Gbe();
+            m_lastPreparation = DateTime.Now;
+            m_gbe.Context.GameArea = new Rectangle(0, 0, 240, 320);
+            var player = new PlayerGear(m_gbe.GenerateId()) {Position = new Point2(100, 300), Speed = 150};
+            //var enemy = new EnemyClassdef(m_gbe.GenerateId()) {Position = new Point2(120, 10)};
+            m_gbe.AddPlayer(player);
+            //m_gbe.AddGear(enemy);
+            //m_gbe.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.3f), 2f));
+            //m_gbe.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.3f), 2f));
+            //m_gbe.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, 0.8f), 2f));
+            //m_gbe.Executor.AddRule(enemy, new PeriodicRule(new FireAtPlayerRule(300, -0.8f), 2f));
 
 
             var lexer = new GbsLexer(new ANTLRFileStream("../../src/Gbe.Viewer/script.txt"));
@@ -71,40 +72,40 @@ namespace Gbe.Viewer
                                   entity.SubEntities != null ? entity.SubEntities.Count.ToString() : "null",
                                   entity.Triggers != null ? entity.Triggers.Count.ToString() : "null");
             }
-            var compiledGbs = gbs.Compile();
-            Console.WriteLine("Compiled? {0}", compiledGbs != null);
-            if (compiledGbs != null)
+            m_script = gbs.Compile();
+            Console.WriteLine("Compiled? {0}", m_script != null);
+            if (m_script != null)
             {
-                compiledGbs.Run(_engine, "TestLevel");
+                m_scriptExecutor = m_script.Run(m_gbe, "TestLevel");
             }
 
-            _sdlThread = new Thread(SdlDotNet.Core.Events.Run)
+            m_sdlThread = new Thread(SdlDotNet.Core.Events.Run)
                              {
                                  IsBackground = true,
                                  Name = "SDL.NET",
                                  Priority = ThreadPriority.Normal
                              };
-            _sdlThread.Start();
-            _running = true;
+            m_sdlThread.Start();
+            m_running = true;
         }
 
         private void OnTick(object sender, TickEventArgs e)
         {
             PrepareNextFrame();
-            _surface.Fill(Color.Black);
-            _surface.Draw(new Box(new Point(100, 100), new Size(240, 320)), Color.Red);
-            foreach (var entity in _engine.Entities)
+            m_surface.Fill(Color.Black);
+            m_surface.Draw(new Box(new Point(100, 100), new Size(240, 320)), Color.Red);
+            foreach (var entity in m_gbe.Gears)
             {
-                if (entity.HasProperty(EntityProperties.POSITION))
+                if (entity.HasProperty(GearProperties.POSITION))
                 {
-                    var position = EntityProperties.GetPosition(entity);
+                    var position = GearProperties.GetPosition(entity);
                     var center = new Point((int) Math.Round(100 + position.X), (int) Math.Round(100 + position.Y));
                     IPrimitive shape;
                     var color = DefaultBackColor;
                     string animation = null;
-                    if (entity.HasProperty(EntityProperties.ANIMATION))
+                    if (entity.HasProperty(GearProperties.ANIMATION))
                     {
-                        animation = EntityProperties.GetAnimation(entity);
+                        animation = GearProperties.GetAnimation(entity);
                     }
                     switch (animation)
                     {
@@ -123,14 +124,14 @@ namespace Gbe.Viewer
                             color = Color.Blue;
                             break;
                         case "trainee":
-                            var positions = EntityProperties.GetTrainee(entity);
+                            var positions = GearProperties.GetTrainee(entity);
                             int nPoints = (positions.Count >= 20) ? 20 : positions.Count;
                             int c = nPoints;
                             for (int i = Math.Max(0, positions.Count - 20); i < positions.Count; i++)
                             {
                                 shape = new Circle(new Point(positions[i].RoundX + 100, positions[i].RoundY + 100), 3);
                                 color = Color.FromArgb(255 - 8*c, 255 - 8*c, 0);
-                                _surface.Draw(shape, color, false, true);
+                                m_surface.Draw(shape, color, false, true);
                                 c--;
                             }
                             shape = null;
@@ -142,13 +143,13 @@ namespace Gbe.Viewer
                     }
                     if (shape != null)
                     {
-                        _surface.Draw(shape, color, false, true);
+                        m_surface.Draw(shape, color, false, true);
                     }
                 }
             }
-            _window.Blit(_surface);
-            _window.Update();
-            if (_running)
+            m_window.Blit(m_surface);
+            m_window.Update();
+            if (m_running)
             {
                 try
                 {
@@ -167,43 +168,43 @@ namespace Gbe.Viewer
 
         private void PrepareNextFrame()
         {
-            if (_left)
+            if (m_left)
             {
-                _engine.Executor.AddRule(_engine.GetPlayer().Id,
+                m_gbe.Executor.AddRule(m_gbe.GetPlayer().Id,
                                          new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_LEFT)));
             }
-            if (_right)
+            if (m_right)
             {
-                _engine.Executor.AddRule(_engine.GetPlayer().Id,
+                m_gbe.Executor.AddRule(m_gbe.GetPlayer().Id,
                                          new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_RIGHT)));
             }
-            if (_up)
+            if (m_up)
             {
-                _engine.Executor.AddRule(_engine.GetPlayer().Id,
+                m_gbe.Executor.AddRule(m_gbe.GetPlayer().Id,
                                          new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_UP)));
             }
-            if (_down)
+            if (m_down)
             {
-                _engine.Executor.AddRule(_engine.GetPlayer().Id,
+                m_gbe.Executor.AddRule(m_gbe.GetPlayer().Id,
                                          new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_DOWN)));
             }
-            _engine.Update((float) (DateTime.Now - _lastPreparation).TotalSeconds);
-            _lastPreparation = DateTime.Now;
+            m_gbe.Update((float) (DateTime.Now - m_lastPreparation).TotalSeconds);
+            m_lastPreparation = DateTime.Now;
         }
 
         private void UpdateStats()
         {
-            if (_lastFrames.Count == 100)
+            if (m_lastFrames.Count == 100)
             {
-                _lastFrames.Dequeue();
+                m_lastFrames.Dequeue();
             }
-            _lastFrames.Enqueue(DateTime.Now);
-            double fps = _lastFrames.Count/(DateTime.Now - _lastFrames.Peek()).TotalSeconds;
-            txtNumberOfEntities.Text = _engine.Entities.Count.ToString();
-            txtNumberOfRules.Text = _engine.Executor.RulesCount.ToString();
+            m_lastFrames.Enqueue(DateTime.Now);
+            double fps = m_lastFrames.Count/(DateTime.Now - m_lastFrames.Peek()).TotalSeconds;
+            txtNumberOfEntities.Text = m_gbe.Gears.Count.ToString();
+            txtNumberOfRules.Text = m_gbe.Executor.RulesCount.ToString();
             txtFPS.Text = fps.ToString("#0.00");
-            txtCurrentFrame.Text = _engine.Context.CurrentFrame.ToString();
-            txtElapsedTime.Text = _engine.Context.TotalElapsedSeconds.ToString("####0.00");
+            txtCurrentFrame.Text = m_gbe.Context.CurrentFrame.ToString();
+            txtElapsedTime.Text = m_gbe.Context.TotalElapsedSeconds.ToString("####0.00");
         }
 
         private void Viewer_KeyDown(object sender, KeyEventArgs e)
@@ -211,16 +212,16 @@ namespace Gbe.Viewer
             switch (e.KeyCode)
             {
                 case Keys.Left:
-                    _left = true;
+                    m_left = true;
                     break;
                 case Keys.Right:
-                    _right = true;
+                    m_right = true;
                     break;
                 case Keys.Down:
-                    _down = true;
+                    m_down = true;
                     break;
                 case Keys.Up:
-                    _up = true;
+                    m_up = true;
                     break;
             }
         }
@@ -230,19 +231,19 @@ namespace Gbe.Viewer
             switch (e.KeyCode)
             {
                 case Keys.Left:
-                    _left = false;
+                    m_left = false;
                     break;
                 case Keys.Right:
-                    _right = false;
+                    m_right = false;
                     break;
                 case Keys.Down:
-                    _down = false;
+                    m_down = false;
                     break;
                 case Keys.Up:
-                    _up = false;
+                    m_up = false;
                     break;
                 case Keys.Escape:
-                    _running = false;
+                    m_running = false;
                     Close();
                     break;
             }

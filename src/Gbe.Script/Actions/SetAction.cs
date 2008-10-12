@@ -1,25 +1,21 @@
-using Gbe.Engine.Executor;
+using Gbe.Script.Executor;
 using Gbe.Script.Parameters;
 
 namespace Gbe.Script.Actions
 {
     public class SetAction : Action
     {
-        private readonly Param _param;
+        private readonly Param m_param;
 
-        public SetAction(string target, Param param) : base(target)
+        public SetAction(string target, Param param) 
+            : base(target)
         {
-            _param = param;
+            m_param = param;
         }
 
-        public Param Param
+        public override void Execute(GbsExecutor scriptExecutor, Entity entity)
         {
-            get { return _param; }
-        }
-
-        public override ExecutorAction ToExecutorAction(CompiledGbs context)
-        {
-            return _param.ToExecutorAction();
+            m_param.Execute(scriptExecutor.Engine.GetGear(entity.EngineId));
         }
     }
 }

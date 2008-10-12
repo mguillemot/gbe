@@ -1,7 +1,7 @@
-﻿namespace Gbe.Engine.Executor
+namespace Gbe.Engine.Executor
 {
     public abstract class ExecutorAction
     {
-        public abstract void Execute(Entity entity, Engine engine);
+        public abstract void Execute(Gear gear, Gbe gbe);
     }
 }

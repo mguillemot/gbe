@@ -20,7 +20,7 @@ namespace Gbe.Engine.Executor.Rules
             _initialAngle = 0;
         }
 
-        public override int ComputeActions(Entity entity, GameContext context, List<ExecutorAction> actions)
+        public override int ComputeActions(Gear gear, GbeContext context, List<ExecutorAction> actions)
         {
             actions.Add(new FireAtPlayerAction(_bulletSpeed, _initialAngle));
             return 1;
