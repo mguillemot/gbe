@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Gbe.Script.Actions;
 using Gbe.Script.Executor;
+using Gbe.Script.Executor.Entities;
 
 namespace Gbe.Script.Triggers
 {
@@ -14,14 +15,13 @@ namespace Gbe.Script.Triggers
             m_time = time;
         }
 
-        public float Time
-        {
-            get { return m_time; }
-        }
-
         public override void Register(GbsExecutor scriptExecutor, Entity entity)
         {
-            // TODO
+            scriptExecutor.RegisterTimeTrigger(scriptExecutor.Engine.Context.TotalElapsedSeconds + m_time, entity, Actions, -1);
+        }
+
+        public override void Unregister(GbsExecutor executor, StateEntity entity)
+        {
         }
     }
 }

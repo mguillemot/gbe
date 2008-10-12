@@ -1,4 +1,5 @@
 using Gbe.Script.Executor;
+using Gbe.Script.Executor.Entities;
 using Gbe.Script.Parameters;
 
 namespace Gbe.Script.Actions
@@ -15,7 +16,10 @@ namespace Gbe.Script.Actions
 
         public override void Execute(GbsExecutor scriptExecutor, Entity entity)
         {
-            m_param.Execute(scriptExecutor.Engine.GetGear(entity.EngineId));
+            if (entity.Gear != null)
+            {
+                m_param.Execute(entity.Gear);
+            }
         }
     }
 }

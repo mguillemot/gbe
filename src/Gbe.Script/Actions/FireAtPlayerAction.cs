@@ -1,4 +1,8 @@
+using Gbe.Engine;
+using Gbe.Engine.Executor.Rules;
+using Gbe.Engine.GearLibrary;
 using Gbe.Script.Executor;
+using Gbe.Script.Executor.Entities;
 
 namespace Gbe.Script.Actions
 {
@@ -14,6 +18,12 @@ namespace Gbe.Script.Actions
 
         public override void Execute(GbsExecutor scriptExecutor, Entity entity)
         {
+            var bulletEntity = scriptExecutor.Script.GetBulletClassdef(m_bulletClass).NewInstance();
+            bulletEntity.Register(scriptExecutor, entity.Gear.Position);
+            foreach (var trigger in bulletEntity.Classdef.Triggers)
+            {
+                trigger.Register(scriptExecutor, bulletEntity);
+            }
         }
     }
 }

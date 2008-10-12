@@ -22,12 +22,12 @@ BULLET SimpleBullet
 {
 	@init
 	{
-		speed=300
+		speed=200
 		animation="circle"
 		color=pink
 	}
 	
-	@time(10)
+	@time(0.2)
 	{
 		.die
 	}
@@ -35,12 +35,9 @@ BULLET SimpleBullet
 
 STATE Fire
 {
-	@init
+	@periodic(.2)
 	{
-		.periodic(.2)
-		{
-			.fireAtPlayer(SimpleBullet)
-		}
+		.fireAtPlayer(SimpleBullet)
 	}
 }
 
@@ -74,13 +71,11 @@ ENEMY Toto
 
 	@time(1)
 	{
-		.fireAtPlayer(SimpleBullet)
 		.start(Fire)
 	}
 
 	@time(5)
 	{
-		.fireAtPlayer(SimpleBullet)
 		.stop(Fire)
 		.playAnimation("explodingBox")
 	}
@@ -88,6 +83,7 @@ ENEMY Toto
 	@animationEnd("explodingBox")
 	{
 		.die
+		.raise(Truc)
 	}
 }
 

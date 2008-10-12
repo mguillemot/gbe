@@ -189,6 +189,7 @@ namespace Gbe.Viewer
                                          new ExecuteOnceRule(new LinearTrajectoryRule(MathHelper.ANGLE_DOWN)));
             }
             m_gbe.Update((float) (DateTime.Now - m_lastPreparation).TotalSeconds);
+            m_scriptExecutor.Update();
             m_lastPreparation = DateTime.Now;
         }
 

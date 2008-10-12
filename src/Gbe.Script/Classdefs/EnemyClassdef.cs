@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Gbe.Engine;
-using Gbe.Engine.GearLibrary;
+using Gbe.Script.Executor;
+using Gbe.Script.Executor.Entities;
 using Gbe.Script.Triggers;
 
 namespace Gbe.Script.Classdefs
@@ -17,9 +17,9 @@ namespace Gbe.Script.Classdefs
             get { return "ENEMY"; }
         }
 
-        public override Gear CreateEngineEntity(int id)
+        public EnemyEntity NewInstance(string name)
         {
-            return new EnemyGear(id);
+            return new EnemyEntity(this, name);
         }
     }
 }

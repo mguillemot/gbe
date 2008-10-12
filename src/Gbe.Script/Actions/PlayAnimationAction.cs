@@ -1,5 +1,6 @@
 using Gbe.Engine.Executor;
 using Gbe.Script.Executor;
+using Gbe.Script.Executor.Entities;
 
 namespace Gbe.Script.Actions
 {

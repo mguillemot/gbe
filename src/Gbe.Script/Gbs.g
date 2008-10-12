@@ -120,6 +120,10 @@ ACTION_SET
 	:	'.set'
 	;
 	
+ACTION_RAISE
+	:	'.raise'
+	;
+	
 TRIGGER_INIT
 	:	'@init'
 	;
@@ -130,6 +134,10 @@ TRIGGER_CLEANUP
 	
 TRIGGER_TIME
 	:	'@time'
+	;
+	
+TRIGGER_PERIODIC
+	:	'@periodic'
 	;
 
 TRIGGER_SCROLLING
@@ -342,6 +350,7 @@ action
 	|	sa=stop_action            { $action_list::list.Add($sa.action); }
 	|	sum=summon_action         { $action_list::list.Add($sum.action); }
 	|	sea=set_action            { $action_list::list.Add($sea.action); }
+	|	raa=raise_action	  { $action_list::list.Add($raa.action); }
 	;
 	
 play_animation_action returns [Action action]
@@ -349,7 +358,7 @@ play_animation_action returns [Action action]
 	;
 	
 periodic_action returns [Action action]
-	:	target=action_target ACTION_PERIODIC '(' NUMBER ')' '{' actions=action_list '}' { $action = new PeriodicAction($target.target, $actions.actions); }
+	:	target=action_target ACTION_PERIODIC '(' period=NUMBER ')' '{' actions=action_list '}' { $action = new PeriodicAction($target.target, $actions.actions, float.Parse($period.Text)); }
 	;
 	
 fireAtPlayer_action returns [Action action]
@@ -377,10 +386,15 @@ set_action returns [Action action]
 	|	p=param                                         { $action = new SetAction("this", $p.p); }
 	;
 	
+raise_action returns [Action action]
+	:	target=action_target ACTION_RAISE '(' e=CLASS_IDENTIFIER ')' { $action = new RaiseAction($target.target, $e.Text); }
+	;
+	
 trigger returns [Trigger t]
 	:	TRIGGER_INIT '{' a=action_list '}'                              { $t = new InitTrigger($a.actions); }
 	|	TRIGGER_CLEANUP '{' a=action_list '}'                           { $t = new CleanupTrigger($a.actions); }
 	|	TRIGGER_TIME '(' time=NUMBER ')' '{' a=action_list '}'          { $t = new TimeTrigger(float.Parse($time.Text), $a.actions); }
+	|	TRIGGER_PERIODIC '(' period=NUMBER ')' '{' a=action_list '}'	{ $t = new PeriodicTrigger(float.Parse($period.Text), $a.actions); }
 	|	TRIGGER_SCROLLING '(' scroll=NUMBER ')' '{' a=action_list '}'   { $t = new ScrollingTrigger(float.Parse($scroll.Text), $a.actions); }
 	|	TRIGGER_ANIMATION_END '(' anim=STRING ')' '{' a=action_list '}' { $t = new AnimationEndTrigger($anim.Text, $a.actions); }
 	|	TRIGGER_EVENT '(' e=CLASS_IDENTIFIER ')' '{' a=action_list '}'  { $t = new EventTrigger($e.Text, $a.actions); }

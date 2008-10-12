@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Gbe.Script.Executor.Entities;
 using Gbe.Script.Triggers;
 
 namespace Gbe.Script.Classdefs
@@ -13,6 +14,11 @@ namespace Gbe.Script.Classdefs
         public override string EntityType
         {
             get { return "SCRIPT"; }
+        }
+
+        public ScriptEntity NewInstance()
+        {
+            return new ScriptEntity(this, ClassName + "_instance");
         }
     }
 }

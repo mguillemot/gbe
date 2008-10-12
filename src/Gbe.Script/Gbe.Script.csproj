@@ -54,6 +54,7 @@
     <Compile Include="Actions\FireAtPlayerAction.cs" />
     <Compile Include="Actions\PeriodicAction.cs" />
     <Compile Include="Actions\PlayAnimationAction.cs" />
+    <Compile Include="Actions\RaiseAction.cs" />
     <Compile Include="Actions\SetAction.cs" />
     <Compile Include="Actions\StartAction.cs" />
     <Compile Include="Actions\StopAction.cs" />
@@ -67,7 +68,11 @@
     <Compile Include="Classdefs\EngineClassdef.cs" />
     <Compile Include="Classdefs\Classdef.cs" />
     <Compile Include="Classdefs\StateClassdef.cs" />
-    <Compile Include="Executor\Entity.cs" />
+    <Compile Include="Executor\Entities\BulletEntity.cs" />
+    <Compile Include="Executor\Entities\EnemyEntity.cs" />
+    <Compile Include="Executor\Entities\Entity.cs" />
+    <Compile Include="Executor\Entities\ScriptEntity.cs" />
+    <Compile Include="Executor\Entities\StateEntity.cs" />
     <Compile Include="Executor\GbsExecutor.cs" />
     <Compile Include="Gbs.cs" />
     <Compile Include="GbsLexer.cs" />
@@ -85,6 +90,7 @@
     <Compile Include="Triggers\CleanupTrigger.cs" />
     <Compile Include="Triggers\EventTrigger.cs" />
     <Compile Include="Triggers\InitTrigger.cs" />
+    <Compile Include="Triggers\PeriodicTrigger.cs" />
     <Compile Include="Triggers\ScrollingTrigger.cs" />
     <Compile Include="Triggers\TimeTrigger.cs" />
     <Compile Include="Triggers\Trigger.cs" />

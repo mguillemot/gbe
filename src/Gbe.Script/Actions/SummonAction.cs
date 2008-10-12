@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Gbe.Engine.GearLibrary;
 using Gbe.Script.Executor;
+using Gbe.Script.Executor.Entities;
 
 namespace Gbe.Script.Actions
 {
@@ -20,9 +21,8 @@ namespace Gbe.Script.Actions
 
         public override void Execute(GbsExecutor scriptExecutor, Entity entity)
         {
-            var enemyEntity = scriptExecutor.GenerateNamedEntity(m_enemyClass, m_enemyName);
-            var enemyGear = new EnemyGear(enemyEntity.EngineId);
-            scriptExecutor.Engine.AddGear(enemyGear);
+            var enemyEntity = scriptExecutor.Script.GetEnemyClassdef(m_enemyClass).NewInstance(m_enemyName);
+            enemyEntity.Register(scriptExecutor);
             if (m_summonActions != null)
             {
                 foreach (var enemyInitAction in m_summonActions)

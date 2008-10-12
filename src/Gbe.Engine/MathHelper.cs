@@ -19,9 +19,14 @@ namespace Gbe.Engine
             return (float) (Math.PI/2 - Math.Atan2(to.X - from.X, to.Y - from.Y));
         }
 
+        public static int Random(int max)
+        {
+            return _random.Next(max);
+        }
+
         public static float RandomFloat()
         {
-            return (float) _random.NextDouble();
+            return (float)_random.NextDouble();
         }
 
         public static float Cos(float angle)

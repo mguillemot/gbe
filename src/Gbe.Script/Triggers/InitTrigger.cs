@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Gbe.Script.Actions;
 using Gbe.Script.Executor;
+using Gbe.Script.Executor.Entities;
 
 namespace Gbe.Script.Triggers
 {
@@ -16,6 +17,10 @@ namespace Gbe.Script.Triggers
             {
                 action.Execute(scriptExecutor, entity);
             }
+        }
+
+        public override void Unregister(GbsExecutor executor, StateEntity entity)
+        {
         }
     }
 }

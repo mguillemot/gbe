@@ -1,4 +1,5 @@
 using Gbe.Script.Executor;
+using Gbe.Script.Executor.Entities;
 
 namespace Gbe.Script.Actions
 {
@@ -14,6 +15,11 @@ namespace Gbe.Script.Actions
 
         public override void Execute(GbsExecutor scriptExecutor, Entity entity)
         {
+            var state = entity.GetState(scriptExecutor.Script.GetStateClassdef(m_stateClass));
+            if (state != null)
+            {
+                entity.RemoveState(scriptExecutor, state);
+            }
         }
     }
 }

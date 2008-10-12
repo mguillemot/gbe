@@ -31,6 +31,36 @@ namespace Gbe.Script
             return null;
         }
 
+        public EnemyClassdef GetEnemyClassdef(string name)
+        {
+            EnemyClassdef classdef;
+            if (m_enemyClassdefs.TryGetValue(name, out classdef))
+            {
+                return classdef;
+            }
+            return null;
+        }
+
+        public BulletClassdef GetBulletClassdef(string name)
+        {
+            BulletClassdef classdef;
+            if (m_bulletClassdefs.TryGetValue(name, out classdef))
+            {
+                return classdef;
+            }
+            return null;
+        }
+
+        public StateClassdef GetStateClassdef(string name)
+        {
+            StateClassdef classdef;
+            if (m_stateClassdefs.TryGetValue(name, out classdef))
+            {
+                return classdef;
+            }
+            return null;
+        }
+
         public EngineClassdef GetEngineClassdef()
         {
             return m_engineClassdef;
@@ -77,11 +107,9 @@ namespace Gbe.Script
         public GbsExecutor Run(Engine.Gbe gbe, string scriptClass)
         {
             var executor = new GbsExecutor(gbe, this);
-            var scriptEntity = executor.GenerateNamedEntity(scriptClass, "script");
-            foreach (var trigger in scriptEntity.Classdef.Triggers)
-            {
-                trigger.Register(executor, scriptEntity);
-            }
+            var scriptClassdef = m_scriptClassdefs[scriptClass];
+            var scriptEntity = scriptClassdef.NewInstance();
+            scriptEntity.Register(executor);
             return executor;
         }
     }

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Gbe.Script.Executor;
+using Gbe.Script.Executor.Entities;
 using Gbe.Script.Triggers;
 
 namespace Gbe.Script.Classdefs
