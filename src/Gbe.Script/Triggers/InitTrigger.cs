@@ -19,7 +19,7 @@ namespace Gbe.Script.Triggers
             }
         }
 
-        public override void Unregister(GbsExecutor executor, StateEntity entity)
+        public override void Unregister(GbsExecutor executor, Entity entity)
         {
         }
     }

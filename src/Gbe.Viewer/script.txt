@@ -26,9 +26,23 @@ BULLET SimpleBullet
 		animation="circle"
 		color=pink
 	}
-	
-	@time(0.2)
+}
+
+BULLET ExplodingBullet
+{
+	@init
 	{
+		speed=100
+		animation="box"
+		color=pink
+	}
+	
+	@time(1.5)
+	{
+		.fire(SimpleBullet, $DOWN)
+		//.fire(SimpleBullet, 1)
+		//.fire(SimpleBullet, 2)
+		//.fire(SimpleBullet, 3)
 		.die
 	}
 }
@@ -37,7 +51,7 @@ STATE Fire
 {
 	@periodic(.2)
 	{
-		.fireAtPlayer(SimpleBullet)
+		.fire(SimpleBullet, $player)
 	}
 }
 
@@ -69,9 +83,14 @@ ENEMY Toto
 	{
 	}
 
+	@time(0.5)
+	{
+		.fire(ExplodingBullet, $player)
+	}
+
 	@time(1)
 	{
-		.start(Fire)
+		//.start(Fire)
 	}
 
 	@time(5)

@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="Actions\Action.cs" />
     <Compile Include="Actions\DieAction.cs" />
-    <Compile Include="Actions\FireAtPlayerAction.cs" />
+    <Compile Include="Actions\FireAction.cs" />
     <Compile Include="Actions\PeriodicAction.cs" />
     <Compile Include="Actions\PlayAnimationAction.cs" />
     <Compile Include="Actions\RaiseAction.cs" />
@@ -74,6 +74,10 @@
     <Compile Include="Executor\Entities\ScriptEntity.cs" />
     <Compile Include="Executor\Entities\StateEntity.cs" />
     <Compile Include="Executor\GbsExecutor.cs" />
+    <Compile Include="Formulas\AngleTowardPlayerFormula.cs" />
+    <Compile Include="Formulas\ConstValueFormula.cs" />
+    <Compile Include="Formulas\EvaluationContext.cs" />
+    <Compile Include="Formulas\Formula.cs" />
     <Compile Include="Gbs.cs" />
     <Compile Include="GbsLexer.cs" />
     <Compile Include="GbsParser.cs" />

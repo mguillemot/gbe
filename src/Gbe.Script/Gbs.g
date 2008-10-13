@@ -14,9 +14,11 @@ options
 @parser::header 
 {
 using System.Collections.Generic;
+using Gbe.Engine;
 using Gbe.Script.Actions;
 using Action = Gbe.Script.Actions.Action;
 using Gbe.Script.Classdefs;
+using Gbe.Script.Formulas;
 using Gbe.Script.Parameters;
 using Gbe.Script.Triggers;
 }
@@ -92,8 +94,8 @@ ACTION_PERIODIC
 	:	'.periodic'
 	;
 	
-ACTION_FIRE_AT_PLAYER
-	:	'.fireAtPlayer'
+ACTION_FIRE
+	:	'.fire'
 	;
 
 ACTION_DIE
@@ -150,6 +152,26 @@ TRIGGER_ANIMATION_END
 	
 TRIGGER_EVENT
 	:	'@event'
+	;
+
+PREDEF_ANGLE_TOWARD_PLAYER
+	:	'$player'
+	;
+	
+CONST_ANGLE_DOWN
+	:	'$DOWN'
+	;
+
+CONST_ANGLE_UP
+	:	'$UP'
+	;
+
+CONST_ANGLE_LEFT
+	:	'$LEFT'
+	;
+
+CONST_ANGLE_RIGHT
+	:	'$RIGHT'
 	;
 
 COLOR
@@ -220,6 +242,15 @@ SL_COMMENT
 	;
 	
 // PARSER
+
+formula returns [Formula formula]
+	:	c=NUMBER { $formula = new ConstValueFormula(float.Parse($c.Text)); }
+	|	CONST_ANGLE_DOWN { $formula = new ConstValueFormula(MathHelper.ANGLE_DOWN); }
+	|	CONST_ANGLE_UP { $formula = new ConstValueFormula(MathHelper.ANGLE_UP); }
+	|	CONST_ANGLE_LEFT { $formula = new ConstValueFormula(MathHelper.ANGLE_LEFT); }
+	|	CONST_ANGLE_RIGHT { $formula = new ConstValueFormula(MathHelper.ANGLE_RIGHT); }
+	|	PREDEF_ANGLE_TOWARD_PLAYER { $formula = new AngleTowardPlayerFormula(); }
+	;
 
 gbs returns [Gbs s]
 scope 
@@ -344,7 +375,7 @@ action_target returns [String target]
 action
 	:	pla=play_animation_action { $action_list::list.Add($pla.action); }
 	|	pa=periodic_action        { $action_list::list.Add($pa.action); }
-	|	fap=fireAtPlayer_action   { $action_list::list.Add($fap.action); }
+	|	fap=fire_action   { $action_list::list.Add($fap.action); }
 	|	da=die_action             { $action_list::list.Add($da.action); }
 	|	sta=start_action          { $action_list::list.Add($sta.action); }
 	|	sa=stop_action            { $action_list::list.Add($sa.action); }
@@ -361,8 +392,8 @@ periodic_action returns [Action action]
 	:	target=action_target ACTION_PERIODIC '(' period=NUMBER ')' '{' actions=action_list '}' { $action = new PeriodicAction($target.target, $actions.actions, float.Parse($period.Text)); }
 	;
 	
-fireAtPlayer_action returns [Action action]
-	:	target=action_target ACTION_FIRE_AT_PLAYER '(' bullet=CLASS_IDENTIFIER ')' { $action = new FireAtPlayerAction($target.target, $bullet.Text); }
+fire_action returns [Action action]
+	:	target=action_target ACTION_FIRE '(' bullet=CLASS_IDENTIFIER ',' angle=formula ')' { $action = new FireAction($target.target, $bullet.Text, $angle.formula); }
 	;
 	
 die_action returns [Action action]

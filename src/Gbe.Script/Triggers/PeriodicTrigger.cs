@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Gbe.Script.Actions;
 using Gbe.Script.Executor;
 using Gbe.Script.Executor.Entities;
@@ -20,7 +20,7 @@ namespace Gbe.Script.Triggers
             scriptExecutor.RegisterTimeTrigger(scriptExecutor.Engine.Context.TotalElapsedSeconds, entity, Actions, m_period);
         }
 
-        public override void Unregister(GbsExecutor scriptExecutor, StateEntity entity)
+        public override void Unregister(GbsExecutor scriptExecutor, Entity entity)
         {
             scriptExecutor.UnregisterTimeTrigger(entity, Actions, m_period);
         }

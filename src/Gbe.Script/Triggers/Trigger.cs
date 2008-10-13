@@ -21,6 +21,6 @@ namespace Gbe.Script.Triggers
 
         public abstract void Register(GbsExecutor scriptExecutor, Entity entity);
 
-        public abstract void Unregister(GbsExecutor executor, StateEntity entity);
+        public abstract void Unregister(GbsExecutor executor, Entity entity);
     }
 }

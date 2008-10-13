@@ -16,7 +16,7 @@ namespace Gbe.Script.Executor.Entities
         {
         }
 
-        public void Register(GbsExecutor scriptExecutor, Point2 initialPosition)
+        public void Spawn(GbsExecutor scriptExecutor, Point2 initialPosition, float angle)
         {
             scriptExecutor.Register(this);
             m_gear = new BulletGear(scriptExecutor.Engine.GenerateId())
@@ -24,12 +24,20 @@ namespace Gbe.Script.Executor.Entities
                              Position = initialPosition
                          };
             scriptExecutor.Engine.AddGear(m_gear);
-            var angle = MathHelper.GetAngleBetween(initialPosition, scriptExecutor.Engine.GetPlayer().Position);
             scriptExecutor.Engine.Executor.AddRule(m_gear.Id, new LinearTrajectoryRule(angle));
             scriptExecutor.Engine.Executor.AddRule(m_gear.Id, new DieWhenOutOfBoundsRule());
             foreach (var trigger in Classdef.Triggers)
             {
                 trigger.Register(scriptExecutor, this);
+            }
+        }
+
+        public override void Die(GbsExecutor scriptExecutor)
+        {
+            scriptExecutor.Engine.RemoveGear(m_gear);
+            foreach (var trigger in Classdef.Triggers)
+            {
+                trigger.Unregister(scriptExecutor, this);
             }
         }
 

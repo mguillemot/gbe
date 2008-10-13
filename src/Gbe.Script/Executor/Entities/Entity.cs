@@ -44,5 +44,10 @@ namespace Gbe.Script.Executor.Entities
         {
             throw new NotImplementedException();
         }
+
+        public virtual void Die(GbsExecutor scriptExecutor)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

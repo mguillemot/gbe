@@ -125,7 +125,7 @@ namespace Gbe.Script.Executor
             m_timeTriggers.Sort();
         }
 
-        public void UnregisterTimeTrigger(StateEntity entity, List<Action> actions, float autoRegisterTime)
+        public void UnregisterTimeTrigger(Entity entity, List<Action> actions, float autoRegisterTime)
         {
             var index = m_timeTriggers.FindIndex(
                 trigger => trigger.Actions == actions && trigger.AutoRegisterTime == autoRegisterTime && trigger.Entity == entity);
@@ -145,6 +145,14 @@ namespace Gbe.Script.Executor
                 m_entitiesByClass[entity.Classdef.ClassName] = entitiesOfThisClass;
             }
             entitiesOfThisClass.Add(entity);
+        }
+
+        public void Unregister(Entity entity)
+        {
+            m_entitiesByName.Remove(entity.Name);
+            List<Entity> entitiesOfThisClass;
+            m_entitiesByClass.TryGetValue(entity.Classdef.ClassName, out entitiesOfThisClass);
+            entitiesOfThisClass.Remove(entity);
         }
     }
 }
