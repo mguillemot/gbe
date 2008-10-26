@@ -19,6 +19,11 @@ namespace Gbe.Engine
             return (float) (Math.PI/2 - Math.Atan2(to.X - from.X, to.Y - from.Y));
         }
 
+        public static float DegreeToRadian(float degree)
+        {
+            return degree/180*PI;
+        }
+
         public static int Random(int max)
         {
             return _random.Next(max);

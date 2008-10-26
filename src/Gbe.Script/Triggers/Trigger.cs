@@ -22,5 +22,16 @@ namespace Gbe.Script.Triggers
         public abstract void Register(GbsExecutor scriptExecutor, Entity entity);
 
         public abstract void Unregister(GbsExecutor executor, Entity entity);
+
+        public void Compile()
+        {
+            var compiledActions = new List<Action>();
+            foreach (var action in _actions)
+            {
+                compiledActions.AddRange(action.Compile());
+            }
+            _actions.Clear();
+            _actions.AddRange(compiledActions);
+        }
     }
 }

@@ -65,8 +65,8 @@ namespace Gbe.Viewer
             var tokenStream = new CommonTokenStream(lexer);
             var parser = new GbsParser(tokenStream);
             var gbs = parser.gbs().s;
-            Console.WriteLine("Ok. " + gbs.Entities.Count + " entities found:");
-            foreach (var entity in gbs.Entities)
+            Console.WriteLine("Ok. " + gbs.Classdefs.Count + " entities found:");
+            foreach (var entity in gbs.Classdefs)
             {
                 Console.WriteLine("{0} className={1} subEntities={2} triggers={3}", entity.GetType(), entity.ClassName,
                                   entity.SubEntities != null ? entity.SubEntities.Count.ToString() : "null",

@@ -6,34 +6,35 @@ namespace Gbe.Script
 {
     public class Gbs
     {
-        private readonly List<Classdef> _entities;
+        private readonly List<Classdef> _classdefs;
 
-        public Gbs(List<Classdef> entities)
+        public Gbs(List<Classdef> classdefs)
         {
-            _entities = entities;
+            _classdefs = classdefs;
         }
 
-        public List<Classdef> Entities
+        public List<Classdef> Classdefs
         {
-            get { return _entities; }
+            get { return _classdefs; }
         }
 
         public CompiledGbs Compile()
         {
             var compiled = new CompiledGbs();
-            foreach (var entity in _entities)
+            foreach (var classdef in _classdefs)
             {
-                if (compiled.GetClassdef(entity.ClassName) == null)
+                if (compiled.GetClassdef(classdef.ClassName) == null)
                 {
-                    compiled.AddClassdef(entity);
-                    if (!entity.Check())
+                    classdef.Compile();
+                    compiled.AddClassdef(classdef);
+                    if (!classdef.Check())
                     {
                         return null;
                     }
                 }
                 else
                 {
-                    Console.Error.WriteLine("Duplicate entity: " + entity.ClassName);
+                    Console.Error.WriteLine("Duplicate entity: " + classdef.ClassName);
                     return null;
                 }
             }

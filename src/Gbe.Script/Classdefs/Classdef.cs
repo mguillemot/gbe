@@ -87,5 +87,16 @@ namespace Gbe.Script.Classdefs
             }
             return true;
         }
+
+        public void Compile()
+        {
+            if (_triggers != null)
+            {
+                foreach (var trigger in _triggers)
+                {
+                    trigger.Compile();
+                }
+            }
+        }
     }
 }

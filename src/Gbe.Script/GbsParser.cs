@@ -1,4 +1,4 @@
-// $ANTLR 3.1.1 C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g 2008-10-13 22:41:20
+// $ANTLR 3.1.1 C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g 2008-10-26 22:22:49
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
 // Unreachable code detected.
@@ -86,21 +86,31 @@ public partial class GbsParser : Parser
 		"WHITESPACE", 
 		"ML_COMMENT", 
 		"SL_COMMENT", 
+		"'+'", 
+		"'-'", 
+		"'*'", 
+		"'°'", 
+		"'..'", 
+		"'('", 
+		"')'", 
 		"'='", 
 		"','", 
 		"'{'", 
-		"'}'", 
-		"'('", 
-		"')'"
+		"'}'"
     };
 
     public const int DIRECTION = 44;
+    public const int T__64 = 64;
     public const int CONST_ANGLE_RIGHT = 39;
+    public const int T__62 = 62;
+    public const int T__63 = 63;
     public const int ACTION_SET = 26;
     public const int POINT = 46;
     public const int TRIGGER_SCROLLING = 32;
     public const int CLASSDEF_SCRIPT = 9;
     public const int CONST_ANGLE_UP = 37;
+    public const int T__61 = 61;
+    public const int T__60 = 60;
     public const int EOF = -1;
     public const int PARAM_SCROLLING = 18;
     public const int COLOR = 41;
@@ -114,8 +124,8 @@ public partial class GbsParser : Parser
     public const int PARAM_ANIMATION = 17;
     public const int INSTANCE_IDENTIFIER = 49;
     public const int T__54 = 54;
-    public const int TRIGGER_INIT = 28;
     public const int CONST_ANGLE_DOWN = 36;
+    public const int TRIGGER_INIT = 28;
     public const int T__59 = 59;
     public const int ACTION_START = 22;
     public const int THIS = 4;
@@ -187,185 +197,6 @@ public partial class GbsParser : Parser
     }
 
 
-    public class formula_return : ParserRuleReturnScope
-    {
-        public Formula formula;
-        private object tree;
-        override public object Tree
-        {
-        	get { return tree; }
-        	set { tree = (object) value; }
-        }
-    };
-
-    // $ANTLR start "formula"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:246:1: formula returns [Formula formula] : (c= NUMBER | CONST_ANGLE_DOWN | CONST_ANGLE_UP | CONST_ANGLE_LEFT | CONST_ANGLE_RIGHT | PREDEF_ANGLE_TOWARD_PLAYER );
-    public GbsParser.formula_return formula() // throws RecognitionException [1]
-    {   
-        GbsParser.formula_return retval = new GbsParser.formula_return();
-        retval.Start = input.LT(1);
-
-        object root_0 = null;
-
-        IToken c = null;
-        IToken CONST_ANGLE_DOWN1 = null;
-        IToken CONST_ANGLE_UP2 = null;
-        IToken CONST_ANGLE_LEFT3 = null;
-        IToken CONST_ANGLE_RIGHT4 = null;
-        IToken PREDEF_ANGLE_TOWARD_PLAYER5 = null;
-
-        object c_tree=null;
-        object CONST_ANGLE_DOWN1_tree=null;
-        object CONST_ANGLE_UP2_tree=null;
-        object CONST_ANGLE_LEFT3_tree=null;
-        object CONST_ANGLE_RIGHT4_tree=null;
-        object PREDEF_ANGLE_TOWARD_PLAYER5_tree=null;
-
-        try 
-    	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:247:2: (c= NUMBER | CONST_ANGLE_DOWN | CONST_ANGLE_UP | CONST_ANGLE_LEFT | CONST_ANGLE_RIGHT | PREDEF_ANGLE_TOWARD_PLAYER )
-            int alt1 = 6;
-            switch ( input.LA(1) ) 
-            {
-            case NUMBER:
-            	{
-                alt1 = 1;
-                }
-                break;
-            case CONST_ANGLE_DOWN:
-            	{
-                alt1 = 2;
-                }
-                break;
-            case CONST_ANGLE_UP:
-            	{
-                alt1 = 3;
-                }
-                break;
-            case CONST_ANGLE_LEFT:
-            	{
-                alt1 = 4;
-                }
-                break;
-            case CONST_ANGLE_RIGHT:
-            	{
-                alt1 = 5;
-                }
-                break;
-            case PREDEF_ANGLE_TOWARD_PLAYER:
-            	{
-                alt1 = 6;
-                }
-                break;
-            	default:
-            	    NoViableAltException nvae_d1s0 =
-            	        new NoViableAltException("", 1, 0, input);
-
-            	    throw nvae_d1s0;
-            }
-
-            switch (alt1) 
-            {
-                case 1 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:247:4: c= NUMBER
-                    {
-                    	root_0 = (object)adaptor.GetNilNode();
-
-                    	c=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_formula937); 
-                    		c_tree = (object)adaptor.Create(c);
-                    		adaptor.AddChild(root_0, c_tree);
-
-                    	 retval.formula =  new ConstValueFormula(float.Parse(c.Text)); 
-
-                    }
-                    break;
-                case 2 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:248:4: CONST_ANGLE_DOWN
-                    {
-                    	root_0 = (object)adaptor.GetNilNode();
-
-                    	CONST_ANGLE_DOWN1=(IToken)Match(input,CONST_ANGLE_DOWN,FOLLOW_CONST_ANGLE_DOWN_in_formula944); 
-                    		CONST_ANGLE_DOWN1_tree = (object)adaptor.Create(CONST_ANGLE_DOWN1);
-                    		adaptor.AddChild(root_0, CONST_ANGLE_DOWN1_tree);
-
-                    	 retval.formula =  new ConstValueFormula(MathHelper.ANGLE_DOWN); 
-
-                    }
-                    break;
-                case 3 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:249:4: CONST_ANGLE_UP
-                    {
-                    	root_0 = (object)adaptor.GetNilNode();
-
-                    	CONST_ANGLE_UP2=(IToken)Match(input,CONST_ANGLE_UP,FOLLOW_CONST_ANGLE_UP_in_formula951); 
-                    		CONST_ANGLE_UP2_tree = (object)adaptor.Create(CONST_ANGLE_UP2);
-                    		adaptor.AddChild(root_0, CONST_ANGLE_UP2_tree);
-
-                    	 retval.formula =  new ConstValueFormula(MathHelper.ANGLE_UP); 
-
-                    }
-                    break;
-                case 4 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:250:4: CONST_ANGLE_LEFT
-                    {
-                    	root_0 = (object)adaptor.GetNilNode();
-
-                    	CONST_ANGLE_LEFT3=(IToken)Match(input,CONST_ANGLE_LEFT,FOLLOW_CONST_ANGLE_LEFT_in_formula958); 
-                    		CONST_ANGLE_LEFT3_tree = (object)adaptor.Create(CONST_ANGLE_LEFT3);
-                    		adaptor.AddChild(root_0, CONST_ANGLE_LEFT3_tree);
-
-                    	 retval.formula =  new ConstValueFormula(MathHelper.ANGLE_LEFT); 
-
-                    }
-                    break;
-                case 5 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:251:4: CONST_ANGLE_RIGHT
-                    {
-                    	root_0 = (object)adaptor.GetNilNode();
-
-                    	CONST_ANGLE_RIGHT4=(IToken)Match(input,CONST_ANGLE_RIGHT,FOLLOW_CONST_ANGLE_RIGHT_in_formula965); 
-                    		CONST_ANGLE_RIGHT4_tree = (object)adaptor.Create(CONST_ANGLE_RIGHT4);
-                    		adaptor.AddChild(root_0, CONST_ANGLE_RIGHT4_tree);
-
-                    	 retval.formula =  new ConstValueFormula(MathHelper.ANGLE_RIGHT); 
-
-                    }
-                    break;
-                case 6 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:252:4: PREDEF_ANGLE_TOWARD_PLAYER
-                    {
-                    	root_0 = (object)adaptor.GetNilNode();
-
-                    	PREDEF_ANGLE_TOWARD_PLAYER5=(IToken)Match(input,PREDEF_ANGLE_TOWARD_PLAYER,FOLLOW_PREDEF_ANGLE_TOWARD_PLAYER_in_formula972); 
-                    		PREDEF_ANGLE_TOWARD_PLAYER5_tree = (object)adaptor.Create(PREDEF_ANGLE_TOWARD_PLAYER5);
-                    		adaptor.AddChild(root_0, PREDEF_ANGLE_TOWARD_PLAYER5_tree);
-
-                    	 retval.formula =  new AngleTowardPlayerFormula(); 
-
-                    }
-                    break;
-
-            }
-            retval.Stop = input.LT(-1);
-
-            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
-            	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
-        }
-        catch (RecognitionException re) 
-    	{
-            ReportError(re);
-            Recover(input,re);
-    	// Conversion of the second argument necessary, but harmless
-    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
-
-        }
-        finally 
-    	{
-        }
-        return retval;
-    }
-    // $ANTLR end "formula"
-
     protected class gbs_scope 
     {
         protected internal List<Classdef> classdefs;
@@ -384,7 +215,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "gbs"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:255:1: gbs returns [Gbs s] : ( classdef )* ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:246:1: gbs returns [Gbs s] : ( classdef )* ;
     public GbsParser.gbs_return gbs() // throws RecognitionException [1]
     {   
         gbs_stack.Push(new gbs_scope());
@@ -393,7 +224,7 @@ public partial class GbsParser : Parser
 
         object root_0 = null;
 
-        GbsParser.classdef_return classdef6 = default(GbsParser.classdef_return);
+        GbsParser.classdef_return classdef1 = default(GbsParser.classdef_return);
 
 
 
@@ -402,44 +233,44 @@ public partial class GbsParser : Parser
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:264:2: ( ( classdef )* )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:264:4: ( classdef )*
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:255:2: ( ( classdef )* )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:255:4: ( classdef )*
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:264:4: ( classdef )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:255:4: ( classdef )*
             	do 
             	{
-            	    int alt2 = 2;
-            	    int LA2_0 = input.LA(1);
+            	    int alt1 = 2;
+            	    int LA1_0 = input.LA(1);
 
-            	    if ( ((LA2_0 >= CLASSDEF_ENGINE && LA2_0 <= CLASSDEF_EVENT)) )
+            	    if ( ((LA1_0 >= CLASSDEF_ENGINE && LA1_0 <= CLASSDEF_EVENT)) )
             	    {
-            	        alt2 = 1;
+            	        alt1 = 1;
             	    }
 
 
-            	    switch (alt2) 
+            	    switch (alt1) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:264:4: classdef
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:255:4: classdef
             			    {
-            			    	PushFollow(FOLLOW_classdef_in_gbs1001);
-            			    	classdef6 = classdef();
+            			    	PushFollow(FOLLOW_classdef_in_gbs949);
+            			    	classdef1 = classdef();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, classdef6.Tree);
+            			    	adaptor.AddChild(root_0, classdef1.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop2;
+            			    goto loop1;
             	    }
             	} while (true);
 
-            	loop2:
-            		;	// Stops C# compiler whining that label 'loop2' has no statements
+            	loop1:
+            		;	// Stops C# compiler whining that label 'loop1' has no statements
 
             	 retval.s =  new Gbs(((gbs_scope)gbs_stack.Peek()).classdefs); 
 
@@ -466,6 +297,460 @@ public partial class GbsParser : Parser
     }
     // $ANTLR end "gbs"
 
+    protected class formula_scope 
+    {
+        protected internal List<bool> add;
+        protected internal List<Formula> terms;
+    }
+    protected Stack formula_stack = new Stack();
+
+    public class formula_return : ParserRuleReturnScope
+    {
+        public Formula formula;
+        private object tree;
+        override public object Tree
+        {
+        	get { return tree; }
+        	set { tree = (object) value; }
+        }
+    };
+
+    // $ANTLR start "formula"
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:258:1: formula returns [Formula formula] : a= factor_formula ( '+' b= factor_formula | '-' b= factor_formula )* ;
+    public GbsParser.formula_return formula() // throws RecognitionException [1]
+    {   
+        formula_stack.Push(new formula_scope());
+        GbsParser.formula_return retval = new GbsParser.formula_return();
+        retval.Start = input.LT(1);
+
+        object root_0 = null;
+
+        IToken char_literal2 = null;
+        IToken char_literal3 = null;
+        GbsParser.factor_formula_return a = default(GbsParser.factor_formula_return);
+
+        GbsParser.factor_formula_return b = default(GbsParser.factor_formula_return);
+
+
+        object char_literal2_tree=null;
+        object char_literal3_tree=null;
+
+         
+        	retval.formula::add = new List<bool>();
+        	retval.formula::terms = new List<Formula>();
+
+        try 
+    	{
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:269:2: (a= factor_formula ( '+' b= factor_formula | '-' b= factor_formula )* )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:269:4: a= factor_formula ( '+' b= factor_formula | '-' b= factor_formula )*
+            {
+            	root_0 = (object)adaptor.GetNilNode();
+
+            	PushFollow(FOLLOW_factor_formula_in_formula981);
+            	a = factor_formula();
+            	state.followingStackPointer--;
+
+            	adaptor.AddChild(root_0, a.Tree);
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:269:21: ( '+' b= factor_formula | '-' b= factor_formula )*
+            	do 
+            	{
+            	    int alt2 = 3;
+            	    int LA2_0 = input.LA(1);
+
+            	    if ( (LA2_0 == 54) )
+            	    {
+            	        alt2 = 1;
+            	    }
+            	    else if ( (LA2_0 == 55) )
+            	    {
+            	        alt2 = 2;
+            	    }
+
+
+            	    switch (alt2) 
+            		{
+            			case 1 :
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:269:23: '+' b= factor_formula
+            			    {
+            			    	char_literal2=(IToken)Match(input,54,FOLLOW_54_in_formula985); 
+            			    		char_literal2_tree = (object)adaptor.Create(char_literal2);
+            			    		adaptor.AddChild(root_0, char_literal2_tree);
+
+            			    	PushFollow(FOLLOW_factor_formula_in_formula989);
+            			    	b = factor_formula();
+            			    	state.followingStackPointer--;
+
+            			    	adaptor.AddChild(root_0, b.Tree);
+            			    	 retval.formula::add.Add(true); retval.formula::terms.Add(((b != null) ? b.formula : default(Formula))); 
+
+            			    }
+            			    break;
+            			case 2 :
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:269:108: '-' b= factor_formula
+            			    {
+            			    	char_literal3=(IToken)Match(input,55,FOLLOW_55_in_formula995); 
+            			    		char_literal3_tree = (object)adaptor.Create(char_literal3);
+            			    		adaptor.AddChild(root_0, char_literal3_tree);
+
+            			    	PushFollow(FOLLOW_factor_formula_in_formula999);
+            			    	b = factor_formula();
+            			    	state.followingStackPointer--;
+
+            			    	adaptor.AddChild(root_0, b.Tree);
+            			    	 retval.formula::add.Add(false); retval.formula::terms.Add(((b != null) ? b.formula : default(Formula))); 
+
+            			    }
+            			    break;
+
+            			default:
+            			    goto loop2;
+            	    }
+            	} while (true);
+
+            	loop2:
+            		;	// Stops C# compiler whining that label 'loop2' has no statements
+
+            	 retval.formula =  new RawSumFormula(((a != null) ? a.formula : default(Formula)), retval.formula::add, retval.formula::terms); 
+
+            }
+
+            retval.Stop = input.LT(-1);
+
+            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+            	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
+        }
+        catch (RecognitionException re) 
+    	{
+            ReportError(re);
+            Recover(input,re);
+    	// Conversion of the second argument necessary, but harmless
+    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
+
+        }
+        finally 
+    	{
+            formula_stack.Pop();
+        }
+        return retval;
+    }
+    // $ANTLR end "formula"
+
+    public class factor_formula_return : ParserRuleReturnScope
+    {
+        public Formula formula;
+        private object tree;
+        override public object Tree
+        {
+        	get { return tree; }
+        	set { tree = (object) value; }
+        }
+    };
+
+    // $ANTLR start "factor_formula"
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:272:1: factor_formula returns [Formula formula] : a= simple_formula ( '*' b= simple_formula )* ;
+    public GbsParser.factor_formula_return factor_formula() // throws RecognitionException [1]
+    {   
+        GbsParser.factor_formula_return retval = new GbsParser.factor_formula_return();
+        retval.Start = input.LT(1);
+
+        object root_0 = null;
+
+        IToken char_literal4 = null;
+        GbsParser.simple_formula_return a = default(GbsParser.simple_formula_return);
+
+        GbsParser.simple_formula_return b = default(GbsParser.simple_formula_return);
+
+
+        object char_literal4_tree=null;
+
+        try 
+    	{
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:273:2: (a= simple_formula ( '*' b= simple_formula )* )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:273:4: a= simple_formula ( '*' b= simple_formula )*
+            {
+            	root_0 = (object)adaptor.GetNilNode();
+
+            	PushFollow(FOLLOW_simple_formula_in_factor_formula1024);
+            	a = simple_formula();
+            	state.followingStackPointer--;
+
+            	adaptor.AddChild(root_0, a.Tree);
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:273:21: ( '*' b= simple_formula )*
+            	do 
+            	{
+            	    int alt3 = 2;
+            	    int LA3_0 = input.LA(1);
+
+            	    if ( (LA3_0 == 56) )
+            	    {
+            	        alt3 = 1;
+            	    }
+
+
+            	    switch (alt3) 
+            		{
+            			case 1 :
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:273:23: '*' b= simple_formula
+            			    {
+            			    	char_literal4=(IToken)Match(input,56,FOLLOW_56_in_factor_formula1028); 
+            			    		char_literal4_tree = (object)adaptor.Create(char_literal4);
+            			    		adaptor.AddChild(root_0, char_literal4_tree);
+
+            			    	PushFollow(FOLLOW_simple_formula_in_factor_formula1032);
+            			    	b = simple_formula();
+            			    	state.followingStackPointer--;
+
+            			    	adaptor.AddChild(root_0, b.Tree);
+
+            			    }
+            			    break;
+
+            			default:
+            			    goto loop3;
+            	    }
+            	} while (true);
+
+            	loop3:
+            		;	// Stops C# compiler whining that label 'loop3' has no statements
+
+
+            }
+
+            retval.Stop = input.LT(-1);
+
+            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+            	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
+        }
+        catch (RecognitionException re) 
+    	{
+            ReportError(re);
+            Recover(input,re);
+    	// Conversion of the second argument necessary, but harmless
+    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
+
+        }
+        finally 
+    	{
+        }
+        return retval;
+    }
+    // $ANTLR end "factor_formula"
+
+    public class simple_formula_return : ParserRuleReturnScope
+    {
+        public Formula formula;
+        private object tree;
+        override public object Tree
+        {
+        	get { return tree; }
+        	set { tree = (object) value; }
+        }
+    };
+
+    // $ANTLR start "simple_formula"
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:276:1: simple_formula returns [Formula formula] : (c= NUMBER | c= NUMBER '°' | CONST_ANGLE_DOWN | CONST_ANGLE_UP | CONST_ANGLE_LEFT | CONST_ANGLE_RIGHT | PREDEF_ANGLE_TOWARD_PLAYER | a= NUMBER '..' b= NUMBER | '(' f= formula ')' );
+    public GbsParser.simple_formula_return simple_formula() // throws RecognitionException [1]
+    {   
+        GbsParser.simple_formula_return retval = new GbsParser.simple_formula_return();
+        retval.Start = input.LT(1);
+
+        object root_0 = null;
+
+        IToken c = null;
+        IToken a = null;
+        IToken b = null;
+        IToken char_literal5 = null;
+        IToken CONST_ANGLE_DOWN6 = null;
+        IToken CONST_ANGLE_UP7 = null;
+        IToken CONST_ANGLE_LEFT8 = null;
+        IToken CONST_ANGLE_RIGHT9 = null;
+        IToken PREDEF_ANGLE_TOWARD_PLAYER10 = null;
+        IToken string_literal11 = null;
+        IToken char_literal12 = null;
+        IToken char_literal13 = null;
+        GbsParser.formula_return f = default(GbsParser.formula_return);
+
+
+        object c_tree=null;
+        object a_tree=null;
+        object b_tree=null;
+        object char_literal5_tree=null;
+        object CONST_ANGLE_DOWN6_tree=null;
+        object CONST_ANGLE_UP7_tree=null;
+        object CONST_ANGLE_LEFT8_tree=null;
+        object CONST_ANGLE_RIGHT9_tree=null;
+        object PREDEF_ANGLE_TOWARD_PLAYER10_tree=null;
+        object string_literal11_tree=null;
+        object char_literal12_tree=null;
+        object char_literal13_tree=null;
+
+        try 
+    	{
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:277:2: (c= NUMBER | c= NUMBER '°' | CONST_ANGLE_DOWN | CONST_ANGLE_UP | CONST_ANGLE_LEFT | CONST_ANGLE_RIGHT | PREDEF_ANGLE_TOWARD_PLAYER | a= NUMBER '..' b= NUMBER | '(' f= formula ')' )
+            int alt4 = 9;
+            alt4 = dfa4.Predict(input);
+            switch (alt4) 
+            {
+                case 1 :
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:277:4: c= NUMBER
+                    {
+                    	root_0 = (object)adaptor.GetNilNode();
+
+                    	c=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_simple_formula1053); 
+                    		c_tree = (object)adaptor.Create(c);
+                    		adaptor.AddChild(root_0, c_tree);
+
+                    	 retval.formula =  new ConstValueFormula(float.Parse(c.Text)); 
+
+                    }
+                    break;
+                case 2 :
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:278:4: c= NUMBER '°'
+                    {
+                    	root_0 = (object)adaptor.GetNilNode();
+
+                    	c=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_simple_formula1062); 
+                    		c_tree = (object)adaptor.Create(c);
+                    		adaptor.AddChild(root_0, c_tree);
+
+                    	char_literal5=(IToken)Match(input,57,FOLLOW_57_in_simple_formula1064); 
+                    		char_literal5_tree = (object)adaptor.Create(char_literal5);
+                    		adaptor.AddChild(root_0, char_literal5_tree);
+
+                    	 retval.formula =  new ConstValueFormula(MathHelper.DegreeToRadian(float.Parse(c.Text))); 
+
+                    }
+                    break;
+                case 3 :
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:279:4: CONST_ANGLE_DOWN
+                    {
+                    	root_0 = (object)adaptor.GetNilNode();
+
+                    	CONST_ANGLE_DOWN6=(IToken)Match(input,CONST_ANGLE_DOWN,FOLLOW_CONST_ANGLE_DOWN_in_simple_formula1071); 
+                    		CONST_ANGLE_DOWN6_tree = (object)adaptor.Create(CONST_ANGLE_DOWN6);
+                    		adaptor.AddChild(root_0, CONST_ANGLE_DOWN6_tree);
+
+                    	 retval.formula =  new ConstValueFormula(MathHelper.ANGLE_DOWN); 
+
+                    }
+                    break;
+                case 4 :
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:280:4: CONST_ANGLE_UP
+                    {
+                    	root_0 = (object)adaptor.GetNilNode();
+
+                    	CONST_ANGLE_UP7=(IToken)Match(input,CONST_ANGLE_UP,FOLLOW_CONST_ANGLE_UP_in_simple_formula1078); 
+                    		CONST_ANGLE_UP7_tree = (object)adaptor.Create(CONST_ANGLE_UP7);
+                    		adaptor.AddChild(root_0, CONST_ANGLE_UP7_tree);
+
+                    	 retval.formula =  new ConstValueFormula(MathHelper.ANGLE_UP); 
+
+                    }
+                    break;
+                case 5 :
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:281:4: CONST_ANGLE_LEFT
+                    {
+                    	root_0 = (object)adaptor.GetNilNode();
+
+                    	CONST_ANGLE_LEFT8=(IToken)Match(input,CONST_ANGLE_LEFT,FOLLOW_CONST_ANGLE_LEFT_in_simple_formula1085); 
+                    		CONST_ANGLE_LEFT8_tree = (object)adaptor.Create(CONST_ANGLE_LEFT8);
+                    		adaptor.AddChild(root_0, CONST_ANGLE_LEFT8_tree);
+
+                    	 retval.formula =  new ConstValueFormula(MathHelper.ANGLE_LEFT); 
+
+                    }
+                    break;
+                case 6 :
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:282:4: CONST_ANGLE_RIGHT
+                    {
+                    	root_0 = (object)adaptor.GetNilNode();
+
+                    	CONST_ANGLE_RIGHT9=(IToken)Match(input,CONST_ANGLE_RIGHT,FOLLOW_CONST_ANGLE_RIGHT_in_simple_formula1092); 
+                    		CONST_ANGLE_RIGHT9_tree = (object)adaptor.Create(CONST_ANGLE_RIGHT9);
+                    		adaptor.AddChild(root_0, CONST_ANGLE_RIGHT9_tree);
+
+                    	 retval.formula =  new ConstValueFormula(MathHelper.ANGLE_RIGHT); 
+
+                    }
+                    break;
+                case 7 :
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:283:4: PREDEF_ANGLE_TOWARD_PLAYER
+                    {
+                    	root_0 = (object)adaptor.GetNilNode();
+
+                    	PREDEF_ANGLE_TOWARD_PLAYER10=(IToken)Match(input,PREDEF_ANGLE_TOWARD_PLAYER,FOLLOW_PREDEF_ANGLE_TOWARD_PLAYER_in_simple_formula1099); 
+                    		PREDEF_ANGLE_TOWARD_PLAYER10_tree = (object)adaptor.Create(PREDEF_ANGLE_TOWARD_PLAYER10);
+                    		adaptor.AddChild(root_0, PREDEF_ANGLE_TOWARD_PLAYER10_tree);
+
+                    	 retval.formula =  new AngleTowardPlayerFormula(); 
+
+                    }
+                    break;
+                case 8 :
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:284:4: a= NUMBER '..' b= NUMBER
+                    {
+                    	root_0 = (object)adaptor.GetNilNode();
+
+                    	a=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_simple_formula1108); 
+                    		a_tree = (object)adaptor.Create(a);
+                    		adaptor.AddChild(root_0, a_tree);
+
+                    	string_literal11=(IToken)Match(input,58,FOLLOW_58_in_simple_formula1110); 
+                    		string_literal11_tree = (object)adaptor.Create(string_literal11);
+                    		adaptor.AddChild(root_0, string_literal11_tree);
+
+                    	b=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_simple_formula1114); 
+                    		b_tree = (object)adaptor.Create(b);
+                    		adaptor.AddChild(root_0, b_tree);
+
+                    	 retval.formula =  new RangeFormula(float.Parse(a.Text), float.Parse(b.Text)); 
+
+                    }
+                    break;
+                case 9 :
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:285:4: '(' f= formula ')'
+                    {
+                    	root_0 = (object)adaptor.GetNilNode();
+
+                    	char_literal12=(IToken)Match(input,59,FOLLOW_59_in_simple_formula1121); 
+                    		char_literal12_tree = (object)adaptor.Create(char_literal12);
+                    		adaptor.AddChild(root_0, char_literal12_tree);
+
+                    	PushFollow(FOLLOW_formula_in_simple_formula1125);
+                    	f = formula();
+                    	state.followingStackPointer--;
+
+                    	adaptor.AddChild(root_0, f.Tree);
+                    	char_literal13=(IToken)Match(input,60,FOLLOW_60_in_simple_formula1127); 
+                    		char_literal13_tree = (object)adaptor.Create(char_literal13);
+                    		adaptor.AddChild(root_0, char_literal13_tree);
+
+                    	 retval.formula =  ((f != null) ? f.formula : default(Formula)); 
+
+                    }
+                    break;
+
+            }
+            retval.Stop = input.LT(-1);
+
+            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+            	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
+        }
+        catch (RecognitionException re) 
+    	{
+            ReportError(re);
+            Recover(input,re);
+    	// Conversion of the second argument necessary, but harmless
+    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
+
+        }
+        finally 
+    	{
+        }
+        return retval;
+    }
+    // $ANTLR end "simple_formula"
+
     public class param_return : ParserRuleReturnScope
     {
         public Param p;
@@ -478,7 +763,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "param"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:267:1: param returns [Param p] : (fp= fps_param | gap= gamearea_param | pp= position_param | sp= speed_param | ap= animation_param | cp= color_param | scp= scrolling_param );
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:288:1: param returns [Param p] : (fp= fps_param | gap= gamearea_param | pp= position_param | sp= speed_param | ap= animation_param | cp= color_param | scp= scrolling_param );
     public GbsParser.param_return param() // throws RecognitionException [1]
     {   
         GbsParser.param_return retval = new GbsParser.param_return();
@@ -504,60 +789,60 @@ public partial class GbsParser : Parser
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:268:2: (fp= fps_param | gap= gamearea_param | pp= position_param | sp= speed_param | ap= animation_param | cp= color_param | scp= scrolling_param )
-            int alt3 = 7;
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:289:2: (fp= fps_param | gap= gamearea_param | pp= position_param | sp= speed_param | ap= animation_param | cp= color_param | scp= scrolling_param )
+            int alt5 = 7;
             switch ( input.LA(1) ) 
             {
             case PARAM_FPS:
             	{
-                alt3 = 1;
+                alt5 = 1;
                 }
                 break;
             case PARAM_GAMEAREA:
             	{
-                alt3 = 2;
+                alt5 = 2;
                 }
                 break;
             case PARAM_POSITION:
             	{
-                alt3 = 3;
+                alt5 = 3;
                 }
                 break;
             case PARAM_SPEED:
             	{
-                alt3 = 4;
+                alt5 = 4;
                 }
                 break;
             case PARAM_ANIMATION:
             	{
-                alt3 = 5;
+                alt5 = 5;
                 }
                 break;
             case PARAM_COLOR:
             	{
-                alt3 = 6;
+                alt5 = 6;
                 }
                 break;
             case PARAM_SCROLLING:
             	{
-                alt3 = 7;
+                alt5 = 7;
                 }
                 break;
             	default:
-            	    NoViableAltException nvae_d3s0 =
-            	        new NoViableAltException("", 3, 0, input);
+            	    NoViableAltException nvae_d5s0 =
+            	        new NoViableAltException("", 5, 0, input);
 
-            	    throw nvae_d3s0;
+            	    throw nvae_d5s0;
             }
 
-            switch (alt3) 
+            switch (alt5) 
             {
                 case 1 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:268:4: fp= fps_param
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:289:4: fp= fps_param
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_fps_param_in_param1021);
+                    	PushFollow(FOLLOW_fps_param_in_param1147);
                     	fp = fps_param();
                     	state.followingStackPointer--;
 
@@ -567,11 +852,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:269:4: gap= gamearea_param
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:290:4: gap= gamearea_param
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_gamearea_param_in_param1037);
+                    	PushFollow(FOLLOW_gamearea_param_in_param1163);
                     	gap = gamearea_param();
                     	state.followingStackPointer--;
 
@@ -581,11 +866,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 3 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:270:4: pp= position_param
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:291:4: pp= position_param
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_position_param_in_param1047);
+                    	PushFollow(FOLLOW_position_param_in_param1173);
                     	pp = position_param();
                     	state.followingStackPointer--;
 
@@ -595,11 +880,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 4 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:271:4: sp= speed_param
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:292:4: sp= speed_param
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_speed_param_in_param1058);
+                    	PushFollow(FOLLOW_speed_param_in_param1184);
                     	sp = speed_param();
                     	state.followingStackPointer--;
 
@@ -609,11 +894,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 5 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:272:4: ap= animation_param
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:293:4: ap= animation_param
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_animation_param_in_param1072);
+                    	PushFollow(FOLLOW_animation_param_in_param1198);
                     	ap = animation_param();
                     	state.followingStackPointer--;
 
@@ -623,11 +908,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 6 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:273:4: cp= color_param
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:294:4: cp= color_param
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_color_param_in_param1082);
+                    	PushFollow(FOLLOW_color_param_in_param1208);
                     	cp = color_param();
                     	state.followingStackPointer--;
 
@@ -637,11 +922,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 7 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:274:4: scp= scrolling_param
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:295:4: scp= scrolling_param
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_scrolling_param_in_param1096);
+                    	PushFollow(FOLLOW_scrolling_param_in_param1222);
                     	scp = scrolling_param();
                     	state.followingStackPointer--;
 
@@ -684,7 +969,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "fps_param"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:277:1: fps_param returns [Param p] : PARAM_FPS '=' fps= NUMBER ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:298:1: fps_param returns [Param p] : PARAM_FPS '=' fps= NUMBER ;
     public GbsParser.fps_param_return fps_param() // throws RecognitionException [1]
     {   
         GbsParser.fps_param_return retval = new GbsParser.fps_param_return();
@@ -693,29 +978,29 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken fps = null;
-        IToken PARAM_FPS7 = null;
-        IToken char_literal8 = null;
+        IToken PARAM_FPS14 = null;
+        IToken char_literal15 = null;
 
         object fps_tree=null;
-        object PARAM_FPS7_tree=null;
-        object char_literal8_tree=null;
+        object PARAM_FPS14_tree=null;
+        object char_literal15_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:278:2: ( PARAM_FPS '=' fps= NUMBER )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:278:4: PARAM_FPS '=' fps= NUMBER
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:299:2: ( PARAM_FPS '=' fps= NUMBER )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:299:4: PARAM_FPS '=' fps= NUMBER
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PARAM_FPS7=(IToken)Match(input,PARAM_FPS,FOLLOW_PARAM_FPS_in_fps_param1113); 
-            		PARAM_FPS7_tree = (object)adaptor.Create(PARAM_FPS7);
-            		adaptor.AddChild(root_0, PARAM_FPS7_tree);
+            	PARAM_FPS14=(IToken)Match(input,PARAM_FPS,FOLLOW_PARAM_FPS_in_fps_param1239); 
+            		PARAM_FPS14_tree = (object)adaptor.Create(PARAM_FPS14);
+            		adaptor.AddChild(root_0, PARAM_FPS14_tree);
 
-            	char_literal8=(IToken)Match(input,54,FOLLOW_54_in_fps_param1115); 
-            		char_literal8_tree = (object)adaptor.Create(char_literal8);
-            		adaptor.AddChild(root_0, char_literal8_tree);
+            	char_literal15=(IToken)Match(input,61,FOLLOW_61_in_fps_param1241); 
+            		char_literal15_tree = (object)adaptor.Create(char_literal15);
+            		adaptor.AddChild(root_0, char_literal15_tree);
 
-            	fps=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_fps_param1119); 
+            	fps=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_fps_param1245); 
             		fps_tree = (object)adaptor.Create(fps);
             		adaptor.AddChild(root_0, fps_tree);
 
@@ -755,7 +1040,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "gamearea_param"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:281:1: gamearea_param returns [Param p] : PARAM_GAMEAREA '=' area= RECTANGLE ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:302:1: gamearea_param returns [Param p] : PARAM_GAMEAREA '=' area= RECTANGLE ;
     public GbsParser.gamearea_param_return gamearea_param() // throws RecognitionException [1]
     {   
         GbsParser.gamearea_param_return retval = new GbsParser.gamearea_param_return();
@@ -764,29 +1049,29 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken area = null;
-        IToken PARAM_GAMEAREA9 = null;
-        IToken char_literal10 = null;
+        IToken PARAM_GAMEAREA16 = null;
+        IToken char_literal17 = null;
 
         object area_tree=null;
-        object PARAM_GAMEAREA9_tree=null;
-        object char_literal10_tree=null;
+        object PARAM_GAMEAREA16_tree=null;
+        object char_literal17_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:282:2: ( PARAM_GAMEAREA '=' area= RECTANGLE )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:282:4: PARAM_GAMEAREA '=' area= RECTANGLE
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:303:2: ( PARAM_GAMEAREA '=' area= RECTANGLE )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:303:4: PARAM_GAMEAREA '=' area= RECTANGLE
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PARAM_GAMEAREA9=(IToken)Match(input,PARAM_GAMEAREA,FOLLOW_PARAM_GAMEAREA_in_gamearea_param1136); 
-            		PARAM_GAMEAREA9_tree = (object)adaptor.Create(PARAM_GAMEAREA9);
-            		adaptor.AddChild(root_0, PARAM_GAMEAREA9_tree);
+            	PARAM_GAMEAREA16=(IToken)Match(input,PARAM_GAMEAREA,FOLLOW_PARAM_GAMEAREA_in_gamearea_param1262); 
+            		PARAM_GAMEAREA16_tree = (object)adaptor.Create(PARAM_GAMEAREA16);
+            		adaptor.AddChild(root_0, PARAM_GAMEAREA16_tree);
 
-            	char_literal10=(IToken)Match(input,54,FOLLOW_54_in_gamearea_param1138); 
-            		char_literal10_tree = (object)adaptor.Create(char_literal10);
-            		adaptor.AddChild(root_0, char_literal10_tree);
+            	char_literal17=(IToken)Match(input,61,FOLLOW_61_in_gamearea_param1264); 
+            		char_literal17_tree = (object)adaptor.Create(char_literal17);
+            		adaptor.AddChild(root_0, char_literal17_tree);
 
-            	area=(IToken)Match(input,RECTANGLE,FOLLOW_RECTANGLE_in_gamearea_param1142); 
+            	area=(IToken)Match(input,RECTANGLE,FOLLOW_RECTANGLE_in_gamearea_param1268); 
             		area_tree = (object)adaptor.Create(area);
             		adaptor.AddChild(root_0, area_tree);
 
@@ -826,7 +1111,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "position_param"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:285:1: position_param returns [Param p] : PARAM_POSITION '=' pos= POINT ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:306:1: position_param returns [Param p] : PARAM_POSITION '=' pos= POINT ;
     public GbsParser.position_param_return position_param() // throws RecognitionException [1]
     {   
         GbsParser.position_param_return retval = new GbsParser.position_param_return();
@@ -835,29 +1120,29 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken pos = null;
-        IToken PARAM_POSITION11 = null;
-        IToken char_literal12 = null;
+        IToken PARAM_POSITION18 = null;
+        IToken char_literal19 = null;
 
         object pos_tree=null;
-        object PARAM_POSITION11_tree=null;
-        object char_literal12_tree=null;
+        object PARAM_POSITION18_tree=null;
+        object char_literal19_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:286:2: ( PARAM_POSITION '=' pos= POINT )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:286:4: PARAM_POSITION '=' pos= POINT
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:307:2: ( PARAM_POSITION '=' pos= POINT )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:307:4: PARAM_POSITION '=' pos= POINT
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PARAM_POSITION11=(IToken)Match(input,PARAM_POSITION,FOLLOW_PARAM_POSITION_in_position_param1160); 
-            		PARAM_POSITION11_tree = (object)adaptor.Create(PARAM_POSITION11);
-            		adaptor.AddChild(root_0, PARAM_POSITION11_tree);
+            	PARAM_POSITION18=(IToken)Match(input,PARAM_POSITION,FOLLOW_PARAM_POSITION_in_position_param1286); 
+            		PARAM_POSITION18_tree = (object)adaptor.Create(PARAM_POSITION18);
+            		adaptor.AddChild(root_0, PARAM_POSITION18_tree);
 
-            	char_literal12=(IToken)Match(input,54,FOLLOW_54_in_position_param1162); 
-            		char_literal12_tree = (object)adaptor.Create(char_literal12);
-            		adaptor.AddChild(root_0, char_literal12_tree);
+            	char_literal19=(IToken)Match(input,61,FOLLOW_61_in_position_param1288); 
+            		char_literal19_tree = (object)adaptor.Create(char_literal19);
+            		adaptor.AddChild(root_0, char_literal19_tree);
 
-            	pos=(IToken)Match(input,POINT,FOLLOW_POINT_in_position_param1166); 
+            	pos=(IToken)Match(input,POINT,FOLLOW_POINT_in_position_param1292); 
             		pos_tree = (object)adaptor.Create(pos);
             		adaptor.AddChild(root_0, pos_tree);
 
@@ -897,7 +1182,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "speed_param"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:289:1: speed_param returns [Param p] : PARAM_SPEED '=' speed= NUMBER ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:310:1: speed_param returns [Param p] : PARAM_SPEED '=' speed= NUMBER ;
     public GbsParser.speed_param_return speed_param() // throws RecognitionException [1]
     {   
         GbsParser.speed_param_return retval = new GbsParser.speed_param_return();
@@ -906,29 +1191,29 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken speed = null;
-        IToken PARAM_SPEED13 = null;
-        IToken char_literal14 = null;
+        IToken PARAM_SPEED20 = null;
+        IToken char_literal21 = null;
 
         object speed_tree=null;
-        object PARAM_SPEED13_tree=null;
-        object char_literal14_tree=null;
+        object PARAM_SPEED20_tree=null;
+        object char_literal21_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:290:2: ( PARAM_SPEED '=' speed= NUMBER )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:290:4: PARAM_SPEED '=' speed= NUMBER
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:311:2: ( PARAM_SPEED '=' speed= NUMBER )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:311:4: PARAM_SPEED '=' speed= NUMBER
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PARAM_SPEED13=(IToken)Match(input,PARAM_SPEED,FOLLOW_PARAM_SPEED_in_speed_param1184); 
-            		PARAM_SPEED13_tree = (object)adaptor.Create(PARAM_SPEED13);
-            		adaptor.AddChild(root_0, PARAM_SPEED13_tree);
+            	PARAM_SPEED20=(IToken)Match(input,PARAM_SPEED,FOLLOW_PARAM_SPEED_in_speed_param1310); 
+            		PARAM_SPEED20_tree = (object)adaptor.Create(PARAM_SPEED20);
+            		adaptor.AddChild(root_0, PARAM_SPEED20_tree);
 
-            	char_literal14=(IToken)Match(input,54,FOLLOW_54_in_speed_param1186); 
-            		char_literal14_tree = (object)adaptor.Create(char_literal14);
-            		adaptor.AddChild(root_0, char_literal14_tree);
+            	char_literal21=(IToken)Match(input,61,FOLLOW_61_in_speed_param1312); 
+            		char_literal21_tree = (object)adaptor.Create(char_literal21);
+            		adaptor.AddChild(root_0, char_literal21_tree);
 
-            	speed=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_speed_param1190); 
+            	speed=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_speed_param1316); 
             		speed_tree = (object)adaptor.Create(speed);
             		adaptor.AddChild(root_0, speed_tree);
 
@@ -968,7 +1253,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "animation_param"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:293:1: animation_param returns [Param p] : PARAM_ANIMATION '=' anim= STRING ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:314:1: animation_param returns [Param p] : PARAM_ANIMATION '=' anim= STRING ;
     public GbsParser.animation_param_return animation_param() // throws RecognitionException [1]
     {   
         GbsParser.animation_param_return retval = new GbsParser.animation_param_return();
@@ -977,29 +1262,29 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken anim = null;
-        IToken PARAM_ANIMATION15 = null;
-        IToken char_literal16 = null;
+        IToken PARAM_ANIMATION22 = null;
+        IToken char_literal23 = null;
 
         object anim_tree=null;
-        object PARAM_ANIMATION15_tree=null;
-        object char_literal16_tree=null;
+        object PARAM_ANIMATION22_tree=null;
+        object char_literal23_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:294:2: ( PARAM_ANIMATION '=' anim= STRING )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:294:4: PARAM_ANIMATION '=' anim= STRING
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:315:2: ( PARAM_ANIMATION '=' anim= STRING )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:315:4: PARAM_ANIMATION '=' anim= STRING
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PARAM_ANIMATION15=(IToken)Match(input,PARAM_ANIMATION,FOLLOW_PARAM_ANIMATION_in_animation_param1208); 
-            		PARAM_ANIMATION15_tree = (object)adaptor.Create(PARAM_ANIMATION15);
-            		adaptor.AddChild(root_0, PARAM_ANIMATION15_tree);
+            	PARAM_ANIMATION22=(IToken)Match(input,PARAM_ANIMATION,FOLLOW_PARAM_ANIMATION_in_animation_param1334); 
+            		PARAM_ANIMATION22_tree = (object)adaptor.Create(PARAM_ANIMATION22);
+            		adaptor.AddChild(root_0, PARAM_ANIMATION22_tree);
 
-            	char_literal16=(IToken)Match(input,54,FOLLOW_54_in_animation_param1210); 
-            		char_literal16_tree = (object)adaptor.Create(char_literal16);
-            		adaptor.AddChild(root_0, char_literal16_tree);
+            	char_literal23=(IToken)Match(input,61,FOLLOW_61_in_animation_param1336); 
+            		char_literal23_tree = (object)adaptor.Create(char_literal23);
+            		adaptor.AddChild(root_0, char_literal23_tree);
 
-            	anim=(IToken)Match(input,STRING,FOLLOW_STRING_in_animation_param1214); 
+            	anim=(IToken)Match(input,STRING,FOLLOW_STRING_in_animation_param1340); 
             		anim_tree = (object)adaptor.Create(anim);
             		adaptor.AddChild(root_0, anim_tree);
 
@@ -1039,7 +1324,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "color_param"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:297:1: color_param returns [Param p] : PARAM_COLOR '=' color= COLOR ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:318:1: color_param returns [Param p] : PARAM_COLOR '=' color= COLOR ;
     public GbsParser.color_param_return color_param() // throws RecognitionException [1]
     {   
         GbsParser.color_param_return retval = new GbsParser.color_param_return();
@@ -1048,29 +1333,29 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken color = null;
-        IToken PARAM_COLOR17 = null;
-        IToken char_literal18 = null;
+        IToken PARAM_COLOR24 = null;
+        IToken char_literal25 = null;
 
         object color_tree=null;
-        object PARAM_COLOR17_tree=null;
-        object char_literal18_tree=null;
+        object PARAM_COLOR24_tree=null;
+        object char_literal25_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:298:2: ( PARAM_COLOR '=' color= COLOR )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:298:4: PARAM_COLOR '=' color= COLOR
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:319:2: ( PARAM_COLOR '=' color= COLOR )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:319:4: PARAM_COLOR '=' color= COLOR
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PARAM_COLOR17=(IToken)Match(input,PARAM_COLOR,FOLLOW_PARAM_COLOR_in_color_param1232); 
-            		PARAM_COLOR17_tree = (object)adaptor.Create(PARAM_COLOR17);
-            		adaptor.AddChild(root_0, PARAM_COLOR17_tree);
+            	PARAM_COLOR24=(IToken)Match(input,PARAM_COLOR,FOLLOW_PARAM_COLOR_in_color_param1358); 
+            		PARAM_COLOR24_tree = (object)adaptor.Create(PARAM_COLOR24);
+            		adaptor.AddChild(root_0, PARAM_COLOR24_tree);
 
-            	char_literal18=(IToken)Match(input,54,FOLLOW_54_in_color_param1234); 
-            		char_literal18_tree = (object)adaptor.Create(char_literal18);
-            		adaptor.AddChild(root_0, char_literal18_tree);
+            	char_literal25=(IToken)Match(input,61,FOLLOW_61_in_color_param1360); 
+            		char_literal25_tree = (object)adaptor.Create(char_literal25);
+            		adaptor.AddChild(root_0, char_literal25_tree);
 
-            	color=(IToken)Match(input,COLOR,FOLLOW_COLOR_in_color_param1238); 
+            	color=(IToken)Match(input,COLOR,FOLLOW_COLOR_in_color_param1364); 
             		color_tree = (object)adaptor.Create(color);
             		adaptor.AddChild(root_0, color_tree);
 
@@ -1110,7 +1395,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "scrolling_param"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:301:1: scrolling_param returns [Param p] : PARAM_SCROLLING '=' dir= DIRECTION ',' speed= NUMBER ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:322:1: scrolling_param returns [Param p] : PARAM_SCROLLING '=' dir= DIRECTION ',' speed= NUMBER ;
     public GbsParser.scrolling_param_return scrolling_param() // throws RecognitionException [1]
     {   
         GbsParser.scrolling_param_return retval = new GbsParser.scrolling_param_return();
@@ -1120,40 +1405,40 @@ public partial class GbsParser : Parser
 
         IToken dir = null;
         IToken speed = null;
-        IToken PARAM_SCROLLING19 = null;
-        IToken char_literal20 = null;
-        IToken char_literal21 = null;
+        IToken PARAM_SCROLLING26 = null;
+        IToken char_literal27 = null;
+        IToken char_literal28 = null;
 
         object dir_tree=null;
         object speed_tree=null;
-        object PARAM_SCROLLING19_tree=null;
-        object char_literal20_tree=null;
-        object char_literal21_tree=null;
+        object PARAM_SCROLLING26_tree=null;
+        object char_literal27_tree=null;
+        object char_literal28_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:302:2: ( PARAM_SCROLLING '=' dir= DIRECTION ',' speed= NUMBER )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:302:4: PARAM_SCROLLING '=' dir= DIRECTION ',' speed= NUMBER
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:323:2: ( PARAM_SCROLLING '=' dir= DIRECTION ',' speed= NUMBER )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:323:4: PARAM_SCROLLING '=' dir= DIRECTION ',' speed= NUMBER
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PARAM_SCROLLING19=(IToken)Match(input,PARAM_SCROLLING,FOLLOW_PARAM_SCROLLING_in_scrolling_param1256); 
-            		PARAM_SCROLLING19_tree = (object)adaptor.Create(PARAM_SCROLLING19);
-            		adaptor.AddChild(root_0, PARAM_SCROLLING19_tree);
+            	PARAM_SCROLLING26=(IToken)Match(input,PARAM_SCROLLING,FOLLOW_PARAM_SCROLLING_in_scrolling_param1382); 
+            		PARAM_SCROLLING26_tree = (object)adaptor.Create(PARAM_SCROLLING26);
+            		adaptor.AddChild(root_0, PARAM_SCROLLING26_tree);
 
-            	char_literal20=(IToken)Match(input,54,FOLLOW_54_in_scrolling_param1258); 
-            		char_literal20_tree = (object)adaptor.Create(char_literal20);
-            		adaptor.AddChild(root_0, char_literal20_tree);
+            	char_literal27=(IToken)Match(input,61,FOLLOW_61_in_scrolling_param1384); 
+            		char_literal27_tree = (object)adaptor.Create(char_literal27);
+            		adaptor.AddChild(root_0, char_literal27_tree);
 
-            	dir=(IToken)Match(input,DIRECTION,FOLLOW_DIRECTION_in_scrolling_param1262); 
+            	dir=(IToken)Match(input,DIRECTION,FOLLOW_DIRECTION_in_scrolling_param1388); 
             		dir_tree = (object)adaptor.Create(dir);
             		adaptor.AddChild(root_0, dir_tree);
 
-            	char_literal21=(IToken)Match(input,55,FOLLOW_55_in_scrolling_param1264); 
-            		char_literal21_tree = (object)adaptor.Create(char_literal21);
-            		adaptor.AddChild(root_0, char_literal21_tree);
+            	char_literal28=(IToken)Match(input,62,FOLLOW_62_in_scrolling_param1390); 
+            		char_literal28_tree = (object)adaptor.Create(char_literal28);
+            		adaptor.AddChild(root_0, char_literal28_tree);
 
-            	speed=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_scrolling_param1268); 
+            	speed=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_scrolling_param1394); 
             		speed_tree = (object)adaptor.Create(speed);
             		adaptor.AddChild(root_0, speed_tree);
 
@@ -1200,7 +1485,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "classdef"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:305:1: classdef returns [Classdef en] : (ee= engine_classdef | pe= player_classdef | be= bullet_classdef | ene= enemy_classdef | eve= event_classdef | ste= state_classdef | se= script_classdef );
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:326:1: classdef returns [Classdef en] : (ee= engine_classdef | pe= player_classdef | be= bullet_classdef | ene= enemy_classdef | eve= event_classdef | ste= state_classdef | se= script_classdef );
     public GbsParser.classdef_return classdef() // throws RecognitionException [1]
     {   
         classdef_stack.Push(new classdef_scope());
@@ -1231,60 +1516,60 @@ public partial class GbsParser : Parser
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:316:2: (ee= engine_classdef | pe= player_classdef | be= bullet_classdef | ene= enemy_classdef | eve= event_classdef | ste= state_classdef | se= script_classdef )
-            int alt4 = 7;
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:337:2: (ee= engine_classdef | pe= player_classdef | be= bullet_classdef | ene= enemy_classdef | eve= event_classdef | ste= state_classdef | se= script_classdef )
+            int alt6 = 7;
             switch ( input.LA(1) ) 
             {
             case CLASSDEF_ENGINE:
             	{
-                alt4 = 1;
+                alt6 = 1;
                 }
                 break;
             case CLASSDEF_PLAYER:
             	{
-                alt4 = 2;
+                alt6 = 2;
                 }
                 break;
             case CLASSDEF_BULLET:
             	{
-                alt4 = 3;
+                alt6 = 3;
                 }
                 break;
             case CLASSDEF_ENEMY:
             	{
-                alt4 = 4;
+                alt6 = 4;
                 }
                 break;
             case CLASSDEF_EVENT:
             	{
-                alt4 = 5;
+                alt6 = 5;
                 }
                 break;
             case CLASSDEF_STATE:
             	{
-                alt4 = 6;
+                alt6 = 6;
                 }
                 break;
             case CLASSDEF_SCRIPT:
             	{
-                alt4 = 7;
+                alt6 = 7;
                 }
                 break;
             	default:
-            	    NoViableAltException nvae_d4s0 =
-            	        new NoViableAltException("", 4, 0, input);
+            	    NoViableAltException nvae_d6s0 =
+            	        new NoViableAltException("", 6, 0, input);
 
-            	    throw nvae_d4s0;
+            	    throw nvae_d6s0;
             }
 
-            switch (alt4) 
+            switch (alt6) 
             {
                 case 1 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:316:4: ee= engine_classdef
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:337:4: ee= engine_classdef
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_engine_classdef_in_classdef1299);
+                    	PushFollow(FOLLOW_engine_classdef_in_classdef1425);
                     	ee = engine_classdef();
                     	state.followingStackPointer--;
 
@@ -1294,11 +1579,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:317:4: pe= player_classdef
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:338:4: pe= player_classdef
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_player_classdef_in_classdef1308);
+                    	PushFollow(FOLLOW_player_classdef_in_classdef1434);
                     	pe = player_classdef();
                     	state.followingStackPointer--;
 
@@ -1308,11 +1593,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 3 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:318:4: be= bullet_classdef
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:339:4: be= bullet_classdef
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_bullet_classdef_in_classdef1317);
+                    	PushFollow(FOLLOW_bullet_classdef_in_classdef1443);
                     	be = bullet_classdef();
                     	state.followingStackPointer--;
 
@@ -1322,11 +1607,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 4 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:319:4: ene= enemy_classdef
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:340:4: ene= enemy_classdef
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_enemy_classdef_in_classdef1326);
+                    	PushFollow(FOLLOW_enemy_classdef_in_classdef1452);
                     	ene = enemy_classdef();
                     	state.followingStackPointer--;
 
@@ -1336,11 +1621,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 5 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:320:4: eve= event_classdef
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:341:4: eve= event_classdef
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_event_classdef_in_classdef1335);
+                    	PushFollow(FOLLOW_event_classdef_in_classdef1461);
                     	eve = event_classdef();
                     	state.followingStackPointer--;
 
@@ -1350,11 +1635,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 6 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:321:4: ste= state_classdef
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:342:4: ste= state_classdef
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_state_classdef_in_classdef1344);
+                    	PushFollow(FOLLOW_state_classdef_in_classdef1470);
                     	ste = state_classdef();
                     	state.followingStackPointer--;
 
@@ -1364,11 +1649,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 7 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:322:4: se= script_classdef
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:343:4: se= script_classdef
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_script_classdef_in_classdef1353);
+                    	PushFollow(FOLLOW_script_classdef_in_classdef1479);
                     	se = script_classdef();
                     	state.followingStackPointer--;
 
@@ -1411,7 +1696,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "classdef_content"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:325:1: classdef_content : (t= trigger | se= classdef );
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:346:1: classdef_content : (t= trigger | se= classdef );
     public GbsParser.classdef_content_return classdef_content() // throws RecognitionException [1]
     {   
         GbsParser.classdef_content_return retval = new GbsParser.classdef_content_return();
@@ -1427,33 +1712,33 @@ public partial class GbsParser : Parser
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:326:2: (t= trigger | se= classdef )
-            int alt5 = 2;
-            int LA5_0 = input.LA(1);
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:347:2: (t= trigger | se= classdef )
+            int alt7 = 2;
+            int LA7_0 = input.LA(1);
 
-            if ( ((LA5_0 >= TRIGGER_INIT && LA5_0 <= TRIGGER_EVENT)) )
+            if ( ((LA7_0 >= TRIGGER_INIT && LA7_0 <= TRIGGER_EVENT)) )
             {
-                alt5 = 1;
+                alt7 = 1;
             }
-            else if ( ((LA5_0 >= CLASSDEF_ENGINE && LA5_0 <= CLASSDEF_EVENT)) )
+            else if ( ((LA7_0 >= CLASSDEF_ENGINE && LA7_0 <= CLASSDEF_EVENT)) )
             {
-                alt5 = 2;
+                alt7 = 2;
             }
             else 
             {
-                NoViableAltException nvae_d5s0 =
-                    new NoViableAltException("", 5, 0, input);
+                NoViableAltException nvae_d7s0 =
+                    new NoViableAltException("", 7, 0, input);
 
-                throw nvae_d5s0;
+                throw nvae_d7s0;
             }
-            switch (alt5) 
+            switch (alt7) 
             {
                 case 1 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:326:4: t= trigger
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:347:4: t= trigger
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_trigger_in_classdef_content1368);
+                    	PushFollow(FOLLOW_trigger_in_classdef_content1494);
                     	t = trigger();
                     	state.followingStackPointer--;
 
@@ -1463,11 +1748,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:327:4: se= classdef
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:348:4: se= classdef
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_classdef_in_classdef_content1384);
+                    	PushFollow(FOLLOW_classdef_in_classdef_content1510);
                     	se = classdef();
                     	state.followingStackPointer--;
 
@@ -1510,7 +1795,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "engine_classdef"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:330:1: engine_classdef returns [Classdef en] : CLASSDEF_ENGINE '{' ( classdef_content )* '}' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:351:1: engine_classdef returns [Classdef en] : CLASSDEF_ENGINE '{' ( classdef_content )* '}' ;
     public GbsParser.engine_classdef_return engine_classdef() // throws RecognitionException [1]
     {   
         GbsParser.engine_classdef_return retval = new GbsParser.engine_classdef_return();
@@ -1518,68 +1803,68 @@ public partial class GbsParser : Parser
 
         object root_0 = null;
 
-        IToken CLASSDEF_ENGINE22 = null;
-        IToken char_literal23 = null;
-        IToken char_literal25 = null;
-        GbsParser.classdef_content_return classdef_content24 = default(GbsParser.classdef_content_return);
+        IToken CLASSDEF_ENGINE29 = null;
+        IToken char_literal30 = null;
+        IToken char_literal32 = null;
+        GbsParser.classdef_content_return classdef_content31 = default(GbsParser.classdef_content_return);
 
 
-        object CLASSDEF_ENGINE22_tree=null;
-        object char_literal23_tree=null;
-        object char_literal25_tree=null;
+        object CLASSDEF_ENGINE29_tree=null;
+        object char_literal30_tree=null;
+        object char_literal32_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:331:2: ( CLASSDEF_ENGINE '{' ( classdef_content )* '}' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:331:4: CLASSDEF_ENGINE '{' ( classdef_content )* '}'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:352:2: ( CLASSDEF_ENGINE '{' ( classdef_content )* '}' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:352:4: CLASSDEF_ENGINE '{' ( classdef_content )* '}'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	CLASSDEF_ENGINE22=(IToken)Match(input,CLASSDEF_ENGINE,FOLLOW_CLASSDEF_ENGINE_in_engine_classdef1409); 
-            		CLASSDEF_ENGINE22_tree = (object)adaptor.Create(CLASSDEF_ENGINE22);
-            		adaptor.AddChild(root_0, CLASSDEF_ENGINE22_tree);
+            	CLASSDEF_ENGINE29=(IToken)Match(input,CLASSDEF_ENGINE,FOLLOW_CLASSDEF_ENGINE_in_engine_classdef1535); 
+            		CLASSDEF_ENGINE29_tree = (object)adaptor.Create(CLASSDEF_ENGINE29);
+            		adaptor.AddChild(root_0, CLASSDEF_ENGINE29_tree);
 
-            	char_literal23=(IToken)Match(input,56,FOLLOW_56_in_engine_classdef1411); 
-            		char_literal23_tree = (object)adaptor.Create(char_literal23);
-            		adaptor.AddChild(root_0, char_literal23_tree);
+            	char_literal30=(IToken)Match(input,63,FOLLOW_63_in_engine_classdef1537); 
+            		char_literal30_tree = (object)adaptor.Create(char_literal30);
+            		adaptor.AddChild(root_0, char_literal30_tree);
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:331:24: ( classdef_content )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:352:24: ( classdef_content )*
             	do 
             	{
-            	    int alt6 = 2;
-            	    int LA6_0 = input.LA(1);
+            	    int alt8 = 2;
+            	    int LA8_0 = input.LA(1);
 
-            	    if ( ((LA6_0 >= CLASSDEF_ENGINE && LA6_0 <= CLASSDEF_EVENT) || (LA6_0 >= TRIGGER_INIT && LA6_0 <= TRIGGER_EVENT)) )
+            	    if ( ((LA8_0 >= CLASSDEF_ENGINE && LA8_0 <= CLASSDEF_EVENT) || (LA8_0 >= TRIGGER_INIT && LA8_0 <= TRIGGER_EVENT)) )
             	    {
-            	        alt6 = 1;
+            	        alt8 = 1;
             	    }
 
 
-            	    switch (alt6) 
+            	    switch (alt8) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:331:24: classdef_content
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:352:24: classdef_content
             			    {
-            			    	PushFollow(FOLLOW_classdef_content_in_engine_classdef1413);
-            			    	classdef_content24 = classdef_content();
+            			    	PushFollow(FOLLOW_classdef_content_in_engine_classdef1539);
+            			    	classdef_content31 = classdef_content();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, classdef_content24.Tree);
+            			    	adaptor.AddChild(root_0, classdef_content31.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop6;
+            			    goto loop8;
             	    }
             	} while (true);
 
-            	loop6:
-            		;	// Stops C# compiler whining that label 'loop6' has no statements
+            	loop8:
+            		;	// Stops C# compiler whining that label 'loop8' has no statements
 
-            	char_literal25=(IToken)Match(input,57,FOLLOW_57_in_engine_classdef1416); 
-            		char_literal25_tree = (object)adaptor.Create(char_literal25);
-            		adaptor.AddChild(root_0, char_literal25_tree);
+            	char_literal32=(IToken)Match(input,64,FOLLOW_64_in_engine_classdef1542); 
+            		char_literal32_tree = (object)adaptor.Create(char_literal32);
+            		adaptor.AddChild(root_0, char_literal32_tree);
 
             	 retval.en =  new EngineClassdef(((classdef_scope)classdef_stack.Peek()).triggers); 
 
@@ -1617,7 +1902,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "player_classdef"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:334:1: player_classdef returns [Classdef en] : CLASSDEF_PLAYER name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:355:1: player_classdef returns [Classdef en] : CLASSDEF_PLAYER name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' ;
     public GbsParser.player_classdef_return player_classdef() // throws RecognitionException [1]
     {   
         GbsParser.player_classdef_return retval = new GbsParser.player_classdef_return();
@@ -1626,73 +1911,73 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken name = null;
-        IToken CLASSDEF_PLAYER26 = null;
-        IToken char_literal27 = null;
-        IToken char_literal29 = null;
-        GbsParser.classdef_content_return classdef_content28 = default(GbsParser.classdef_content_return);
+        IToken CLASSDEF_PLAYER33 = null;
+        IToken char_literal34 = null;
+        IToken char_literal36 = null;
+        GbsParser.classdef_content_return classdef_content35 = default(GbsParser.classdef_content_return);
 
 
         object name_tree=null;
-        object CLASSDEF_PLAYER26_tree=null;
-        object char_literal27_tree=null;
-        object char_literal29_tree=null;
+        object CLASSDEF_PLAYER33_tree=null;
+        object char_literal34_tree=null;
+        object char_literal36_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:335:2: ( CLASSDEF_PLAYER name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:335:4: CLASSDEF_PLAYER name= CLASS_IDENTIFIER '{' ( classdef_content )* '}'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:356:2: ( CLASSDEF_PLAYER name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:356:4: CLASSDEF_PLAYER name= CLASS_IDENTIFIER '{' ( classdef_content )* '}'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	CLASSDEF_PLAYER26=(IToken)Match(input,CLASSDEF_PLAYER,FOLLOW_CLASSDEF_PLAYER_in_player_classdef1434); 
-            		CLASSDEF_PLAYER26_tree = (object)adaptor.Create(CLASSDEF_PLAYER26);
-            		adaptor.AddChild(root_0, CLASSDEF_PLAYER26_tree);
+            	CLASSDEF_PLAYER33=(IToken)Match(input,CLASSDEF_PLAYER,FOLLOW_CLASSDEF_PLAYER_in_player_classdef1560); 
+            		CLASSDEF_PLAYER33_tree = (object)adaptor.Create(CLASSDEF_PLAYER33);
+            		adaptor.AddChild(root_0, CLASSDEF_PLAYER33_tree);
 
-            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_player_classdef1438); 
+            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_player_classdef1564); 
             		name_tree = (object)adaptor.Create(name);
             		adaptor.AddChild(root_0, name_tree);
 
-            	char_literal27=(IToken)Match(input,56,FOLLOW_56_in_player_classdef1440); 
-            		char_literal27_tree = (object)adaptor.Create(char_literal27);
-            		adaptor.AddChild(root_0, char_literal27_tree);
+            	char_literal34=(IToken)Match(input,63,FOLLOW_63_in_player_classdef1566); 
+            		char_literal34_tree = (object)adaptor.Create(char_literal34);
+            		adaptor.AddChild(root_0, char_literal34_tree);
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:335:46: ( classdef_content )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:356:46: ( classdef_content )*
             	do 
             	{
-            	    int alt7 = 2;
-            	    int LA7_0 = input.LA(1);
+            	    int alt9 = 2;
+            	    int LA9_0 = input.LA(1);
 
-            	    if ( ((LA7_0 >= CLASSDEF_ENGINE && LA7_0 <= CLASSDEF_EVENT) || (LA7_0 >= TRIGGER_INIT && LA7_0 <= TRIGGER_EVENT)) )
+            	    if ( ((LA9_0 >= CLASSDEF_ENGINE && LA9_0 <= CLASSDEF_EVENT) || (LA9_0 >= TRIGGER_INIT && LA9_0 <= TRIGGER_EVENT)) )
             	    {
-            	        alt7 = 1;
+            	        alt9 = 1;
             	    }
 
 
-            	    switch (alt7) 
+            	    switch (alt9) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:335:46: classdef_content
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:356:46: classdef_content
             			    {
-            			    	PushFollow(FOLLOW_classdef_content_in_player_classdef1442);
-            			    	classdef_content28 = classdef_content();
+            			    	PushFollow(FOLLOW_classdef_content_in_player_classdef1568);
+            			    	classdef_content35 = classdef_content();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, classdef_content28.Tree);
+            			    	adaptor.AddChild(root_0, classdef_content35.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop7;
+            			    goto loop9;
             	    }
             	} while (true);
 
-            	loop7:
-            		;	// Stops C# compiler whining that label 'loop7' has no statements
+            	loop9:
+            		;	// Stops C# compiler whining that label 'loop9' has no statements
 
-            	char_literal29=(IToken)Match(input,57,FOLLOW_57_in_player_classdef1445); 
-            		char_literal29_tree = (object)adaptor.Create(char_literal29);
-            		adaptor.AddChild(root_0, char_literal29_tree);
+            	char_literal36=(IToken)Match(input,64,FOLLOW_64_in_player_classdef1571); 
+            		char_literal36_tree = (object)adaptor.Create(char_literal36);
+            		adaptor.AddChild(root_0, char_literal36_tree);
 
             	 retval.en =  new PlayerClassdef(name.Text, ((classdef_scope)classdef_stack.Peek()).subEntities, ((classdef_scope)classdef_stack.Peek()).triggers); 
 
@@ -1730,7 +2015,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "enemy_classdef"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:338:1: enemy_classdef returns [Classdef en] : CLASSDEF_ENEMY name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:359:1: enemy_classdef returns [Classdef en] : CLASSDEF_ENEMY name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' ;
     public GbsParser.enemy_classdef_return enemy_classdef() // throws RecognitionException [1]
     {   
         GbsParser.enemy_classdef_return retval = new GbsParser.enemy_classdef_return();
@@ -1739,73 +2024,73 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken name = null;
-        IToken CLASSDEF_ENEMY30 = null;
-        IToken char_literal31 = null;
-        IToken char_literal33 = null;
-        GbsParser.classdef_content_return classdef_content32 = default(GbsParser.classdef_content_return);
+        IToken CLASSDEF_ENEMY37 = null;
+        IToken char_literal38 = null;
+        IToken char_literal40 = null;
+        GbsParser.classdef_content_return classdef_content39 = default(GbsParser.classdef_content_return);
 
 
         object name_tree=null;
-        object CLASSDEF_ENEMY30_tree=null;
-        object char_literal31_tree=null;
-        object char_literal33_tree=null;
+        object CLASSDEF_ENEMY37_tree=null;
+        object char_literal38_tree=null;
+        object char_literal40_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:339:2: ( CLASSDEF_ENEMY name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:339:4: CLASSDEF_ENEMY name= CLASS_IDENTIFIER '{' ( classdef_content )* '}'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:360:2: ( CLASSDEF_ENEMY name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:360:4: CLASSDEF_ENEMY name= CLASS_IDENTIFIER '{' ( classdef_content )* '}'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	CLASSDEF_ENEMY30=(IToken)Match(input,CLASSDEF_ENEMY,FOLLOW_CLASSDEF_ENEMY_in_enemy_classdef1462); 
-            		CLASSDEF_ENEMY30_tree = (object)adaptor.Create(CLASSDEF_ENEMY30);
-            		adaptor.AddChild(root_0, CLASSDEF_ENEMY30_tree);
+            	CLASSDEF_ENEMY37=(IToken)Match(input,CLASSDEF_ENEMY,FOLLOW_CLASSDEF_ENEMY_in_enemy_classdef1588); 
+            		CLASSDEF_ENEMY37_tree = (object)adaptor.Create(CLASSDEF_ENEMY37);
+            		adaptor.AddChild(root_0, CLASSDEF_ENEMY37_tree);
 
-            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_enemy_classdef1466); 
+            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_enemy_classdef1592); 
             		name_tree = (object)adaptor.Create(name);
             		adaptor.AddChild(root_0, name_tree);
 
-            	char_literal31=(IToken)Match(input,56,FOLLOW_56_in_enemy_classdef1468); 
-            		char_literal31_tree = (object)adaptor.Create(char_literal31);
-            		adaptor.AddChild(root_0, char_literal31_tree);
+            	char_literal38=(IToken)Match(input,63,FOLLOW_63_in_enemy_classdef1594); 
+            		char_literal38_tree = (object)adaptor.Create(char_literal38);
+            		adaptor.AddChild(root_0, char_literal38_tree);
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:339:45: ( classdef_content )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:360:45: ( classdef_content )*
             	do 
             	{
-            	    int alt8 = 2;
-            	    int LA8_0 = input.LA(1);
+            	    int alt10 = 2;
+            	    int LA10_0 = input.LA(1);
 
-            	    if ( ((LA8_0 >= CLASSDEF_ENGINE && LA8_0 <= CLASSDEF_EVENT) || (LA8_0 >= TRIGGER_INIT && LA8_0 <= TRIGGER_EVENT)) )
+            	    if ( ((LA10_0 >= CLASSDEF_ENGINE && LA10_0 <= CLASSDEF_EVENT) || (LA10_0 >= TRIGGER_INIT && LA10_0 <= TRIGGER_EVENT)) )
             	    {
-            	        alt8 = 1;
+            	        alt10 = 1;
             	    }
 
 
-            	    switch (alt8) 
+            	    switch (alt10) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:339:45: classdef_content
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:360:45: classdef_content
             			    {
-            			    	PushFollow(FOLLOW_classdef_content_in_enemy_classdef1470);
-            			    	classdef_content32 = classdef_content();
+            			    	PushFollow(FOLLOW_classdef_content_in_enemy_classdef1596);
+            			    	classdef_content39 = classdef_content();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, classdef_content32.Tree);
+            			    	adaptor.AddChild(root_0, classdef_content39.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop8;
+            			    goto loop10;
             	    }
             	} while (true);
 
-            	loop8:
-            		;	// Stops C# compiler whining that label 'loop8' has no statements
+            	loop10:
+            		;	// Stops C# compiler whining that label 'loop10' has no statements
 
-            	char_literal33=(IToken)Match(input,57,FOLLOW_57_in_enemy_classdef1473); 
-            		char_literal33_tree = (object)adaptor.Create(char_literal33);
-            		adaptor.AddChild(root_0, char_literal33_tree);
+            	char_literal40=(IToken)Match(input,64,FOLLOW_64_in_enemy_classdef1599); 
+            		char_literal40_tree = (object)adaptor.Create(char_literal40);
+            		adaptor.AddChild(root_0, char_literal40_tree);
 
             	 retval.en =  new EnemyClassdef(name.Text, ((classdef_scope)classdef_stack.Peek()).subEntities, ((classdef_scope)classdef_stack.Peek()).triggers); 
 
@@ -1843,7 +2128,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "bullet_classdef"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:342:1: bullet_classdef returns [Classdef en] : CLASSDEF_BULLET name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:363:1: bullet_classdef returns [Classdef en] : CLASSDEF_BULLET name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' ;
     public GbsParser.bullet_classdef_return bullet_classdef() // throws RecognitionException [1]
     {   
         GbsParser.bullet_classdef_return retval = new GbsParser.bullet_classdef_return();
@@ -1852,73 +2137,73 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken name = null;
-        IToken CLASSDEF_BULLET34 = null;
-        IToken char_literal35 = null;
-        IToken char_literal37 = null;
-        GbsParser.classdef_content_return classdef_content36 = default(GbsParser.classdef_content_return);
+        IToken CLASSDEF_BULLET41 = null;
+        IToken char_literal42 = null;
+        IToken char_literal44 = null;
+        GbsParser.classdef_content_return classdef_content43 = default(GbsParser.classdef_content_return);
 
 
         object name_tree=null;
-        object CLASSDEF_BULLET34_tree=null;
-        object char_literal35_tree=null;
-        object char_literal37_tree=null;
+        object CLASSDEF_BULLET41_tree=null;
+        object char_literal42_tree=null;
+        object char_literal44_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:343:2: ( CLASSDEF_BULLET name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:343:4: CLASSDEF_BULLET name= CLASS_IDENTIFIER '{' ( classdef_content )* '}'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:364:2: ( CLASSDEF_BULLET name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:364:4: CLASSDEF_BULLET name= CLASS_IDENTIFIER '{' ( classdef_content )* '}'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	CLASSDEF_BULLET34=(IToken)Match(input,CLASSDEF_BULLET,FOLLOW_CLASSDEF_BULLET_in_bullet_classdef1490); 
-            		CLASSDEF_BULLET34_tree = (object)adaptor.Create(CLASSDEF_BULLET34);
-            		adaptor.AddChild(root_0, CLASSDEF_BULLET34_tree);
+            	CLASSDEF_BULLET41=(IToken)Match(input,CLASSDEF_BULLET,FOLLOW_CLASSDEF_BULLET_in_bullet_classdef1616); 
+            		CLASSDEF_BULLET41_tree = (object)adaptor.Create(CLASSDEF_BULLET41);
+            		adaptor.AddChild(root_0, CLASSDEF_BULLET41_tree);
 
-            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_bullet_classdef1494); 
+            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_bullet_classdef1620); 
             		name_tree = (object)adaptor.Create(name);
             		adaptor.AddChild(root_0, name_tree);
 
-            	char_literal35=(IToken)Match(input,56,FOLLOW_56_in_bullet_classdef1496); 
-            		char_literal35_tree = (object)adaptor.Create(char_literal35);
-            		adaptor.AddChild(root_0, char_literal35_tree);
+            	char_literal42=(IToken)Match(input,63,FOLLOW_63_in_bullet_classdef1622); 
+            		char_literal42_tree = (object)adaptor.Create(char_literal42);
+            		adaptor.AddChild(root_0, char_literal42_tree);
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:343:46: ( classdef_content )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:364:46: ( classdef_content )*
             	do 
             	{
-            	    int alt9 = 2;
-            	    int LA9_0 = input.LA(1);
+            	    int alt11 = 2;
+            	    int LA11_0 = input.LA(1);
 
-            	    if ( ((LA9_0 >= CLASSDEF_ENGINE && LA9_0 <= CLASSDEF_EVENT) || (LA9_0 >= TRIGGER_INIT && LA9_0 <= TRIGGER_EVENT)) )
+            	    if ( ((LA11_0 >= CLASSDEF_ENGINE && LA11_0 <= CLASSDEF_EVENT) || (LA11_0 >= TRIGGER_INIT && LA11_0 <= TRIGGER_EVENT)) )
             	    {
-            	        alt9 = 1;
+            	        alt11 = 1;
             	    }
 
 
-            	    switch (alt9) 
+            	    switch (alt11) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:343:46: classdef_content
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:364:46: classdef_content
             			    {
-            			    	PushFollow(FOLLOW_classdef_content_in_bullet_classdef1498);
-            			    	classdef_content36 = classdef_content();
+            			    	PushFollow(FOLLOW_classdef_content_in_bullet_classdef1624);
+            			    	classdef_content43 = classdef_content();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, classdef_content36.Tree);
+            			    	adaptor.AddChild(root_0, classdef_content43.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop9;
+            			    goto loop11;
             	    }
             	} while (true);
 
-            	loop9:
-            		;	// Stops C# compiler whining that label 'loop9' has no statements
+            	loop11:
+            		;	// Stops C# compiler whining that label 'loop11' has no statements
 
-            	char_literal37=(IToken)Match(input,57,FOLLOW_57_in_bullet_classdef1501); 
-            		char_literal37_tree = (object)adaptor.Create(char_literal37);
-            		adaptor.AddChild(root_0, char_literal37_tree);
+            	char_literal44=(IToken)Match(input,64,FOLLOW_64_in_bullet_classdef1627); 
+            		char_literal44_tree = (object)adaptor.Create(char_literal44);
+            		adaptor.AddChild(root_0, char_literal44_tree);
 
             	 retval.en =  new BulletClassdef(name.Text, ((classdef_scope)classdef_stack.Peek()).subEntities, ((classdef_scope)classdef_stack.Peek()).triggers); 
 
@@ -1956,7 +2241,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "script_classdef"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:346:1: script_classdef returns [Classdef en] : CLASSDEF_SCRIPT name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:367:1: script_classdef returns [Classdef en] : CLASSDEF_SCRIPT name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' ;
     public GbsParser.script_classdef_return script_classdef() // throws RecognitionException [1]
     {   
         GbsParser.script_classdef_return retval = new GbsParser.script_classdef_return();
@@ -1965,73 +2250,73 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken name = null;
-        IToken CLASSDEF_SCRIPT38 = null;
-        IToken char_literal39 = null;
-        IToken char_literal41 = null;
-        GbsParser.classdef_content_return classdef_content40 = default(GbsParser.classdef_content_return);
+        IToken CLASSDEF_SCRIPT45 = null;
+        IToken char_literal46 = null;
+        IToken char_literal48 = null;
+        GbsParser.classdef_content_return classdef_content47 = default(GbsParser.classdef_content_return);
 
 
         object name_tree=null;
-        object CLASSDEF_SCRIPT38_tree=null;
-        object char_literal39_tree=null;
-        object char_literal41_tree=null;
+        object CLASSDEF_SCRIPT45_tree=null;
+        object char_literal46_tree=null;
+        object char_literal48_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:347:2: ( CLASSDEF_SCRIPT name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:347:4: CLASSDEF_SCRIPT name= CLASS_IDENTIFIER '{' ( classdef_content )* '}'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:368:2: ( CLASSDEF_SCRIPT name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:368:4: CLASSDEF_SCRIPT name= CLASS_IDENTIFIER '{' ( classdef_content )* '}'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	CLASSDEF_SCRIPT38=(IToken)Match(input,CLASSDEF_SCRIPT,FOLLOW_CLASSDEF_SCRIPT_in_script_classdef1519); 
-            		CLASSDEF_SCRIPT38_tree = (object)adaptor.Create(CLASSDEF_SCRIPT38);
-            		adaptor.AddChild(root_0, CLASSDEF_SCRIPT38_tree);
+            	CLASSDEF_SCRIPT45=(IToken)Match(input,CLASSDEF_SCRIPT,FOLLOW_CLASSDEF_SCRIPT_in_script_classdef1645); 
+            		CLASSDEF_SCRIPT45_tree = (object)adaptor.Create(CLASSDEF_SCRIPT45);
+            		adaptor.AddChild(root_0, CLASSDEF_SCRIPT45_tree);
 
-            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_script_classdef1523); 
+            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_script_classdef1649); 
             		name_tree = (object)adaptor.Create(name);
             		adaptor.AddChild(root_0, name_tree);
 
-            	char_literal39=(IToken)Match(input,56,FOLLOW_56_in_script_classdef1525); 
-            		char_literal39_tree = (object)adaptor.Create(char_literal39);
-            		adaptor.AddChild(root_0, char_literal39_tree);
+            	char_literal46=(IToken)Match(input,63,FOLLOW_63_in_script_classdef1651); 
+            		char_literal46_tree = (object)adaptor.Create(char_literal46);
+            		adaptor.AddChild(root_0, char_literal46_tree);
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:347:46: ( classdef_content )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:368:46: ( classdef_content )*
             	do 
             	{
-            	    int alt10 = 2;
-            	    int LA10_0 = input.LA(1);
+            	    int alt12 = 2;
+            	    int LA12_0 = input.LA(1);
 
-            	    if ( ((LA10_0 >= CLASSDEF_ENGINE && LA10_0 <= CLASSDEF_EVENT) || (LA10_0 >= TRIGGER_INIT && LA10_0 <= TRIGGER_EVENT)) )
+            	    if ( ((LA12_0 >= CLASSDEF_ENGINE && LA12_0 <= CLASSDEF_EVENT) || (LA12_0 >= TRIGGER_INIT && LA12_0 <= TRIGGER_EVENT)) )
             	    {
-            	        alt10 = 1;
+            	        alt12 = 1;
             	    }
 
 
-            	    switch (alt10) 
+            	    switch (alt12) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:347:46: classdef_content
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:368:46: classdef_content
             			    {
-            			    	PushFollow(FOLLOW_classdef_content_in_script_classdef1527);
-            			    	classdef_content40 = classdef_content();
+            			    	PushFollow(FOLLOW_classdef_content_in_script_classdef1653);
+            			    	classdef_content47 = classdef_content();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, classdef_content40.Tree);
+            			    	adaptor.AddChild(root_0, classdef_content47.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop10;
+            			    goto loop12;
             	    }
             	} while (true);
 
-            	loop10:
-            		;	// Stops C# compiler whining that label 'loop10' has no statements
+            	loop12:
+            		;	// Stops C# compiler whining that label 'loop12' has no statements
 
-            	char_literal41=(IToken)Match(input,57,FOLLOW_57_in_script_classdef1530); 
-            		char_literal41_tree = (object)adaptor.Create(char_literal41);
-            		adaptor.AddChild(root_0, char_literal41_tree);
+            	char_literal48=(IToken)Match(input,64,FOLLOW_64_in_script_classdef1656); 
+            		char_literal48_tree = (object)adaptor.Create(char_literal48);
+            		adaptor.AddChild(root_0, char_literal48_tree);
 
             	 retval.en =  new ScriptClassdef(name.Text, ((classdef_scope)classdef_stack.Peek()).subEntities, ((classdef_scope)classdef_stack.Peek()).triggers); 
 
@@ -2069,7 +2354,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "state_classdef"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:350:1: state_classdef returns [Classdef en] : CLASSDEF_STATE name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:371:1: state_classdef returns [Classdef en] : CLASSDEF_STATE name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' ;
     public GbsParser.state_classdef_return state_classdef() // throws RecognitionException [1]
     {   
         GbsParser.state_classdef_return retval = new GbsParser.state_classdef_return();
@@ -2078,73 +2363,73 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken name = null;
-        IToken CLASSDEF_STATE42 = null;
-        IToken char_literal43 = null;
-        IToken char_literal45 = null;
-        GbsParser.classdef_content_return classdef_content44 = default(GbsParser.classdef_content_return);
+        IToken CLASSDEF_STATE49 = null;
+        IToken char_literal50 = null;
+        IToken char_literal52 = null;
+        GbsParser.classdef_content_return classdef_content51 = default(GbsParser.classdef_content_return);
 
 
         object name_tree=null;
-        object CLASSDEF_STATE42_tree=null;
-        object char_literal43_tree=null;
-        object char_literal45_tree=null;
+        object CLASSDEF_STATE49_tree=null;
+        object char_literal50_tree=null;
+        object char_literal52_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:351:2: ( CLASSDEF_STATE name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:351:4: CLASSDEF_STATE name= CLASS_IDENTIFIER '{' ( classdef_content )* '}'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:372:2: ( CLASSDEF_STATE name= CLASS_IDENTIFIER '{' ( classdef_content )* '}' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:372:4: CLASSDEF_STATE name= CLASS_IDENTIFIER '{' ( classdef_content )* '}'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	CLASSDEF_STATE42=(IToken)Match(input,CLASSDEF_STATE,FOLLOW_CLASSDEF_STATE_in_state_classdef1547); 
-            		CLASSDEF_STATE42_tree = (object)adaptor.Create(CLASSDEF_STATE42);
-            		adaptor.AddChild(root_0, CLASSDEF_STATE42_tree);
+            	CLASSDEF_STATE49=(IToken)Match(input,CLASSDEF_STATE,FOLLOW_CLASSDEF_STATE_in_state_classdef1673); 
+            		CLASSDEF_STATE49_tree = (object)adaptor.Create(CLASSDEF_STATE49);
+            		adaptor.AddChild(root_0, CLASSDEF_STATE49_tree);
 
-            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_state_classdef1551); 
+            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_state_classdef1677); 
             		name_tree = (object)adaptor.Create(name);
             		adaptor.AddChild(root_0, name_tree);
 
-            	char_literal43=(IToken)Match(input,56,FOLLOW_56_in_state_classdef1553); 
-            		char_literal43_tree = (object)adaptor.Create(char_literal43);
-            		adaptor.AddChild(root_0, char_literal43_tree);
+            	char_literal50=(IToken)Match(input,63,FOLLOW_63_in_state_classdef1679); 
+            		char_literal50_tree = (object)adaptor.Create(char_literal50);
+            		adaptor.AddChild(root_0, char_literal50_tree);
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:351:45: ( classdef_content )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:372:45: ( classdef_content )*
             	do 
             	{
-            	    int alt11 = 2;
-            	    int LA11_0 = input.LA(1);
+            	    int alt13 = 2;
+            	    int LA13_0 = input.LA(1);
 
-            	    if ( ((LA11_0 >= CLASSDEF_ENGINE && LA11_0 <= CLASSDEF_EVENT) || (LA11_0 >= TRIGGER_INIT && LA11_0 <= TRIGGER_EVENT)) )
+            	    if ( ((LA13_0 >= CLASSDEF_ENGINE && LA13_0 <= CLASSDEF_EVENT) || (LA13_0 >= TRIGGER_INIT && LA13_0 <= TRIGGER_EVENT)) )
             	    {
-            	        alt11 = 1;
+            	        alt13 = 1;
             	    }
 
 
-            	    switch (alt11) 
+            	    switch (alt13) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:351:45: classdef_content
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:372:45: classdef_content
             			    {
-            			    	PushFollow(FOLLOW_classdef_content_in_state_classdef1555);
-            			    	classdef_content44 = classdef_content();
+            			    	PushFollow(FOLLOW_classdef_content_in_state_classdef1681);
+            			    	classdef_content51 = classdef_content();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, classdef_content44.Tree);
+            			    	adaptor.AddChild(root_0, classdef_content51.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop11;
+            			    goto loop13;
             	    }
             	} while (true);
 
-            	loop11:
-            		;	// Stops C# compiler whining that label 'loop11' has no statements
+            	loop13:
+            		;	// Stops C# compiler whining that label 'loop13' has no statements
 
-            	char_literal45=(IToken)Match(input,57,FOLLOW_57_in_state_classdef1558); 
-            		char_literal45_tree = (object)adaptor.Create(char_literal45);
-            		adaptor.AddChild(root_0, char_literal45_tree);
+            	char_literal52=(IToken)Match(input,64,FOLLOW_64_in_state_classdef1684); 
+            		char_literal52_tree = (object)adaptor.Create(char_literal52);
+            		adaptor.AddChild(root_0, char_literal52_tree);
 
             	 retval.en =  new StateClassdef(name.Text, ((classdef_scope)classdef_stack.Peek()).subEntities, ((classdef_scope)classdef_stack.Peek()).triggers); 
 
@@ -2182,7 +2467,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "event_classdef"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:354:1: event_classdef returns [Classdef en] : CLASSDEF_EVENT name= CLASS_IDENTIFIER ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:375:1: event_classdef returns [Classdef en] : CLASSDEF_EVENT name= CLASS_IDENTIFIER ;
     public GbsParser.event_classdef_return event_classdef() // throws RecognitionException [1]
     {   
         GbsParser.event_classdef_return retval = new GbsParser.event_classdef_return();
@@ -2191,23 +2476,23 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken name = null;
-        IToken CLASSDEF_EVENT46 = null;
+        IToken CLASSDEF_EVENT53 = null;
 
         object name_tree=null;
-        object CLASSDEF_EVENT46_tree=null;
+        object CLASSDEF_EVENT53_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:355:2: ( CLASSDEF_EVENT name= CLASS_IDENTIFIER )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:355:4: CLASSDEF_EVENT name= CLASS_IDENTIFIER
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:376:2: ( CLASSDEF_EVENT name= CLASS_IDENTIFIER )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:376:4: CLASSDEF_EVENT name= CLASS_IDENTIFIER
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	CLASSDEF_EVENT46=(IToken)Match(input,CLASSDEF_EVENT,FOLLOW_CLASSDEF_EVENT_in_event_classdef1577); 
-            		CLASSDEF_EVENT46_tree = (object)adaptor.Create(CLASSDEF_EVENT46);
-            		adaptor.AddChild(root_0, CLASSDEF_EVENT46_tree);
+            	CLASSDEF_EVENT53=(IToken)Match(input,CLASSDEF_EVENT,FOLLOW_CLASSDEF_EVENT_in_event_classdef1703); 
+            		CLASSDEF_EVENT53_tree = (object)adaptor.Create(CLASSDEF_EVENT53);
+            		adaptor.AddChild(root_0, CLASSDEF_EVENT53_tree);
 
-            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_event_classdef1581); 
+            	name=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_event_classdef1707); 
             		name_tree = (object)adaptor.Create(name);
             		adaptor.AddChild(root_0, name_tree);
 
@@ -2253,7 +2538,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "action_list"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:358:1: action_list returns [List<Action> actions] : ( action )* ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:379:1: action_list returns [List<Action> actions] : ( action )* ;
     public GbsParser.action_list_return action_list() // throws RecognitionException [1]
     {   
         action_list_stack.Push(new action_list_scope());
@@ -2262,7 +2547,7 @@ public partial class GbsParser : Parser
 
         object root_0 = null;
 
-        GbsParser.action_return action47 = default(GbsParser.action_return);
+        GbsParser.action_return action54 = default(GbsParser.action_return);
 
 
 
@@ -2271,44 +2556,44 @@ public partial class GbsParser : Parser
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:367:2: ( ( action )* )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:367:4: ( action )*
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:388:2: ( ( action )* )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:388:4: ( action )*
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:367:4: ( action )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:388:4: ( action )*
             	do 
             	{
-            	    int alt12 = 2;
-            	    int LA12_0 = input.LA(1);
+            	    int alt14 = 2;
+            	    int LA14_0 = input.LA(1);
 
-            	    if ( (LA12_0 == THIS || (LA12_0 >= PARAM_FPS && LA12_0 <= ACTION_RAISE) || LA12_0 == INSTANCE_IDENTIFIER) )
+            	    if ( (LA14_0 == THIS || (LA14_0 >= PARAM_FPS && LA14_0 <= ACTION_RAISE) || LA14_0 == INSTANCE_IDENTIFIER) )
             	    {
-            	        alt12 = 1;
+            	        alt14 = 1;
             	    }
 
 
-            	    switch (alt12) 
+            	    switch (alt14) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:367:4: action
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:388:4: action
             			    {
-            			    	PushFollow(FOLLOW_action_in_action_list1610);
-            			    	action47 = action();
+            			    	PushFollow(FOLLOW_action_in_action_list1736);
+            			    	action54 = action();
             			    	state.followingStackPointer--;
 
-            			    	adaptor.AddChild(root_0, action47.Tree);
+            			    	adaptor.AddChild(root_0, action54.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop12;
+            			    goto loop14;
             	    }
             	} while (true);
 
-            	loop12:
-            		;	// Stops C# compiler whining that label 'loop12' has no statements
+            	loop14:
+            		;	// Stops C# compiler whining that label 'loop14' has no statements
 
             	 retval.actions =  ((action_list_scope)action_list_stack.Peek()).list; 
 
@@ -2347,7 +2632,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "action_target"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:370:1: action_target returns [String target] : ( ( THIS )? | ident= INSTANCE_IDENTIFIER );
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:391:1: action_target returns [String target] : ( ( THIS )? | ident= INSTANCE_IDENTIFIER );
     public GbsParser.action_target_return action_target() // throws RecognitionException [1]
     {   
         GbsParser.action_target_return retval = new GbsParser.action_target_return();
@@ -2356,55 +2641,55 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken ident = null;
-        IToken THIS48 = null;
+        IToken THIS55 = null;
 
         object ident_tree=null;
-        object THIS48_tree=null;
+        object THIS55_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:371:2: ( ( THIS )? | ident= INSTANCE_IDENTIFIER )
-            int alt14 = 2;
-            int LA14_0 = input.LA(1);
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:392:2: ( ( THIS )? | ident= INSTANCE_IDENTIFIER )
+            int alt16 = 2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA14_0 == THIS || (LA14_0 >= ACTION_PERIODIC && LA14_0 <= ACTION_RAISE)) )
+            if ( (LA16_0 == THIS || (LA16_0 >= ACTION_PERIODIC && LA16_0 <= ACTION_RAISE)) )
             {
-                alt14 = 1;
+                alt16 = 1;
             }
-            else if ( (LA14_0 == INSTANCE_IDENTIFIER) )
+            else if ( (LA16_0 == INSTANCE_IDENTIFIER) )
             {
-                alt14 = 2;
+                alt16 = 2;
             }
             else 
             {
-                NoViableAltException nvae_d14s0 =
-                    new NoViableAltException("", 14, 0, input);
+                NoViableAltException nvae_d16s0 =
+                    new NoViableAltException("", 16, 0, input);
 
-                throw nvae_d14s0;
+                throw nvae_d16s0;
             }
-            switch (alt14) 
+            switch (alt16) 
             {
                 case 1 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:371:4: ( THIS )?
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:392:4: ( THIS )?
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:371:4: ( THIS )?
-                    	int alt13 = 2;
-                    	int LA13_0 = input.LA(1);
+                    	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:392:4: ( THIS )?
+                    	int alt15 = 2;
+                    	int LA15_0 = input.LA(1);
 
-                    	if ( (LA13_0 == THIS) )
+                    	if ( (LA15_0 == THIS) )
                     	{
-                    	    alt13 = 1;
+                    	    alt15 = 1;
                     	}
-                    	switch (alt13) 
+                    	switch (alt15) 
                     	{
                     	    case 1 :
-                    	        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:371:4: THIS
+                    	        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:392:4: THIS
                     	        {
-                    	        	THIS48=(IToken)Match(input,THIS,FOLLOW_THIS_in_action_target1628); 
-                    	        		THIS48_tree = (object)adaptor.Create(THIS48);
-                    	        		adaptor.AddChild(root_0, THIS48_tree);
+                    	        	THIS55=(IToken)Match(input,THIS,FOLLOW_THIS_in_action_target1754); 
+                    	        		THIS55_tree = (object)adaptor.Create(THIS55);
+                    	        		adaptor.AddChild(root_0, THIS55_tree);
 
 
                     	        }
@@ -2417,11 +2702,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:372:4: ident= INSTANCE_IDENTIFIER
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:393:4: ident= INSTANCE_IDENTIFIER
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	ident=(IToken)Match(input,INSTANCE_IDENTIFIER,FOLLOW_INSTANCE_IDENTIFIER_in_action_target1658); 
+                    	ident=(IToken)Match(input,INSTANCE_IDENTIFIER,FOLLOW_INSTANCE_IDENTIFIER_in_action_target1784); 
                     		ident_tree = (object)adaptor.Create(ident);
                     		adaptor.AddChild(root_0, ident_tree);
 
@@ -2462,7 +2747,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "action"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:375:1: action : (pla= play_animation_action | pa= periodic_action | fap= fire_action | da= die_action | sta= start_action | sa= stop_action | sum= summon_action | sea= set_action | raa= raise_action );
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:396:1: action : (pla= play_animation_action | pa= periodic_action | fap= fire_action | da= die_action | sta= start_action | sa= stop_action | sum= summon_action | sea= set_action | raa= raise_action );
     public GbsParser.action_return action() // throws RecognitionException [1]
     {   
         GbsParser.action_return retval = new GbsParser.action_return();
@@ -2492,17 +2777,17 @@ public partial class GbsParser : Parser
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:376:2: (pla= play_animation_action | pa= periodic_action | fap= fire_action | da= die_action | sta= start_action | sa= stop_action | sum= summon_action | sea= set_action | raa= raise_action )
-            int alt15 = 9;
-            alt15 = dfa15.Predict(input);
-            switch (alt15) 
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:397:2: (pla= play_animation_action | pa= periodic_action | fap= fire_action | da= die_action | sta= start_action | sa= stop_action | sum= summon_action | sea= set_action | raa= raise_action )
+            int alt17 = 9;
+            alt17 = dfa17.Predict(input);
+            switch (alt17) 
             {
                 case 1 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:376:4: pla= play_animation_action
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:397:4: pla= play_animation_action
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_play_animation_action_in_action1673);
+                    	PushFollow(FOLLOW_play_animation_action_in_action1799);
                     	pla = play_animation_action();
                     	state.followingStackPointer--;
 
@@ -2512,11 +2797,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:377:4: pa= periodic_action
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:398:4: pa= periodic_action
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_periodic_action_in_action1682);
+                    	PushFollow(FOLLOW_periodic_action_in_action1808);
                     	pa = periodic_action();
                     	state.followingStackPointer--;
 
@@ -2526,11 +2811,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 3 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:378:4: fap= fire_action
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:399:4: fap= fire_action
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_fire_action_in_action1698);
+                    	PushFollow(FOLLOW_fire_action_in_action1824);
                     	fap = fire_action();
                     	state.followingStackPointer--;
 
@@ -2540,11 +2825,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 4 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:379:4: da= die_action
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:400:4: da= die_action
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_die_action_in_action1709);
+                    	PushFollow(FOLLOW_die_action_in_action1835);
                     	da = die_action();
                     	state.followingStackPointer--;
 
@@ -2554,11 +2839,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 5 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:380:4: sta= start_action
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:401:4: sta= start_action
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_start_action_in_action1730);
+                    	PushFollow(FOLLOW_start_action_in_action1856);
                     	sta = start_action();
                     	state.followingStackPointer--;
 
@@ -2568,11 +2853,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 6 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:381:4: sa= stop_action
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:402:4: sa= stop_action
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_stop_action_in_action1748);
+                    	PushFollow(FOLLOW_stop_action_in_action1874);
                     	sa = stop_action();
                     	state.followingStackPointer--;
 
@@ -2582,11 +2867,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 7 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:382:4: sum= summon_action
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:403:4: sum= summon_action
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_summon_action_in_action1768);
+                    	PushFollow(FOLLOW_summon_action_in_action1894);
                     	sum = summon_action();
                     	state.followingStackPointer--;
 
@@ -2596,11 +2881,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 8 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:383:4: sea= set_action
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:404:4: sea= set_action
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_set_action_in_action1785);
+                    	PushFollow(FOLLOW_set_action_in_action1911);
                     	sea = set_action();
                     	state.followingStackPointer--;
 
@@ -2610,11 +2895,11 @@ public partial class GbsParser : Parser
                     }
                     break;
                 case 9 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:384:4: raa= raise_action
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:405:4: raa= raise_action
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_raise_action_in_action1805);
+                    	PushFollow(FOLLOW_raise_action_in_action1931);
                     	raa = raise_action();
                     	state.followingStackPointer--;
 
@@ -2657,7 +2942,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "play_animation_action"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:387:1: play_animation_action returns [Action action] : target= action_target ACTION_PLAY_ANIMATION '(' anim= STRING ')' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:408:1: play_animation_action returns [Action action] : target= action_target ACTION_PLAY_ANIMATION '(' anim= STRING ')' ;
     public GbsParser.play_animation_action_return play_animation_action() // throws RecognitionException [1]
     {   
         GbsParser.play_animation_action_return retval = new GbsParser.play_animation_action_return();
@@ -2666,44 +2951,44 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken anim = null;
-        IToken ACTION_PLAY_ANIMATION49 = null;
-        IToken char_literal50 = null;
-        IToken char_literal51 = null;
+        IToken ACTION_PLAY_ANIMATION56 = null;
+        IToken char_literal57 = null;
+        IToken char_literal58 = null;
         GbsParser.action_target_return target = default(GbsParser.action_target_return);
 
 
         object anim_tree=null;
-        object ACTION_PLAY_ANIMATION49_tree=null;
-        object char_literal50_tree=null;
-        object char_literal51_tree=null;
+        object ACTION_PLAY_ANIMATION56_tree=null;
+        object char_literal57_tree=null;
+        object char_literal58_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:388:2: (target= action_target ACTION_PLAY_ANIMATION '(' anim= STRING ')' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:388:4: target= action_target ACTION_PLAY_ANIMATION '(' anim= STRING ')'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:409:2: (target= action_target ACTION_PLAY_ANIMATION '(' anim= STRING ')' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:409:4: target= action_target ACTION_PLAY_ANIMATION '(' anim= STRING ')'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_action_target_in_play_animation_action1827);
+            	PushFollow(FOLLOW_action_target_in_play_animation_action1953);
             	target = action_target();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, target.Tree);
-            	ACTION_PLAY_ANIMATION49=(IToken)Match(input,ACTION_PLAY_ANIMATION,FOLLOW_ACTION_PLAY_ANIMATION_in_play_animation_action1829); 
-            		ACTION_PLAY_ANIMATION49_tree = (object)adaptor.Create(ACTION_PLAY_ANIMATION49);
-            		adaptor.AddChild(root_0, ACTION_PLAY_ANIMATION49_tree);
+            	ACTION_PLAY_ANIMATION56=(IToken)Match(input,ACTION_PLAY_ANIMATION,FOLLOW_ACTION_PLAY_ANIMATION_in_play_animation_action1955); 
+            		ACTION_PLAY_ANIMATION56_tree = (object)adaptor.Create(ACTION_PLAY_ANIMATION56);
+            		adaptor.AddChild(root_0, ACTION_PLAY_ANIMATION56_tree);
 
-            	char_literal50=(IToken)Match(input,58,FOLLOW_58_in_play_animation_action1831); 
-            		char_literal50_tree = (object)adaptor.Create(char_literal50);
-            		adaptor.AddChild(root_0, char_literal50_tree);
+            	char_literal57=(IToken)Match(input,59,FOLLOW_59_in_play_animation_action1957); 
+            		char_literal57_tree = (object)adaptor.Create(char_literal57);
+            		adaptor.AddChild(root_0, char_literal57_tree);
 
-            	anim=(IToken)Match(input,STRING,FOLLOW_STRING_in_play_animation_action1835); 
+            	anim=(IToken)Match(input,STRING,FOLLOW_STRING_in_play_animation_action1961); 
             		anim_tree = (object)adaptor.Create(anim);
             		adaptor.AddChild(root_0, anim_tree);
 
-            	char_literal51=(IToken)Match(input,59,FOLLOW_59_in_play_animation_action1837); 
-            		char_literal51_tree = (object)adaptor.Create(char_literal51);
-            		adaptor.AddChild(root_0, char_literal51_tree);
+            	char_literal58=(IToken)Match(input,60,FOLLOW_60_in_play_animation_action1963); 
+            		char_literal58_tree = (object)adaptor.Create(char_literal58);
+            		adaptor.AddChild(root_0, char_literal58_tree);
 
             	 retval.action =  new PlayAnimationAction(((target != null) ? target.target : default(String)), anim.Text); 
 
@@ -2741,7 +3026,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "periodic_action"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:391:1: periodic_action returns [Action action] : target= action_target ACTION_PERIODIC '(' period= NUMBER ')' '{' actions= action_list '}' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:412:1: periodic_action returns [Action action] : target= action_target ACTION_PERIODIC '(' period= NUMBER ')' '{' actions= action_list '}' ;
     public GbsParser.periodic_action_return periodic_action() // throws RecognitionException [1]
     {   
         GbsParser.periodic_action_return retval = new GbsParser.periodic_action_return();
@@ -2750,63 +3035,63 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken period = null;
-        IToken ACTION_PERIODIC52 = null;
-        IToken char_literal53 = null;
-        IToken char_literal54 = null;
-        IToken char_literal55 = null;
-        IToken char_literal56 = null;
+        IToken ACTION_PERIODIC59 = null;
+        IToken char_literal60 = null;
+        IToken char_literal61 = null;
+        IToken char_literal62 = null;
+        IToken char_literal63 = null;
         GbsParser.action_target_return target = default(GbsParser.action_target_return);
 
         GbsParser.action_list_return actions = default(GbsParser.action_list_return);
 
 
         object period_tree=null;
-        object ACTION_PERIODIC52_tree=null;
-        object char_literal53_tree=null;
-        object char_literal54_tree=null;
-        object char_literal55_tree=null;
-        object char_literal56_tree=null;
+        object ACTION_PERIODIC59_tree=null;
+        object char_literal60_tree=null;
+        object char_literal61_tree=null;
+        object char_literal62_tree=null;
+        object char_literal63_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:392:2: (target= action_target ACTION_PERIODIC '(' period= NUMBER ')' '{' actions= action_list '}' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:392:4: target= action_target ACTION_PERIODIC '(' period= NUMBER ')' '{' actions= action_list '}'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:413:2: (target= action_target ACTION_PERIODIC '(' period= NUMBER ')' '{' actions= action_list '}' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:413:4: target= action_target ACTION_PERIODIC '(' period= NUMBER ')' '{' actions= action_list '}'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_action_target_in_periodic_action1857);
+            	PushFollow(FOLLOW_action_target_in_periodic_action1983);
             	target = action_target();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, target.Tree);
-            	ACTION_PERIODIC52=(IToken)Match(input,ACTION_PERIODIC,FOLLOW_ACTION_PERIODIC_in_periodic_action1859); 
-            		ACTION_PERIODIC52_tree = (object)adaptor.Create(ACTION_PERIODIC52);
-            		adaptor.AddChild(root_0, ACTION_PERIODIC52_tree);
+            	ACTION_PERIODIC59=(IToken)Match(input,ACTION_PERIODIC,FOLLOW_ACTION_PERIODIC_in_periodic_action1985); 
+            		ACTION_PERIODIC59_tree = (object)adaptor.Create(ACTION_PERIODIC59);
+            		adaptor.AddChild(root_0, ACTION_PERIODIC59_tree);
 
-            	char_literal53=(IToken)Match(input,58,FOLLOW_58_in_periodic_action1861); 
-            		char_literal53_tree = (object)adaptor.Create(char_literal53);
-            		adaptor.AddChild(root_0, char_literal53_tree);
+            	char_literal60=(IToken)Match(input,59,FOLLOW_59_in_periodic_action1987); 
+            		char_literal60_tree = (object)adaptor.Create(char_literal60);
+            		adaptor.AddChild(root_0, char_literal60_tree);
 
-            	period=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_periodic_action1865); 
+            	period=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_periodic_action1991); 
             		period_tree = (object)adaptor.Create(period);
             		adaptor.AddChild(root_0, period_tree);
 
-            	char_literal54=(IToken)Match(input,59,FOLLOW_59_in_periodic_action1867); 
-            		char_literal54_tree = (object)adaptor.Create(char_literal54);
-            		adaptor.AddChild(root_0, char_literal54_tree);
+            	char_literal61=(IToken)Match(input,60,FOLLOW_60_in_periodic_action1993); 
+            		char_literal61_tree = (object)adaptor.Create(char_literal61);
+            		adaptor.AddChild(root_0, char_literal61_tree);
 
-            	char_literal55=(IToken)Match(input,56,FOLLOW_56_in_periodic_action1869); 
-            		char_literal55_tree = (object)adaptor.Create(char_literal55);
-            		adaptor.AddChild(root_0, char_literal55_tree);
+            	char_literal62=(IToken)Match(input,63,FOLLOW_63_in_periodic_action1995); 
+            		char_literal62_tree = (object)adaptor.Create(char_literal62);
+            		adaptor.AddChild(root_0, char_literal62_tree);
 
-            	PushFollow(FOLLOW_action_list_in_periodic_action1873);
+            	PushFollow(FOLLOW_action_list_in_periodic_action1999);
             	actions = action_list();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, actions.Tree);
-            	char_literal56=(IToken)Match(input,57,FOLLOW_57_in_periodic_action1875); 
-            		char_literal56_tree = (object)adaptor.Create(char_literal56);
-            		adaptor.AddChild(root_0, char_literal56_tree);
+            	char_literal63=(IToken)Match(input,64,FOLLOW_64_in_periodic_action2001); 
+            		char_literal63_tree = (object)adaptor.Create(char_literal63);
+            		adaptor.AddChild(root_0, char_literal63_tree);
 
             	 retval.action =  new PeriodicAction(((target != null) ? target.target : default(String)), ((actions != null) ? actions.actions : default(List<Action>)), float.Parse(period.Text)); 
 
@@ -2844,7 +3129,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "fire_action"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:395:1: fire_action returns [Action action] : target= action_target ACTION_FIRE '(' bullet= CLASS_IDENTIFIER ',' angle= formula ')' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:416:1: fire_action returns [Action action] : target= action_target ACTION_FIRE '(' bullet= CLASS_IDENTIFIER ',' angle= formula ')' ;
     public GbsParser.fire_action_return fire_action() // throws RecognitionException [1]
     {   
         GbsParser.fire_action_return retval = new GbsParser.fire_action_return();
@@ -2853,57 +3138,57 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken bullet = null;
-        IToken ACTION_FIRE57 = null;
-        IToken char_literal58 = null;
-        IToken char_literal59 = null;
-        IToken char_literal60 = null;
+        IToken ACTION_FIRE64 = null;
+        IToken char_literal65 = null;
+        IToken char_literal66 = null;
+        IToken char_literal67 = null;
         GbsParser.action_target_return target = default(GbsParser.action_target_return);
 
         GbsParser.formula_return angle = default(GbsParser.formula_return);
 
 
         object bullet_tree=null;
-        object ACTION_FIRE57_tree=null;
-        object char_literal58_tree=null;
-        object char_literal59_tree=null;
-        object char_literal60_tree=null;
+        object ACTION_FIRE64_tree=null;
+        object char_literal65_tree=null;
+        object char_literal66_tree=null;
+        object char_literal67_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:396:2: (target= action_target ACTION_FIRE '(' bullet= CLASS_IDENTIFIER ',' angle= formula ')' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:396:4: target= action_target ACTION_FIRE '(' bullet= CLASS_IDENTIFIER ',' angle= formula ')'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:417:2: (target= action_target ACTION_FIRE '(' bullet= CLASS_IDENTIFIER ',' angle= formula ')' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:417:4: target= action_target ACTION_FIRE '(' bullet= CLASS_IDENTIFIER ',' angle= formula ')'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_action_target_in_fire_action1895);
+            	PushFollow(FOLLOW_action_target_in_fire_action2021);
             	target = action_target();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, target.Tree);
-            	ACTION_FIRE57=(IToken)Match(input,ACTION_FIRE,FOLLOW_ACTION_FIRE_in_fire_action1897); 
-            		ACTION_FIRE57_tree = (object)adaptor.Create(ACTION_FIRE57);
-            		adaptor.AddChild(root_0, ACTION_FIRE57_tree);
+            	ACTION_FIRE64=(IToken)Match(input,ACTION_FIRE,FOLLOW_ACTION_FIRE_in_fire_action2023); 
+            		ACTION_FIRE64_tree = (object)adaptor.Create(ACTION_FIRE64);
+            		adaptor.AddChild(root_0, ACTION_FIRE64_tree);
 
-            	char_literal58=(IToken)Match(input,58,FOLLOW_58_in_fire_action1899); 
-            		char_literal58_tree = (object)adaptor.Create(char_literal58);
-            		adaptor.AddChild(root_0, char_literal58_tree);
+            	char_literal65=(IToken)Match(input,59,FOLLOW_59_in_fire_action2025); 
+            		char_literal65_tree = (object)adaptor.Create(char_literal65);
+            		adaptor.AddChild(root_0, char_literal65_tree);
 
-            	bullet=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_fire_action1903); 
+            	bullet=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_fire_action2029); 
             		bullet_tree = (object)adaptor.Create(bullet);
             		adaptor.AddChild(root_0, bullet_tree);
 
-            	char_literal59=(IToken)Match(input,55,FOLLOW_55_in_fire_action1905); 
-            		char_literal59_tree = (object)adaptor.Create(char_literal59);
-            		adaptor.AddChild(root_0, char_literal59_tree);
+            	char_literal66=(IToken)Match(input,62,FOLLOW_62_in_fire_action2031); 
+            		char_literal66_tree = (object)adaptor.Create(char_literal66);
+            		adaptor.AddChild(root_0, char_literal66_tree);
 
-            	PushFollow(FOLLOW_formula_in_fire_action1909);
+            	PushFollow(FOLLOW_formula_in_fire_action2035);
             	angle = formula();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, angle.Tree);
-            	char_literal60=(IToken)Match(input,59,FOLLOW_59_in_fire_action1911); 
-            		char_literal60_tree = (object)adaptor.Create(char_literal60);
-            		adaptor.AddChild(root_0, char_literal60_tree);
+            	char_literal67=(IToken)Match(input,60,FOLLOW_60_in_fire_action2037); 
+            		char_literal67_tree = (object)adaptor.Create(char_literal67);
+            		adaptor.AddChild(root_0, char_literal67_tree);
 
             	 retval.action =  new FireAction(((target != null) ? target.target : default(String)), bullet.Text, ((angle != null) ? angle.formula : default(Formula))); 
 
@@ -2941,7 +3226,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "die_action"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:399:1: die_action returns [Action action] : target= action_target ACTION_DIE ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:420:1: die_action returns [Action action] : target= action_target ACTION_DIE ;
     public GbsParser.die_action_return die_action() // throws RecognitionException [1]
     {   
         GbsParser.die_action_return retval = new GbsParser.die_action_return();
@@ -2949,27 +3234,27 @@ public partial class GbsParser : Parser
 
         object root_0 = null;
 
-        IToken ACTION_DIE61 = null;
+        IToken ACTION_DIE68 = null;
         GbsParser.action_target_return target = default(GbsParser.action_target_return);
 
 
-        object ACTION_DIE61_tree=null;
+        object ACTION_DIE68_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:400:2: (target= action_target ACTION_DIE )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:400:4: target= action_target ACTION_DIE
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:421:2: (target= action_target ACTION_DIE )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:421:4: target= action_target ACTION_DIE
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_action_target_in_die_action1931);
+            	PushFollow(FOLLOW_action_target_in_die_action2057);
             	target = action_target();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, target.Tree);
-            	ACTION_DIE61=(IToken)Match(input,ACTION_DIE,FOLLOW_ACTION_DIE_in_die_action1933); 
-            		ACTION_DIE61_tree = (object)adaptor.Create(ACTION_DIE61);
-            		adaptor.AddChild(root_0, ACTION_DIE61_tree);
+            	ACTION_DIE68=(IToken)Match(input,ACTION_DIE,FOLLOW_ACTION_DIE_in_die_action2059); 
+            		ACTION_DIE68_tree = (object)adaptor.Create(ACTION_DIE68);
+            		adaptor.AddChild(root_0, ACTION_DIE68_tree);
 
             	 retval.action =  new DieAction(((target != null) ? target.target : default(String))); 
 
@@ -3007,7 +3292,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "start_action"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:403:1: start_action returns [Action action] : target= action_target ACTION_START '(' st= CLASS_IDENTIFIER ')' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:424:1: start_action returns [Action action] : target= action_target ACTION_START '(' st= CLASS_IDENTIFIER ')' ;
     public GbsParser.start_action_return start_action() // throws RecognitionException [1]
     {   
         GbsParser.start_action_return retval = new GbsParser.start_action_return();
@@ -3016,44 +3301,44 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken st = null;
-        IToken ACTION_START62 = null;
-        IToken char_literal63 = null;
-        IToken char_literal64 = null;
+        IToken ACTION_START69 = null;
+        IToken char_literal70 = null;
+        IToken char_literal71 = null;
         GbsParser.action_target_return target = default(GbsParser.action_target_return);
 
 
         object st_tree=null;
-        object ACTION_START62_tree=null;
-        object char_literal63_tree=null;
-        object char_literal64_tree=null;
+        object ACTION_START69_tree=null;
+        object char_literal70_tree=null;
+        object char_literal71_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:404:2: (target= action_target ACTION_START '(' st= CLASS_IDENTIFIER ')' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:404:4: target= action_target ACTION_START '(' st= CLASS_IDENTIFIER ')'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:425:2: (target= action_target ACTION_START '(' st= CLASS_IDENTIFIER ')' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:425:4: target= action_target ACTION_START '(' st= CLASS_IDENTIFIER ')'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_action_target_in_start_action1953);
+            	PushFollow(FOLLOW_action_target_in_start_action2079);
             	target = action_target();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, target.Tree);
-            	ACTION_START62=(IToken)Match(input,ACTION_START,FOLLOW_ACTION_START_in_start_action1955); 
-            		ACTION_START62_tree = (object)adaptor.Create(ACTION_START62);
-            		adaptor.AddChild(root_0, ACTION_START62_tree);
+            	ACTION_START69=(IToken)Match(input,ACTION_START,FOLLOW_ACTION_START_in_start_action2081); 
+            		ACTION_START69_tree = (object)adaptor.Create(ACTION_START69);
+            		adaptor.AddChild(root_0, ACTION_START69_tree);
 
-            	char_literal63=(IToken)Match(input,58,FOLLOW_58_in_start_action1957); 
-            		char_literal63_tree = (object)adaptor.Create(char_literal63);
-            		adaptor.AddChild(root_0, char_literal63_tree);
+            	char_literal70=(IToken)Match(input,59,FOLLOW_59_in_start_action2083); 
+            		char_literal70_tree = (object)adaptor.Create(char_literal70);
+            		adaptor.AddChild(root_0, char_literal70_tree);
 
-            	st=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_start_action1961); 
+            	st=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_start_action2087); 
             		st_tree = (object)adaptor.Create(st);
             		adaptor.AddChild(root_0, st_tree);
 
-            	char_literal64=(IToken)Match(input,59,FOLLOW_59_in_start_action1963); 
-            		char_literal64_tree = (object)adaptor.Create(char_literal64);
-            		adaptor.AddChild(root_0, char_literal64_tree);
+            	char_literal71=(IToken)Match(input,60,FOLLOW_60_in_start_action2089); 
+            		char_literal71_tree = (object)adaptor.Create(char_literal71);
+            		adaptor.AddChild(root_0, char_literal71_tree);
 
             	 retval.action =  new StartAction(((target != null) ? target.target : default(String)), st.Text); 
 
@@ -3091,7 +3376,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "stop_action"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:407:1: stop_action returns [Action action] : target= action_target ACTION_STOP '(' st= CLASS_IDENTIFIER ')' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:428:1: stop_action returns [Action action] : target= action_target ACTION_STOP '(' st= CLASS_IDENTIFIER ')' ;
     public GbsParser.stop_action_return stop_action() // throws RecognitionException [1]
     {   
         GbsParser.stop_action_return retval = new GbsParser.stop_action_return();
@@ -3100,44 +3385,44 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken st = null;
-        IToken ACTION_STOP65 = null;
-        IToken char_literal66 = null;
-        IToken char_literal67 = null;
+        IToken ACTION_STOP72 = null;
+        IToken char_literal73 = null;
+        IToken char_literal74 = null;
         GbsParser.action_target_return target = default(GbsParser.action_target_return);
 
 
         object st_tree=null;
-        object ACTION_STOP65_tree=null;
-        object char_literal66_tree=null;
-        object char_literal67_tree=null;
+        object ACTION_STOP72_tree=null;
+        object char_literal73_tree=null;
+        object char_literal74_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:408:2: (target= action_target ACTION_STOP '(' st= CLASS_IDENTIFIER ')' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:408:4: target= action_target ACTION_STOP '(' st= CLASS_IDENTIFIER ')'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:429:2: (target= action_target ACTION_STOP '(' st= CLASS_IDENTIFIER ')' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:429:4: target= action_target ACTION_STOP '(' st= CLASS_IDENTIFIER ')'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_action_target_in_stop_action1982);
+            	PushFollow(FOLLOW_action_target_in_stop_action2108);
             	target = action_target();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, target.Tree);
-            	ACTION_STOP65=(IToken)Match(input,ACTION_STOP,FOLLOW_ACTION_STOP_in_stop_action1984); 
-            		ACTION_STOP65_tree = (object)adaptor.Create(ACTION_STOP65);
-            		adaptor.AddChild(root_0, ACTION_STOP65_tree);
+            	ACTION_STOP72=(IToken)Match(input,ACTION_STOP,FOLLOW_ACTION_STOP_in_stop_action2110); 
+            		ACTION_STOP72_tree = (object)adaptor.Create(ACTION_STOP72);
+            		adaptor.AddChild(root_0, ACTION_STOP72_tree);
 
-            	char_literal66=(IToken)Match(input,58,FOLLOW_58_in_stop_action1986); 
-            		char_literal66_tree = (object)adaptor.Create(char_literal66);
-            		adaptor.AddChild(root_0, char_literal66_tree);
+            	char_literal73=(IToken)Match(input,59,FOLLOW_59_in_stop_action2112); 
+            		char_literal73_tree = (object)adaptor.Create(char_literal73);
+            		adaptor.AddChild(root_0, char_literal73_tree);
 
-            	st=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_stop_action1990); 
+            	st=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_stop_action2116); 
             		st_tree = (object)adaptor.Create(st);
             		adaptor.AddChild(root_0, st_tree);
 
-            	char_literal67=(IToken)Match(input,59,FOLLOW_59_in_stop_action1992); 
-            		char_literal67_tree = (object)adaptor.Create(char_literal67);
-            		adaptor.AddChild(root_0, char_literal67_tree);
+            	char_literal74=(IToken)Match(input,60,FOLLOW_60_in_stop_action2118); 
+            		char_literal74_tree = (object)adaptor.Create(char_literal74);
+            		adaptor.AddChild(root_0, char_literal74_tree);
 
             	 retval.action =  new StopAction(((target != null) ? target.target : default(String)), st.Text); 
 
@@ -3175,7 +3460,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "summon_action"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:411:1: summon_action returns [Action action] : target= action_target ACTION_SUMMON '(' enemy= CLASS_IDENTIFIER ')' name= INSTANCE_IDENTIFIER ( '{' a= action_list '}' )? ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:432:1: summon_action returns [Action action] : target= action_target ACTION_SUMMON '(' enemy= CLASS_IDENTIFIER ')' name= INSTANCE_IDENTIFIER ( '{' a= action_list '}' )? ;
     public GbsParser.summon_action_return summon_action() // throws RecognitionException [1]
     {   
         GbsParser.summon_action_return retval = new GbsParser.summon_action_return();
@@ -3185,11 +3470,11 @@ public partial class GbsParser : Parser
 
         IToken enemy = null;
         IToken name = null;
-        IToken ACTION_SUMMON68 = null;
-        IToken char_literal69 = null;
-        IToken char_literal70 = null;
-        IToken char_literal71 = null;
-        IToken char_literal72 = null;
+        IToken ACTION_SUMMON75 = null;
+        IToken char_literal76 = null;
+        IToken char_literal77 = null;
+        IToken char_literal78 = null;
+        IToken char_literal79 = null;
         GbsParser.action_target_return target = default(GbsParser.action_target_return);
 
         GbsParser.action_list_return a = default(GbsParser.action_list_return);
@@ -3197,69 +3482,69 @@ public partial class GbsParser : Parser
 
         object enemy_tree=null;
         object name_tree=null;
-        object ACTION_SUMMON68_tree=null;
-        object char_literal69_tree=null;
-        object char_literal70_tree=null;
-        object char_literal71_tree=null;
-        object char_literal72_tree=null;
+        object ACTION_SUMMON75_tree=null;
+        object char_literal76_tree=null;
+        object char_literal77_tree=null;
+        object char_literal78_tree=null;
+        object char_literal79_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:412:2: (target= action_target ACTION_SUMMON '(' enemy= CLASS_IDENTIFIER ')' name= INSTANCE_IDENTIFIER ( '{' a= action_list '}' )? )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:412:4: target= action_target ACTION_SUMMON '(' enemy= CLASS_IDENTIFIER ')' name= INSTANCE_IDENTIFIER ( '{' a= action_list '}' )?
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:433:2: (target= action_target ACTION_SUMMON '(' enemy= CLASS_IDENTIFIER ')' name= INSTANCE_IDENTIFIER ( '{' a= action_list '}' )? )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:433:4: target= action_target ACTION_SUMMON '(' enemy= CLASS_IDENTIFIER ')' name= INSTANCE_IDENTIFIER ( '{' a= action_list '}' )?
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_action_target_in_summon_action2013);
+            	PushFollow(FOLLOW_action_target_in_summon_action2139);
             	target = action_target();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, target.Tree);
-            	ACTION_SUMMON68=(IToken)Match(input,ACTION_SUMMON,FOLLOW_ACTION_SUMMON_in_summon_action2015); 
-            		ACTION_SUMMON68_tree = (object)adaptor.Create(ACTION_SUMMON68);
-            		adaptor.AddChild(root_0, ACTION_SUMMON68_tree);
+            	ACTION_SUMMON75=(IToken)Match(input,ACTION_SUMMON,FOLLOW_ACTION_SUMMON_in_summon_action2141); 
+            		ACTION_SUMMON75_tree = (object)adaptor.Create(ACTION_SUMMON75);
+            		adaptor.AddChild(root_0, ACTION_SUMMON75_tree);
 
-            	char_literal69=(IToken)Match(input,58,FOLLOW_58_in_summon_action2017); 
-            		char_literal69_tree = (object)adaptor.Create(char_literal69);
-            		adaptor.AddChild(root_0, char_literal69_tree);
+            	char_literal76=(IToken)Match(input,59,FOLLOW_59_in_summon_action2143); 
+            		char_literal76_tree = (object)adaptor.Create(char_literal76);
+            		adaptor.AddChild(root_0, char_literal76_tree);
 
-            	enemy=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_summon_action2021); 
+            	enemy=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_summon_action2147); 
             		enemy_tree = (object)adaptor.Create(enemy);
             		adaptor.AddChild(root_0, enemy_tree);
 
-            	char_literal70=(IToken)Match(input,59,FOLLOW_59_in_summon_action2023); 
-            		char_literal70_tree = (object)adaptor.Create(char_literal70);
-            		adaptor.AddChild(root_0, char_literal70_tree);
+            	char_literal77=(IToken)Match(input,60,FOLLOW_60_in_summon_action2149); 
+            		char_literal77_tree = (object)adaptor.Create(char_literal77);
+            		adaptor.AddChild(root_0, char_literal77_tree);
 
-            	name=(IToken)Match(input,INSTANCE_IDENTIFIER,FOLLOW_INSTANCE_IDENTIFIER_in_summon_action2027); 
+            	name=(IToken)Match(input,INSTANCE_IDENTIFIER,FOLLOW_INSTANCE_IDENTIFIER_in_summon_action2153); 
             		name_tree = (object)adaptor.Create(name);
             		adaptor.AddChild(root_0, name_tree);
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:412:95: ( '{' a= action_list '}' )?
-            	int alt16 = 2;
-            	int LA16_0 = input.LA(1);
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:433:95: ( '{' a= action_list '}' )?
+            	int alt18 = 2;
+            	int LA18_0 = input.LA(1);
 
-            	if ( (LA16_0 == 56) )
+            	if ( (LA18_0 == 63) )
             	{
-            	    alt16 = 1;
+            	    alt18 = 1;
             	}
-            	switch (alt16) 
+            	switch (alt18) 
             	{
             	    case 1 :
-            	        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:412:97: '{' a= action_list '}'
+            	        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:433:97: '{' a= action_list '}'
             	        {
-            	        	char_literal71=(IToken)Match(input,56,FOLLOW_56_in_summon_action2031); 
-            	        		char_literal71_tree = (object)adaptor.Create(char_literal71);
-            	        		adaptor.AddChild(root_0, char_literal71_tree);
+            	        	char_literal78=(IToken)Match(input,63,FOLLOW_63_in_summon_action2157); 
+            	        		char_literal78_tree = (object)adaptor.Create(char_literal78);
+            	        		adaptor.AddChild(root_0, char_literal78_tree);
 
-            	        	PushFollow(FOLLOW_action_list_in_summon_action2035);
+            	        	PushFollow(FOLLOW_action_list_in_summon_action2161);
             	        	a = action_list();
             	        	state.followingStackPointer--;
 
             	        	adaptor.AddChild(root_0, a.Tree);
-            	        	char_literal72=(IToken)Match(input,57,FOLLOW_57_in_summon_action2037); 
-            	        		char_literal72_tree = (object)adaptor.Create(char_literal72);
-            	        		adaptor.AddChild(root_0, char_literal72_tree);
+            	        	char_literal79=(IToken)Match(input,64,FOLLOW_64_in_summon_action2163); 
+            	        		char_literal79_tree = (object)adaptor.Create(char_literal79);
+            	        		adaptor.AddChild(root_0, char_literal79_tree);
 
 
             	        }
@@ -3303,7 +3588,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "set_action"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:415:1: set_action returns [Action action] : (target= action_target ACTION_SET '(' p= param ')' | p= param );
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:436:1: set_action returns [Action action] : (target= action_target ACTION_SET '(' p= param ')' | p= param );
     public GbsParser.set_action_return set_action() // throws RecognitionException [1]
     {   
         GbsParser.set_action_return retval = new GbsParser.set_action_return();
@@ -3311,78 +3596,78 @@ public partial class GbsParser : Parser
 
         object root_0 = null;
 
-        IToken ACTION_SET73 = null;
-        IToken char_literal74 = null;
-        IToken char_literal75 = null;
+        IToken ACTION_SET80 = null;
+        IToken char_literal81 = null;
+        IToken char_literal82 = null;
         GbsParser.action_target_return target = default(GbsParser.action_target_return);
 
         GbsParser.param_return p = default(GbsParser.param_return);
 
 
-        object ACTION_SET73_tree=null;
-        object char_literal74_tree=null;
-        object char_literal75_tree=null;
+        object ACTION_SET80_tree=null;
+        object char_literal81_tree=null;
+        object char_literal82_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:416:2: (target= action_target ACTION_SET '(' p= param ')' | p= param )
-            int alt17 = 2;
-            int LA17_0 = input.LA(1);
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:437:2: (target= action_target ACTION_SET '(' p= param ')' | p= param )
+            int alt19 = 2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA17_0 == THIS || (LA17_0 >= ACTION_PERIODIC && LA17_0 <= ACTION_RAISE) || LA17_0 == INSTANCE_IDENTIFIER) )
+            if ( (LA19_0 == THIS || (LA19_0 >= ACTION_PERIODIC && LA19_0 <= ACTION_RAISE) || LA19_0 == INSTANCE_IDENTIFIER) )
             {
-                alt17 = 1;
+                alt19 = 1;
             }
-            else if ( ((LA17_0 >= PARAM_FPS && LA17_0 <= PARAM_SCROLLING)) )
+            else if ( ((LA19_0 >= PARAM_FPS && LA19_0 <= PARAM_SCROLLING)) )
             {
-                alt17 = 2;
+                alt19 = 2;
             }
             else 
             {
-                NoViableAltException nvae_d17s0 =
-                    new NoViableAltException("", 17, 0, input);
+                NoViableAltException nvae_d19s0 =
+                    new NoViableAltException("", 19, 0, input);
 
-                throw nvae_d17s0;
+                throw nvae_d19s0;
             }
-            switch (alt17) 
+            switch (alt19) 
             {
                 case 1 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:416:4: target= action_target ACTION_SET '(' p= param ')'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:437:4: target= action_target ACTION_SET '(' p= param ')'
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_action_target_in_set_action2060);
+                    	PushFollow(FOLLOW_action_target_in_set_action2186);
                     	target = action_target();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_0, target.Tree);
-                    	ACTION_SET73=(IToken)Match(input,ACTION_SET,FOLLOW_ACTION_SET_in_set_action2062); 
-                    		ACTION_SET73_tree = (object)adaptor.Create(ACTION_SET73);
-                    		adaptor.AddChild(root_0, ACTION_SET73_tree);
+                    	ACTION_SET80=(IToken)Match(input,ACTION_SET,FOLLOW_ACTION_SET_in_set_action2188); 
+                    		ACTION_SET80_tree = (object)adaptor.Create(ACTION_SET80);
+                    		adaptor.AddChild(root_0, ACTION_SET80_tree);
 
-                    	char_literal74=(IToken)Match(input,58,FOLLOW_58_in_set_action2064); 
-                    		char_literal74_tree = (object)adaptor.Create(char_literal74);
-                    		adaptor.AddChild(root_0, char_literal74_tree);
+                    	char_literal81=(IToken)Match(input,59,FOLLOW_59_in_set_action2190); 
+                    		char_literal81_tree = (object)adaptor.Create(char_literal81);
+                    		adaptor.AddChild(root_0, char_literal81_tree);
 
-                    	PushFollow(FOLLOW_param_in_set_action2068);
+                    	PushFollow(FOLLOW_param_in_set_action2194);
                     	p = param();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_0, p.Tree);
-                    	char_literal75=(IToken)Match(input,59,FOLLOW_59_in_set_action2070); 
-                    		char_literal75_tree = (object)adaptor.Create(char_literal75);
-                    		adaptor.AddChild(root_0, char_literal75_tree);
+                    	char_literal82=(IToken)Match(input,60,FOLLOW_60_in_set_action2196); 
+                    		char_literal82_tree = (object)adaptor.Create(char_literal82);
+                    		adaptor.AddChild(root_0, char_literal82_tree);
 
                     	 retval.action =  new SetAction(((target != null) ? target.target : default(String)), ((p != null) ? p.p : default(Param))); 
 
                     }
                     break;
                 case 2 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:417:4: p= param
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:438:4: p= param
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_param_in_set_action2079);
+                    	PushFollow(FOLLOW_param_in_set_action2205);
                     	p = param();
                     	state.followingStackPointer--;
 
@@ -3425,7 +3710,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "raise_action"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:420:1: raise_action returns [Action action] : target= action_target ACTION_RAISE '(' e= CLASS_IDENTIFIER ')' ;
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:441:1: raise_action returns [Action action] : target= action_target ACTION_RAISE '(' e= CLASS_IDENTIFIER ')' ;
     public GbsParser.raise_action_return raise_action() // throws RecognitionException [1]
     {   
         GbsParser.raise_action_return retval = new GbsParser.raise_action_return();
@@ -3434,44 +3719,44 @@ public partial class GbsParser : Parser
         object root_0 = null;
 
         IToken e = null;
-        IToken ACTION_RAISE76 = null;
-        IToken char_literal77 = null;
-        IToken char_literal78 = null;
+        IToken ACTION_RAISE83 = null;
+        IToken char_literal84 = null;
+        IToken char_literal85 = null;
         GbsParser.action_target_return target = default(GbsParser.action_target_return);
 
 
         object e_tree=null;
-        object ACTION_RAISE76_tree=null;
-        object char_literal77_tree=null;
-        object char_literal78_tree=null;
+        object ACTION_RAISE83_tree=null;
+        object char_literal84_tree=null;
+        object char_literal85_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:421:2: (target= action_target ACTION_RAISE '(' e= CLASS_IDENTIFIER ')' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:421:4: target= action_target ACTION_RAISE '(' e= CLASS_IDENTIFIER ')'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:442:2: (target= action_target ACTION_RAISE '(' e= CLASS_IDENTIFIER ')' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:442:4: target= action_target ACTION_RAISE '(' e= CLASS_IDENTIFIER ')'
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_action_target_in_raise_action2139);
+            	PushFollow(FOLLOW_action_target_in_raise_action2265);
             	target = action_target();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, target.Tree);
-            	ACTION_RAISE76=(IToken)Match(input,ACTION_RAISE,FOLLOW_ACTION_RAISE_in_raise_action2141); 
-            		ACTION_RAISE76_tree = (object)adaptor.Create(ACTION_RAISE76);
-            		adaptor.AddChild(root_0, ACTION_RAISE76_tree);
+            	ACTION_RAISE83=(IToken)Match(input,ACTION_RAISE,FOLLOW_ACTION_RAISE_in_raise_action2267); 
+            		ACTION_RAISE83_tree = (object)adaptor.Create(ACTION_RAISE83);
+            		adaptor.AddChild(root_0, ACTION_RAISE83_tree);
 
-            	char_literal77=(IToken)Match(input,58,FOLLOW_58_in_raise_action2143); 
-            		char_literal77_tree = (object)adaptor.Create(char_literal77);
-            		adaptor.AddChild(root_0, char_literal77_tree);
+            	char_literal84=(IToken)Match(input,59,FOLLOW_59_in_raise_action2269); 
+            		char_literal84_tree = (object)adaptor.Create(char_literal84);
+            		adaptor.AddChild(root_0, char_literal84_tree);
 
-            	e=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_raise_action2147); 
+            	e=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_raise_action2273); 
             		e_tree = (object)adaptor.Create(e);
             		adaptor.AddChild(root_0, e_tree);
 
-            	char_literal78=(IToken)Match(input,59,FOLLOW_59_in_raise_action2149); 
-            		char_literal78_tree = (object)adaptor.Create(char_literal78);
-            		adaptor.AddChild(root_0, char_literal78_tree);
+            	char_literal85=(IToken)Match(input,60,FOLLOW_60_in_raise_action2275); 
+            		char_literal85_tree = (object)adaptor.Create(char_literal85);
+            		adaptor.AddChild(root_0, char_literal85_tree);
 
             	 retval.action =  new RaiseAction(((target != null) ? target.target : default(String)), e.Text); 
 
@@ -3509,7 +3794,7 @@ public partial class GbsParser : Parser
     };
 
     // $ANTLR start "trigger"
-    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:424:1: trigger returns [Trigger t] : ( TRIGGER_INIT '{' a= action_list '}' | TRIGGER_CLEANUP '{' a= action_list '}' | TRIGGER_TIME '(' time= NUMBER ')' '{' a= action_list '}' | TRIGGER_PERIODIC '(' period= NUMBER ')' '{' a= action_list '}' | TRIGGER_SCROLLING '(' scroll= NUMBER ')' '{' a= action_list '}' | TRIGGER_ANIMATION_END '(' anim= STRING ')' '{' a= action_list '}' | TRIGGER_EVENT '(' e= CLASS_IDENTIFIER ')' '{' a= action_list '}' );
+    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:445:1: trigger returns [Trigger t] : ( TRIGGER_INIT '{' a= action_list '}' | TRIGGER_CLEANUP '{' a= action_list '}' | TRIGGER_TIME '(' time= NUMBER ')' '{' a= action_list '}' | TRIGGER_PERIODIC '(' period= NUMBER ')' '{' a= action_list '}' | TRIGGER_SCROLLING '(' scroll= NUMBER ')' '{' a= action_list '}' | TRIGGER_ANIMATION_END '(' anim= STRING ')' '{' a= action_list '}' | TRIGGER_EVENT '(' e= CLASS_IDENTIFIER ')' '{' a= action_list '}' );
     public GbsParser.trigger_return trigger() // throws RecognitionException [1]
     {   
         GbsParser.trigger_return retval = new GbsParser.trigger_return();
@@ -3522,37 +3807,37 @@ public partial class GbsParser : Parser
         IToken scroll = null;
         IToken anim = null;
         IToken e = null;
-        IToken TRIGGER_INIT79 = null;
-        IToken char_literal80 = null;
-        IToken char_literal81 = null;
-        IToken TRIGGER_CLEANUP82 = null;
-        IToken char_literal83 = null;
-        IToken char_literal84 = null;
-        IToken TRIGGER_TIME85 = null;
-        IToken char_literal86 = null;
+        IToken TRIGGER_INIT86 = null;
         IToken char_literal87 = null;
         IToken char_literal88 = null;
-        IToken char_literal89 = null;
-        IToken TRIGGER_PERIODIC90 = null;
+        IToken TRIGGER_CLEANUP89 = null;
+        IToken char_literal90 = null;
         IToken char_literal91 = null;
-        IToken char_literal92 = null;
+        IToken TRIGGER_TIME92 = null;
         IToken char_literal93 = null;
         IToken char_literal94 = null;
-        IToken TRIGGER_SCROLLING95 = null;
+        IToken char_literal95 = null;
         IToken char_literal96 = null;
-        IToken char_literal97 = null;
+        IToken TRIGGER_PERIODIC97 = null;
         IToken char_literal98 = null;
         IToken char_literal99 = null;
-        IToken TRIGGER_ANIMATION_END100 = null;
+        IToken char_literal100 = null;
         IToken char_literal101 = null;
-        IToken char_literal102 = null;
+        IToken TRIGGER_SCROLLING102 = null;
         IToken char_literal103 = null;
         IToken char_literal104 = null;
-        IToken TRIGGER_EVENT105 = null;
+        IToken char_literal105 = null;
         IToken char_literal106 = null;
-        IToken char_literal107 = null;
+        IToken TRIGGER_ANIMATION_END107 = null;
         IToken char_literal108 = null;
         IToken char_literal109 = null;
+        IToken char_literal110 = null;
+        IToken char_literal111 = null;
+        IToken TRIGGER_EVENT112 = null;
+        IToken char_literal113 = null;
+        IToken char_literal114 = null;
+        IToken char_literal115 = null;
+        IToken char_literal116 = null;
         GbsParser.action_list_return a = default(GbsParser.action_list_return);
 
 
@@ -3561,325 +3846,325 @@ public partial class GbsParser : Parser
         object scroll_tree=null;
         object anim_tree=null;
         object e_tree=null;
-        object TRIGGER_INIT79_tree=null;
-        object char_literal80_tree=null;
-        object char_literal81_tree=null;
-        object TRIGGER_CLEANUP82_tree=null;
-        object char_literal83_tree=null;
-        object char_literal84_tree=null;
-        object TRIGGER_TIME85_tree=null;
-        object char_literal86_tree=null;
+        object TRIGGER_INIT86_tree=null;
         object char_literal87_tree=null;
         object char_literal88_tree=null;
-        object char_literal89_tree=null;
-        object TRIGGER_PERIODIC90_tree=null;
+        object TRIGGER_CLEANUP89_tree=null;
+        object char_literal90_tree=null;
         object char_literal91_tree=null;
-        object char_literal92_tree=null;
+        object TRIGGER_TIME92_tree=null;
         object char_literal93_tree=null;
         object char_literal94_tree=null;
-        object TRIGGER_SCROLLING95_tree=null;
+        object char_literal95_tree=null;
         object char_literal96_tree=null;
-        object char_literal97_tree=null;
+        object TRIGGER_PERIODIC97_tree=null;
         object char_literal98_tree=null;
         object char_literal99_tree=null;
-        object TRIGGER_ANIMATION_END100_tree=null;
+        object char_literal100_tree=null;
         object char_literal101_tree=null;
-        object char_literal102_tree=null;
+        object TRIGGER_SCROLLING102_tree=null;
         object char_literal103_tree=null;
         object char_literal104_tree=null;
-        object TRIGGER_EVENT105_tree=null;
+        object char_literal105_tree=null;
         object char_literal106_tree=null;
-        object char_literal107_tree=null;
+        object TRIGGER_ANIMATION_END107_tree=null;
         object char_literal108_tree=null;
         object char_literal109_tree=null;
+        object char_literal110_tree=null;
+        object char_literal111_tree=null;
+        object TRIGGER_EVENT112_tree=null;
+        object char_literal113_tree=null;
+        object char_literal114_tree=null;
+        object char_literal115_tree=null;
+        object char_literal116_tree=null;
 
         try 
     	{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:425:2: ( TRIGGER_INIT '{' a= action_list '}' | TRIGGER_CLEANUP '{' a= action_list '}' | TRIGGER_TIME '(' time= NUMBER ')' '{' a= action_list '}' | TRIGGER_PERIODIC '(' period= NUMBER ')' '{' a= action_list '}' | TRIGGER_SCROLLING '(' scroll= NUMBER ')' '{' a= action_list '}' | TRIGGER_ANIMATION_END '(' anim= STRING ')' '{' a= action_list '}' | TRIGGER_EVENT '(' e= CLASS_IDENTIFIER ')' '{' a= action_list '}' )
-            int alt18 = 7;
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:446:2: ( TRIGGER_INIT '{' a= action_list '}' | TRIGGER_CLEANUP '{' a= action_list '}' | TRIGGER_TIME '(' time= NUMBER ')' '{' a= action_list '}' | TRIGGER_PERIODIC '(' period= NUMBER ')' '{' a= action_list '}' | TRIGGER_SCROLLING '(' scroll= NUMBER ')' '{' a= action_list '}' | TRIGGER_ANIMATION_END '(' anim= STRING ')' '{' a= action_list '}' | TRIGGER_EVENT '(' e= CLASS_IDENTIFIER ')' '{' a= action_list '}' )
+            int alt20 = 7;
             switch ( input.LA(1) ) 
             {
             case TRIGGER_INIT:
             	{
-                alt18 = 1;
+                alt20 = 1;
                 }
                 break;
             case TRIGGER_CLEANUP:
             	{
-                alt18 = 2;
+                alt20 = 2;
                 }
                 break;
             case TRIGGER_TIME:
             	{
-                alt18 = 3;
+                alt20 = 3;
                 }
                 break;
             case TRIGGER_PERIODIC:
             	{
-                alt18 = 4;
+                alt20 = 4;
                 }
                 break;
             case TRIGGER_SCROLLING:
             	{
-                alt18 = 5;
+                alt20 = 5;
                 }
                 break;
             case TRIGGER_ANIMATION_END:
             	{
-                alt18 = 6;
+                alt20 = 6;
                 }
                 break;
             case TRIGGER_EVENT:
             	{
-                alt18 = 7;
+                alt20 = 7;
                 }
                 break;
             	default:
-            	    NoViableAltException nvae_d18s0 =
-            	        new NoViableAltException("", 18, 0, input);
+            	    NoViableAltException nvae_d20s0 =
+            	        new NoViableAltException("", 20, 0, input);
 
-            	    throw nvae_d18s0;
+            	    throw nvae_d20s0;
             }
 
-            switch (alt18) 
+            switch (alt20) 
             {
                 case 1 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:425:4: TRIGGER_INIT '{' a= action_list '}'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:446:4: TRIGGER_INIT '{' a= action_list '}'
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	TRIGGER_INIT79=(IToken)Match(input,TRIGGER_INIT,FOLLOW_TRIGGER_INIT_in_trigger2167); 
-                    		TRIGGER_INIT79_tree = (object)adaptor.Create(TRIGGER_INIT79);
-                    		adaptor.AddChild(root_0, TRIGGER_INIT79_tree);
+                    	TRIGGER_INIT86=(IToken)Match(input,TRIGGER_INIT,FOLLOW_TRIGGER_INIT_in_trigger2293); 
+                    		TRIGGER_INIT86_tree = (object)adaptor.Create(TRIGGER_INIT86);
+                    		adaptor.AddChild(root_0, TRIGGER_INIT86_tree);
 
-                    	char_literal80=(IToken)Match(input,56,FOLLOW_56_in_trigger2169); 
-                    		char_literal80_tree = (object)adaptor.Create(char_literal80);
-                    		adaptor.AddChild(root_0, char_literal80_tree);
+                    	char_literal87=(IToken)Match(input,63,FOLLOW_63_in_trigger2295); 
+                    		char_literal87_tree = (object)adaptor.Create(char_literal87);
+                    		adaptor.AddChild(root_0, char_literal87_tree);
 
-                    	PushFollow(FOLLOW_action_list_in_trigger2173);
+                    	PushFollow(FOLLOW_action_list_in_trigger2299);
                     	a = action_list();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_0, a.Tree);
-                    	char_literal81=(IToken)Match(input,57,FOLLOW_57_in_trigger2175); 
-                    		char_literal81_tree = (object)adaptor.Create(char_literal81);
-                    		adaptor.AddChild(root_0, char_literal81_tree);
+                    	char_literal88=(IToken)Match(input,64,FOLLOW_64_in_trigger2301); 
+                    		char_literal88_tree = (object)adaptor.Create(char_literal88);
+                    		adaptor.AddChild(root_0, char_literal88_tree);
 
                     	 retval.t =  new InitTrigger(((a != null) ? a.actions : default(List<Action>))); 
 
                     }
                     break;
                 case 2 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:426:4: TRIGGER_CLEANUP '{' a= action_list '}'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:447:4: TRIGGER_CLEANUP '{' a= action_list '}'
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	TRIGGER_CLEANUP82=(IToken)Match(input,TRIGGER_CLEANUP,FOLLOW_TRIGGER_CLEANUP_in_trigger2211); 
-                    		TRIGGER_CLEANUP82_tree = (object)adaptor.Create(TRIGGER_CLEANUP82);
-                    		adaptor.AddChild(root_0, TRIGGER_CLEANUP82_tree);
+                    	TRIGGER_CLEANUP89=(IToken)Match(input,TRIGGER_CLEANUP,FOLLOW_TRIGGER_CLEANUP_in_trigger2337); 
+                    		TRIGGER_CLEANUP89_tree = (object)adaptor.Create(TRIGGER_CLEANUP89);
+                    		adaptor.AddChild(root_0, TRIGGER_CLEANUP89_tree);
 
-                    	char_literal83=(IToken)Match(input,56,FOLLOW_56_in_trigger2213); 
-                    		char_literal83_tree = (object)adaptor.Create(char_literal83);
-                    		adaptor.AddChild(root_0, char_literal83_tree);
+                    	char_literal90=(IToken)Match(input,63,FOLLOW_63_in_trigger2339); 
+                    		char_literal90_tree = (object)adaptor.Create(char_literal90);
+                    		adaptor.AddChild(root_0, char_literal90_tree);
 
-                    	PushFollow(FOLLOW_action_list_in_trigger2217);
+                    	PushFollow(FOLLOW_action_list_in_trigger2343);
                     	a = action_list();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_0, a.Tree);
-                    	char_literal84=(IToken)Match(input,57,FOLLOW_57_in_trigger2219); 
-                    		char_literal84_tree = (object)adaptor.Create(char_literal84);
-                    		adaptor.AddChild(root_0, char_literal84_tree);
+                    	char_literal91=(IToken)Match(input,64,FOLLOW_64_in_trigger2345); 
+                    		char_literal91_tree = (object)adaptor.Create(char_literal91);
+                    		adaptor.AddChild(root_0, char_literal91_tree);
 
                     	 retval.t =  new CleanupTrigger(((a != null) ? a.actions : default(List<Action>))); 
 
                     }
                     break;
                 case 3 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:427:4: TRIGGER_TIME '(' time= NUMBER ')' '{' a= action_list '}'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:448:4: TRIGGER_TIME '(' time= NUMBER ')' '{' a= action_list '}'
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	TRIGGER_TIME85=(IToken)Match(input,TRIGGER_TIME,FOLLOW_TRIGGER_TIME_in_trigger2252); 
-                    		TRIGGER_TIME85_tree = (object)adaptor.Create(TRIGGER_TIME85);
-                    		adaptor.AddChild(root_0, TRIGGER_TIME85_tree);
+                    	TRIGGER_TIME92=(IToken)Match(input,TRIGGER_TIME,FOLLOW_TRIGGER_TIME_in_trigger2378); 
+                    		TRIGGER_TIME92_tree = (object)adaptor.Create(TRIGGER_TIME92);
+                    		adaptor.AddChild(root_0, TRIGGER_TIME92_tree);
 
-                    	char_literal86=(IToken)Match(input,58,FOLLOW_58_in_trigger2254); 
-                    		char_literal86_tree = (object)adaptor.Create(char_literal86);
-                    		adaptor.AddChild(root_0, char_literal86_tree);
+                    	char_literal93=(IToken)Match(input,59,FOLLOW_59_in_trigger2380); 
+                    		char_literal93_tree = (object)adaptor.Create(char_literal93);
+                    		adaptor.AddChild(root_0, char_literal93_tree);
 
-                    	time=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_trigger2258); 
+                    	time=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_trigger2384); 
                     		time_tree = (object)adaptor.Create(time);
                     		adaptor.AddChild(root_0, time_tree);
 
-                    	char_literal87=(IToken)Match(input,59,FOLLOW_59_in_trigger2260); 
-                    		char_literal87_tree = (object)adaptor.Create(char_literal87);
-                    		adaptor.AddChild(root_0, char_literal87_tree);
+                    	char_literal94=(IToken)Match(input,60,FOLLOW_60_in_trigger2386); 
+                    		char_literal94_tree = (object)adaptor.Create(char_literal94);
+                    		adaptor.AddChild(root_0, char_literal94_tree);
 
-                    	char_literal88=(IToken)Match(input,56,FOLLOW_56_in_trigger2262); 
-                    		char_literal88_tree = (object)adaptor.Create(char_literal88);
-                    		adaptor.AddChild(root_0, char_literal88_tree);
+                    	char_literal95=(IToken)Match(input,63,FOLLOW_63_in_trigger2388); 
+                    		char_literal95_tree = (object)adaptor.Create(char_literal95);
+                    		adaptor.AddChild(root_0, char_literal95_tree);
 
-                    	PushFollow(FOLLOW_action_list_in_trigger2266);
+                    	PushFollow(FOLLOW_action_list_in_trigger2392);
                     	a = action_list();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_0, a.Tree);
-                    	char_literal89=(IToken)Match(input,57,FOLLOW_57_in_trigger2268); 
-                    		char_literal89_tree = (object)adaptor.Create(char_literal89);
-                    		adaptor.AddChild(root_0, char_literal89_tree);
+                    	char_literal96=(IToken)Match(input,64,FOLLOW_64_in_trigger2394); 
+                    		char_literal96_tree = (object)adaptor.Create(char_literal96);
+                    		adaptor.AddChild(root_0, char_literal96_tree);
 
                     	 retval.t =  new TimeTrigger(float.Parse(time.Text), ((a != null) ? a.actions : default(List<Action>))); 
 
                     }
                     break;
                 case 4 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:428:4: TRIGGER_PERIODIC '(' period= NUMBER ')' '{' a= action_list '}'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:449:4: TRIGGER_PERIODIC '(' period= NUMBER ')' '{' a= action_list '}'
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	TRIGGER_PERIODIC90=(IToken)Match(input,TRIGGER_PERIODIC,FOLLOW_TRIGGER_PERIODIC_in_trigger2284); 
-                    		TRIGGER_PERIODIC90_tree = (object)adaptor.Create(TRIGGER_PERIODIC90);
-                    		adaptor.AddChild(root_0, TRIGGER_PERIODIC90_tree);
+                    	TRIGGER_PERIODIC97=(IToken)Match(input,TRIGGER_PERIODIC,FOLLOW_TRIGGER_PERIODIC_in_trigger2410); 
+                    		TRIGGER_PERIODIC97_tree = (object)adaptor.Create(TRIGGER_PERIODIC97);
+                    		adaptor.AddChild(root_0, TRIGGER_PERIODIC97_tree);
 
-                    	char_literal91=(IToken)Match(input,58,FOLLOW_58_in_trigger2286); 
-                    		char_literal91_tree = (object)adaptor.Create(char_literal91);
-                    		adaptor.AddChild(root_0, char_literal91_tree);
+                    	char_literal98=(IToken)Match(input,59,FOLLOW_59_in_trigger2412); 
+                    		char_literal98_tree = (object)adaptor.Create(char_literal98);
+                    		adaptor.AddChild(root_0, char_literal98_tree);
 
-                    	period=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_trigger2290); 
+                    	period=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_trigger2416); 
                     		period_tree = (object)adaptor.Create(period);
                     		adaptor.AddChild(root_0, period_tree);
 
-                    	char_literal92=(IToken)Match(input,59,FOLLOW_59_in_trigger2292); 
-                    		char_literal92_tree = (object)adaptor.Create(char_literal92);
-                    		adaptor.AddChild(root_0, char_literal92_tree);
+                    	char_literal99=(IToken)Match(input,60,FOLLOW_60_in_trigger2418); 
+                    		char_literal99_tree = (object)adaptor.Create(char_literal99);
+                    		adaptor.AddChild(root_0, char_literal99_tree);
 
-                    	char_literal93=(IToken)Match(input,56,FOLLOW_56_in_trigger2294); 
-                    		char_literal93_tree = (object)adaptor.Create(char_literal93);
-                    		adaptor.AddChild(root_0, char_literal93_tree);
+                    	char_literal100=(IToken)Match(input,63,FOLLOW_63_in_trigger2420); 
+                    		char_literal100_tree = (object)adaptor.Create(char_literal100);
+                    		adaptor.AddChild(root_0, char_literal100_tree);
 
-                    	PushFollow(FOLLOW_action_list_in_trigger2298);
+                    	PushFollow(FOLLOW_action_list_in_trigger2424);
                     	a = action_list();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_0, a.Tree);
-                    	char_literal94=(IToken)Match(input,57,FOLLOW_57_in_trigger2300); 
-                    		char_literal94_tree = (object)adaptor.Create(char_literal94);
-                    		adaptor.AddChild(root_0, char_literal94_tree);
+                    	char_literal101=(IToken)Match(input,64,FOLLOW_64_in_trigger2426); 
+                    		char_literal101_tree = (object)adaptor.Create(char_literal101);
+                    		adaptor.AddChild(root_0, char_literal101_tree);
 
                     	 retval.t =  new PeriodicTrigger(float.Parse(period.Text), ((a != null) ? a.actions : default(List<Action>))); 
 
                     }
                     break;
                 case 5 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:429:4: TRIGGER_SCROLLING '(' scroll= NUMBER ')' '{' a= action_list '}'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:450:4: TRIGGER_SCROLLING '(' scroll= NUMBER ')' '{' a= action_list '}'
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	TRIGGER_SCROLLING95=(IToken)Match(input,TRIGGER_SCROLLING,FOLLOW_TRIGGER_SCROLLING_in_trigger2307); 
-                    		TRIGGER_SCROLLING95_tree = (object)adaptor.Create(TRIGGER_SCROLLING95);
-                    		adaptor.AddChild(root_0, TRIGGER_SCROLLING95_tree);
+                    	TRIGGER_SCROLLING102=(IToken)Match(input,TRIGGER_SCROLLING,FOLLOW_TRIGGER_SCROLLING_in_trigger2433); 
+                    		TRIGGER_SCROLLING102_tree = (object)adaptor.Create(TRIGGER_SCROLLING102);
+                    		adaptor.AddChild(root_0, TRIGGER_SCROLLING102_tree);
 
-                    	char_literal96=(IToken)Match(input,58,FOLLOW_58_in_trigger2309); 
-                    		char_literal96_tree = (object)adaptor.Create(char_literal96);
-                    		adaptor.AddChild(root_0, char_literal96_tree);
+                    	char_literal103=(IToken)Match(input,59,FOLLOW_59_in_trigger2435); 
+                    		char_literal103_tree = (object)adaptor.Create(char_literal103);
+                    		adaptor.AddChild(root_0, char_literal103_tree);
 
-                    	scroll=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_trigger2313); 
+                    	scroll=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_trigger2439); 
                     		scroll_tree = (object)adaptor.Create(scroll);
                     		adaptor.AddChild(root_0, scroll_tree);
 
-                    	char_literal97=(IToken)Match(input,59,FOLLOW_59_in_trigger2315); 
-                    		char_literal97_tree = (object)adaptor.Create(char_literal97);
-                    		adaptor.AddChild(root_0, char_literal97_tree);
+                    	char_literal104=(IToken)Match(input,60,FOLLOW_60_in_trigger2441); 
+                    		char_literal104_tree = (object)adaptor.Create(char_literal104);
+                    		adaptor.AddChild(root_0, char_literal104_tree);
 
-                    	char_literal98=(IToken)Match(input,56,FOLLOW_56_in_trigger2317); 
-                    		char_literal98_tree = (object)adaptor.Create(char_literal98);
-                    		adaptor.AddChild(root_0, char_literal98_tree);
+                    	char_literal105=(IToken)Match(input,63,FOLLOW_63_in_trigger2443); 
+                    		char_literal105_tree = (object)adaptor.Create(char_literal105);
+                    		adaptor.AddChild(root_0, char_literal105_tree);
 
-                    	PushFollow(FOLLOW_action_list_in_trigger2321);
+                    	PushFollow(FOLLOW_action_list_in_trigger2447);
                     	a = action_list();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_0, a.Tree);
-                    	char_literal99=(IToken)Match(input,57,FOLLOW_57_in_trigger2323); 
-                    		char_literal99_tree = (object)adaptor.Create(char_literal99);
-                    		adaptor.AddChild(root_0, char_literal99_tree);
+                    	char_literal106=(IToken)Match(input,64,FOLLOW_64_in_trigger2449); 
+                    		char_literal106_tree = (object)adaptor.Create(char_literal106);
+                    		adaptor.AddChild(root_0, char_literal106_tree);
 
                     	 retval.t =  new ScrollingTrigger(float.Parse(scroll.Text), ((a != null) ? a.actions : default(List<Action>))); 
 
                     }
                     break;
                 case 6 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:430:4: TRIGGER_ANIMATION_END '(' anim= STRING ')' '{' a= action_list '}'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:451:4: TRIGGER_ANIMATION_END '(' anim= STRING ')' '{' a= action_list '}'
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	TRIGGER_ANIMATION_END100=(IToken)Match(input,TRIGGER_ANIMATION_END,FOLLOW_TRIGGER_ANIMATION_END_in_trigger2332); 
-                    		TRIGGER_ANIMATION_END100_tree = (object)adaptor.Create(TRIGGER_ANIMATION_END100);
-                    		adaptor.AddChild(root_0, TRIGGER_ANIMATION_END100_tree);
+                    	TRIGGER_ANIMATION_END107=(IToken)Match(input,TRIGGER_ANIMATION_END,FOLLOW_TRIGGER_ANIMATION_END_in_trigger2458); 
+                    		TRIGGER_ANIMATION_END107_tree = (object)adaptor.Create(TRIGGER_ANIMATION_END107);
+                    		adaptor.AddChild(root_0, TRIGGER_ANIMATION_END107_tree);
 
-                    	char_literal101=(IToken)Match(input,58,FOLLOW_58_in_trigger2334); 
-                    		char_literal101_tree = (object)adaptor.Create(char_literal101);
-                    		adaptor.AddChild(root_0, char_literal101_tree);
+                    	char_literal108=(IToken)Match(input,59,FOLLOW_59_in_trigger2460); 
+                    		char_literal108_tree = (object)adaptor.Create(char_literal108);
+                    		adaptor.AddChild(root_0, char_literal108_tree);
 
-                    	anim=(IToken)Match(input,STRING,FOLLOW_STRING_in_trigger2338); 
+                    	anim=(IToken)Match(input,STRING,FOLLOW_STRING_in_trigger2464); 
                     		anim_tree = (object)adaptor.Create(anim);
                     		adaptor.AddChild(root_0, anim_tree);
 
-                    	char_literal102=(IToken)Match(input,59,FOLLOW_59_in_trigger2340); 
-                    		char_literal102_tree = (object)adaptor.Create(char_literal102);
-                    		adaptor.AddChild(root_0, char_literal102_tree);
+                    	char_literal109=(IToken)Match(input,60,FOLLOW_60_in_trigger2466); 
+                    		char_literal109_tree = (object)adaptor.Create(char_literal109);
+                    		adaptor.AddChild(root_0, char_literal109_tree);
 
-                    	char_literal103=(IToken)Match(input,56,FOLLOW_56_in_trigger2342); 
-                    		char_literal103_tree = (object)adaptor.Create(char_literal103);
-                    		adaptor.AddChild(root_0, char_literal103_tree);
+                    	char_literal110=(IToken)Match(input,63,FOLLOW_63_in_trigger2468); 
+                    		char_literal110_tree = (object)adaptor.Create(char_literal110);
+                    		adaptor.AddChild(root_0, char_literal110_tree);
 
-                    	PushFollow(FOLLOW_action_list_in_trigger2346);
+                    	PushFollow(FOLLOW_action_list_in_trigger2472);
                     	a = action_list();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_0, a.Tree);
-                    	char_literal104=(IToken)Match(input,57,FOLLOW_57_in_trigger2348); 
-                    		char_literal104_tree = (object)adaptor.Create(char_literal104);
-                    		adaptor.AddChild(root_0, char_literal104_tree);
+                    	char_literal111=(IToken)Match(input,64,FOLLOW_64_in_trigger2474); 
+                    		char_literal111_tree = (object)adaptor.Create(char_literal111);
+                    		adaptor.AddChild(root_0, char_literal111_tree);
 
                     	 retval.t =  new AnimationEndTrigger(anim.Text, ((a != null) ? a.actions : default(List<Action>))); 
 
                     }
                     break;
                 case 7 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:431:4: TRIGGER_EVENT '(' e= CLASS_IDENTIFIER ')' '{' a= action_list '}'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:452:4: TRIGGER_EVENT '(' e= CLASS_IDENTIFIER ')' '{' a= action_list '}'
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	TRIGGER_EVENT105=(IToken)Match(input,TRIGGER_EVENT,FOLLOW_TRIGGER_EVENT_in_trigger2355); 
-                    		TRIGGER_EVENT105_tree = (object)adaptor.Create(TRIGGER_EVENT105);
-                    		adaptor.AddChild(root_0, TRIGGER_EVENT105_tree);
+                    	TRIGGER_EVENT112=(IToken)Match(input,TRIGGER_EVENT,FOLLOW_TRIGGER_EVENT_in_trigger2481); 
+                    		TRIGGER_EVENT112_tree = (object)adaptor.Create(TRIGGER_EVENT112);
+                    		adaptor.AddChild(root_0, TRIGGER_EVENT112_tree);
 
-                    	char_literal106=(IToken)Match(input,58,FOLLOW_58_in_trigger2357); 
-                    		char_literal106_tree = (object)adaptor.Create(char_literal106);
-                    		adaptor.AddChild(root_0, char_literal106_tree);
+                    	char_literal113=(IToken)Match(input,59,FOLLOW_59_in_trigger2483); 
+                    		char_literal113_tree = (object)adaptor.Create(char_literal113);
+                    		adaptor.AddChild(root_0, char_literal113_tree);
 
-                    	e=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_trigger2361); 
+                    	e=(IToken)Match(input,CLASS_IDENTIFIER,FOLLOW_CLASS_IDENTIFIER_in_trigger2487); 
                     		e_tree = (object)adaptor.Create(e);
                     		adaptor.AddChild(root_0, e_tree);
 
-                    	char_literal107=(IToken)Match(input,59,FOLLOW_59_in_trigger2363); 
-                    		char_literal107_tree = (object)adaptor.Create(char_literal107);
-                    		adaptor.AddChild(root_0, char_literal107_tree);
+                    	char_literal114=(IToken)Match(input,60,FOLLOW_60_in_trigger2489); 
+                    		char_literal114_tree = (object)adaptor.Create(char_literal114);
+                    		adaptor.AddChild(root_0, char_literal114_tree);
 
-                    	char_literal108=(IToken)Match(input,56,FOLLOW_56_in_trigger2365); 
-                    		char_literal108_tree = (object)adaptor.Create(char_literal108);
-                    		adaptor.AddChild(root_0, char_literal108_tree);
+                    	char_literal115=(IToken)Match(input,63,FOLLOW_63_in_trigger2491); 
+                    		char_literal115_tree = (object)adaptor.Create(char_literal115);
+                    		adaptor.AddChild(root_0, char_literal115_tree);
 
-                    	PushFollow(FOLLOW_action_list_in_trigger2369);
+                    	PushFollow(FOLLOW_action_list_in_trigger2495);
                     	a = action_list();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_0, a.Tree);
-                    	char_literal109=(IToken)Match(input,57,FOLLOW_57_in_trigger2371); 
-                    		char_literal109_tree = (object)adaptor.Create(char_literal109);
-                    		adaptor.AddChild(root_0, char_literal109_tree);
+                    	char_literal116=(IToken)Match(input,64,FOLLOW_64_in_trigger2497); 
+                    		char_literal116_tree = (object)adaptor.Create(char_literal116);
+                    		adaptor.AddChild(root_0, char_literal116_tree);
 
                     	 retval.t =  new EventTrigger(e.Text, ((a != null) ? a.actions : default(List<Action>))); 
 
@@ -3910,26 +4195,89 @@ public partial class GbsParser : Parser
     // Delegated rules
 
 
-   	protected DFA15 dfa15;
+   	protected DFA4 dfa4;
+   	protected DFA17 dfa17;
 	private void InitializeCyclicDFAs()
 	{
-    	this.dfa15 = new DFA15(this);
+    	this.dfa4 = new DFA4(this);
+    	this.dfa17 = new DFA17(this);
+
+
 	}
 
-    const string DFA15_eotS =
+    const string DFA4_eotS =
+        "\x0b\uffff";
+    const string DFA4_eofS =
+        "\x0b\uffff";
+    const string DFA4_minS =
+        "\x01\x23\x01\x36\x09\uffff";
+    const string DFA4_maxS =
+        "\x01\x3b\x01\x3c\x09\uffff";
+    const string DFA4_acceptS =
+        "\x02\uffff\x01\x03\x01\x04\x01\x05\x01\x06\x01\x07\x01\x09\x01"+
+        "\x02\x01\x08\x01\x01";
+    const string DFA4_specialS =
+        "\x0b\uffff}>";
+    static readonly string[] DFA4_transitionS = {
+            "\x01\x06\x01\x02\x01\x03\x01\x04\x01\x05\x03\uffff\x01\x01"+
+            "\x0f\uffff\x01\x07",
+            "\x03\x0a\x01\x08\x01\x09\x01\uffff\x01\x0a",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static readonly short[] DFA4_eot = DFA.UnpackEncodedString(DFA4_eotS);
+    static readonly short[] DFA4_eof = DFA.UnpackEncodedString(DFA4_eofS);
+    static readonly char[] DFA4_min = DFA.UnpackEncodedStringToUnsignedChars(DFA4_minS);
+    static readonly char[] DFA4_max = DFA.UnpackEncodedStringToUnsignedChars(DFA4_maxS);
+    static readonly short[] DFA4_accept = DFA.UnpackEncodedString(DFA4_acceptS);
+    static readonly short[] DFA4_special = DFA.UnpackEncodedString(DFA4_specialS);
+    static readonly short[][] DFA4_transition = DFA.UnpackEncodedStringArray(DFA4_transitionS);
+
+    protected class DFA4 : DFA
+    {
+        public DFA4(BaseRecognizer recognizer)
+        {
+            this.recognizer = recognizer;
+            this.decisionNumber = 4;
+            this.eot = DFA4_eot;
+            this.eof = DFA4_eof;
+            this.min = DFA4_min;
+            this.max = DFA4_max;
+            this.accept = DFA4_accept;
+            this.special = DFA4_special;
+            this.transition = DFA4_transition;
+
+        }
+
+        override public string Description
+        {
+            get { return "276:1: simple_formula returns [Formula formula] : (c= NUMBER | c= NUMBER '°' | CONST_ANGLE_DOWN | CONST_ANGLE_UP | CONST_ANGLE_LEFT | CONST_ANGLE_RIGHT | PREDEF_ANGLE_TOWARD_PLAYER | a= NUMBER '..' b= NUMBER | '(' f= formula ')' );"; }
+        }
+
+    }
+
+    const string DFA17_eotS =
         "\x0c\uffff";
-    const string DFA15_eofS =
+    const string DFA17_eofS =
         "\x0c\uffff";
-    const string DFA15_minS =
+    const string DFA17_minS =
         "\x01\x04\x01\x13\x01\uffff\x01\x13\x08\uffff";
-    const string DFA15_maxS =
+    const string DFA17_maxS =
         "\x01\x31\x01\x1b\x01\uffff\x01\x1b\x08\uffff";
-    const string DFA15_acceptS =
+    const string DFA17_acceptS =
         "\x02\uffff\x01\x01\x01\uffff\x01\x02\x01\x03\x01\x04\x01\x05\x01"+
         "\x06\x01\x07\x01\x08\x01\x09";
-    const string DFA15_specialS =
+    const string DFA17_specialS =
         "\x0c\uffff}>";
-    static readonly string[] DFA15_transitionS = {
+    static readonly string[] DFA17_transitionS = {
             "\x01\x01\x07\uffff\x07\x0a\x01\x04\x01\x05\x01\x06\x01\x07"+
             "\x01\x08\x01\x09\x01\x02\x01\x0a\x01\x0b\x15\uffff\x01\x03",
             "\x01\x04\x01\x05\x01\x06\x01\x07\x01\x08\x01\x09\x01\x02\x01"+
@@ -3947,223 +4295,239 @@ public partial class GbsParser : Parser
             ""
     };
 
-    static readonly short[] DFA15_eot = DFA.UnpackEncodedString(DFA15_eotS);
-    static readonly short[] DFA15_eof = DFA.UnpackEncodedString(DFA15_eofS);
-    static readonly char[] DFA15_min = DFA.UnpackEncodedStringToUnsignedChars(DFA15_minS);
-    static readonly char[] DFA15_max = DFA.UnpackEncodedStringToUnsignedChars(DFA15_maxS);
-    static readonly short[] DFA15_accept = DFA.UnpackEncodedString(DFA15_acceptS);
-    static readonly short[] DFA15_special = DFA.UnpackEncodedString(DFA15_specialS);
-    static readonly short[][] DFA15_transition = DFA.UnpackEncodedStringArray(DFA15_transitionS);
+    static readonly short[] DFA17_eot = DFA.UnpackEncodedString(DFA17_eotS);
+    static readonly short[] DFA17_eof = DFA.UnpackEncodedString(DFA17_eofS);
+    static readonly char[] DFA17_min = DFA.UnpackEncodedStringToUnsignedChars(DFA17_minS);
+    static readonly char[] DFA17_max = DFA.UnpackEncodedStringToUnsignedChars(DFA17_maxS);
+    static readonly short[] DFA17_accept = DFA.UnpackEncodedString(DFA17_acceptS);
+    static readonly short[] DFA17_special = DFA.UnpackEncodedString(DFA17_specialS);
+    static readonly short[][] DFA17_transition = DFA.UnpackEncodedStringArray(DFA17_transitionS);
 
-    protected class DFA15 : DFA
+    protected class DFA17 : DFA
     {
-        public DFA15(BaseRecognizer recognizer)
+        public DFA17(BaseRecognizer recognizer)
         {
             this.recognizer = recognizer;
-            this.decisionNumber = 15;
-            this.eot = DFA15_eot;
-            this.eof = DFA15_eof;
-            this.min = DFA15_min;
-            this.max = DFA15_max;
-            this.accept = DFA15_accept;
-            this.special = DFA15_special;
-            this.transition = DFA15_transition;
+            this.decisionNumber = 17;
+            this.eot = DFA17_eot;
+            this.eof = DFA17_eof;
+            this.min = DFA17_min;
+            this.max = DFA17_max;
+            this.accept = DFA17_accept;
+            this.special = DFA17_special;
+            this.transition = DFA17_transition;
 
         }
 
         override public string Description
         {
-            get { return "375:1: action : (pla= play_animation_action | pa= periodic_action | fap= fire_action | da= die_action | sta= start_action | sa= stop_action | sum= summon_action | sea= set_action | raa= raise_action );"; }
+            get { return "396:1: action : (pla= play_animation_action | pa= periodic_action | fap= fire_action | da= die_action | sta= start_action | sa= stop_action | sum= summon_action | sea= set_action | raa= raise_action );"; }
         }
 
     }
 
  
 
-    public static readonly BitSet FOLLOW_NUMBER_in_formula937 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CONST_ANGLE_DOWN_in_formula944 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CONST_ANGLE_UP_in_formula951 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CONST_ANGLE_LEFT_in_formula958 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CONST_ANGLE_RIGHT_in_formula965 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_PREDEF_ANGLE_TOWARD_PLAYER_in_formula972 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_classdef_in_gbs1001 = new BitSet(new ulong[]{0x0000000000000FE2UL});
-    public static readonly BitSet FOLLOW_fps_param_in_param1021 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_gamearea_param_in_param1037 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_position_param_in_param1047 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_speed_param_in_param1058 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_animation_param_in_param1072 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_color_param_in_param1082 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_scrolling_param_in_param1096 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_PARAM_FPS_in_fps_param1113 = new BitSet(new ulong[]{0x0040000000000000UL});
-    public static readonly BitSet FOLLOW_54_in_fps_param1115 = new BitSet(new ulong[]{0x0000080000000000UL});
-    public static readonly BitSet FOLLOW_NUMBER_in_fps_param1119 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_PARAM_GAMEAREA_in_gamearea_param1136 = new BitSet(new ulong[]{0x0040000000000000UL});
-    public static readonly BitSet FOLLOW_54_in_gamearea_param1138 = new BitSet(new ulong[]{0x0000800000000000UL});
-    public static readonly BitSet FOLLOW_RECTANGLE_in_gamearea_param1142 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_PARAM_POSITION_in_position_param1160 = new BitSet(new ulong[]{0x0040000000000000UL});
-    public static readonly BitSet FOLLOW_54_in_position_param1162 = new BitSet(new ulong[]{0x0000400000000000UL});
-    public static readonly BitSet FOLLOW_POINT_in_position_param1166 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_PARAM_SPEED_in_speed_param1184 = new BitSet(new ulong[]{0x0040000000000000UL});
-    public static readonly BitSet FOLLOW_54_in_speed_param1186 = new BitSet(new ulong[]{0x0000080000000000UL});
-    public static readonly BitSet FOLLOW_NUMBER_in_speed_param1190 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_PARAM_ANIMATION_in_animation_param1208 = new BitSet(new ulong[]{0x0040000000000000UL});
-    public static readonly BitSet FOLLOW_54_in_animation_param1210 = new BitSet(new ulong[]{0x0004000000000000UL});
-    public static readonly BitSet FOLLOW_STRING_in_animation_param1214 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_PARAM_COLOR_in_color_param1232 = new BitSet(new ulong[]{0x0040000000000000UL});
-    public static readonly BitSet FOLLOW_54_in_color_param1234 = new BitSet(new ulong[]{0x0000020000000000UL});
-    public static readonly BitSet FOLLOW_COLOR_in_color_param1238 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_PARAM_SCROLLING_in_scrolling_param1256 = new BitSet(new ulong[]{0x0040000000000000UL});
-    public static readonly BitSet FOLLOW_54_in_scrolling_param1258 = new BitSet(new ulong[]{0x0000100000000000UL});
-    public static readonly BitSet FOLLOW_DIRECTION_in_scrolling_param1262 = new BitSet(new ulong[]{0x0080000000000000UL});
-    public static readonly BitSet FOLLOW_55_in_scrolling_param1264 = new BitSet(new ulong[]{0x0000080000000000UL});
-    public static readonly BitSet FOLLOW_NUMBER_in_scrolling_param1268 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_engine_classdef_in_classdef1299 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_player_classdef_in_classdef1308 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_bullet_classdef_in_classdef1317 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_enemy_classdef_in_classdef1326 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_event_classdef_in_classdef1335 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_state_classdef_in_classdef1344 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_script_classdef_in_classdef1353 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_trigger_in_classdef_content1368 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_classdef_in_classdef_content1384 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CLASSDEF_ENGINE_in_engine_classdef1409 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_engine_classdef1411 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_classdef_content_in_engine_classdef1413 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_57_in_engine_classdef1416 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CLASSDEF_PLAYER_in_player_classdef1434 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_player_classdef1438 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_player_classdef1440 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_classdef_content_in_player_classdef1442 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_57_in_player_classdef1445 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CLASSDEF_ENEMY_in_enemy_classdef1462 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_enemy_classdef1466 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_enemy_classdef1468 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_classdef_content_in_enemy_classdef1470 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_57_in_enemy_classdef1473 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CLASSDEF_BULLET_in_bullet_classdef1490 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_bullet_classdef1494 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_bullet_classdef1496 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_classdef_content_in_bullet_classdef1498 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_57_in_bullet_classdef1501 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CLASSDEF_SCRIPT_in_script_classdef1519 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_script_classdef1523 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_script_classdef1525 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_classdef_content_in_script_classdef1527 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_57_in_script_classdef1530 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CLASSDEF_STATE_in_state_classdef1547 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_state_classdef1551 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_state_classdef1553 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_classdef_content_in_state_classdef1555 = new BitSet(new ulong[]{0x02000007F0000FE0UL});
-    public static readonly BitSet FOLLOW_57_in_state_classdef1558 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_CLASSDEF_EVENT_in_event_classdef1577 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_event_classdef1581 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_action_in_action_list1610 = new BitSet(new ulong[]{0x000200000FFFF012UL});
-    public static readonly BitSet FOLLOW_THIS_in_action_target1628 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_INSTANCE_IDENTIFIER_in_action_target1658 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_play_animation_action_in_action1673 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_periodic_action_in_action1682 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_fire_action_in_action1698 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_die_action_in_action1709 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_start_action_in_action1730 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_stop_action_in_action1748 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_summon_action_in_action1768 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_set_action_in_action1785 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_raise_action_in_action1805 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_action_target_in_play_animation_action1827 = new BitSet(new ulong[]{0x0000000002000000UL});
-    public static readonly BitSet FOLLOW_ACTION_PLAY_ANIMATION_in_play_animation_action1829 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_play_animation_action1831 = new BitSet(new ulong[]{0x0004000000000000UL});
-    public static readonly BitSet FOLLOW_STRING_in_play_animation_action1835 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_play_animation_action1837 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_action_target_in_periodic_action1857 = new BitSet(new ulong[]{0x0000000000080000UL});
-    public static readonly BitSet FOLLOW_ACTION_PERIODIC_in_periodic_action1859 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_periodic_action1861 = new BitSet(new ulong[]{0x0000080000000000UL});
-    public static readonly BitSet FOLLOW_NUMBER_in_periodic_action1865 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_periodic_action1867 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_periodic_action1869 = new BitSet(new ulong[]{0x000200000FFFF010UL});
-    public static readonly BitSet FOLLOW_action_list_in_periodic_action1873 = new BitSet(new ulong[]{0x0200000000000000UL});
-    public static readonly BitSet FOLLOW_57_in_periodic_action1875 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_action_target_in_fire_action1895 = new BitSet(new ulong[]{0x0000000000100000UL});
-    public static readonly BitSet FOLLOW_ACTION_FIRE_in_fire_action1897 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_fire_action1899 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_fire_action1903 = new BitSet(new ulong[]{0x0080000000000000UL});
-    public static readonly BitSet FOLLOW_55_in_fire_action1905 = new BitSet(new ulong[]{0x000008F800000000UL});
-    public static readonly BitSet FOLLOW_formula_in_fire_action1909 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_fire_action1911 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_action_target_in_die_action1931 = new BitSet(new ulong[]{0x0000000000200000UL});
-    public static readonly BitSet FOLLOW_ACTION_DIE_in_die_action1933 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_action_target_in_start_action1953 = new BitSet(new ulong[]{0x0000000000400000UL});
-    public static readonly BitSet FOLLOW_ACTION_START_in_start_action1955 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_start_action1957 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_start_action1961 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_start_action1963 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_action_target_in_stop_action1982 = new BitSet(new ulong[]{0x0000000000800000UL});
-    public static readonly BitSet FOLLOW_ACTION_STOP_in_stop_action1984 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_stop_action1986 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_stop_action1990 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_stop_action1992 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_action_target_in_summon_action2013 = new BitSet(new ulong[]{0x0000000001000000UL});
-    public static readonly BitSet FOLLOW_ACTION_SUMMON_in_summon_action2015 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_summon_action2017 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_summon_action2021 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_summon_action2023 = new BitSet(new ulong[]{0x0002000000000000UL});
-    public static readonly BitSet FOLLOW_INSTANCE_IDENTIFIER_in_summon_action2027 = new BitSet(new ulong[]{0x0100000000000002UL});
-    public static readonly BitSet FOLLOW_56_in_summon_action2031 = new BitSet(new ulong[]{0x000200000FFFF010UL});
-    public static readonly BitSet FOLLOW_action_list_in_summon_action2035 = new BitSet(new ulong[]{0x0200000000000000UL});
-    public static readonly BitSet FOLLOW_57_in_summon_action2037 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_action_target_in_set_action2060 = new BitSet(new ulong[]{0x0000000004000000UL});
-    public static readonly BitSet FOLLOW_ACTION_SET_in_set_action2062 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_set_action2064 = new BitSet(new ulong[]{0x000200000407F010UL});
-    public static readonly BitSet FOLLOW_param_in_set_action2068 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_set_action2070 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_param_in_set_action2079 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_action_target_in_raise_action2139 = new BitSet(new ulong[]{0x0000000008000000UL});
-    public static readonly BitSet FOLLOW_ACTION_RAISE_in_raise_action2141 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_raise_action2143 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_raise_action2147 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_raise_action2149 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_TRIGGER_INIT_in_trigger2167 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_trigger2169 = new BitSet(new ulong[]{0x000200000FFFF010UL});
-    public static readonly BitSet FOLLOW_action_list_in_trigger2173 = new BitSet(new ulong[]{0x0200000000000000UL});
-    public static readonly BitSet FOLLOW_57_in_trigger2175 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_TRIGGER_CLEANUP_in_trigger2211 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_trigger2213 = new BitSet(new ulong[]{0x000200000FFFF010UL});
-    public static readonly BitSet FOLLOW_action_list_in_trigger2217 = new BitSet(new ulong[]{0x0200000000000000UL});
-    public static readonly BitSet FOLLOW_57_in_trigger2219 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_TRIGGER_TIME_in_trigger2252 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_trigger2254 = new BitSet(new ulong[]{0x0000080000000000UL});
-    public static readonly BitSet FOLLOW_NUMBER_in_trigger2258 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_trigger2260 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_trigger2262 = new BitSet(new ulong[]{0x000200000FFFF010UL});
-    public static readonly BitSet FOLLOW_action_list_in_trigger2266 = new BitSet(new ulong[]{0x0200000000000000UL});
-    public static readonly BitSet FOLLOW_57_in_trigger2268 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_TRIGGER_PERIODIC_in_trigger2284 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_trigger2286 = new BitSet(new ulong[]{0x0000080000000000UL});
-    public static readonly BitSet FOLLOW_NUMBER_in_trigger2290 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_trigger2292 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_trigger2294 = new BitSet(new ulong[]{0x000200000FFFF010UL});
-    public static readonly BitSet FOLLOW_action_list_in_trigger2298 = new BitSet(new ulong[]{0x0200000000000000UL});
-    public static readonly BitSet FOLLOW_57_in_trigger2300 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_TRIGGER_SCROLLING_in_trigger2307 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_trigger2309 = new BitSet(new ulong[]{0x0000080000000000UL});
-    public static readonly BitSet FOLLOW_NUMBER_in_trigger2313 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_trigger2315 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_trigger2317 = new BitSet(new ulong[]{0x000200000FFFF010UL});
-    public static readonly BitSet FOLLOW_action_list_in_trigger2321 = new BitSet(new ulong[]{0x0200000000000000UL});
-    public static readonly BitSet FOLLOW_57_in_trigger2323 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_TRIGGER_ANIMATION_END_in_trigger2332 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_trigger2334 = new BitSet(new ulong[]{0x0004000000000000UL});
-    public static readonly BitSet FOLLOW_STRING_in_trigger2338 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_trigger2340 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_trigger2342 = new BitSet(new ulong[]{0x000200000FFFF010UL});
-    public static readonly BitSet FOLLOW_action_list_in_trigger2346 = new BitSet(new ulong[]{0x0200000000000000UL});
-    public static readonly BitSet FOLLOW_57_in_trigger2348 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_TRIGGER_EVENT_in_trigger2355 = new BitSet(new ulong[]{0x0400000000000000UL});
-    public static readonly BitSet FOLLOW_58_in_trigger2357 = new BitSet(new ulong[]{0x0001000000000000UL});
-    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_trigger2361 = new BitSet(new ulong[]{0x0800000000000000UL});
-    public static readonly BitSet FOLLOW_59_in_trigger2363 = new BitSet(new ulong[]{0x0100000000000000UL});
-    public static readonly BitSet FOLLOW_56_in_trigger2365 = new BitSet(new ulong[]{0x000200000FFFF010UL});
-    public static readonly BitSet FOLLOW_action_list_in_trigger2369 = new BitSet(new ulong[]{0x0200000000000000UL});
-    public static readonly BitSet FOLLOW_57_in_trigger2371 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_classdef_in_gbs949 = new BitSet(new ulong[]{0x0000000000000FE2UL});
+    public static readonly BitSet FOLLOW_factor_formula_in_formula981 = new BitSet(new ulong[]{0x00C0000000000002UL});
+    public static readonly BitSet FOLLOW_54_in_formula985 = new BitSet(new ulong[]{0x080008F800000000UL});
+    public static readonly BitSet FOLLOW_factor_formula_in_formula989 = new BitSet(new ulong[]{0x00C0000000000002UL});
+    public static readonly BitSet FOLLOW_55_in_formula995 = new BitSet(new ulong[]{0x080008F800000000UL});
+    public static readonly BitSet FOLLOW_factor_formula_in_formula999 = new BitSet(new ulong[]{0x00C0000000000002UL});
+    public static readonly BitSet FOLLOW_simple_formula_in_factor_formula1024 = new BitSet(new ulong[]{0x0100000000000002UL});
+    public static readonly BitSet FOLLOW_56_in_factor_formula1028 = new BitSet(new ulong[]{0x080008F800000000UL});
+    public static readonly BitSet FOLLOW_simple_formula_in_factor_formula1032 = new BitSet(new ulong[]{0x0100000000000002UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_simple_formula1053 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_simple_formula1062 = new BitSet(new ulong[]{0x0200000000000000UL});
+    public static readonly BitSet FOLLOW_57_in_simple_formula1064 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CONST_ANGLE_DOWN_in_simple_formula1071 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CONST_ANGLE_UP_in_simple_formula1078 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CONST_ANGLE_LEFT_in_simple_formula1085 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CONST_ANGLE_RIGHT_in_simple_formula1092 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_PREDEF_ANGLE_TOWARD_PLAYER_in_simple_formula1099 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_simple_formula1108 = new BitSet(new ulong[]{0x0400000000000000UL});
+    public static readonly BitSet FOLLOW_58_in_simple_formula1110 = new BitSet(new ulong[]{0x0000080000000000UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_simple_formula1114 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_59_in_simple_formula1121 = new BitSet(new ulong[]{0x080008F800000000UL});
+    public static readonly BitSet FOLLOW_formula_in_simple_formula1125 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_simple_formula1127 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_fps_param_in_param1147 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_gamearea_param_in_param1163 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_position_param_in_param1173 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_speed_param_in_param1184 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_animation_param_in_param1198 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_color_param_in_param1208 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_scrolling_param_in_param1222 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_PARAM_FPS_in_fps_param1239 = new BitSet(new ulong[]{0x2000000000000000UL});
+    public static readonly BitSet FOLLOW_61_in_fps_param1241 = new BitSet(new ulong[]{0x0000080000000000UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_fps_param1245 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_PARAM_GAMEAREA_in_gamearea_param1262 = new BitSet(new ulong[]{0x2000000000000000UL});
+    public static readonly BitSet FOLLOW_61_in_gamearea_param1264 = new BitSet(new ulong[]{0x0000800000000000UL});
+    public static readonly BitSet FOLLOW_RECTANGLE_in_gamearea_param1268 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_PARAM_POSITION_in_position_param1286 = new BitSet(new ulong[]{0x2000000000000000UL});
+    public static readonly BitSet FOLLOW_61_in_position_param1288 = new BitSet(new ulong[]{0x0000400000000000UL});
+    public static readonly BitSet FOLLOW_POINT_in_position_param1292 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_PARAM_SPEED_in_speed_param1310 = new BitSet(new ulong[]{0x2000000000000000UL});
+    public static readonly BitSet FOLLOW_61_in_speed_param1312 = new BitSet(new ulong[]{0x0000080000000000UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_speed_param1316 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_PARAM_ANIMATION_in_animation_param1334 = new BitSet(new ulong[]{0x2000000000000000UL});
+    public static readonly BitSet FOLLOW_61_in_animation_param1336 = new BitSet(new ulong[]{0x0004000000000000UL});
+    public static readonly BitSet FOLLOW_STRING_in_animation_param1340 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_PARAM_COLOR_in_color_param1358 = new BitSet(new ulong[]{0x2000000000000000UL});
+    public static readonly BitSet FOLLOW_61_in_color_param1360 = new BitSet(new ulong[]{0x0000020000000000UL});
+    public static readonly BitSet FOLLOW_COLOR_in_color_param1364 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_PARAM_SCROLLING_in_scrolling_param1382 = new BitSet(new ulong[]{0x2000000000000000UL});
+    public static readonly BitSet FOLLOW_61_in_scrolling_param1384 = new BitSet(new ulong[]{0x0000100000000000UL});
+    public static readonly BitSet FOLLOW_DIRECTION_in_scrolling_param1388 = new BitSet(new ulong[]{0x4000000000000000UL});
+    public static readonly BitSet FOLLOW_62_in_scrolling_param1390 = new BitSet(new ulong[]{0x0000080000000000UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_scrolling_param1394 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_engine_classdef_in_classdef1425 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_player_classdef_in_classdef1434 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_bullet_classdef_in_classdef1443 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_enemy_classdef_in_classdef1452 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_event_classdef_in_classdef1461 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_state_classdef_in_classdef1470 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_script_classdef_in_classdef1479 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_trigger_in_classdef_content1494 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_classdef_in_classdef_content1510 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CLASSDEF_ENGINE_in_engine_classdef1535 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_engine_classdef1537 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_classdef_content_in_engine_classdef1539 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_engine_classdef1542 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CLASSDEF_PLAYER_in_player_classdef1560 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_player_classdef1564 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_player_classdef1566 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_classdef_content_in_player_classdef1568 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_player_classdef1571 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CLASSDEF_ENEMY_in_enemy_classdef1588 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_enemy_classdef1592 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_enemy_classdef1594 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_classdef_content_in_enemy_classdef1596 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_enemy_classdef1599 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CLASSDEF_BULLET_in_bullet_classdef1616 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_bullet_classdef1620 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_bullet_classdef1622 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_classdef_content_in_bullet_classdef1624 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_bullet_classdef1627 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CLASSDEF_SCRIPT_in_script_classdef1645 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_script_classdef1649 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_script_classdef1651 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_classdef_content_in_script_classdef1653 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_script_classdef1656 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CLASSDEF_STATE_in_state_classdef1673 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_state_classdef1677 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_state_classdef1679 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_classdef_content_in_state_classdef1681 = new BitSet(new ulong[]{0x00000007F0000FE0UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_state_classdef1684 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_CLASSDEF_EVENT_in_event_classdef1703 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_event_classdef1707 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_action_in_action_list1736 = new BitSet(new ulong[]{0x000200000FFFF012UL});
+    public static readonly BitSet FOLLOW_THIS_in_action_target1754 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_INSTANCE_IDENTIFIER_in_action_target1784 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_play_animation_action_in_action1799 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_periodic_action_in_action1808 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_fire_action_in_action1824 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_die_action_in_action1835 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_start_action_in_action1856 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_stop_action_in_action1874 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_summon_action_in_action1894 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_set_action_in_action1911 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_raise_action_in_action1931 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_action_target_in_play_animation_action1953 = new BitSet(new ulong[]{0x0000000002000000UL});
+    public static readonly BitSet FOLLOW_ACTION_PLAY_ANIMATION_in_play_animation_action1955 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_play_animation_action1957 = new BitSet(new ulong[]{0x0004000000000000UL});
+    public static readonly BitSet FOLLOW_STRING_in_play_animation_action1961 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_play_animation_action1963 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_action_target_in_periodic_action1983 = new BitSet(new ulong[]{0x0000000000080000UL});
+    public static readonly BitSet FOLLOW_ACTION_PERIODIC_in_periodic_action1985 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_periodic_action1987 = new BitSet(new ulong[]{0x0000080000000000UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_periodic_action1991 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_periodic_action1993 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_periodic_action1995 = new BitSet(new ulong[]{0x000200000FFFF010UL});
+    public static readonly BitSet FOLLOW_action_list_in_periodic_action1999 = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_periodic_action2001 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_action_target_in_fire_action2021 = new BitSet(new ulong[]{0x0000000000100000UL});
+    public static readonly BitSet FOLLOW_ACTION_FIRE_in_fire_action2023 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_fire_action2025 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_fire_action2029 = new BitSet(new ulong[]{0x4000000000000000UL});
+    public static readonly BitSet FOLLOW_62_in_fire_action2031 = new BitSet(new ulong[]{0x080008F800000000UL});
+    public static readonly BitSet FOLLOW_formula_in_fire_action2035 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_fire_action2037 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_action_target_in_die_action2057 = new BitSet(new ulong[]{0x0000000000200000UL});
+    public static readonly BitSet FOLLOW_ACTION_DIE_in_die_action2059 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_action_target_in_start_action2079 = new BitSet(new ulong[]{0x0000000000400000UL});
+    public static readonly BitSet FOLLOW_ACTION_START_in_start_action2081 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_start_action2083 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_start_action2087 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_start_action2089 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_action_target_in_stop_action2108 = new BitSet(new ulong[]{0x0000000000800000UL});
+    public static readonly BitSet FOLLOW_ACTION_STOP_in_stop_action2110 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_stop_action2112 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_stop_action2116 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_stop_action2118 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_action_target_in_summon_action2139 = new BitSet(new ulong[]{0x0000000001000000UL});
+    public static readonly BitSet FOLLOW_ACTION_SUMMON_in_summon_action2141 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_summon_action2143 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_summon_action2147 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_summon_action2149 = new BitSet(new ulong[]{0x0002000000000000UL});
+    public static readonly BitSet FOLLOW_INSTANCE_IDENTIFIER_in_summon_action2153 = new BitSet(new ulong[]{0x8000000000000002UL});
+    public static readonly BitSet FOLLOW_63_in_summon_action2157 = new BitSet(new ulong[]{0x000200000FFFF010UL});
+    public static readonly BitSet FOLLOW_action_list_in_summon_action2161 = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_summon_action2163 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_action_target_in_set_action2186 = new BitSet(new ulong[]{0x0000000004000000UL});
+    public static readonly BitSet FOLLOW_ACTION_SET_in_set_action2188 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_set_action2190 = new BitSet(new ulong[]{0x000200000407F010UL});
+    public static readonly BitSet FOLLOW_param_in_set_action2194 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_set_action2196 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_param_in_set_action2205 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_action_target_in_raise_action2265 = new BitSet(new ulong[]{0x0000000008000000UL});
+    public static readonly BitSet FOLLOW_ACTION_RAISE_in_raise_action2267 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_raise_action2269 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_raise_action2273 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_raise_action2275 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_TRIGGER_INIT_in_trigger2293 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_trigger2295 = new BitSet(new ulong[]{0x000200000FFFF010UL});
+    public static readonly BitSet FOLLOW_action_list_in_trigger2299 = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_trigger2301 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_TRIGGER_CLEANUP_in_trigger2337 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_trigger2339 = new BitSet(new ulong[]{0x000200000FFFF010UL});
+    public static readonly BitSet FOLLOW_action_list_in_trigger2343 = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_trigger2345 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_TRIGGER_TIME_in_trigger2378 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_trigger2380 = new BitSet(new ulong[]{0x0000080000000000UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_trigger2384 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_trigger2386 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_trigger2388 = new BitSet(new ulong[]{0x000200000FFFF010UL});
+    public static readonly BitSet FOLLOW_action_list_in_trigger2392 = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_trigger2394 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_TRIGGER_PERIODIC_in_trigger2410 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_trigger2412 = new BitSet(new ulong[]{0x0000080000000000UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_trigger2416 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_trigger2418 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_trigger2420 = new BitSet(new ulong[]{0x000200000FFFF010UL});
+    public static readonly BitSet FOLLOW_action_list_in_trigger2424 = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_trigger2426 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_TRIGGER_SCROLLING_in_trigger2433 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_trigger2435 = new BitSet(new ulong[]{0x0000080000000000UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_trigger2439 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_trigger2441 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_trigger2443 = new BitSet(new ulong[]{0x000200000FFFF010UL});
+    public static readonly BitSet FOLLOW_action_list_in_trigger2447 = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_trigger2449 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_TRIGGER_ANIMATION_END_in_trigger2458 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_trigger2460 = new BitSet(new ulong[]{0x0004000000000000UL});
+    public static readonly BitSet FOLLOW_STRING_in_trigger2464 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_trigger2466 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_trigger2468 = new BitSet(new ulong[]{0x000200000FFFF010UL});
+    public static readonly BitSet FOLLOW_action_list_in_trigger2472 = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_trigger2474 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_TRIGGER_EVENT_in_trigger2481 = new BitSet(new ulong[]{0x0800000000000000UL});
+    public static readonly BitSet FOLLOW_59_in_trigger2483 = new BitSet(new ulong[]{0x0001000000000000UL});
+    public static readonly BitSet FOLLOW_CLASS_IDENTIFIER_in_trigger2487 = new BitSet(new ulong[]{0x1000000000000000UL});
+    public static readonly BitSet FOLLOW_60_in_trigger2489 = new BitSet(new ulong[]{0x8000000000000000UL});
+    public static readonly BitSet FOLLOW_63_in_trigger2491 = new BitSet(new ulong[]{0x000200000FFFF010UL});
+    public static readonly BitSet FOLLOW_action_list_in_trigger2495 = new BitSet(new ulong[]{0x0000000000000000UL,0x0000000000000001UL});
+    public static readonly BitSet FOLLOW_64_in_trigger2497 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Gbe.Script.Executor;
 using Gbe.Script.Executor.Entities;
 
@@ -19,5 +20,9 @@ namespace Gbe.Script.Actions
 
         public abstract void Execute(GbsExecutor scriptExecutor, Entity entity);
 
+        public virtual List<Action> Compile()
+        {
+            return new List<Action>(1){this};
+        }
     }
 }

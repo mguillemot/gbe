@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Gbe.Script.Executor;
 using Gbe.Script.Executor.Entities;
 using Gbe.Script.Formulas;
@@ -30,6 +31,17 @@ namespace Gbe.Script.Actions
             {
                 trigger.Register(scriptExecutor, bulletEntity);
             }
+        }
+
+        public override List<Action> Compile()
+        {
+            var angles = m_angle.Compile();
+            var compiled = new List<Action>(angles.Count);
+            foreach (var angle in angles)
+            {
+                compiled.Add(new FireAction(Target, m_bulletClass, angle));
+            }
+            return compiled;
         }
     }
 }

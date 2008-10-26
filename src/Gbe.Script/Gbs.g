@@ -216,7 +216,7 @@ POINT
 RECTANGLE
 	:	POINT '->' POINT
 	;
-
+	
 CLASS_IDENTIFIER
 	:	'A'..'Z' ( 'a'..'z' | 'A'..'Z' | '0'..'9' )*
 	;
@@ -242,16 +242,7 @@ SL_COMMENT
 	;
 	
 // PARSER
-
-formula returns [Formula formula]
-	:	c=NUMBER { $formula = new ConstValueFormula(float.Parse($c.Text)); }
-	|	CONST_ANGLE_DOWN { $formula = new ConstValueFormula(MathHelper.ANGLE_DOWN); }
-	|	CONST_ANGLE_UP { $formula = new ConstValueFormula(MathHelper.ANGLE_UP); }
-	|	CONST_ANGLE_LEFT { $formula = new ConstValueFormula(MathHelper.ANGLE_LEFT); }
-	|	CONST_ANGLE_RIGHT { $formula = new ConstValueFormula(MathHelper.ANGLE_RIGHT); }
-	|	PREDEF_ANGLE_TOWARD_PLAYER { $formula = new AngleTowardPlayerFormula(); }
-	;
-
+	
 gbs returns [Gbs s]
 scope 
 { 
@@ -264,6 +255,36 @@ scope
 	:	classdef* { $s = new Gbs($gbs::classdefs); }
 	;
 
+formula returns [Formula formula]
+scope 
+{ 
+	List<bool> add; 
+	List<Formula> terms;
+}
+@init 
+{ 
+	$formula::add = new List<bool>();
+	$formula::terms = new List<Formula>();
+} 
+	:	a=factor_formula ( '+' b=factor_formula { $formula::add.Add(true); $formula::terms.Add($b.formula); } | '-' b=factor_formula { $formula::add.Add(false); $formula::terms.Add($b.formula); } )* { $formula = new RawSumFormula($a.formula, $formula::add, $formula::terms); }
+	;
+	
+factor_formula returns [Formula formula]
+	:	a=simple_formula ( '*' b=simple_formula )* //{ $formula = new MultiplyFormula(r.range, $b.formula); }
+	;
+
+simple_formula returns [Formula formula]
+	:	c=NUMBER { $formula = new ConstValueFormula(float.Parse($c.Text)); }
+	|	c=NUMBER '°' { $formula = new ConstValueFormula(MathHelper.DegreeToRadian(float.Parse($c.Text))); }
+	|	CONST_ANGLE_DOWN { $formula = new ConstValueFormula(MathHelper.ANGLE_DOWN); }
+	|	CONST_ANGLE_UP { $formula = new ConstValueFormula(MathHelper.ANGLE_UP); }
+	|	CONST_ANGLE_LEFT { $formula = new ConstValueFormula(MathHelper.ANGLE_LEFT); }
+	|	CONST_ANGLE_RIGHT { $formula = new ConstValueFormula(MathHelper.ANGLE_RIGHT); }
+	|	PREDEF_ANGLE_TOWARD_PLAYER { $formula = new AngleTowardPlayerFormula(); }
+	|	a=NUMBER '..' b=NUMBER { $formula = new RangeFormula(float.Parse(a.Text), float.Parse(b.Text)); }
+	|	'(' f=formula ')' { $formula = $f.formula; }
+	;
+	
 param returns [Param p]
 	:	fp=fps_param        { $p = $fp.p; }
 	|	gap=gamearea_param  { $p = $gap.p; }

@@ -39,10 +39,10 @@ BULLET ExplodingBullet
 	
 	@time(1.5)
 	{
-		.fire(SimpleBullet, $DOWN)
-		//.fire(SimpleBullet, 1)
-		//.fire(SimpleBullet, 2)
-		//.fire(SimpleBullet, 3)
+		.fire(SimpleBullet, $DOWN + 0..5 * 10°)
+		.fire(SimpleBullet, $UP)
+		.fire(SimpleBullet, $LEFT)
+		.fire(SimpleBullet, $RIGHT)
 		.die
 	}
 }

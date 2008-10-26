@@ -1,4 +1,6 @@
-﻿namespace Gbe.Script.Formulas
+﻿using System.Collections.Generic;
+
+namespace Gbe.Script.Formulas
 {
     public class ConstValueFormula : Formula
     {
@@ -12,6 +14,11 @@
         public override float Evaluate(EvaluationContext context)
         {
             return m_constValue;
+        }
+
+        public override List<Formula> Compile()
+        {
+            return new List<Formula>(1){this};
         }
     }
 }

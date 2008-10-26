@@ -76,8 +76,13 @@
     <Compile Include="Executor\GbsExecutor.cs" />
     <Compile Include="Formulas\AngleTowardPlayerFormula.cs" />
     <Compile Include="Formulas\ConstValueFormula.cs" />
+    <Compile Include="Formulas\DifferenceFormula.cs" />
     <Compile Include="Formulas\EvaluationContext.cs" />
     <Compile Include="Formulas\Formula.cs" />
+    <Compile Include="Formulas\MultiplyFormula.cs" />
+    <Compile Include="Formulas\RangeFormula.cs" />
+    <Compile Include="Formulas\RawSumFormula.cs" />
+    <Compile Include="Formulas\SumFormula.cs" />
     <Compile Include="Gbs.cs" />
     <Compile Include="GbsLexer.cs" />
     <Compile Include="GbsParser.cs" />
