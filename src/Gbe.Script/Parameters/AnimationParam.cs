@@ -1,4 +1,5 @@
 using Gbe.Engine;
+using Gbe.Script.Formulas;
 
 namespace Gbe.Script.Parameters
 {
@@ -11,9 +12,9 @@ namespace Gbe.Script.Parameters
             m_animation = animationRepr.Substring(1, animationRepr.Length - 2);
         }
 
-        public override void Execute(Gear gear)
+        public override void Execute(EvaluationContext context)
         {
-            gear.Animation = m_animation;
+            context.EvaluationEntity.Gear.Animation = m_animation;
         }
     }
 }

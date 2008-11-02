@@ -1,4 +1,5 @@
 using Gbe.Engine;
+using Gbe.Script.Formulas;
 
 namespace Gbe.Script.Parameters
 {
@@ -11,9 +12,9 @@ namespace Gbe.Script.Parameters
             m_speed = speed;
         }
 
-        public override void Execute(Gear gear)
+        public override void Execute(EvaluationContext context)
         {
-            gear.Speed = m_speed;
+            context.EvaluationEntity.Gear.Speed = m_speed;
         }
     }
 }

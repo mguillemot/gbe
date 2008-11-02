@@ -8,15 +8,15 @@ namespace Gbe.Script.Formulas
     {
         private readonly List<Formula> m_factors;
         private readonly Formula m_left;
-        private readonly List<bool> m_mul;
+        private readonly List<byte> m_operation;
 
-        public RawMultiplyFormula(Formula left, List<bool> mul, List<Formula> factors)
+        public RawMultiplyFormula(Formula left, List<byte> operation, List<Formula> factors)
         {
             Debug.Assert(left != null, "RawMultiplyFormula: left is null");
-            Debug.Assert(mul != null, "RawMultiplyFormula: mul is null");
+            Debug.Assert(operation != null, "RawMultiplyFormula: mul is null");
             Debug.Assert(factors != null, "RawMultiplyFormula: factors is null");
             m_left = left;
-            m_mul = mul;
+            m_operation = operation;
             m_factors = factors;
         }
 
@@ -28,25 +28,30 @@ namespace Gbe.Script.Formulas
 
         public override Formula Compile()
         {
+            Formula currentFormula = m_left.Compile();
             if (m_factors.Count > 0)
             {
-                Formula currentFormula = m_left;
                 for (int i = 0; i < m_factors.Count; i++)
                 {
-                    var mul = m_mul[i];
+                    var operation = m_operation[i];
                     var compiledFactor = m_factors[i].Compile();
-                    if (mul)
+                    switch (operation)
                     {
-                        currentFormula = new MultiplyFormula(currentFormula, compiledFactor);
-                    }
-                    else
-                    {
-                        currentFormula = new DivideFormula(currentFormula, compiledFactor);
+                        case 0:
+                            currentFormula = new MultiplyFormula(currentFormula, compiledFactor);
+                            break;
+                        case 1:
+                            currentFormula = new DivideFormula(currentFormula, compiledFactor);
+                            break;
+                        case 2:
+                            currentFormula = new ModuloFormula(currentFormula, compiledFactor);
+                            break;
+                        default:
+                            throw new SyntaxException("RawMultiplyFormula", "invalid operation " + operation);
                     }
                 }
-                return currentFormula;
             }
-            return m_left.Compile();
+            return currentFormula;
         }
     }
 }

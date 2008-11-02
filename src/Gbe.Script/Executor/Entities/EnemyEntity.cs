@@ -9,6 +9,7 @@ namespace Gbe.Script.Executor.Entities
     {
         private Gear m_gear;
         private readonly List<StateEntity> m_states = new List<StateEntity>();
+        private readonly Dictionary<string, float> m_variables = new Dictionary<string, float>();
 
         public EnemyEntity(Classdef classdef, string name) 
             : base(classdef, name)
@@ -52,6 +53,16 @@ namespace Gbe.Script.Executor.Entities
         public override StateEntity GetState(StateClassdef stateClass)
         {
             return m_states.Find(state => state.Classdef == stateClass);
+        }
+
+        public override float GetVariable(string variableName)
+        {
+            return m_variables[variableName];
+        }
+
+        public override void SetVariable(string variableName, float value)
+        {
+            m_variables[variableName] = value;
         }
     }
 }

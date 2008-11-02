@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Gbe.Script.Executor;
 using Gbe.Script.Executor.Entities;
+using Gbe.Script.Formulas;
 using Gbe.Script.Parameters;
 
 namespace Gbe.Script.Actions
@@ -18,8 +20,18 @@ namespace Gbe.Script.Actions
         {
             if (entity.Gear != null)
             {
-                m_param.Execute(entity.Gear);
+                var context = new EvaluationContext
+                    {
+                        EvaluationEntity = entity,
+                        PlayerPosition = scriptExecutor.Engine.GetPlayer().Position
+                    };
+                m_param.Execute(context);
             }
+        }
+
+        public override List<Action> Compile()
+        {
+            return new List<Action>(1) {new SetAction(Target, m_param.Compile())};
         }
     }
 }

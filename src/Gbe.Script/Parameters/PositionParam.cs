@@ -1,4 +1,5 @@
 using Gbe.Engine;
+using Gbe.Script.Formulas;
 
 namespace Gbe.Script.Parameters
 {
@@ -11,9 +12,9 @@ namespace Gbe.Script.Parameters
             m_position = Point2.Parse(positionRepr);
         }
 
-        public override void Execute(Gear gear)
+        public override void Execute(EvaluationContext context)
         {
-            gear.Position = m_position;
+            context.EvaluationEntity.Gear.Position = m_position;
         }
     }
 }

@@ -10,7 +10,24 @@ namespace Gbe.Script.Actions
         private readonly Formula m_angle;
         private readonly string m_bulletClass;
 
-        public FireAction(string target, string bulletClass, Formula angle)
+        public static FireAction Create(string target, string bulletClass, Formula angle)
+        {
+            if (target == null)
+            {
+                throw new SyntaxException("FireAction", "target=null");
+            }
+            if (bulletClass == null)
+            {
+                throw new SyntaxException("FireAction", "bulletClass=null");
+            }
+            if (angle == null)
+            {
+                throw new SyntaxException("FireAction", "angle=null");
+            }
+            return new FireAction(target, bulletClass, angle);
+        }
+
+        private FireAction(string target, string bulletClass, Formula angle)
             : base(target)
         {
             m_bulletClass = bulletClass;

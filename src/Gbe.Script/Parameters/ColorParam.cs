@@ -1,4 +1,5 @@
 using Gbe.Engine;
+using Gbe.Script.Formulas;
 
 namespace Gbe.Script.Parameters
 {
@@ -11,9 +12,9 @@ namespace Gbe.Script.Parameters
             m_color = Color.Parse(colorRepr);
         }
 
-        public override void Execute(Gear gear)
+        public override void Execute(EvaluationContext context)
         {
-            gear.Color = m_color;
+            context.EvaluationEntity.Gear.Color = m_color;
         }
     }
 }

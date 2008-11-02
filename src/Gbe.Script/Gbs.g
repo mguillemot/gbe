@@ -159,11 +159,11 @@ TRIGGER_EVENT
 	;
 
 PREDEF_ANGLE_TOWARD_PLAYER
-	:	'$player'
+	:	'$PLAYER'
 	;
 
 PREDEF_ANGLE_CURRENT
-	:	'$current'
+	:	'$CURRENT'
 	;
 	
 CONST_ANGLE_DOWN
@@ -180,6 +180,10 @@ CONST_ANGLE_LEFT
 
 CONST_ANGLE_RIGHT
 	:	'$RIGHT'
+	;
+	
+VARIABLE
+	:	'$' INSTANCE_IDENTIFIER
 	;
 
 COLOR
@@ -280,15 +284,15 @@ scope
 factor_formula returns [Formula f]
 scope 
 { 
-	List<bool> mul; 
+	List<byte> mul; 
 	List<Formula> factors;
 }
 @init 
 { 
-	$factor_formula::mul = new List<bool>();
+	$factor_formula::mul = new List<byte>();
 	$factor_formula::factors = new List<Formula>();
 } 
-	:	a=simple_formula ( ( '*' { $factor_formula::mul.Add(true); } | '/' { $factor_formula::mul.Add(false); } ) b=simple_formula { $factor_formula::factors.Add($b.f); } )* { $f = new RawMultiplyFormula($a.f, $factor_formula::mul, $factor_formula::factors); }
+	:	a=simple_formula ( ( '*' { $factor_formula::mul.Add(0); } | '/' { $factor_formula::mul.Add(1); } | '%' { $factor_formula::mul.Add(2); } ) b=simple_formula { $factor_formula::factors.Add($b.f); } )* { $f = new RawMultiplyFormula($a.f, $factor_formula::mul, $factor_formula::factors); }
 	;
 
 simple_formula returns [Formula f]
@@ -300,6 +304,7 @@ simple_formula returns [Formula f]
 	|	CONST_ANGLE_RIGHT { $f = new ConstValueFormula(MathHelper.ANGLE_RIGHT); }
 	|	PREDEF_ANGLE_TOWARD_PLAYER { $f = new AngleTowardPlayerFormula(); }
 	|	PREDEF_ANGLE_CURRENT { $f = new CurrentAngleFormula(); }
+	|	v=VARIABLE { $f = new VariableFormula($v.Text); }
 	|	'(' sf=formula ')' { $f = $sf.f; }
 	;
 	
@@ -315,6 +320,7 @@ param returns [Param p]
 	|	ap=animation_param  { $p = $ap.p; }
 	|	cp=color_param      { $p = $cp.p; }
 	|	scp=scrolling_param { $p = $scp.p; }
+	|	csp=custom_param    { $p = $csp.p; }
 	;
 
 fps_param returns [Param p]
@@ -343,6 +349,10 @@ color_param returns [Param p]
 	
 scrolling_param returns [Param p]
 	:	PARAM_SCROLLING '=' dir=DIRECTION ',' speed=NUMBER { $p = new ScrollingParam($dir.Text, float.Parse($speed.Text)); }
+	;
+
+custom_param returns [Param p]
+	:	v=VARIABLE '=' f=formula { $p = CustomParam.Create($v.Text, $f.f); }
 	;
 
 classdef returns [Classdef en]
@@ -437,7 +447,7 @@ periodic_action returns [Action action]
 	;
 	
 fire_action returns [Action action]
-	:	target=action_target ACTION_FIRE '(' bullet=CLASS_IDENTIFIER ',' angle=formula ')' { $action = new FireAction($target.target, $bullet.Text, $angle.f); }
+	:	target=action_target ACTION_FIRE '(' bullet=CLASS_IDENTIFIER ',' angle=formula ')' { $action = FireAction.Create($target.target, $bullet.Text, $angle.f); }
 	;
 
 fire_multiple_action returns [Action action]

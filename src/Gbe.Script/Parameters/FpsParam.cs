@@ -1,4 +1,5 @@
 using Gbe.Engine;
+using Gbe.Script.Formulas;
 
 namespace Gbe.Script.Parameters
 {
@@ -11,7 +12,7 @@ namespace Gbe.Script.Parameters
             m_fps = fps;
         }
 
-        public override void Execute(Gear gear)
+        public override void Execute(EvaluationContext context)
         {
             // TODO
         }

@@ -28,28 +28,66 @@ BULLET SimpleBullet
 	}
 }
 
+BULLET B1
+{
+	@init
+	{
+		speed=150
+		animation="circle"
+		color=pink
+	}
+}
+
+BULLET B2
+{
+	@init
+	{
+		speed=160
+		animation="circle"
+		color=pink
+	}
+}
+
+BULLET B3
+{
+	@init
+	{
+		speed=170
+		animation="circle"
+		color=pink
+	}
+}
+
 BULLET ExplodingBullet
 {
 	@init
 	{
-		speed=100
+		speed=30
 		animation="box"
 		color=pink
 	}
 	
-	@time(.5)
+	@time(2)
 	{
-		//.fireMultiple(SimpleBullet, $current, -2 .. 2, 10°)
-		.fire(SimpleBullet, $current)
+		.fireMultiple(B1, $CURRENT, -1 .. 1, 6°)
+		.fire(B2, $CURRENT - 3°)
+		.fire(B2, $CURRENT + 3°)
+		.fire(B3, $CURRENT)
 		.die
 	}
 }
 
 STATE Fire
 {
+	@init
+	{
+		$i=0
+	}
+
 	@periodic(.2)
 	{
-		.fire(ExplodingBullet, $player)
+		.fire(ExplodingBullet, $PLAYER - .17 + $i % .34)
+		$i=$i + .1
 	}
 }
 
@@ -83,7 +121,8 @@ ENEMY Toto
 
 	@time(0.5)
 	{
-		.start(Fire)
+		//.start(Fire)
+		.fire(ExplodingBullet, $PLAYER)
 	}
 
 	@time(10)

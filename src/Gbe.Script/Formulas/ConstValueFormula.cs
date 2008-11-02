@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Gbe.Script.Formulas
+﻿namespace Gbe.Script.Formulas
 {
     public class ConstValueFormula : Formula
     {

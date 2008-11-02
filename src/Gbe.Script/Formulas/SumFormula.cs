@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Gbe.Script.Formulas
+﻿namespace Gbe.Script.Formulas
 {
     public class SumFormula : Formula
     {

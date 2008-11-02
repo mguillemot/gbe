@@ -27,9 +27,9 @@ namespace Gbe.Script.Formulas
 
         public override Formula Compile()
         {
+            Formula currentFormula = m_left.Compile();
             if (m_terms.Count > 0)
             {
-                Formula currentFormula = m_left;
                 for (int i = 0; i < m_terms.Count; i++)
                 {
                     var add = m_signs[i];
@@ -43,9 +43,8 @@ namespace Gbe.Script.Formulas
                         currentFormula = new DifferenceFormula(currentFormula, compiledTerm);
                     }
                 }
-                return currentFormula;
             }
-            return m_left.Compile();
+            return currentFormula;
         }
     }
 }

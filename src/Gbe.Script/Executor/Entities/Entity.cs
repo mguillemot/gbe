@@ -49,5 +49,15 @@ namespace Gbe.Script.Executor.Entities
         {
             throw new NotImplementedException();
         }
+
+        public virtual float GetVariable(string variableName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void SetVariable(string variableName, float value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,10 +1,14 @@
-﻿using Gbe.Script.Classdefs;
+﻿using System.Collections.Generic;
+using Gbe.Script.Classdefs;
 
 namespace Gbe.Script.Executor.Entities
 {
     public class ScriptEntity : Entity
     {
-        public ScriptEntity(Classdef classdef, string name) : base(classdef, name)
+        private readonly Dictionary<string, float> m_variables = new Dictionary<string, float>();
+
+        public ScriptEntity(Classdef classdef, string name)
+            : base(classdef, name)
         {
         }
 
@@ -15,6 +19,16 @@ namespace Gbe.Script.Executor.Entities
             {
                 trigger.Register(scriptExecutor, this);
             }
+        }
+
+        public override float GetVariable(string variableName)
+        {
+            return m_variables[variableName];
+        }
+
+        public override void SetVariable(string variableName, float value)
+        {
+            m_variables[variableName] = value;
         }
     }
 }
