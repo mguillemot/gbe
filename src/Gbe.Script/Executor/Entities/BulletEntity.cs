@@ -21,7 +21,8 @@ namespace Gbe.Script.Executor.Entities
             scriptExecutor.Register(this);
             m_gear = new BulletGear(scriptExecutor.Engine.GenerateId())
                          {
-                             Position = initialPosition
+                             Position = initialPosition,
+                             Direction = angle
                          };
             scriptExecutor.Engine.AddGear(m_gear);
             scriptExecutor.Engine.Executor.AddRule(m_gear.Id, new LinearTrajectoryRule(angle));

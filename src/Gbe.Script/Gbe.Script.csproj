@@ -77,6 +77,7 @@
     <Compile Include="Executor\GbsExecutor.cs" />
     <Compile Include="Formulas\AngleTowardPlayerFormula.cs" />
     <Compile Include="Formulas\ConstValueFormula.cs" />
+    <Compile Include="Formulas\CurrentAngleFormula.cs" />
     <Compile Include="Formulas\DifferenceFormula.cs" />
     <Compile Include="Formulas\DivideFormula.cs" />
     <Compile Include="Formulas\EvaluationContext.cs" />

@@ -47,6 +47,12 @@ namespace Gbe.Engine
             set { GearProperties.SetColor(this, value); }
         }
 
+        public float Direction
+        {
+            get { return GearProperties.GetDirection(this); }
+            set { GearProperties.SetDirection(this, value); }
+        }
+
         public bool HasProperty(string propertyName)
         {
             return _properties.ContainsKey(propertyName);

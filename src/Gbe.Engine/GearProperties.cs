@@ -26,6 +26,7 @@ namespace Gbe.Engine
         public const string COLOR = "color";
         public const string POSITION = "position";
         public const string SPEED = "speed";
+        public const string DIRECTION = "direction";
         public const string TRAINEE = "trainee";
 
         public static String GetAnimation(Gear gear)
@@ -96,6 +97,7 @@ namespace Gbe.Engine
         {
             gear[SPEED] = speed;
         }
+
         public static List<Point2> GetTrainee(Gear gear)
         {
             if (gear.HasProperty(TRAINEE))
@@ -110,5 +112,18 @@ namespace Gbe.Engine
             gear[TRAINEE] = trainee;
         }
 
+        public static float GetDirection(Gear gear)
+        {
+            if (gear.HasProperty(DIRECTION))
+            {
+                return (float)gear[DIRECTION];
+            }
+            throw new NoSuchPropertyException(DIRECTION);
+        }
+
+        public static void SetDirection(Gear gear, float direction)
+        {
+            gear[DIRECTION] = direction;
+        }
     }
 }

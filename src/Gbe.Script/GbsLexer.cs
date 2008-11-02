@@ -1,4 +1,4 @@
-// $ANTLR 3.1.1 C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g 2008-11-02 18:10:42
+// $ANTLR 3.1.1 C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g 2008-11-02 19:02:54
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
 // Unreachable code detected.
@@ -16,70 +16,71 @@ using Stack 		= Antlr.Runtime.Collections.StackList;
 
 
 public partial class GbsLexer : Lexer {
-    public const int DIRECTION = 45;
+    public const int DIRECTION = 46;
     public const int T__66 = 66;
+    public const int T__67 = 67;
     public const int T__64 = 64;
     public const int T__65 = 65;
     public const int T__62 = 62;
-    public const int CONST_ANGLE_RIGHT = 40;
+    public const int CONST_ANGLE_RIGHT = 41;
     public const int T__63 = 63;
     public const int ACTION_SET = 27;
-    public const int POINT = 47;
+    public const int POINT = 48;
     public const int TRIGGER_SCROLLING = 33;
     public const int CLASSDEF_SCRIPT = 9;
-    public const int CONST_ANGLE_UP = 38;
+    public const int CONST_ANGLE_UP = 39;
     public const int ACTION_FIRE_MULTIPLE = 21;
     public const int T__61 = 61;
     public const int T__60 = 60;
     public const int EOF = -1;
     public const int PARAM_SCROLLING = 18;
-    public const int COLOR = 42;
+    public const int COLOR = 43;
     public const int CLASSDEF_BULLET = 7;
     public const int TRIGGER_CLEANUP = 30;
-    public const int T__55 = 55;
-    public const int ML_COMMENT = 53;
+    public const int ML_COMMENT = 54;
     public const int T__56 = 56;
     public const int T__57 = 57;
     public const int T__58 = 58;
     public const int PARAM_ANIMATION = 17;
-    public const int INSTANCE_IDENTIFIER = 50;
-    public const int CONST_ANGLE_DOWN = 37;
+    public const int INSTANCE_IDENTIFIER = 51;
+    public const int CONST_ANGLE_DOWN = 38;
     public const int TRIGGER_INIT = 29;
     public const int T__59 = 59;
     public const int ACTION_START = 23;
     public const int THIS = 4;
-    public const int RECTANGLE = 48;
+    public const int RECTANGLE = 49;
     public const int CLASSDEF_PLAYER = 6;
     public const int PARAM_POSITION = 14;
-    public const int DIGIT = 46;
+    public const int DIGIT = 47;
     public const int CLASSDEF_EVENT = 11;
     public const int ACTION_PERIODIC = 19;
     public const int PARAM_GAMEAREA = 13;
     public const int PARAM_FPS = 12;
     public const int CLASSDEF_ENEMY = 8;
+    public const int PREDEF_ANGLE_CURRENT = 37;
     public const int ACTION_SUMMON = 25;
-    public const int NUMBER = 44;
+    public const int NUMBER = 45;
     public const int TRIGGER_TIME = 31;
-    public const int HEX_DIGIT = 41;
-    public const int WHITESPACE = 52;
+    public const int HEX_DIGIT = 42;
+    public const int WHITESPACE = 53;
     public const int ACTION_STOP = 24;
     public const int TRIGGER_PERIODIC = 32;
     public const int TRIGGER_ANIMATION_END = 34;
     public const int ACTION_FIRE = 20;
     public const int TRIGGER_EVENT = 35;
     public const int CLASSDEF_STATE = 10;
-    public const int CARDINAL_DIRECTION = 43;
+    public const int CARDINAL_DIRECTION = 44;
     public const int PARAM_COLOR = 15;
     public const int PARAM_SPEED = 16;
-    public const int CONST_ANGLE_LEFT = 39;
-    public const int CLASS_IDENTIFIER = 49;
+    public const int CONST_ANGLE_LEFT = 40;
+    public const int CLASS_IDENTIFIER = 50;
     public const int ACTION_RAISE = 28;
-    public const int SL_COMMENT = 54;
+    public const int SL_COMMENT = 55;
     public const int PREDEF_ANGLE_TOWARD_PLAYER = 36;
     public const int ACTION_DIE = 22;
     public const int CLASSDEF_ENGINE = 5;
     public const int ACTION_PLAY_ANIMATION = 26;
-    public const int STRING = 51;
+    public const int STRING = 52;
 
     // delegates
     // delegators
@@ -102,29 +103,6 @@ public partial class GbsLexer : Lexer {
     	get { return "C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g";} 
     }
 
-    // $ANTLR start "T__55"
-    public void mT__55() // throws RecognitionException [2]
-    {
-    		try
-    		{
-            int _type = T__55;
-    	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:11:7: ( '+' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:11:9: '+'
-            {
-            	Match('+'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally 
-    	{
-        }
-    }
-    // $ANTLR end "T__55"
-
     // $ANTLR start "T__56"
     public void mT__56() // throws RecognitionException [2]
     {
@@ -132,10 +110,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__56;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:12:7: ( '-' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:12:9: '-'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:11:7: ( '+' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:11:9: '+'
             {
-            	Match('-'); 
+            	Match('+'); 
 
             }
 
@@ -155,10 +133,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__57;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:13:7: ( '*' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:13:9: '*'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:12:7: ( '-' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:12:9: '-'
             {
-            	Match('*'); 
+            	Match('-'); 
 
             }
 
@@ -178,10 +156,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__58;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:14:7: ( '/' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:14:9: '/'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:13:7: ( '*' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:13:9: '*'
             {
-            	Match('/'); 
+            	Match('*'); 
 
             }
 
@@ -201,10 +179,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__59;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:15:7: ( '°' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:15:9: '°'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:14:7: ( '/' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:14:9: '/'
             {
-            	Match('\u00B0'); 
+            	Match('/'); 
 
             }
 
@@ -224,10 +202,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__60;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:16:7: ( '(' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:16:9: '('
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:15:7: ( '°' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:15:9: '°'
             {
-            	Match('('); 
+            	Match('\u00B0'); 
 
             }
 
@@ -247,10 +225,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__61;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:17:7: ( ')' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:17:9: ')'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:16:7: ( '(' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:16:9: '('
             {
-            	Match(')'); 
+            	Match('('); 
 
             }
 
@@ -270,11 +248,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__62;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:18:7: ( '..' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:18:9: '..'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:17:7: ( ')' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:17:9: ')'
             {
-            	Match(".."); 
-
+            	Match(')'); 
 
             }
 
@@ -294,10 +271,11 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__63;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:19:7: ( '=' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:19:9: '='
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:18:7: ( '..' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:18:9: '..'
             {
-            	Match('='); 
+            	Match(".."); 
+
 
             }
 
@@ -317,10 +295,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__64;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:20:7: ( ',' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:20:9: ','
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:19:7: ( '=' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:19:9: '='
             {
-            	Match(','); 
+            	Match('='); 
 
             }
 
@@ -340,10 +318,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__65;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:21:7: ( '{' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:21:9: '{'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:20:7: ( ',' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:20:9: ','
             {
-            	Match('{'); 
+            	Match(','); 
 
             }
 
@@ -363,6 +341,29 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = T__66;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:21:7: ( '{' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:21:9: '{'
+            {
+            	Match('{'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally 
+    	{
+        }
+    }
+    // $ANTLR end "T__66"
+
+    // $ANTLR start "T__67"
+    public void mT__67() // throws RecognitionException [2]
+    {
+    		try
+    		{
+            int _type = T__67;
+    	int _channel = DEFAULT_TOKEN_CHANNEL;
             // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:22:7: ( '}' )
             // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:22:9: '}'
             {
@@ -377,7 +378,7 @@ public partial class GbsLexer : Lexer {
     	{
         }
     }
-    // $ANTLR end "T__66"
+    // $ANTLR end "T__67"
 
     // $ANTLR start "THIS"
     public void mTHIS() // throws RecognitionException [2]
@@ -1171,6 +1172,30 @@ public partial class GbsLexer : Lexer {
     }
     // $ANTLR end "PREDEF_ANGLE_TOWARD_PLAYER"
 
+    // $ANTLR start "PREDEF_ANGLE_CURRENT"
+    public void mPREDEF_ANGLE_CURRENT() // throws RecognitionException [2]
+    {
+    		try
+    		{
+            int _type = PREDEF_ANGLE_CURRENT;
+    	int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:166:2: ( '$current' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:166:4: '$current'
+            {
+            	Match("$current"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally 
+    	{
+        }
+    }
+    // $ANTLR end "PREDEF_ANGLE_CURRENT"
+
     // $ANTLR start "CONST_ANGLE_DOWN"
     public void mCONST_ANGLE_DOWN() // throws RecognitionException [2]
     {
@@ -1178,8 +1203,8 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = CONST_ANGLE_DOWN;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:166:2: ( '$DOWN' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:166:4: '$DOWN'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:170:2: ( '$DOWN' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:170:4: '$DOWN'
             {
             	Match("$DOWN"); 
 
@@ -1202,8 +1227,8 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = CONST_ANGLE_UP;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:170:2: ( '$UP' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:170:4: '$UP'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:174:2: ( '$UP' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:174:4: '$UP'
             {
             	Match("$UP"); 
 
@@ -1226,8 +1251,8 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = CONST_ANGLE_LEFT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:174:2: ( '$LEFT' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:174:4: '$LEFT'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:178:2: ( '$LEFT' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:178:4: '$LEFT'
             {
             	Match("$LEFT"); 
 
@@ -1250,8 +1275,8 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = CONST_ANGLE_RIGHT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:178:2: ( '$RIGHT' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:178:4: '$RIGHT'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:182:2: ( '$RIGHT' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:182:4: '$RIGHT'
             {
             	Match("$RIGHT"); 
 
@@ -1274,13 +1299,13 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = COLOR;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:182:2: ( 'black' | 'white' | 'red' | 'green' | 'blue' | 'yellow' | 'pink' | 'lightblue' | '#' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:186:2: ( 'black' | 'white' | 'red' | 'green' | 'blue' | 'yellow' | 'pink' | 'lightblue' | '#' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
             int alt1 = 9;
             alt1 = dfa1.Predict(input);
             switch (alt1) 
             {
                 case 1 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:182:4: 'black'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:186:4: 'black'
                     {
                     	Match("black"); 
 
@@ -1288,7 +1313,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:183:4: 'white'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:187:4: 'white'
                     {
                     	Match("white"); 
 
@@ -1296,7 +1321,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 3 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:184:4: 'red'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:188:4: 'red'
                     {
                     	Match("red"); 
 
@@ -1304,7 +1329,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 4 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:185:4: 'green'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:189:4: 'green'
                     {
                     	Match("green"); 
 
@@ -1312,7 +1337,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 5 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:186:4: 'blue'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:190:4: 'blue'
                     {
                     	Match("blue"); 
 
@@ -1320,7 +1345,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 6 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:187:4: 'yellow'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:191:4: 'yellow'
                     {
                     	Match("yellow"); 
 
@@ -1328,7 +1353,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 7 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:188:4: 'pink'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:192:4: 'pink'
                     {
                     	Match("pink"); 
 
@@ -1336,7 +1361,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 8 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:189:4: 'lightblue'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:193:4: 'lightblue'
                     {
                     	Match("lightblue"); 
 
@@ -1344,7 +1369,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 9 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:190:4: '#' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:194:4: '#' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
                     {
                     	Match('#'); 
                     	mHEX_DIGIT(); 
@@ -1374,11 +1399,11 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = DIRECTION;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:194:2: ( CARDINAL_DIRECTION ( ( '+' | '-' ) NUMBER )? )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:194:4: CARDINAL_DIRECTION ( ( '+' | '-' ) NUMBER )?
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:198:2: ( CARDINAL_DIRECTION ( ( '+' | '-' ) NUMBER )? )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:198:4: CARDINAL_DIRECTION ( ( '+' | '-' ) NUMBER )?
             {
             	mCARDINAL_DIRECTION(); 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:194:23: ( ( '+' | '-' ) NUMBER )?
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:198:23: ( ( '+' | '-' ) NUMBER )?
             	int alt2 = 2;
             	int LA2_0 = input.LA(1);
 
@@ -1389,7 +1414,7 @@ public partial class GbsLexer : Lexer {
             	switch (alt2) 
             	{
             	    case 1 :
-            	        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:194:25: ( '+' | '-' ) NUMBER
+            	        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:198:25: ( '+' | '-' ) NUMBER
             	        {
             	        	if ( input.LA(1) == '+' || input.LA(1) == '-' ) 
             	        	{
@@ -1426,7 +1451,7 @@ public partial class GbsLexer : Lexer {
     {
     		try
     		{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:198:2: ( 'up' | 'down' | 'left' | 'right' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:202:2: ( 'up' | 'down' | 'left' | 'right' )
             int alt3 = 4;
             switch ( input.LA(1) ) 
             {
@@ -1460,7 +1485,7 @@ public partial class GbsLexer : Lexer {
             switch (alt3) 
             {
                 case 1 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:198:4: 'up'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:202:4: 'up'
                     {
                     	Match("up"); 
 
@@ -1468,7 +1493,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:199:4: 'down'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:203:4: 'down'
                     {
                     	Match("down"); 
 
@@ -1476,7 +1501,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 3 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:200:4: 'left'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:204:4: 'left'
                     {
                     	Match("left"); 
 
@@ -1484,7 +1509,7 @@ public partial class GbsLexer : Lexer {
                     }
                     break;
                 case 4 :
-                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:201:4: 'right'
+                    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:4: 'right'
                     {
                     	Match("right"); 
 
@@ -1507,10 +1532,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = NUMBER;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:2: ( ( '+' | '-' )? ( ( ( DIGIT )+ ( '.' ( DIGIT )* )? ) | ( '.' ( DIGIT )+ ) ) )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:4: ( '+' | '-' )? ( ( ( DIGIT )+ ( '.' ( DIGIT )* )? ) | ( '.' ( DIGIT )+ ) )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:2: ( ( '+' | '-' )? ( ( ( DIGIT )+ ( '.' ( DIGIT )* )? ) | ( '.' ( DIGIT )+ ) ) )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:4: ( '+' | '-' )? ( ( ( DIGIT )+ ( '.' ( DIGIT )* )? ) | ( '.' ( DIGIT )+ ) )
             {
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:4: ( '+' | '-' )?
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:4: ( '+' | '-' )?
             	int alt4 = 2;
             	int LA4_0 = input.LA(1);
 
@@ -1540,7 +1565,7 @@ public partial class GbsLexer : Lexer {
 
             	}
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:19: ( ( ( DIGIT )+ ( '.' ( DIGIT )* )? ) | ( '.' ( DIGIT )+ ) )
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:19: ( ( ( DIGIT )+ ( '.' ( DIGIT )* )? ) | ( '.' ( DIGIT )+ ) )
             	int alt9 = 2;
             	int LA9_0 = input.LA(1);
 
@@ -1562,12 +1587,12 @@ public partial class GbsLexer : Lexer {
             	switch (alt9) 
             	{
             	    case 1 :
-            	        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:21: ( ( DIGIT )+ ( '.' ( DIGIT )* )? )
+            	        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:21: ( ( DIGIT )+ ( '.' ( DIGIT )* )? )
             	        {
-            	        	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:21: ( ( DIGIT )+ ( '.' ( DIGIT )* )? )
-            	        	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:23: ( DIGIT )+ ( '.' ( DIGIT )* )?
+            	        	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:21: ( ( DIGIT )+ ( '.' ( DIGIT )* )? )
+            	        	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:23: ( DIGIT )+ ( '.' ( DIGIT )* )?
             	        	{
-            	        		// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:23: ( DIGIT )+
+            	        		// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:23: ( DIGIT )+
             	        		int cnt5 = 0;
             	        		do 
             	        		{
@@ -1583,7 +1608,7 @@ public partial class GbsLexer : Lexer {
             	        		    switch (alt5) 
             	        			{
             	        				case 1 :
-            	        				    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:23: DIGIT
+            	        				    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:23: DIGIT
             	        				    {
             	        				    	mDIGIT(); 
 
@@ -1602,7 +1627,7 @@ public partial class GbsLexer : Lexer {
             	        		loop5:
             	        			;	// Stops C# compiler whinging that label 'loop5' has no statements
 
-            	        		// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:30: ( '.' ( DIGIT )* )?
+            	        		// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:30: ( '.' ( DIGIT )* )?
             	        		int alt7 = 2;
             	        		int LA7_0 = input.LA(1);
 
@@ -1613,10 +1638,10 @@ public partial class GbsLexer : Lexer {
             	        		switch (alt7) 
             	        		{
             	        		    case 1 :
-            	        		        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:32: '.' ( DIGIT )*
+            	        		        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:32: '.' ( DIGIT )*
             	        		        {
             	        		        	Match('.'); 
-            	        		        	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:36: ( DIGIT )*
+            	        		        	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:36: ( DIGIT )*
             	        		        	do 
             	        		        	{
             	        		        	    int alt6 = 2;
@@ -1631,7 +1656,7 @@ public partial class GbsLexer : Lexer {
             	        		        	    switch (alt6) 
             	        		        		{
             	        		        			case 1 :
-            	        		        			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:36: DIGIT
+            	        		        			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:36: DIGIT
             	        		        			    {
             	        		        			    	mDIGIT(); 
 
@@ -1659,13 +1684,13 @@ public partial class GbsLexer : Lexer {
             	        }
             	        break;
             	    case 2 :
-            	        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:50: ( '.' ( DIGIT )+ )
+            	        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:50: ( '.' ( DIGIT )+ )
             	        {
-            	        	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:50: ( '.' ( DIGIT )+ )
-            	        	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:52: '.' ( DIGIT )+
+            	        	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:50: ( '.' ( DIGIT )+ )
+            	        	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:52: '.' ( DIGIT )+
             	        	{
             	        		Match('.'); 
-            	        		// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:56: ( DIGIT )+
+            	        		// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:56: ( DIGIT )+
             	        		int cnt8 = 0;
             	        		do 
             	        		{
@@ -1681,7 +1706,7 @@ public partial class GbsLexer : Lexer {
             	        		    switch (alt8) 
             	        			{
             	        				case 1 :
-            	        				    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:205:56: DIGIT
+            	        				    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:56: DIGIT
             	        				    {
             	        				    	mDIGIT(); 
 
@@ -1726,7 +1751,7 @@ public partial class GbsLexer : Lexer {
     {
     		try
     		{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:209:2: ( DIGIT | 'A' .. 'F' | 'a' .. 'f' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:213:2: ( DIGIT | 'A' .. 'F' | 'a' .. 'f' )
             // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:
             {
             	if ( (input.LA(1) >= '0' && input.LA(1) <= '9') || (input.LA(1) >= 'A' && input.LA(1) <= 'F') || (input.LA(1) >= 'a' && input.LA(1) <= 'f') ) 
@@ -1755,8 +1780,8 @@ public partial class GbsLexer : Lexer {
     {
     		try
     		{
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:213:2: ( '0' .. '9' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:213:4: '0' .. '9'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:217:2: ( '0' .. '9' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:217:4: '0' .. '9'
             {
             	MatchRange('0','9'); 
 
@@ -1776,8 +1801,8 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = POINT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:217:2: ( NUMBER ':' NUMBER )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:217:4: NUMBER ':' NUMBER
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:221:2: ( NUMBER ':' NUMBER )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:221:4: NUMBER ':' NUMBER
             {
             	mNUMBER(); 
             	Match(':'); 
@@ -1801,8 +1826,8 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = RECTANGLE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:221:2: ( POINT '->' POINT )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:221:4: POINT '->' POINT
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:225:2: ( POINT '->' POINT )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:225:4: POINT '->' POINT
             {
             	mPOINT(); 
             	Match("->"); 
@@ -1827,11 +1852,11 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = CLASS_IDENTIFIER;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:225:2: ( 'A' .. 'Z' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:225:4: 'A' .. 'Z' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:229:2: ( 'A' .. 'Z' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:229:4: 'A' .. 'Z' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             	MatchRange('A','Z'); 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:225:13: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:229:13: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             	do 
             	{
             	    int alt10 = 2;
@@ -1890,11 +1915,11 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = INSTANCE_IDENTIFIER;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:229:2: ( 'a' .. 'z' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:229:4: 'a' .. 'z' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:233:2: ( 'a' .. 'z' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:233:4: 'a' .. 'z' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             	MatchRange('a','z'); 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:229:13: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:233:13: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             	do 
             	{
             	    int alt11 = 2;
@@ -1953,11 +1978,11 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = STRING;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:233:2: ( '\"' ( options {greedy=false; } : . )* '\"' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:233:4: '\"' ( options {greedy=false; } : . )* '\"'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:237:2: ( '\"' ( options {greedy=false; } : . )* '\"' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:237:4: '\"' ( options {greedy=false; } : . )* '\"'
             {
             	Match('\"'); 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:233:8: ( options {greedy=false; } : . )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:237:8: ( options {greedy=false; } : . )*
             	do 
             	{
             	    int alt12 = 2;
@@ -1976,7 +2001,7 @@ public partial class GbsLexer : Lexer {
             	    switch (alt12) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:233:38: .
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:237:38: .
             			    {
             			    	MatchAny(); 
 
@@ -2011,10 +2036,10 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = WHITESPACE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:237:2: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:237:4: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:241:2: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:241:4: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             {
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:237:4: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:241:4: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             	int cnt13 = 0;
             	do 
             	{
@@ -2079,12 +2104,12 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = ML_COMMENT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:241:2: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:241:4: '/*' ( options {greedy=false; } : . )* '*/'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:245:2: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:245:4: '/*' ( options {greedy=false; } : . )* '*/'
             {
             	Match("/*"); 
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:241:9: ( options {greedy=false; } : . )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:245:9: ( options {greedy=false; } : . )*
             	do 
             	{
             	    int alt14 = 2;
@@ -2114,7 +2139,7 @@ public partial class GbsLexer : Lexer {
             	    switch (alt14) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:241:39: .
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:245:39: .
             			    {
             			    	MatchAny(); 
 
@@ -2151,12 +2176,12 @@ public partial class GbsLexer : Lexer {
     		{
             int _type = SL_COMMENT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:245:2: ( '//' ( options {greedy=false; } : . )* '\\n' )
-            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:245:4: '//' ( options {greedy=false; } : . )* '\\n'
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:249:2: ( '//' ( options {greedy=false; } : . )* '\\n' )
+            // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:249:4: '//' ( options {greedy=false; } : . )* '\\n'
             {
             	Match("//"); 
 
-            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:245:9: ( options {greedy=false; } : . )*
+            	// C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:249:9: ( options {greedy=false; } : . )*
             	do 
             	{
             	    int alt15 = 2;
@@ -2175,7 +2200,7 @@ public partial class GbsLexer : Lexer {
             	    switch (alt15) 
             		{
             			case 1 :
-            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:245:39: .
+            			    // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:249:39: .
             			    {
             			    	MatchAny(); 
 
@@ -2206,92 +2231,92 @@ public partial class GbsLexer : Lexer {
 
     override public void mTokens() // throws RecognitionException 
     {
-        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:8: ( T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | THIS | CLASSDEF_ENGINE | CLASSDEF_PLAYER | CLASSDEF_BULLET | CLASSDEF_ENEMY | CLASSDEF_SCRIPT | CLASSDEF_STATE | CLASSDEF_EVENT | PARAM_FPS | PARAM_GAMEAREA | PARAM_POSITION | PARAM_COLOR | PARAM_SPEED | PARAM_ANIMATION | PARAM_SCROLLING | ACTION_PERIODIC | ACTION_FIRE | ACTION_FIRE_MULTIPLE | ACTION_DIE | ACTION_START | ACTION_STOP | ACTION_SUMMON | ACTION_PLAY_ANIMATION | ACTION_SET | ACTION_RAISE | TRIGGER_INIT | TRIGGER_CLEANUP | TRIGGER_TIME | TRIGGER_PERIODIC | TRIGGER_SCROLLING | TRIGGER_ANIMATION_END | TRIGGER_EVENT | PREDEF_ANGLE_TOWARD_PLAYER | CONST_ANGLE_DOWN | CONST_ANGLE_UP | CONST_ANGLE_LEFT | CONST_ANGLE_RIGHT | COLOR | DIRECTION | NUMBER | POINT | RECTANGLE | CLASS_IDENTIFIER | INSTANCE_IDENTIFIER | STRING | WHITESPACE | ML_COMMENT | SL_COMMENT )
-        int alt16 = 60;
+        // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:8: ( T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | THIS | CLASSDEF_ENGINE | CLASSDEF_PLAYER | CLASSDEF_BULLET | CLASSDEF_ENEMY | CLASSDEF_SCRIPT | CLASSDEF_STATE | CLASSDEF_EVENT | PARAM_FPS | PARAM_GAMEAREA | PARAM_POSITION | PARAM_COLOR | PARAM_SPEED | PARAM_ANIMATION | PARAM_SCROLLING | ACTION_PERIODIC | ACTION_FIRE | ACTION_FIRE_MULTIPLE | ACTION_DIE | ACTION_START | ACTION_STOP | ACTION_SUMMON | ACTION_PLAY_ANIMATION | ACTION_SET | ACTION_RAISE | TRIGGER_INIT | TRIGGER_CLEANUP | TRIGGER_TIME | TRIGGER_PERIODIC | TRIGGER_SCROLLING | TRIGGER_ANIMATION_END | TRIGGER_EVENT | PREDEF_ANGLE_TOWARD_PLAYER | PREDEF_ANGLE_CURRENT | CONST_ANGLE_DOWN | CONST_ANGLE_UP | CONST_ANGLE_LEFT | CONST_ANGLE_RIGHT | COLOR | DIRECTION | NUMBER | POINT | RECTANGLE | CLASS_IDENTIFIER | INSTANCE_IDENTIFIER | STRING | WHITESPACE | ML_COMMENT | SL_COMMENT )
+        int alt16 = 61;
         alt16 = dfa16.Predict(input);
         switch (alt16) 
         {
             case 1 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:10: T__55
-                {
-                	mT__55(); 
-
-                }
-                break;
-            case 2 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:16: T__56
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:10: T__56
                 {
                 	mT__56(); 
 
                 }
                 break;
-            case 3 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:22: T__57
+            case 2 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:16: T__57
                 {
                 	mT__57(); 
 
                 }
                 break;
-            case 4 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:28: T__58
+            case 3 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:22: T__58
                 {
                 	mT__58(); 
 
                 }
                 break;
-            case 5 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:34: T__59
+            case 4 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:28: T__59
                 {
                 	mT__59(); 
 
                 }
                 break;
-            case 6 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:40: T__60
+            case 5 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:34: T__60
                 {
                 	mT__60(); 
 
                 }
                 break;
-            case 7 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:46: T__61
+            case 6 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:40: T__61
                 {
                 	mT__61(); 
 
                 }
                 break;
-            case 8 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:52: T__62
+            case 7 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:46: T__62
                 {
                 	mT__62(); 
 
                 }
                 break;
-            case 9 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:58: T__63
+            case 8 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:52: T__63
                 {
                 	mT__63(); 
 
                 }
                 break;
-            case 10 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:64: T__64
+            case 9 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:58: T__64
                 {
                 	mT__64(); 
 
                 }
                 break;
-            case 11 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:70: T__65
+            case 10 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:64: T__65
                 {
                 	mT__65(); 
 
                 }
                 break;
-            case 12 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:76: T__66
+            case 11 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:70: T__66
                 {
                 	mT__66(); 
+
+                }
+                break;
+            case 12 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:76: T__67
+                {
+                	mT__67(); 
 
                 }
                 break;
@@ -2527,105 +2552,112 @@ public partial class GbsLexer : Lexer {
                 }
                 break;
             case 46 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:577: CONST_ANGLE_DOWN
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:577: PREDEF_ANGLE_CURRENT
+                {
+                	mPREDEF_ANGLE_CURRENT(); 
+
+                }
+                break;
+            case 47 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:598: CONST_ANGLE_DOWN
                 {
                 	mCONST_ANGLE_DOWN(); 
 
                 }
                 break;
-            case 47 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:594: CONST_ANGLE_UP
+            case 48 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:615: CONST_ANGLE_UP
                 {
                 	mCONST_ANGLE_UP(); 
 
                 }
                 break;
-            case 48 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:609: CONST_ANGLE_LEFT
+            case 49 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:630: CONST_ANGLE_LEFT
                 {
                 	mCONST_ANGLE_LEFT(); 
 
                 }
                 break;
-            case 49 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:626: CONST_ANGLE_RIGHT
+            case 50 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:647: CONST_ANGLE_RIGHT
                 {
                 	mCONST_ANGLE_RIGHT(); 
 
                 }
                 break;
-            case 50 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:644: COLOR
+            case 51 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:665: COLOR
                 {
                 	mCOLOR(); 
 
                 }
                 break;
-            case 51 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:650: DIRECTION
+            case 52 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:671: DIRECTION
                 {
                 	mDIRECTION(); 
 
                 }
                 break;
-            case 52 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:660: NUMBER
+            case 53 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:681: NUMBER
                 {
                 	mNUMBER(); 
 
                 }
                 break;
-            case 53 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:667: POINT
+            case 54 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:688: POINT
                 {
                 	mPOINT(); 
 
                 }
                 break;
-            case 54 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:673: RECTANGLE
+            case 55 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:694: RECTANGLE
                 {
                 	mRECTANGLE(); 
 
                 }
                 break;
-            case 55 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:683: CLASS_IDENTIFIER
+            case 56 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:704: CLASS_IDENTIFIER
                 {
                 	mCLASS_IDENTIFIER(); 
 
                 }
                 break;
-            case 56 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:700: INSTANCE_IDENTIFIER
+            case 57 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:721: INSTANCE_IDENTIFIER
                 {
                 	mINSTANCE_IDENTIFIER(); 
 
                 }
                 break;
-            case 57 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:720: STRING
+            case 58 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:741: STRING
                 {
                 	mSTRING(); 
 
                 }
                 break;
-            case 58 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:727: WHITESPACE
+            case 59 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:748: WHITESPACE
                 {
                 	mWHITESPACE(); 
 
                 }
                 break;
-            case 59 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:738: ML_COMMENT
+            case 60 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:759: ML_COMMENT
                 {
                 	mML_COMMENT(); 
 
                 }
                 break;
-            case 60 :
-                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:749: SL_COMMENT
+            case 61 :
+                // C:\\Kamaku\\svn\\gbe\\trunk\\src\\Gbe.Script\\Gbs.g:1:770: SL_COMMENT
                 {
                 	mSL_COMMENT(); 
 
@@ -2703,27 +2735,27 @@ public partial class GbsLexer : Lexer {
 
         override public string Description
         {
-            get { return "181:1: COLOR : ( 'black' | 'white' | 'red' | 'green' | 'blue' | 'yellow' | 'pink' | 'lightblue' | '#' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT );"; }
+            get { return "185:1: COLOR : ( 'black' | 'white' | 'red' | 'green' | 'blue' | 'yellow' | 'pink' | 'lightblue' | '#' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT );"; }
         }
 
     }
 
     const string DFA16_eotS =
         "\x01\uffff\x01\x28\x01\x29\x01\uffff\x01\x2c\x08\uffff\x01\x24"+
-        "\x04\x23\x06\x24\x02\uffff\x05\x24\x01\uffff\x02\x24\x01\x59\x10"+
-        "\uffff\x01\x59\x01\x24\x06\x23\x09\x24\x0c\uffff\x07\x24\x01\x7b"+
-        "\x01\x24\x01\uffff\x01\x59\x07\uffff\x01\x24\x07\x23\x01\u008c\x0b"+
-        "\x24\x01\x1f\x04\x24\x01\uffff\x01\x24\x01\x59\x01\uffff\x01\u009d"+
-        "\x04\uffff\x01\u00a2\x07\x23\x01\uffff\x03\x24\x01\x1f\x05\x24\x01"+
-        "\x1f\x04\x24\x02\x7b\x01\uffff\x01\u009d\x01\uffff\x01\u009d\x01"+
-        "\u00b8\x01\uffff\x01\x23\x01\u00ba\x01\u00bb\x03\x23\x01\u00bf\x01"+
-        "\x24\x01\x1f\x01\x24\x01\u00c2\x01\u00c3\x02\x24\x02\x1f\x01\x7b"+
-        "\x02\x24\x01\u009d\x02\uffff\x01\u00c8\x02\uffff\x01\u00c9\x01\u00ca"+
-        "\x01\u00cb\x01\uffff\x02\x24\x02\uffff\x02\x24\x01\x1f\x01\x24\x04"+
-        "\uffff\x05\x24\x01\u00d6\x01\u00d7\x03\x24\x02\uffff\x01\u00db\x01"+
-        "\u00dc\x01\x1f\x02\uffff";
+        "\x04\x23\x06\x24\x02\uffff\x05\x24\x01\uffff\x02\x24\x01\x5a\x10"+
+        "\uffff\x01\x5a\x01\x24\x06\x23\x09\x24\x0d\uffff\x07\x24\x01\x7c"+
+        "\x01\x24\x01\uffff\x01\x5a\x07\uffff\x01\x24\x07\x23\x01\u008d\x0b"+
+        "\x24\x01\x1f\x04\x24\x01\uffff\x01\x24\x01\x5a\x01\uffff\x01\u009e"+
+        "\x04\uffff\x01\u00a3\x07\x23\x01\uffff\x03\x24\x01\x1f\x05\x24\x01"+
+        "\x1f\x04\x24\x02\x7c\x01\uffff\x01\u009e\x01\uffff\x01\u009e\x01"+
+        "\u00b9\x01\uffff\x01\x23\x01\u00bb\x01\u00bc\x03\x23\x01\u00c0\x01"+
+        "\x24\x01\x1f\x01\x24\x01\u00c3\x01\u00c4\x02\x24\x02\x1f\x01\x7c"+
+        "\x02\x24\x01\u009e\x02\uffff\x01\u00c9\x02\uffff\x01\u00ca\x01\u00cb"+
+        "\x01\u00cc\x01\uffff\x02\x24\x02\uffff\x02\x24\x01\x1f\x01\x24\x04"+
+        "\uffff\x05\x24\x01\u00d7\x01\u00d8\x03\x24\x02\uffff\x01\u00dc\x01"+
+        "\u00dd\x01\x1f\x02\uffff";
     const string DFA16_eofS =
-        "\u00dd\uffff";
+        "\u00de\uffff";
     const string DFA16_minS =
         "\x01\x09\x02\x2e\x01\uffff\x01\x2a\x03\uffff\x01\x2e\x04\uffff"+
         "\x01\x68\x01\x4e\x01\x4c\x01\x55\x01\x43\x01\x70\x01\x61\x01\x69"+
@@ -2731,7 +2763,7 @@ public partial class GbsLexer : Lexer {
         "\x01\uffff\x01\x70\x01\x6f\x01\x2e\x04\uffff\x01\x30\x06\uffff\x01"+
         "\x65\x01\x69\x01\uffff\x01\x65\x01\uffff\x01\x30\x01\x69\x02\x45"+
         "\x01\x41\x01\x4c\x01\x52\x01\x41\x01\x73\x01\x6d\x01\x65\x01\x73"+
-        "\x01\x6e\x01\x6c\x01\x65\x01\x72\x01\x69\x0c\uffff\x01\x61\x01\x69"+
+        "\x01\x6e\x01\x6c\x01\x65\x01\x72\x01\x69\x0d\uffff\x01\x61\x01\x69"+
         "\x01\x64\x01\x67\x01\x6c\x01\x67\x01\x66\x01\x30\x01\x77\x01\uffff"+
         "\x01\x30\x01\x2b\x02\uffff\x01\x72\x01\x61\x02\uffff\x01\x73\x01"+
         "\x49\x01\x4d\x01\x4e\x01\x59\x01\x4c\x01\x49\x01\x54\x01\x30\x02"+
@@ -2754,7 +2786,7 @@ public partial class GbsLexer : Lexer {
         "\x01\x69\x01\uffff\x01\x70\x01\x6f\x01\x3a\x04\uffff\x01\x39\x06"+
         "\uffff\x01\x6c\x01\x69\x01\uffff\x01\x75\x01\uffff\x01\x3a\x01\x69"+
         "\x01\x47\x01\x45\x01\x41\x01\x4c\x01\x52\x01\x41\x01\x73\x01\x6d"+
-        "\x01\x65\x01\x73\x01\x6e\x01\x6c\x01\x65\x01\x72\x01\x69\x0c\uffff"+
+        "\x01\x65\x01\x73\x01\x6e\x01\x6c\x01\x65\x01\x72\x01\x69\x0d\uffff"+
         "\x01\x75\x01\x69\x01\x64\x01\x67\x01\x6c\x01\x67\x01\x66\x01\x7a"+
         "\x01\x77\x01\uffff\x01\x3a\x01\x39\x02\uffff\x01\x72\x01\x6f\x02"+
         "\uffff\x01\x73\x01\x49\x01\x4d\x01\x4e\x01\x59\x01\x4c\x01\x49\x01"+
@@ -2772,19 +2804,19 @@ public partial class GbsLexer : Lexer {
         "\x65\x02\uffff\x03\x7a\x02\uffff";
     const string DFA16_acceptS =
         "\x03\uffff\x01\x03\x01\uffff\x01\x05\x01\x06\x01\x07\x01\uffff"+
-        "\x01\x09\x01\x0a\x01\x0b\x01\x0c\x12\uffff\x01\x32\x03\uffff\x01"+
-        "\x37\x01\x38\x01\x39\x01\x3a\x01\uffff\x01\x01\x01\x02\x01\x3b\x01"+
-        "\x3c\x01\x04\x01\x08\x02\uffff\x01\x1f\x01\uffff\x01\x25\x11\uffff"+
+        "\x01\x09\x01\x0a\x01\x0b\x01\x0c\x12\uffff\x01\x33\x03\uffff\x01"+
+        "\x38\x01\x39\x01\x3a\x01\x3b\x01\uffff\x01\x01\x01\x02\x01\x3c\x01"+
+        "\x3d\x01\x04\x01\x08\x02\uffff\x01\x1f\x01\uffff\x01\x25\x11\uffff"+
         "\x01\x26\x01\x27\x01\x28\x01\x29\x01\x2a\x01\x2b\x01\x2c\x01\x2d"+
-        "\x01\x2e\x01\x2f\x01\x30\x01\x31\x09\uffff\x01\x34\x02\uffff\x01"+
-        "\x1c\x01\x23\x02\uffff\x01\x22\x01\x24\x19\uffff\x01\x33\x06\uffff"+
-        "\x01\x20\x01\x21\x08\uffff\x01\x15\x10\uffff\x01\x35\x01\uffff\x01"+
-        "\x36\x02\uffff\x01\x0d\x14\uffff\x01\x1e\x01\x1d\x01\uffff\x01\x11"+
-        "\x01\x14\x03\uffff\x01\x13\x02\uffff\x01\x18\x01\x19\x04\uffff\x01"+
-        "\x0e\x01\x0f\x01\x10\x01\x12\x0a\uffff\x01\x16\x01\x17\x03\uffff"+
+        "\x01\x2e\x01\x2f\x01\x30\x01\x31\x01\x32\x09\uffff\x01\x35\x02\uffff"+
+        "\x01\x1c\x01\x23\x02\uffff\x01\x22\x01\x24\x19\uffff\x01\x34\x06"+
+        "\uffff\x01\x20\x01\x21\x08\uffff\x01\x15\x10\uffff\x01\x36\x01\uffff"+
+        "\x01\x37\x02\uffff\x01\x0d\x14\uffff\x01\x1e\x01\x1d\x01\uffff\x01"+
+        "\x11\x01\x14\x03\uffff\x01\x13\x02\uffff\x01\x18\x01\x19\x04\uffff"+
+        "\x01\x0e\x01\x0f\x01\x10\x01\x12\x0a\uffff\x01\x16\x01\x17\x03\uffff"+
         "\x01\x1b\x01\x1a";
     const string DFA16_specialS =
-        "\u00dd\uffff}>";
+        "\u00de\uffff}>";
     static readonly string[] DFA16_transitionS = {
             "\x02\x26\x01\uffff\x02\x26\x12\uffff\x01\x26\x01\uffff\x01"+
             "\x25\x01\x1f\x01\x19\x03\uffff\x01\x06\x01\x07\x01\x03\x01\x01"+
@@ -2821,17 +2853,17 @@ public partial class GbsLexer : Lexer {
             "\x01\x43",
             "\x01\x49\x01\uffff\x01\x45\x01\uffff\x01\x4a\x03\uffff\x01"+
             "\x44\x06\uffff\x01\x47\x02\uffff\x01\x48\x01\x46",
-            "\x01\x4c\x07\uffff\x01\x4e\x05\uffff\x01\x4f\x02\uffff\x01"+
-            "\x4d\x1a\uffff\x01\x4b",
-            "\x01\x50",
+            "\x01\x4d\x07\uffff\x01\x4f\x05\uffff\x01\x50\x02\uffff\x01"+
+            "\x4e\x0d\uffff\x01\x4c\x0c\uffff\x01\x4b",
             "\x01\x51",
-            "\x01\x52\x03\uffff\x01\x53",
-            "\x01\x54",
-            "\x01\x56\x03\uffff\x01\x55",
+            "\x01\x52",
+            "\x01\x53\x03\uffff\x01\x54",
+            "\x01\x55",
+            "\x01\x57\x03\uffff\x01\x56",
             "",
-            "\x01\x57",
             "\x01\x58",
-            "\x01\x5a\x01\uffff\x0a\x22\x01\x5b",
+            "\x01\x59",
+            "\x01\x5b\x01\uffff\x0a\x22\x01\x5c",
             "",
             "",
             "",
@@ -2843,15 +2875,14 @@ public partial class GbsLexer : Lexer {
             "",
             "",
             "",
-            "\x01\x5c\x06\uffff\x01\x5d",
-            "\x01\x5e",
+            "\x01\x5d\x06\uffff\x01\x5e",
+            "\x01\x5f",
             "",
-            "\x01\x61\x0e\uffff\x01\x5f\x01\x60",
+            "\x01\x62\x0e\uffff\x01\x60\x01\x61",
             "",
-            "\x0a\x33\x01\x5b",
-            "\x01\x62",
-            "\x01\x64\x01\uffff\x01\x63",
-            "\x01\x65",
+            "\x0a\x33\x01\x5c",
+            "\x01\x63",
+            "\x01\x65\x01\uffff\x01\x64",
             "\x01\x66",
             "\x01\x67",
             "\x01\x68",
@@ -2865,6 +2896,7 @@ public partial class GbsLexer : Lexer {
             "\x01\x70",
             "\x01\x71",
             "\x01\x72",
+            "\x01\x73",
             "",
             "",
             "",
@@ -2877,25 +2909,25 @@ public partial class GbsLexer : Lexer {
             "",
             "",
             "",
-            "\x01\x73\x13\uffff\x01\x74",
-            "\x01\x75",
+            "",
+            "\x01\x74\x13\uffff\x01\x75",
             "\x01\x76",
             "\x01\x77",
             "\x01\x78",
             "\x01\x79",
             "\x01\x7a",
+            "\x01\x7b",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
-            "\x01\x7c",
+            "\x01\x7d",
             "",
-            "\x0a\x7d\x01\x5b",
-            "\x01\x7e\x01\uffff\x01\x7e\x01\u0080\x01\uffff\x0a\x7f",
-            "",
-            "",
-            "\x01\u0081",
-            "\x01\u0082\x0d\uffff\x01\u0083",
+            "\x0a\x7e\x01\x5c",
+            "\x01\x7f\x01\uffff\x01\x7f\x01\u0081\x01\uffff\x0a\u0080",
             "",
             "",
-            "\x01\u0084",
+            "\x01\u0082",
+            "\x01\u0083\x0d\uffff\x01\u0084",
+            "",
+            "",
             "\x01\u0085",
             "\x01\u0086",
             "\x01\u0087",
@@ -2903,8 +2935,8 @@ public partial class GbsLexer : Lexer {
             "\x01\u0089",
             "\x01\u008a",
             "\x01\u008b",
+            "\x01\u008c",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
-            "\x01\u008d",
             "\x01\u008e",
             "\x01\u008f",
             "\x01\u0090",
@@ -2915,102 +2947,103 @@ public partial class GbsLexer : Lexer {
             "\x01\u0095",
             "\x01\u0096",
             "\x01\u0097",
-            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x01\u0098",
+            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x01\u0099",
             "\x01\u009a",
             "\x01\u009b",
-            "",
             "\x01\u009c",
-            "\x0a\x7d\x01\x5b",
-            "\x01\u0080\x01\uffff\x0a\x7f",
-            "\x01\u009f\x01\u009e\x01\uffff\x0a\x7f",
-            "\x0a\u00a0",
-            "\x01\u00a1",
+            "",
+            "\x01\u009d",
+            "\x0a\x7e\x01\x5c",
+            "\x01\u0081\x01\uffff\x0a\u0080",
+            "\x01\u00a0\x01\u009f\x01\uffff\x0a\u0080",
+            "\x0a\u00a1",
+            "\x01\u00a2",
             "",
             "",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
-            "\x01\u00a3",
             "\x01\u00a4",
             "\x01\u00a5",
             "\x01\u00a6",
             "\x01\u00a7",
             "\x01\u00a8",
             "\x01\u00a9",
-            "",
             "\x01\u00aa",
+            "",
             "\x01\u00ab",
             "\x01\u00ac",
-            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x01\u00ad",
+            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x01\u00ae",
             "\x01\u00af",
             "\x01\u00b0",
             "\x01\u00b1",
-            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x01\u00b2",
+            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x01\u00b3",
             "\x01\u00b4",
             "\x01\u00b5",
+            "\x01\u00b6",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "",
-            "\x01\u009f\x02\uffff\x0a\u00b6",
+            "\x01\u00a0\x02\uffff\x0a\u00b7",
             "",
-            "\x01\u009f\x02\uffff\x0a\u00a0",
-            "\x01\u00b7",
+            "\x01\u00a0\x02\uffff\x0a\u00a1",
+            "\x01\u00b8",
             "",
-            "\x01\u00b9",
+            "\x01\u00ba",
             "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
             "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
-            "\x01\u00bc",
             "\x01\u00bd",
             "\x01\u00be",
+            "\x01\u00bf",
             "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
-            "\x01\u00c0",
-            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x01\u00c1",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
+            "\x01\u00c2",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
-            "\x01\u00c4",
+            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x01\u00c5",
-            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
-            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
-            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x01\u00c6",
-            "\x01\u00c7",
-            "\x01\u009f\x02\uffff\x0a\u00b6",
-            "",
-            "",
-            "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
-            "",
-            "",
-            "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
-            "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
-            "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
-            "",
-            "\x01\u00cc",
-            "\x01\u00cd",
-            "",
-            "",
-            "\x01\u00ce",
-            "\x01\u00cf",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
+            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
+            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
+            "\x01\u00c7",
+            "\x01\u00c8",
+            "\x01\u00a0\x02\uffff\x0a\u00b7",
+            "",
+            "",
+            "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
+            "",
+            "",
+            "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
+            "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
+            "\x0a\x23\x07\uffff\x1a\x23\x06\uffff\x1a\x23",
+            "",
+            "\x01\u00cd",
+            "\x01\u00ce",
+            "",
+            "",
+            "\x01\u00cf",
             "\x01\u00d0",
-            "",
-            "",
-            "",
-            "",
+            "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x01\u00d1",
+            "",
+            "",
+            "",
+            "",
             "\x01\u00d2",
             "\x01\u00d3",
             "\x01\u00d4",
             "\x01\u00d5",
+            "\x01\u00d6",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
-            "\x01\u00d8",
             "\x01\u00d9",
             "\x01\u00da",
+            "\x01\u00db",
             "",
             "",
             "\x0a\x24\x07\uffff\x1a\x24\x06\uffff\x1a\x24",
@@ -3046,7 +3079,7 @@ public partial class GbsLexer : Lexer {
 
         override public string Description
         {
-            get { return "1:1: Tokens : ( T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | THIS | CLASSDEF_ENGINE | CLASSDEF_PLAYER | CLASSDEF_BULLET | CLASSDEF_ENEMY | CLASSDEF_SCRIPT | CLASSDEF_STATE | CLASSDEF_EVENT | PARAM_FPS | PARAM_GAMEAREA | PARAM_POSITION | PARAM_COLOR | PARAM_SPEED | PARAM_ANIMATION | PARAM_SCROLLING | ACTION_PERIODIC | ACTION_FIRE | ACTION_FIRE_MULTIPLE | ACTION_DIE | ACTION_START | ACTION_STOP | ACTION_SUMMON | ACTION_PLAY_ANIMATION | ACTION_SET | ACTION_RAISE | TRIGGER_INIT | TRIGGER_CLEANUP | TRIGGER_TIME | TRIGGER_PERIODIC | TRIGGER_SCROLLING | TRIGGER_ANIMATION_END | TRIGGER_EVENT | PREDEF_ANGLE_TOWARD_PLAYER | CONST_ANGLE_DOWN | CONST_ANGLE_UP | CONST_ANGLE_LEFT | CONST_ANGLE_RIGHT | COLOR | DIRECTION | NUMBER | POINT | RECTANGLE | CLASS_IDENTIFIER | INSTANCE_IDENTIFIER | STRING | WHITESPACE | ML_COMMENT | SL_COMMENT );"; }
+            get { return "1:1: Tokens : ( T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | THIS | CLASSDEF_ENGINE | CLASSDEF_PLAYER | CLASSDEF_BULLET | CLASSDEF_ENEMY | CLASSDEF_SCRIPT | CLASSDEF_STATE | CLASSDEF_EVENT | PARAM_FPS | PARAM_GAMEAREA | PARAM_POSITION | PARAM_COLOR | PARAM_SPEED | PARAM_ANIMATION | PARAM_SCROLLING | ACTION_PERIODIC | ACTION_FIRE | ACTION_FIRE_MULTIPLE | ACTION_DIE | ACTION_START | ACTION_STOP | ACTION_SUMMON | ACTION_PLAY_ANIMATION | ACTION_SET | ACTION_RAISE | TRIGGER_INIT | TRIGGER_CLEANUP | TRIGGER_TIME | TRIGGER_PERIODIC | TRIGGER_SCROLLING | TRIGGER_ANIMATION_END | TRIGGER_EVENT | PREDEF_ANGLE_TOWARD_PLAYER | PREDEF_ANGLE_CURRENT | CONST_ANGLE_DOWN | CONST_ANGLE_UP | CONST_ANGLE_LEFT | CONST_ANGLE_RIGHT | COLOR | DIRECTION | NUMBER | POINT | RECTANGLE | CLASS_IDENTIFIER | INSTANCE_IDENTIFIER | STRING | WHITESPACE | ML_COMMENT | SL_COMMENT );"; }
         }
 
     }

@@ -161,6 +161,10 @@ TRIGGER_EVENT
 PREDEF_ANGLE_TOWARD_PLAYER
 	:	'$player'
 	;
+
+PREDEF_ANGLE_CURRENT
+	:	'$current'
+	;
 	
 CONST_ANGLE_DOWN
 	:	'$DOWN'
@@ -295,6 +299,7 @@ simple_formula returns [Formula f]
 	|	CONST_ANGLE_LEFT { $f = new ConstValueFormula(MathHelper.ANGLE_LEFT); }
 	|	CONST_ANGLE_RIGHT { $f = new ConstValueFormula(MathHelper.ANGLE_RIGHT); }
 	|	PREDEF_ANGLE_TOWARD_PLAYER { $f = new AngleTowardPlayerFormula(); }
+	|	PREDEF_ANGLE_CURRENT { $f = new CurrentAngleFormula(); }
 	|	'(' sf=formula ')' { $f = $sf.f; }
 	;
 	

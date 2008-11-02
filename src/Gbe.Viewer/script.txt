@@ -37,16 +37,17 @@ BULLET ExplodingBullet
 		color=pink
 	}
 	
-	@time(1.5)
+	@time(.5)
 	{
-		.fireMultiple(SimpleBullet, $player, -2 .. 2, 10°)
+		//.fireMultiple(SimpleBullet, $current, -2 .. 2, 10°)
+		.fire(SimpleBullet, $current)
 		.die
 	}
 }
 
 STATE Fire
 {
-	@periodic(1)
+	@periodic(.2)
 	{
 		.fire(ExplodingBullet, $player)
 	}
