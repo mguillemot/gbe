@@ -18,10 +18,5 @@ namespace Gbe.Script.Formulas
         {
             return m_left.Evaluate(context) + m_right.Evaluate(context);
         }
-
-        public override List<Formula> Compile()
-        {
-            throw new ApplicationException("Simple sums are already compiled");
-        }
     }
 }

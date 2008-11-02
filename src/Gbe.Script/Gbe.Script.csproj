@@ -52,6 +52,7 @@
     <Compile Include="Actions\Action.cs" />
     <Compile Include="Actions\DieAction.cs" />
     <Compile Include="Actions\FireAction.cs" />
+    <Compile Include="Actions\FireMultipleAction.cs" />
     <Compile Include="Actions\PeriodicAction.cs" />
     <Compile Include="Actions\PlayAnimationAction.cs" />
     <Compile Include="Actions\RaiseAction.cs" />
@@ -77,10 +78,12 @@
     <Compile Include="Formulas\AngleTowardPlayerFormula.cs" />
     <Compile Include="Formulas\ConstValueFormula.cs" />
     <Compile Include="Formulas\DifferenceFormula.cs" />
+    <Compile Include="Formulas\DivideFormula.cs" />
     <Compile Include="Formulas\EvaluationContext.cs" />
     <Compile Include="Formulas\Formula.cs" />
     <Compile Include="Formulas\MultiplyFormula.cs" />
-    <Compile Include="Formulas\RangeFormula.cs" />
+    <Compile Include="Formulas\Range.cs" />
+    <Compile Include="Formulas\RawMultiplyFormula.cs" />
     <Compile Include="Formulas\RawSumFormula.cs" />
     <Compile Include="Formulas\SumFormula.cs" />
     <Compile Include="Gbs.cs" />

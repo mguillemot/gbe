@@ -15,10 +15,5 @@ namespace Gbe.Script.Formulas
         {
             return m_constValue;
         }
-
-        public override List<Formula> Compile()
-        {
-            return new List<Formula>(1){this};
-        }
     }
 }

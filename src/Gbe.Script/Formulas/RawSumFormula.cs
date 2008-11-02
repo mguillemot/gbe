@@ -1,36 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Gbe.Script.Formulas
 {
     public class RawSumFormula : Formula
     {
         private readonly Formula m_left;
-        private readonly List<bool> m_add;
+        private readonly List<bool> m_signs;
         private readonly List<Formula> m_terms;
 
-        public RawSumFormula(Formula left, List<bool> add, List<Formula> terms)
+        public RawSumFormula(Formula left, List<bool> signs, List<Formula> terms)
         {
+            Debug.Assert(left != null, "First term is null");
+            Debug.Assert(signs != null, "Signs is null");
+            Debug.Assert(terms != null, "Other terms is null");
             m_left = left;
-            m_add = add;
+            m_signs = signs;
             m_terms = terms;
         }
 
         public override float Evaluate(EvaluationContext context)
         {
-            throw new ApplicationException("Raw sums should be compiled into multiple sums");
+            throw new ApplicationException("Raw sums should be compiled into multiple sums/differences");
         }
 
-        public override List<Formula> Compile()
+        public override Formula Compile()
         {
-            var compiled = new List<Formula>();
-            Formula currentFormula = m_left;
-            for (int i = 0; i < m_terms.Count; i++)
+            if (m_terms.Count > 0)
             {
-                var add = m_add[i];
-                var term = m_terms[i];
-                foreach (var compiledTerm in term.Compile())
+                Formula currentFormula = m_left;
+                for (int i = 0; i < m_terms.Count; i++)
                 {
+                    var add = m_signs[i];
+                    var compiledTerm = m_terms[i].Compile();
                     if (add)
                     {
                         currentFormula = new SumFormula(currentFormula, compiledTerm);
@@ -39,17 +42,10 @@ namespace Gbe.Script.Formulas
                     {
                         currentFormula = new DifferenceFormula(currentFormula, compiledTerm);
                     }
-                    compiled.Add(currentFormula);
                 }
+                return currentFormula;
             }
-            foreach (var compiledLeft in m_terms.Compile())
-            {
-                foreach (var compiledRight in m_right.Compile())
-                {
-                    compiled.Add(new SumFormula(compiledLeft, compiledRight));
-                }
-            }
-            return compiled;
+            return m_left.Compile();
         }
     }
 }

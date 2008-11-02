@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Gbe.Engine;
+﻿using Gbe.Engine;
 
 namespace Gbe.Script.Formulas
 {
@@ -8,11 +7,6 @@ namespace Gbe.Script.Formulas
         public override float Evaluate(EvaluationContext context)
         {
             return MathHelper.GetAngleBetween(context.EvaluationEntity.Gear.Position, context.PlayerPosition);
-        }
-
-        public override List<Formula> Compile()
-        {
-            return new List<Formula>(1){this};
         }
     }
 }

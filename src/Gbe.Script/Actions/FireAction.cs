@@ -7,8 +7,8 @@ namespace Gbe.Script.Actions
 {
     public class FireAction : Action
     {
-        private readonly string m_bulletClass;
         private readonly Formula m_angle;
+        private readonly string m_bulletClass;
 
         public FireAction(string target, string bulletClass, Formula angle)
             : base(target)
@@ -20,7 +20,7 @@ namespace Gbe.Script.Actions
         public override void Execute(GbsExecutor scriptExecutor, Entity entity)
         {
             var bulletEntity = scriptExecutor.Script.GetBulletClassdef(m_bulletClass).NewInstance();
-            var evaluationContext = new EvaluationContext()
+            var evaluationContext = new EvaluationContext
                                         {
                                             EvaluationEntity = entity,
                                             PlayerPosition = scriptExecutor.Engine.GetPlayer().Position
@@ -35,13 +35,10 @@ namespace Gbe.Script.Actions
 
         public override List<Action> Compile()
         {
-            var angles = m_angle.Compile();
-            var compiled = new List<Action>(angles.Count);
-            foreach (var angle in angles)
-            {
-                compiled.Add(new FireAction(Target, m_bulletClass, angle));
-            }
-            return compiled;
+            return new List<Action>(1)
+                       {
+                           new FireAction(Target, m_bulletClass, m_angle.Compile())
+                       };
         }
     }
 }

@@ -39,19 +39,16 @@ BULLET ExplodingBullet
 	
 	@time(1.5)
 	{
-		.fire(SimpleBullet, $DOWN + 0..5 * 10°)
-		.fire(SimpleBullet, $UP)
-		.fire(SimpleBullet, $LEFT)
-		.fire(SimpleBullet, $RIGHT)
+		.fireMultiple(SimpleBullet, $player, -2 .. 2, 10°)
 		.die
 	}
 }
 
 STATE Fire
 {
-	@periodic(.2)
+	@periodic(1)
 	{
-		.fire(SimpleBullet, $player)
+		.fire(ExplodingBullet, $player)
 	}
 }
 
@@ -85,15 +82,10 @@ ENEMY Toto
 
 	@time(0.5)
 	{
-		.fire(ExplodingBullet, $player)
+		.start(Fire)
 	}
 
-	@time(1)
-	{
-		//.start(Fire)
-	}
-
-	@time(5)
+	@time(10)
 	{
 		.stop(Fire)
 		.playAnimation("explodingBox")

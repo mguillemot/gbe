@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using Gbe.Script.Executor;
 using Gbe.Script.Executor.Entities;
 
@@ -10,6 +11,7 @@ namespace Gbe.Script.Actions
 
         protected Action(string target)
         {
+            Debug.Assert(target != null, GetType().Name + ": target is null");
             m_target = target;
         }
 

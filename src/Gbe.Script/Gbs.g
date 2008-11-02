@@ -98,6 +98,10 @@ ACTION_FIRE
 	:	'.fire'
 	;
 
+ACTION_FIRE_MULTIPLE
+	:	'.fireMultiple'
+	;
+
 ACTION_DIE
 	:	'.die'
 	;
@@ -255,7 +259,7 @@ scope
 	:	classdef* { $s = new Gbs($gbs::classdefs); }
 	;
 
-formula returns [Formula formula]
+formula returns [Formula f]
 scope 
 { 
 	List<bool> add; 
@@ -266,23 +270,36 @@ scope
 	$formula::add = new List<bool>();
 	$formula::terms = new List<Formula>();
 } 
-	:	a=factor_formula ( '+' b=factor_formula { $formula::add.Add(true); $formula::terms.Add($b.formula); } | '-' b=factor_formula { $formula::add.Add(false); $formula::terms.Add($b.formula); } )* { $formula = new RawSumFormula($a.formula, $formula::add, $formula::terms); }
+	:	a=factor_formula ( ( '+' { $formula::add.Add(true); } | '-' { $formula::add.Add(false); } ) b=factor_formula { $formula::terms.Add($b.f); } )* { $f = new RawSumFormula($a.f, $formula::add, $formula::terms); }
 	;
 	
-factor_formula returns [Formula formula]
-	:	a=simple_formula ( '*' b=simple_formula )* //{ $formula = new MultiplyFormula(r.range, $b.formula); }
+factor_formula returns [Formula f]
+scope 
+{ 
+	List<bool> mul; 
+	List<Formula> factors;
+}
+@init 
+{ 
+	$factor_formula::mul = new List<bool>();
+	$factor_formula::factors = new List<Formula>();
+} 
+	:	a=simple_formula ( ( '*' { $factor_formula::mul.Add(true); } | '/' { $factor_formula::mul.Add(false); } ) b=simple_formula { $factor_formula::factors.Add($b.f); } )* { $f = new RawMultiplyFormula($a.f, $factor_formula::mul, $factor_formula::factors); }
 	;
 
-simple_formula returns [Formula formula]
-	:	c=NUMBER { $formula = new ConstValueFormula(float.Parse($c.Text)); }
-	|	c=NUMBER '°' { $formula = new ConstValueFormula(MathHelper.DegreeToRadian(float.Parse($c.Text))); }
-	|	CONST_ANGLE_DOWN { $formula = new ConstValueFormula(MathHelper.ANGLE_DOWN); }
-	|	CONST_ANGLE_UP { $formula = new ConstValueFormula(MathHelper.ANGLE_UP); }
-	|	CONST_ANGLE_LEFT { $formula = new ConstValueFormula(MathHelper.ANGLE_LEFT); }
-	|	CONST_ANGLE_RIGHT { $formula = new ConstValueFormula(MathHelper.ANGLE_RIGHT); }
-	|	PREDEF_ANGLE_TOWARD_PLAYER { $formula = new AngleTowardPlayerFormula(); }
-	|	a=NUMBER '..' b=NUMBER { $formula = new RangeFormula(float.Parse(a.Text), float.Parse(b.Text)); }
-	|	'(' f=formula ')' { $formula = $f.formula; }
+simple_formula returns [Formula f]
+	:	c=NUMBER { $f = new ConstValueFormula(float.Parse($c.Text)); }
+	|	c=NUMBER '°' { $f = new ConstValueFormula(MathHelper.DegreeToRadian(float.Parse($c.Text))); }
+	|	CONST_ANGLE_DOWN { $f = new ConstValueFormula(MathHelper.ANGLE_DOWN); }
+	|	CONST_ANGLE_UP { $f = new ConstValueFormula(MathHelper.ANGLE_UP); }
+	|	CONST_ANGLE_LEFT { $f = new ConstValueFormula(MathHelper.ANGLE_LEFT); }
+	|	CONST_ANGLE_RIGHT { $f = new ConstValueFormula(MathHelper.ANGLE_RIGHT); }
+	|	PREDEF_ANGLE_TOWARD_PLAYER { $f = new AngleTowardPlayerFormula(); }
+	|	'(' sf=formula ')' { $f = $sf.f; }
+	;
+	
+range returns [Range range]
+	:	a=NUMBER '..' b=NUMBER { $range = new Range(float.Parse(a.Text), float.Parse(b.Text)); }
 	;
 	
 param returns [Param p]
@@ -396,7 +413,8 @@ action_target returns [String target]
 action
 	:	pla=play_animation_action { $action_list::list.Add($pla.action); }
 	|	pa=periodic_action        { $action_list::list.Add($pa.action); }
-	|	fap=fire_action   { $action_list::list.Add($fap.action); }
+	|	fap=fire_action   	  { $action_list::list.Add($fap.action); }
+	|	fam=fire_multiple_action  { $action_list::list.Add($fam.action); }
 	|	da=die_action             { $action_list::list.Add($da.action); }
 	|	sta=start_action          { $action_list::list.Add($sta.action); }
 	|	sa=stop_action            { $action_list::list.Add($sa.action); }
@@ -414,7 +432,11 @@ periodic_action returns [Action action]
 	;
 	
 fire_action returns [Action action]
-	:	target=action_target ACTION_FIRE '(' bullet=CLASS_IDENTIFIER ',' angle=formula ')' { $action = new FireAction($target.target, $bullet.Text, $angle.formula); }
+	:	target=action_target ACTION_FIRE '(' bullet=CLASS_IDENTIFIER ',' angle=formula ')' { $action = new FireAction($target.target, $bullet.Text, $angle.f); }
+	;
+
+fire_multiple_action returns [Action action]
+	:	target=action_target ACTION_FIRE_MULTIPLE '(' bullet=CLASS_IDENTIFIER ',' baseDir=formula ',' r=range ',' increment=formula ')' { $action = new FireMultipleAction($target.target, $bullet.Text, $baseDir.f, $r.range, $increment.f); }
 	;
 	
 die_action returns [Action action]

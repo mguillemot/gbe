@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Gbe.Engine;
-using Gbe.Script.Executor;
-using Gbe.Script.Executor.Entities;
 using Gbe.Script.Triggers;
 
 namespace Gbe.Script.Classdefs
