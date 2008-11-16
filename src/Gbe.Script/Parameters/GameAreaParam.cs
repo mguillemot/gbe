@@ -16,5 +16,10 @@ namespace Gbe.Script.Parameters
         {
             // TODO
         }
+
+        public override Param Compile()
+        {
+            return this;
+        }
     }
 }

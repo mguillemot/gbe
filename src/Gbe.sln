@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gbe.Viewer", "Gbe.Viewer\Gb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gbe.Script", "Gbe.Script\Gbe.Script.csproj", "{B34C7452-4406-493E-BEAF-E7315175D63A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gbe.Editor", "Gbe.Editor\Gbe.Editor.csproj", "{68162977-7D58-499A-A9BD-889B1200377E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{B34C7452-4406-493E-BEAF-E7315175D63A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B34C7452-4406-493E-BEAF-E7315175D63A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B34C7452-4406-493E-BEAF-E7315175D63A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68162977-7D58-499A-A9BD-889B1200377E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68162977-7D58-499A-A9BD-889B1200377E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68162977-7D58-499A-A9BD-889B1200377E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68162977-7D58-499A-A9BD-889B1200377E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

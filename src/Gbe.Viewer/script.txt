@@ -86,7 +86,7 @@ STATE Fire
 
 	@periodic(.2)
 	{
-		.fire(ExplodingBullet, $PLAYER - .17 + $i % .34)
+		.fire(SimpleBullet, $PLAYER - .17 + $i % .34)
 		$i=$i + .1
 	}
 }
@@ -121,8 +121,8 @@ ENEMY Toto
 
 	@time(0.5)
 	{
-		//.start(Fire)
-		.fire(ExplodingBullet, $PLAYER)
+		.start(Fire)
+		//.fire(ExplodingBullet, $PLAYER)
 	}
 
 	@time(10)
@@ -147,7 +147,9 @@ SCRIPT TestLevel
 		scrolling=down,80
 		.summon(Toto) theToto
 		{
-			position=120:10
+			//position=120:10
+			speed=150
+			trajectory=Circle(120:60, 50, $UP) // center, radius, initial angle
 		}
 	}
 

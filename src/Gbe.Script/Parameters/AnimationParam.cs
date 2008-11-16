@@ -16,5 +16,10 @@ namespace Gbe.Script.Parameters
         {
             context.EvaluationEntity.Gear.Animation = m_animation;
         }
+
+        public override Param Compile()
+        {
+            return this;
+        }
     }
 }

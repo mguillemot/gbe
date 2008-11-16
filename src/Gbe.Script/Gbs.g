@@ -21,6 +21,7 @@ using Gbe.Script.Classdefs;
 using Gbe.Script.Formulas;
 using Gbe.Script.Parameters;
 using Gbe.Script.Triggers;
+using Gbe.Script.Shapedefs;
 }
 
 @lexer::namespace 
@@ -88,6 +89,10 @@ PARAM_ANIMATION
 	
 PARAM_SCROLLING
 	:	'scrolling'
+	;
+
+PARAM_TRAJECTORY
+	:	'trajectory'
 	;
 
 ACTION_PERIODIC
@@ -186,6 +191,10 @@ VARIABLE
 	:	'$' INSTANCE_IDENTIFIER
 	;
 
+SHAPE_CIRCLE
+	:	'Circle'
+	;
+
 COLOR
 	:	'black'
 	|	'white'
@@ -267,6 +276,14 @@ scope
 	:	classdef* { $s = new Gbs($gbs::classdefs); }
 	;
 
+shape returns [Shapedef s]
+	:	c=circle_shape { $s = $c.s; }
+	;
+	
+circle_shape returns [Shapedef s]
+	:	SHAPE_CIRCLE '(' center=POINT ',' radius=formula ',' initialAngle=formula ')' { $s = new CircleShapedef(Point2.Parse($center.Text), $radius.f, $initialAngle.f); }
+	;
+
 formula returns [Formula f]
 scope 
 { 
@@ -320,6 +337,7 @@ param returns [Param p]
 	|	ap=animation_param  { $p = $ap.p; }
 	|	cp=color_param      { $p = $cp.p; }
 	|	scp=scrolling_param { $p = $scp.p; }
+	|	tp=trajectory_param { $p = $tp.p; }
 	|	csp=custom_param    { $p = $csp.p; }
 	;
 
@@ -349,6 +367,10 @@ color_param returns [Param p]
 	
 scrolling_param returns [Param p]
 	:	PARAM_SCROLLING '=' dir=DIRECTION ',' speed=NUMBER { $p = new ScrollingParam($dir.Text, float.Parse($speed.Text)); }
+	;
+
+trajectory_param returns [Param p]
+	:	PARAM_TRAJECTORY '=' traj=shape { $p = new TrajectoryParam($traj.s); }
 	;
 
 custom_param returns [Param p]

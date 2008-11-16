@@ -1,6 +1,7 @@
 using System;
 using Gbe.Engine;
 using Gbe.Script.Classdefs;
+using Gbe.Script.Shapes;
 
 namespace Gbe.Script.Executor.Entities
 {
@@ -30,6 +31,10 @@ namespace Gbe.Script.Executor.Entities
             get { return null; }
         }
 
+        public virtual void Update(float deltaTime)
+        {
+        }
+
         public virtual void AddState(GbsExecutor scriptExecutor, StateEntity stateEntity)
         {
             throw new NotImplementedException();
@@ -56,6 +61,16 @@ namespace Gbe.Script.Executor.Entities
         }
 
         public virtual void SetVariable(string variableName, float value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual void SetTrajectory(Shape trajectory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual Shape GetTrajectory()
         {
             throw new NotImplementedException();
         }

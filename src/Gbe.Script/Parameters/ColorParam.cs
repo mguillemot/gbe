@@ -16,5 +16,10 @@ namespace Gbe.Script.Parameters
         {
             context.EvaluationEntity.Gear.Color = m_color;
         }
+
+        public override Param Compile()
+        {
+            return this;
+        }
     }
 }

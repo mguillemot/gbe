@@ -16,5 +16,10 @@ namespace Gbe.Script.Parameters
         {
             context.EvaluationEntity.Gear.Position = m_position;
         }
+
+        public override Param Compile()
+        {
+            return this;
+        }
     }
 }

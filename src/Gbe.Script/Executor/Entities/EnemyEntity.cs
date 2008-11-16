@@ -2,6 +2,7 @@
 using Gbe.Engine;
 using Gbe.Engine.GearLibrary;
 using Gbe.Script.Classdefs;
+using Gbe.Script.Shapes;
 
 namespace Gbe.Script.Executor.Entities
 {
@@ -10,6 +11,7 @@ namespace Gbe.Script.Executor.Entities
         private Gear m_gear;
         private readonly List<StateEntity> m_states = new List<StateEntity>();
         private readonly Dictionary<string, float> m_variables = new Dictionary<string, float>();
+        private Shape m_trajectory;
 
         public EnemyEntity(Classdef classdef, string name) 
             : base(classdef, name)
@@ -30,6 +32,15 @@ namespace Gbe.Script.Executor.Entities
         public override Gear Gear
         {
             get { return m_gear; }
+        }
+
+        public override void Update(float deltaTime)
+        {
+            if (m_trajectory != null)
+            {
+                m_trajectory.Advance(Gear.Speed*deltaTime);
+                Gear.Position = m_trajectory.CurrentPosition;
+            }
         }
 
         public override void AddState(GbsExecutor scriptExecutor, StateEntity stateEntity)
@@ -63,6 +74,16 @@ namespace Gbe.Script.Executor.Entities
         public override void SetVariable(string variableName, float value)
         {
             m_variables[variableName] = value;
+        }
+
+        public override void SetTrajectory(Shape trajectory)
+        {
+            m_trajectory = trajectory;
+        }
+
+        public override Shape GetTrajectory()
+        {
+            return m_trajectory;
         }
     }
 }

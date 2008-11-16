@@ -75,6 +75,7 @@
     <Compile Include="Executor\Entities\ScriptEntity.cs" />
     <Compile Include="Executor\Entities\StateEntity.cs" />
     <Compile Include="Executor\GbsExecutor.cs" />
+    <Compile Include="Executor\Shapes\CircleShape.cs" />
     <Compile Include="Formulas\AngleTowardPlayerFormula.cs" />
     <Compile Include="Formulas\ConstValueFormula.cs" />
     <Compile Include="Formulas\CurrentAngleFormula.cs" />
@@ -101,7 +102,11 @@
     <Compile Include="Parameters\PositionParam.cs" />
     <Compile Include="Parameters\ScrollingParam.cs" />
     <Compile Include="Parameters\SpeedParam.cs" />
+    <Compile Include="Parameters\TrajectoryParam.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shapedefs\CircleShapedef.cs" />
+    <Compile Include="Shapedefs\Shapedef.cs" />
+    <Compile Include="Executor\Shapes\Shape.cs" />
     <Compile Include="SyntaxException.cs" />
     <Compile Include="Triggers\AnimationEndTrigger.cs" />
     <Compile Include="Triggers\CleanupTrigger.cs" />

@@ -92,6 +92,7 @@ namespace Gbe.Script.Executor
 
         public void Update()
         {
+            // Update triggers
             var triggersToExecute = new List<TimeTriggerInstance>();
             foreach (var trigger in m_timeTriggers)
             {
@@ -116,6 +117,12 @@ namespace Gbe.Script.Executor
                     RegisterTimeTrigger(trigger.Time + trigger.AutoRegisterTime, trigger.Entity, trigger.Actions,
                                         trigger.AutoRegisterTime);
                 }
+            }
+
+            // Update entities (trajectories)
+            foreach(var entity in m_entitiesByName.Values)
+            {
+                entity.Update(Engine.Context.PreviousUpdateElapsedSeconds);
             }
         }
 

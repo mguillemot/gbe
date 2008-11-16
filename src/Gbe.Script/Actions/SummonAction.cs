@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Gbe.Engine.GearLibrary;
 using Gbe.Script.Executor;
 using Gbe.Script.Executor.Entities;
 
@@ -30,6 +29,16 @@ namespace Gbe.Script.Actions
                     enemyInitAction.Execute(scriptExecutor, enemyEntity);
                 }
             }
+        }
+
+        public override List<Action> Compile()
+        {
+            var compiledSummonActions = new List<Action>(m_summonActions.Count);
+            foreach (Action summonAction in m_summonActions)
+            {
+                compiledSummonActions.AddRange(summonAction.Compile());
+            }
+            return new List<Action>(1){new SummonAction(Target, m_enemyClass, m_enemyName, compiledSummonActions)};
         }
     }
 }

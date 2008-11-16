@@ -6,9 +6,6 @@ namespace Gbe.Script.Parameters
     {
         public abstract void Execute(EvaluationContext context);
 
-        public virtual Param Compile()
-        {
-            return this;
-        }
+        public abstract Param Compile();
     }
 }

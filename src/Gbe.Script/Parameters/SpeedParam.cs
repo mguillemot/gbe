@@ -16,5 +16,10 @@ namespace Gbe.Script.Parameters
         {
             context.EvaluationEntity.Gear.Speed = m_speed;
         }
+
+        public override Param Compile()
+        {
+            return this;
+        }
     }
 }
