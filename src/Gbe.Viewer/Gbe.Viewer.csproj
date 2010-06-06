@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,10 +36,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="SdlDotNet, Version=6.0.0.0, Culture=neutral, PublicKeyToken=26ad4f7e10c61408, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\SdlDotNet.dll</HintPath>
-    </Reference>
+    <Reference Include="SdlDotNet, Version=6.1.0.0, Culture=neutral, PublicKeyToken=26ad4f7e10c61408, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -54,10 +52,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tao.Sdl, Version=1.2.11.1, Culture=neutral, PublicKeyToken=9c7a200e36c0094e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Tao.Sdl.dll</HintPath>
-    </Reference>
+    <Reference Include="Tao.Sdl, Version=1.2.13.0, Culture=neutral, PublicKeyToken=9c7a200e36c0094e, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Viewer.cs">

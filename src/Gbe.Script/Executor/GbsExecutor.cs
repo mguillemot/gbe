@@ -64,6 +64,35 @@ namespace Gbe.Script.Executor
         #endregion
     }
 
+    internal struct EventTriggerInstance
+    {
+        private readonly string m_eventClass;
+        private readonly List<Action> m_actions;
+        private readonly Entity m_entity;
+
+        public EventTriggerInstance(string eventClass, List<Action> actions, Entity entity)
+        {
+            m_eventClass = eventClass;
+            m_actions = actions;
+            m_entity = entity;
+        }
+
+        public string EventClass
+        {
+            get { return m_eventClass; }
+        }
+
+        public List<Action> Actions
+        {
+            get { return m_actions; }
+        }
+
+        public Entity Entity
+        {
+            get { return m_entity; }
+        }
+    }
+
     public class GbsExecutor
     {
         private readonly Engine.Gbe m_engine;
@@ -73,6 +102,9 @@ namespace Gbe.Script.Executor
         private readonly CompiledGbs m_script;
 
         private readonly List<TimeTriggerInstance> m_timeTriggers = new List<TimeTriggerInstance>();
+        private readonly Dictionary<string, List<EventTriggerInstance>> m_eventTriggers = new Dictionary<string, List<EventTriggerInstance>>();
+
+        private readonly List<string> m_raisedEvents = new List<string>();
 
         public GbsExecutor(Engine.Gbe engine, CompiledGbs script)
         {
@@ -92,20 +124,20 @@ namespace Gbe.Script.Executor
 
         public void Update()
         {
-            // Update triggers
-            var triggersToExecute = new List<TimeTriggerInstance>();
+            // Update time triggers
+            var timeTriggersToExecute = new List<TimeTriggerInstance>();
             foreach (var trigger in m_timeTriggers)
             {
                 if (trigger.Time <= Engine.Context.TotalElapsedSeconds)
                 {
-                    triggersToExecute.Add(trigger);
+                    timeTriggersToExecute.Add(trigger);
                 }
                 else
                 {
                     break;
                 }
             }
-            foreach (var trigger in triggersToExecute)
+            foreach (var trigger in timeTriggersToExecute)
             {
                 foreach (var action in trigger.Actions)
                 {
@@ -119,6 +151,25 @@ namespace Gbe.Script.Executor
                 }
             }
 
+            // Update event triggers
+            var eventTriggersToExecute = new List<EventTriggerInstance>();
+            foreach (var raisedEvent in m_raisedEvents)
+            {
+                List<EventTriggerInstance> triggers;
+                if (m_eventTriggers.TryGetValue(raisedEvent, out triggers))
+                {
+                    eventTriggersToExecute.AddRange(triggers);
+                }
+            }
+            m_raisedEvents.Clear();
+            foreach (var trigger in eventTriggersToExecute)
+            {
+                foreach (var action in trigger.Actions)
+                {
+                    action.Execute(this, trigger.Entity);
+                }
+            }
+
             // Update entities (trajectories)
             foreach(var entity in m_entitiesByName.Values)
             {
@@ -126,9 +177,14 @@ namespace Gbe.Script.Executor
             }
         }
 
-        public void RegisterTimeTrigger(float time, Entity entity, List<Action> trigger, float autoRegisterTime)
+        public void Raise(string eventClass)
         {
-            m_timeTriggers.Add(new TimeTriggerInstance(time, entity, trigger, autoRegisterTime));
+            m_raisedEvents.Add(eventClass);
+        }
+
+        public void RegisterTimeTrigger(float time, Entity entity, List<Action> actions, float autoRegisterTime)
+        {
+            m_timeTriggers.Add(new TimeTriggerInstance(time, entity, actions, autoRegisterTime));
             m_timeTriggers.Sort();
         }
 
@@ -139,6 +195,34 @@ namespace Gbe.Script.Executor
             if (index != -1)
             {
                 m_timeTriggers.RemoveAt(index);
+            }
+        }
+
+        public void RegisterEventTrigger(Entity entity, List<Action> actions, string eventClass)
+        {
+            List<EventTriggerInstance> triggers;
+            if (!m_eventTriggers.TryGetValue(eventClass, out triggers))
+            {
+                triggers = new List<EventTriggerInstance>();
+                m_eventTriggers[eventClass] = triggers;
+            }
+            triggers.Add(new EventTriggerInstance(eventClass, actions, entity));
+        }
+
+        public void UnregisterEventTrigger(Entity entity, List<Action> actions, string eventClass)
+        {
+            List<EventTriggerInstance> triggers;
+            if (m_eventTriggers.TryGetValue(eventClass, out triggers))
+            {
+                var index = triggers.FindIndex(trigger => trigger.Entity == entity && trigger.Actions == actions);
+                if (index != -1)
+                {
+                    triggers.RemoveAt(index);
+                }
+                if (triggers.Count == 0)
+                {
+                    m_eventTriggers.Remove(eventClass);
+                }
             }
         }
 

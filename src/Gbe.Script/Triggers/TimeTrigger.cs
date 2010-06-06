@@ -20,8 +20,9 @@ namespace Gbe.Script.Triggers
             scriptExecutor.RegisterTimeTrigger(scriptExecutor.Engine.Context.TotalElapsedSeconds + m_time, entity, Actions, -1);
         }
 
-        public override void Unregister(GbsExecutor executor, Entity entity)
+        public override void Unregister(GbsExecutor scriptExecutor, Entity entity)
         {
+            scriptExecutor.UnregisterTimeTrigger(entity, Actions, -1);
         }
     }
 }

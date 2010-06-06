@@ -7,19 +7,21 @@ namespace Gbe.Script.Triggers
 {
     public class EventTrigger : Trigger
     {
-        private readonly string _eventName;
+        private readonly string m_eventName;
 
         public EventTrigger(string eventName, List<Action> actions) : base(actions)
         {
-            _eventName = eventName;
+            m_eventName = eventName;
         }
 
         public override void Register(GbsExecutor scriptExecutor, Entity entity)
         {
+            scriptExecutor.RegisterEventTrigger(entity, Actions, m_eventName);
         }
 
-        public override void Unregister(GbsExecutor executor, Entity entity)
+        public override void Unregister(GbsExecutor scriptExecutor, Entity entity)
         {
+            scriptExecutor.UnregisterEventTrigger(entity, Actions, m_eventName);
         }
     }
 }

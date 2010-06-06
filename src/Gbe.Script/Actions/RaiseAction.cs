@@ -1,4 +1,5 @@
-﻿using Gbe.Script.Executor;
+﻿using System;
+using Gbe.Script.Executor;
 using Gbe.Script.Executor.Entities;
 
 namespace Gbe.Script.Actions
@@ -15,6 +16,7 @@ namespace Gbe.Script.Actions
 
         public override void Execute(GbsExecutor scriptExecutor, Entity entity)
         {
+            scriptExecutor.Raise(m_eventClass);
         }
     }
 }

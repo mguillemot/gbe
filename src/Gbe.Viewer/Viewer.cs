@@ -101,7 +101,7 @@ namespace Gbe.Viewer
                     var position = GearProperties.GetPosition(entity);
                     var center = new Point((int) Math.Round(100 + position.X), (int) Math.Round(100 + position.Y));
                     IPrimitive shape;
-                    var color = DefaultBackColor;
+                    var color = Color.White;
                     string animation = null;
                     if (entity.HasProperty(GearProperties.ANIMATION))
                     {
@@ -113,7 +113,6 @@ namespace Gbe.Viewer
                             shape = new Polygon(
                                 new[] {(short) (center.X + 5), (short) (center.X - 5), (short) center.X},
                                 new[] {(short) (center.Y + 5), (short) (center.Y + 5), (short) (center.Y - 5)});
-                            color = Color.Green;
                             break;
                         case "box":
                             Point cornerA = center;
@@ -121,7 +120,6 @@ namespace Gbe.Viewer
                             Point cornerB = center;
                             cornerB.Offset(5, 5);
                             shape = new Box(cornerA, cornerB);
-                            color = Color.Blue;
                             break;
                         case "trainee":
                             var positions = GearProperties.GetTrainee(entity);
@@ -138,8 +136,12 @@ namespace Gbe.Viewer
                             break;
                         default:
                             shape = new Circle(center, 3);
-                            color = Color.Pink;
                             break;
+                    }
+                    if (entity.HasProperty(GearProperties.COLOR))
+                    {
+                        var gearColor = GearProperties.GetColor(entity);
+                        color = Color.FromArgb(gearColor.R, gearColor.G, gearColor.B);
                     }
                     if (shape != null)
                     {

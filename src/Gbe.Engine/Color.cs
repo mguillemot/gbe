@@ -30,17 +30,17 @@ namespace Gbe.Engine
                 case "black":
                     return BLACK;
                 case "white":
-                    return BLACK;
+                    return WHITE;
                 case "red":
-                    return BLACK;
+                    return RED;
                 case "green":
-                    return BLACK;
+                    return GREEN;
                 case "blue":
-                    return BLACK;
+                    return BLUE;
                 case "yellow":
-                    return BLACK;
+                    return YELLOW;
                 case "pink":
-                    return BLACK;
+                    return PINK;
                 case "lightblue":
                     return LIGHT_BLUE;
                 default:
